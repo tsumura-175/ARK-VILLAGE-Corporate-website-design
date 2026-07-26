@@ -35,6 +35,7 @@ document.documentElement.classList.add("js");
     form.reset();
     gate.setAttribute("aria-hidden", "true");
     root.classList.remove("is-access-locked");
+    window.dispatchEvent(new CustomEvent("ark:access-granted"));
   };
 
   form.addEventListener("submit", (event) => {
@@ -78,63 +79,85 @@ document.documentElement.classList.add("js");
     window.dispatchEvent(new CustomEvent("ark:page-ready"));
   };
 
-  if (!loader) {
-    announceReady();
-    return;
-  }
+  let started = false;
 
-  let hasSeenLoader = false;
-  try {
-    hasSeenLoader = sessionStorage.getItem("ark-loader-seen") === "true";
-  } catch {
-    hasSeenLoader = false;
-  }
+  const startLoader = () => {
+    if (started) return;
+    started = true;
 
-  if (reducedMotion.matches || hasSeenLoader) {
-    loader.hidden = true;
-    announceReady();
-    return;
-  }
-
-  const loaderDuration = readDuration("--dur-loader", 1800);
-  const exitDuration = readDuration("--dur-loader-exit", 520);
-  const startedAt = performance.now();
-  let finished = false;
-
-  const finish = () => {
-    if (finished) return;
-    finished = true;
-
-    try {
-      sessionStorage.setItem("ark-loader-seen", "true");
-    } catch {
-      // Storage can be unavailable in privacy-restricted contexts.
+    if (!loader) {
+      announceReady();
+      return;
     }
 
-    loader.classList.add("is-leaving");
-    announceReady();
+    root.classList.add("is-loading");
+    loader.hidden = false;
+    loader.classList.remove("is-leaving");
 
-    window.setTimeout(() => {
+    let hasSeenLoader = false;
+    try {
+      hasSeenLoader = sessionStorage.getItem("ark-loader-seen") === "true";
+    } catch {
+      hasSeenLoader = false;
+    }
+
+    if (reducedMotion.matches || hasSeenLoader) {
       loader.hidden = true;
-    }, exitDuration);
+      announceReady();
+      return;
+    }
+
+    const loaderDuration = readDuration("--dur-loader", 1800);
+    const exitDuration = readDuration("--dur-loader-exit", 520);
+    const startedAt = performance.now();
+    let finished = false;
+
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+
+      try {
+        sessionStorage.setItem("ark-loader-seen", "true");
+      } catch {
+        // Storage can be unavailable in privacy-restricted contexts.
+      }
+
+      loader.classList.add("is-leaving");
+      announceReady();
+
+      window.setTimeout(() => {
+        loader.hidden = true;
+      }, exitDuration);
+    };
+
+    const finishAfterMinimum = () => {
+      const remaining = Math.max(
+        0,
+        loaderDuration - (performance.now() - startedAt),
+      );
+      window.setTimeout(finish, remaining);
+    };
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => root.classList.add("loader-started"));
+    });
+
+    if (document.readyState === "complete") {
+      finishAfterMinimum();
+    } else {
+      window.addEventListener("load", finishAfterMinimum, { once: true });
+    }
+
+    window.setTimeout(finish, loaderDuration + 3000);
   };
 
-  const finishAfterMinimum = () => {
-    const remaining = Math.max(0, loaderDuration - (performance.now() - startedAt));
-    window.setTimeout(finish, remaining);
-  };
-
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => root.classList.add("loader-started"));
-  });
-
-  if (document.readyState === "complete") {
-    finishAfterMinimum();
-  } else {
-    window.addEventListener("load", finishAfterMinimum, { once: true });
+  if (root.classList.contains("is-access-locked")) {
+    if (loader) loader.hidden = true;
+    window.addEventListener("ark:access-granted", startLoader, { once: true });
+    return;
   }
 
-  window.setTimeout(finish, loaderDuration + 3000);
+  startLoader();
 })();
 
 (() => {

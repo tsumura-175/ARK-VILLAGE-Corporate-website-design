@@ -156,6 +156,7 @@ element.setAttribute("aria-hidden", String(!active));
 - ローカルファイル、`localhost`、`127.0.0.1` では表示しない
 - 認証済み状態は `sessionStorage` に保存する
 - ブラウザのタブまたはセッションを終了すると再認証する
+- 認証中はローディングを待機し、`ark:access-granted` イベントを受けてから開始する
 
 ### 重要な制限
 
