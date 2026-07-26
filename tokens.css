@@ -1,0 +1,78 @@
+:root {
+  --color-paper: oklch(95% 0.012 75);
+  --color-paper-2: oklch(89% 0.014 75);
+  --color-paper-3: oklch(82% 0.016 70);
+  --color-ink: oklch(18% 0.012 50);
+  --color-ink-2: oklch(28% 0.012 50);
+  --color-muted: oklch(46% 0.012 55);
+  --color-rule: oklch(72% 0.014 70);
+  --color-rule-2: oklch(84% 0.014 72);
+  --color-accent: oklch(52% 0.16 29);
+  --color-accent-ink: oklch(96% 0.01 75);
+  --color-focus: oklch(58% 0.21 29);
+  --color-on-dark: oklch(95% 0.01 75);
+  --color-on-dark-muted: oklch(76% 0.012 70);
+
+  --font-display: "Big Shoulders Display", "Arial Narrow", sans-serif;
+  --font-body: "Noto Sans JP", sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.25rem;
+  --text-lg: 1.5625rem;
+  --text-xl: 1.9531rem;
+  --text-2xl: 2.4414rem;
+  --text-3xl: 3.0518rem;
+  --text-4xl: 3.8147rem;
+  --text-display-s: clamp(3rem, 7vw, 4.5rem);
+  --text-display: clamp(3.6rem, 10vw, 5.5rem);
+  --text-hero: clamp(3.6rem, 12vw, 8.5rem);
+
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --space-4xl: 9rem;
+
+  --page-gutter: clamp(1rem, 4vw, 4rem);
+  --page-max: 90rem;
+  --content-max: 76rem;
+  --header-height: 5rem;
+
+  --rule-hair: 1px;
+  --rule-strong: 4px;
+
+  --radius-sm: 0.25rem;
+  --radius-nav: 1rem;
+  --radius-pill: 999px;
+
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
+  --dur-nav: 520ms;
+  --dur-slide: 1400ms;
+  --dur-zoom: 8500ms;
+  --dur-loader: 1800ms;
+  --dur-loader-exit: 520ms;
+  --slider-delay: 7000ms;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --z-base: 1;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-tooltip: 600;
+  --z-loader: 700;
+  --z-access: 800;
+}

@@ -1,0 +1,27 @@
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor settings
+.vscode/
+.idea/
+*.swp
+*~
+
+# Local environment and logs
+.env
+.env.*
+!.env.example
+*.log
+
+# Dependencies and generated files
+node_modules/
+dist/
+coverage/
+
+# Local design-tool metadata
+.hallmark/
+
+# Temporary QA files
+auth-qa.html
