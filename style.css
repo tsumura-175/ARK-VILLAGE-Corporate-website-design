@@ -1424,6 +1424,7 @@ html.is-github-pages.is-access-locked .access-gate {
   font-weight: 700;
   cursor: pointer;
   transition:
+    border-color var(--dur-short) var(--ease-out),
     background-color var(--dur-short) var(--ease-out),
     color var(--dur-short) var(--ease-out),
     transform var(--dur-micro) var(--ease-out);
@@ -1452,6 +1453,7 @@ html.is-github-pages.is-access-locked .access-gate {
 
 @media (hover: hover) and (pointer: fine) {
   .contact-button:hover {
+    border-color: var(--color-accent);
     background: var(--color-accent);
     color: var(--color-accent-ink);
   }
@@ -1640,7 +1642,7 @@ html.is-github-pages.is-access-locked .access-gate {
   }
 
   .site-brand__logo {
-    width: 96px;
+    width: 88px;
   }
 
   .global-nav {
@@ -2068,7 +2070,7 @@ html.is-loading body {
   z-index: var(--z-raised);
   isolation: isolate;
   width: min(calc(100% - (var(--page-gutter) * 2)), 76rem);
-  min-height: 64px;
+  min-height: 72px;
   padding-inline: var(--space-md);
   padding-block: 0;
   transform: translateY(var(--header-offset));
