@@ -265,12 +265,14 @@ document.documentElement.classList.add("js");
   let remaining = delay;
   let startedAt = 0;
   let focusPaused = false;
+  let hoverPaused = false;
   let keyboardFocus = false;
   let pageReady = document.documentElement.classList.contains("page-ready");
 
   const canPlay = () => {
     const playing =
       !focusPaused &&
+      !hoverPaused &&
       !document.hidden &&
       !reducedMotion.matches &&
       pageReady;
@@ -391,6 +393,16 @@ document.documentElement.classList.add("js");
     schedule();
   });
 
+  hero.addEventListener("mouseenter", () => {
+    hoverPaused = true;
+    pause();
+  });
+
+  hero.addEventListener("mouseleave", () => {
+    hoverPaused = false;
+    schedule();
+  });
+
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
       pause();
@@ -420,6 +432,117 @@ document.documentElement.classList.add("js");
 
   render();
   if (pageReady) schedule();
+})();
+
+(() => {
+  const showcase = document.querySelector("[data-business-showcase]");
+  if (!showcase) return;
+
+  const panels = [...showcase.querySelectorAll("[data-business-panel]")];
+  const selectors = [...showcase.querySelectorAll("[data-business-select]")];
+  const sticky = showcase.querySelector(".business-showcase__sticky");
+  const desktop = window.matchMedia("(min-width: 60rem)");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let current = 0;
+  let ticking = false;
+  let programmaticScroll = false;
+  let scrollReleaseTimer;
+
+  if (!panels.length || !sticky) return;
+
+  const clampIndex = (index) => Math.max(0, Math.min(panels.length - 1, index));
+
+  const render = (index) => {
+    current = clampIndex(index);
+    panels.forEach((panel, panelIndex) => {
+      panel.dataset.active = String(panelIndex === current);
+    });
+    selectors.forEach((selector, selectorIndex) => {
+      const selected = selectorIndex === current;
+      selector.setAttribute("aria-pressed", String(selected));
+      selector.disabled = selected;
+    });
+  };
+
+  const getScrollRange = () => {
+    const stickyTop = Number.parseFloat(getComputedStyle(sticky).insetBlockStart) || 0;
+    const start = showcase.getBoundingClientRect().top + window.scrollY - stickyTop;
+    const distance = Math.max(1, showcase.offsetHeight - sticky.offsetHeight);
+    return { start, distance, stickyTop };
+  };
+
+  const updateFromScroll = () => {
+    ticking = false;
+    if (!desktop.matches || programmaticScroll) return;
+    const { start, distance } = getScrollRange();
+    const progress = Math.max(0, Math.min(1, (window.scrollY - start) / distance));
+    render(Math.round(progress * (panels.length - 1)));
+  };
+
+  const requestScrollUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(updateFromScroll);
+  };
+
+  const scrollToIndex = (index) => {
+    const next = clampIndex(index);
+    render(next);
+
+    if (!desktop.matches) {
+      const headerOffset = Number.parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue("--header-height"),
+      ) || 0;
+      const panelTop = panels[next].getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: panelTop - headerOffset,
+        behavior: reducedMotion.matches ? "auto" : "smooth",
+      });
+      return;
+    }
+
+    const { start, distance, stickyTop } = getScrollRange();
+    const progress = panels.length > 1 ? next / (panels.length - 1) : 0;
+    const rawTarget = start + distance * progress;
+    // Keep the transparent header over the BUSINESS surface at the first edge,
+    // and leave a small overlap at the last edge to avoid fractional-pixel seams.
+    const edgeBuffer = 2;
+    const target =
+      next === 0
+        ? rawTarget + stickyTop
+        : next === panels.length - 1
+          ? rawTarget - edgeBuffer
+          : rawTarget;
+    window.clearTimeout(scrollReleaseTimer);
+    programmaticScroll = true;
+    window.scrollTo({
+      top: target,
+      behavior: reducedMotion.matches ? "auto" : "smooth",
+    });
+    scrollReleaseTimer = window.setTimeout(
+      () => {
+        programmaticScroll = false;
+        requestScrollUpdate();
+      },
+      reducedMotion.matches ? 0 : 700,
+    );
+  };
+
+  selectors.forEach((selector, index) => {
+    selector.addEventListener("click", () => scrollToIndex(index));
+  });
+
+  window.addEventListener("scroll", requestScrollUpdate, { passive: true });
+  window.addEventListener("resize", requestScrollUpdate, { passive: true });
+  desktop.addEventListener("change", () => {
+    window.clearTimeout(scrollReleaseTimer);
+    programmaticScroll = false;
+    render(current);
+    requestScrollUpdate();
+  });
+
+  render(0);
+  requestScrollUpdate();
 })();
 
 (() => {
