@@ -802,7 +802,7 @@ html.is-github-pages.is-access-locked .access-gate {
   display: grid;
   gap: var(--space-3xs);
   min-width: 0;
-  text-align: center;
+  text-align: start;
 }
 
 .garden-entry-cta__title {
