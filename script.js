@@ -1,5 +1,3 @@
-document.documentElement.classList.add("js");
-
 (() => {
   const root = document.documentElement;
   if (!root.classList.contains("is-github-pages")) return;
