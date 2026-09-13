@@ -4,6 +4,8 @@
 
 本ガイドラインは、ARK LEAGUEコーポレートサイトのHTML、CSS、JavaScriptを継続的に更新するための実装基準です。既存コードとの一貫性、アクセシビリティ、GitHub Pagesでの動作を優先します。
 
+再利用するUI部品の構造と利用条件は `DESIGN_SYSTEM.md` を参照してください。
+
 ## 2. 技術構成
 
 - HTML5
@@ -19,17 +21,29 @@
 ```text
 デザイン/
 ├─ index.html
-├─ style.css
-├─ tokens.css
-├─ script.js
-├─ DESIGN_GUIDELINES.md
-├─ CODING_GUIDELINES.md
-└─ images/
+├─ company/
+│  └─ index.html
+├─ assets/
+│  ├─ css/
+│  │  ├─ tokens.css
+│  │  ├─ style.css
+│  │  └─ subpage.css
+│  ├─ js/
+│  │  └─ script.js
+│  └─ images/
+└─ docs/
+   ├─ DESIGN_SYSTEM.md
+   ├─ DESIGN_GUIDELINES.md
+   └─ CODING_GUIDELINES.md
 ```
 
-- 画像は `images/` にまとめる
+- 画像は `assets/images/` にまとめる
+- CSSは `assets/css/`、JavaScriptは `assets/js/` にまとめる
+- ガイドライン類は `docs/` にまとめる
+- 下層ページは `ページ名/index.html` とし、公開URLを `/ページ名/` に統一する
+- 下層ページ共通のスタイルは `assets/css/subpage.css` にまとめる
 - HTMLからのパスは相対パスにする
-- GitHub Pagesのサブディレクトリ公開を考慮し、`/images/...` のようなルート絶対パスを使わない
+- GitHub Pagesのサブディレクトリ公開を考慮し、`/assets/...` のようなルート絶対パスを使わない
 
 ## 4. HTML
 
@@ -192,7 +206,7 @@ GitHub Pagesは静的ホスティングのため、サーバー側のBasic認証
 変更後は最低限、以下を確認します。
 
 ```powershell
-node --check .\script.js
+node --check .\assets\js\script.js
 ```
 
 ブラウザ確認：

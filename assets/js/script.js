@@ -159,6 +159,32 @@
 })();
 
 (() => {
+  const root = document.documentElement;
+  const title = document.querySelector("[data-page-hero-reveal]");
+  if (!title) return;
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  const reveal = () => {
+    if (reducedMotion.matches) {
+      title.classList.add("is-visible");
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => title.classList.add("is-visible"));
+    });
+  };
+
+  if (root.classList.contains("page-ready")) {
+    reveal();
+    return;
+  }
+
+  window.addEventListener("ark:page-ready", reveal, { once: true });
+})();
+
+(() => {
   const header = document.querySelector("[data-site-header]");
   if (!header) return;
 

@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="ja" class="no-js is-loading">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="株式会社ARK LEAGUEの企業概要。経営理念、会社情報、アクセスをご案内します。"
+    />
+    <title>企業概要｜株式会社ARK LEAGUE</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (() => {
+        const root = document.documentElement;
+        root.classList.replace("no-js", "js");
+
+        if (!/\.github\.io$/i.test(window.location.hostname)) return;
+
+        root.classList.add("is-github-pages");
+
+        try {
+          if (sessionStorage.getItem("ark-preview-access") !== "granted") {
+            root.classList.add("is-access-locked");
+          }
+        } catch {
+          root.classList.add("is-access-locked");
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="../assets/css/style.css?v=20260913-news-balance-1" />
+    <link rel="stylesheet" href="../assets/css/subpage.css?v=20260913-section-rule-1" />
+    <script src="../assets/js/script.js?v=20260910-subpage-1" defer></script>
+  </head>
+  <body class="subpage">
+    <section
+      class="access-gate"
+      data-access-gate
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="access-gate-title"
+    >
+      <div class="access-gate__panel">
+        <div class="access-gate__brand">
+          <span class="access-gate__slash" aria-hidden="true"></span>
+          <img
+            src="../assets/images/logo_arkleague.png"
+            width="500"
+            height="309"
+            alt="ARK LEAGUE"
+          />
+        </div>
+
+        <div class="access-gate__heading">
+          <p>PREVIEW ACCESS</p>
+          <h1 id="access-gate-title">認証情報を入力してください</h1>
+          <span>このページを表示するにはIDとパスワードが必要です。</span>
+        </div>
+
+        <form class="access-gate__form" data-access-form novalidate>
+          <label>
+            <span>LOGIN ID</span>
+            <input
+              type="text"
+              name="login-id"
+              autocomplete="username"
+              required
+              data-access-id
+            />
+          </label>
+
+          <label>
+            <span>PASSWORD</span>
+            <input
+              type="password"
+              name="password"
+              autocomplete="current-password"
+              required
+              data-access-password
+            />
+          </label>
+
+          <p
+            class="access-gate__error"
+            data-access-error
+            role="alert"
+            aria-live="polite"
+          ></p>
+
+          <button class="access-gate__submit" type="submit">
+            <span>ENTER SITE</span>
+            <span class="ui-arrow-icon" aria-hidden="true"></span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <a class="skip-link" href="#main">本文へ移動</a>
+
+    <div class="site-loader" data-site-loader aria-hidden="true">
+      <div class="site-loader__brand">
+        <span class="site-loader__slash" aria-hidden="true"></span>
+        <img
+          src="../assets/images/logo_arkleague.png"
+          width="500"
+          height="309"
+          alt=""
+        />
+      </div>
+      <div class="site-loader__copy">
+        <p>Living Culture. Shaping the Future.</p>
+        <span>カルチャーを生き、未来を創る。</span>
+      </div>
+    </div>
+
+    <header class="site-header" data-site-header>
+      <div class="site-header__inner">
+        <a class="site-brand" href="../index.html" aria-label="ARK LEAGUE トップへ">
+          <img
+            class="site-brand__logo"
+            src="../assets/images/logo_arkleague.png"
+            width="500"
+            height="309"
+            alt="ARK LEAGUE"
+          />
+        </a>
+
+        <nav class="global-nav" aria-label="グローバルナビゲーション">
+          <a href="../index.html#business" aria-label="事業内容">
+            <span class="global-nav__clip">
+              <span class="global-nav__label" data-label="事業内容">事業内容</span>
+            </span>
+          </a>
+          <a href="../index.html#works" aria-label="実績">
+            <span class="global-nav__clip">
+              <span class="global-nav__label" data-label="実績">実績</span>
+            </span>
+          </a>
+          <a href="./" aria-label="企業概要" aria-current="page">
+            <span class="global-nav__clip">
+              <span class="global-nav__label" data-label="企業概要">企業概要</span>
+            </span>
+          </a>
+          <a href="../index.html#news" aria-label="ニュース">
+            <span class="global-nav__clip">
+              <span class="global-nav__label" data-label="ニュース">ニュース</span>
+            </span>
+          </a>
+          <a href="../index.html#recruit" aria-label="採用情報">
+            <span class="global-nav__clip">
+              <span class="global-nav__label" data-label="採用情報">採用情報</span>
+            </span>
+          </a>
+        </nav>
+
+        <div class="header-actions" aria-label="募集・お問い合わせ">
+          <a class="header-village" href="../index.html#ark-garden">
+            ARK GARDEN 出店者募集
+          </a>
+          <a class="header-contact" href="../index.html#contact">お問い合わせ</a>
+        </div>
+
+        <button
+          class="menu-trigger"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          data-menu-open
+        >
+          MENU
+        </button>
+      </div>
+    </header>
+
+    <dialog class="mobile-menu" id="mobile-menu" aria-label="メニュー">
+      <div class="mobile-menu__head">
+        <img
+          class="mobile-menu__logo"
+          src="../assets/images/logo_arkleague.png"
+          width="500"
+          height="309"
+          alt="ARK LEAGUE"
+        />
+        <button class="mobile-menu__close" type="button" data-menu-close>CLOSE</button>
+      </div>
+      <nav class="mobile-menu__nav" aria-label="モバイルナビゲーション">
+        <a href="../index.html#business">事業内容</a>
+        <a href="../index.html#works">実績</a>
+        <a href="./" aria-current="page">企業概要</a>
+        <a href="../index.html#news">ニュース</a>
+        <a href="../index.html#recruit">採用情報</a>
+        <a href="../index.html#ark-garden">ARK GARDEN 出店者募集</a>
+        <a href="../index.html#contact">お問い合わせ</a>
+      </nav>
+    </dialog>
+
+    <main id="main">
+      <section class="page-hero" id="top" aria-labelledby="page-title">
+        <div class="page-hero__lines" aria-hidden="true">
+          <span></span>
+          <span></span>
+        </div>
+        <div class="page-shell page-hero__inner">
+          <div class="page-hero__title" data-page-hero-reveal>
+            <span class="page-hero__slash" aria-hidden="true"></span>
+            <div class="page-hero__title-mask">
+              <p class="page-hero__title-en" aria-hidden="true">COMPANY</p>
+            </div>
+            <h1 id="page-title">企業概要</h1>
+          </div>
+        </div>
+        <span class="page-hero__rail" aria-hidden="true"></span>
+      </section>
+
+      <div class="page-content">
+        <section class="content-section" aria-labelledby="philosophy-title">
+          <div class="page-shell content-section__grid">
+            <header class="section-heading content-section__head">
+              <div class="section-title" data-title-reveal>
+                <span class="section-title__slash" aria-hidden="true"></span>
+                <p class="section-title__en" aria-hidden="true">PHILOSOPHY</p>
+                <h2 id="philosophy-title">経営理念</h2>
+              </div>
+            </header>
+            <div class="content-section__body">
+              <p class="content-section__lead">
+                テキストテキストテキストテキスト
+              </p>
+              <p class="content-section__copy">
+                テキストテキストテキストテキストテキストテキストテキストテキスト。
+                テキストテキストテキストテキストテキストテキストテキストテキスト。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-section" aria-labelledby="profile-title">
+          <div class="page-shell content-section__grid">
+            <header class="section-heading content-section__head">
+              <div class="section-title" data-title-reveal>
+                <span class="section-title__slash" aria-hidden="true"></span>
+                <p class="section-title__en" aria-hidden="true">COMPANY PROFILE</p>
+                <h2 id="profile-title">会社概要</h2>
+              </div>
+            </header>
+            <div class="content-section__body">
+              <dl class="definition-list">
+                <div class="definition-list__row">
+                  <dt>会社名</dt>
+                  <dd>株式会社ARKLEAGUE</dd>
+                </div>
+                <div class="definition-list__row">
+                  <dt>所在地</dt>
+                  <dd>神奈川県高座郡寒川町倉見1385 <span>※現住所</span></dd>
+                </div>
+                <div class="definition-list__row">
+                  <dt>代表者名</dt>
+                  <dd>内野 洋平</dd>
+                </div>
+                <div class="definition-list__row">
+                  <dt>設立</dt>
+                  <dd>テキストテキスト</dd>
+                </div>
+                <div class="definition-list__row">
+                  <dt>関連会社</dt>
+                  <dd>株式会社UCHINO</dd>
+                </div>
+                <div class="definition-list__row">
+                  <dt>関連施設</dt>
+                  <dd>ARK GARDEN（開設準備中）／THE PARK（開設準備中）</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-section" aria-labelledby="access-title">
+          <div class="page-shell content-section__grid">
+            <header class="section-heading content-section__head">
+              <div class="section-title" data-title-reveal>
+                <span class="section-title__slash" aria-hidden="true"></span>
+                <p class="section-title__en" aria-hidden="true">ACCESS</p>
+                <h2 id="access-title">アクセス</h2>
+              </div>
+            </header>
+            <div class="content-section__body">
+              <div class="split-content">
+                <div class="map-embed">
+                  <iframe
+                    src="https://www.google.com/maps?q=%E3%80%92253-0101%20%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E9%AB%98%E5%BA%A7%E9%83%A1%E5%AF%92%E5%B7%9D%E7%94%BA%E5%80%89%E8%A6%8B1385&output=embed"
+                    title="株式会社ARKLEAGUE所在地のGoogleマップ"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    allowfullscreen
+                  ></iframe>
+                  <div class="map-embed__meta">
+                    <p>〒253-0101<br />神奈川県高座郡寒川町倉見1385番地</p>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=%E3%80%92253-0101%20%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E9%AB%98%E5%BA%A7%E9%83%A1%E5%AF%92%E5%B7%9D%E7%94%BA%E5%80%89%E8%A6%8B1385"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >Googleマップで見る <span class="ui-symbol ui-symbol--external" aria-hidden="true">↗</span></a>
+                  </div>
+                </div>
+
+                <section class="access-information" aria-labelledby="transport-title">
+                  <p class="access-information__label">ACCESS GUIDE</p>
+                  <h3 id="transport-title">主な交通手段</h3>
+                  <div class="access-information__list">
+                    <article class="access-card">
+                      <p class="access-card__type">TRAIN</p>
+                      <h4>電車でお越しの方</h4>
+                      <p>テキストテキストテキストテキスト</p>
+                    </article>
+                    <article class="access-card">
+                      <p class="access-card__type">BUS</p>
+                      <h4>バスでお越しの方</h4>
+                      <p>テキストテキストテキストテキスト</p>
+                      <a
+                        class="access-card__download"
+                        href="../assets/documents/mokuseigo-timetable-route.pdf"
+                        download="mokuseigo-timetable-route.pdf"
+                      >時刻表PDFをダウンロード <span class="ui-symbol ui-symbol--download" aria-hidden="true">↓</span></a>
+                    </article>
+                    <article class="access-card">
+                      <p class="access-card__type">CAR</p>
+                      <h4>車でお越しの方</h4>
+                      <p>テキストテキストテキストテキスト</p>
+                      <p class="access-card__meta">テキストテキスト</p>
+                    </article>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-shell">
+        <div class="site-footer__top">
+          <p class="site-footer__statement">Living Culture.<br />Shaping the Future.</p>
+
+          <div class="site-footer__groups">
+            <section class="site-footer__group">
+              <h2>サイト案内</h2>
+              <nav class="site-footer__links" aria-label="サイト案内">
+                <a href="../index.html#business">事業内容</a>
+                <a href="../index.html#works">実績</a>
+                <a href="./" aria-current="page">企業概要</a>
+                <a href="../index.html#news">ニュース</a>
+              </nav>
+            </section>
+
+            <section class="site-footer__group">
+              <h2>募集・お問い合わせ</h2>
+              <nav class="site-footer__links" aria-label="募集・お問い合わせ">
+                <a href="../index.html#recruit">採用情報</a>
+                <a href="../index.html#ark-garden">ARK GARDEN 出店者募集</a>
+                <a href="../index.html#contact">お問い合わせ</a>
+              </nav>
+            </section>
+
+            <section class="site-footer__group">
+              <h2>関連サイト</h2>
+              <div class="site-footer__links site-footer__related">
+                <span>ARK GARDEN 公式サイト</span>
+                <span>THE PARK 公式サイト</span>
+              </div>
+            </section>
+
+            <section class="site-footer__group" id="privacy-policy">
+              <h2>サイトポリシー</h2>
+              <nav class="site-footer__links" aria-label="サイトポリシー">
+                <a href="#">プライバシーポリシー</a>
+              </nav>
+            </section>
+          </div>
+        </div>
+
+        <div class="site-footer__meta">
+          <img
+            src="../assets/images/logo_arkleague.png"
+            width="500"
+            height="309"
+            alt="ARK LEAGUE"
+          />
+          <p>© 2026 ARK LEAGUE. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

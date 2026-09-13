@@ -2,7 +2,7 @@
  * genre: editorial · macrostructure: Feature Stack · F2 knobs: pinned=viewport, content=photography, steps=4
  * theme: studied-DNA (source: https://jillion.co.jp/) · studied: yes · DNA-source: url
  * observed-paper: oklch(23% 0.006 70) · observed-accent: neutral · rhythm: browser-verified reference
- * display: Big Shoulders Display · body: Noto Sans JP · axes: light / display-condensed-bold / warm
+ * display: Antonio · body: Noto Sans JP · axes: light / display-condensed-bold / warm
  * enrichment: E8 Hero Photography · crop=full-bleed · animation=zoom-crossfade
  * nav: N10 retained by explicit brief · footer: Ft2 · motion: business-scroll-sync / zoom-crossfade / vertical-link-swap
  * refinement: stacked-section-headings / unified-section-heading-rhythm / top-aligned-centered-news-index / company-header-above-media / lower-right-company-overlay / footer-statement-leading / shared-view-more-motion
@@ -81,6 +81,55 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Draw compact button arrows geometrically so font metrics cannot shift them. */
+.ui-arrow-icon {
+  position: relative;
+}
+
+.ui-arrow-icon::before,
+.ui-arrow-icon::after {
+  position: absolute;
+  inset-block-start: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.ui-arrow-icon::before {
+  inset-inline-start: 50%;
+  width: 0.72em;
+  height: 1px;
+  background: currentColor;
+  transform: translate(-54%, -50%);
+}
+
+.ui-arrow-icon::after {
+  inset-inline-start: calc(50% + 0.21em);
+  width: 0.26em;
+  height: 0.26em;
+  border-block-start: 1px solid currentColor;
+  border-inline-end: 1px solid currentColor;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.ui-arrow-glyph {
+  align-self: center;
+  line-height: 1;
+  transform: translateY(-0.08em);
+}
+
+.ui-symbol {
+  display: inline-block;
+  line-height: 1;
+}
+
+.ui-symbol--external {
+  transform: translateY(-0.06em);
+}
+
+.ui-symbol--download {
+  transform: translateY(-0.04em);
+}
+
 a:focus-visible,
 button:focus-visible {
   outline: 3px solid var(--color-focus);
@@ -142,7 +191,7 @@ html.is-github-pages.is-access-locked .access-gate {
       color-mix(in oklch, var(--color-ink) 84%, transparent),
       color-mix(in oklch, var(--color-ink-2) 94%, transparent)
     ),
-    url("images/sample_image_1.jpg") center 62% / cover no-repeat;
+    url("../images/sample_image_1.jpg") center 62% / cover no-repeat;
   color: var(--color-on-dark);
 }
 
@@ -294,6 +343,7 @@ html.is-github-pages.is-access-locked .access-gate {
   color: var(--color-on-dark);
   font-family: var(--font-display);
   font-size: var(--text-md);
+  line-height: 1;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -423,7 +473,6 @@ html.is-github-pages.is-access-locked .access-gate {
   height: 42px;
   flex: 0 0 auto;
   place-items: center;
-  padding-block-end: var(--space-3xs);
   border-radius: 50%;
   background: var(--color-on-dark);
   color: var(--color-ink);
@@ -598,7 +647,10 @@ html.is-github-pages.is-access-locked .access-gate {
 }
 
 .mobile-menu__nav a::after {
+  display: inline-block;
+  line-height: 1;
   content: "→";
+  transform: translateY(-0.08em);
 }
 
 /* Marquee Hero + E8 photography */
@@ -929,6 +981,7 @@ html.is-github-pages.is-access-locked .access-gate {
   grid-row: 1 / 3;
   font-family: var(--font-display);
   font-size: var(--text-lg);
+  line-height: 1;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -1017,13 +1070,13 @@ html.is-github-pages.is-access-locked .access-gate {
 
 .work-panel__meta {
   display: grid;
-  gap: var(--space-xs);
+  gap: var(--space-2xs);
 }
 
 .work-panel__meta h3 {
-  min-height: 3.1em;
+  min-height: 0;
   font-size: var(--text-md);
-  line-height: 1.55;
+  line-height: 1.45;
 }
 
 .work-panel__category {
@@ -1271,6 +1324,7 @@ html.is-github-pages.is-access-locked .access-gate {
   grid-row: 1 / 3;
   font-family: var(--font-display);
   font-size: var(--text-2xl);
+  line-height: 1;
 }
 
 .garden-recruit .route-list,
@@ -1348,6 +1402,7 @@ html.is-github-pages.is-access-locked .access-gate {
   color: var(--color-on-dark);
   font-family: var(--font-display);
   font-size: var(--text-md);
+  line-height: 1;
   transition:
     background-color var(--dur-short) var(--ease-out),
     color var(--dur-short) var(--ease-out),
@@ -2000,7 +2055,7 @@ html.is-loading body {
   color: var(--color-on-dark);
   font-family: var(--font-display);
   font-size: clamp(var(--text-4xl), 16vw, 12rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 0.8;
   opacity: 0.075;
   pointer-events: none;
@@ -2040,7 +2095,7 @@ html.is-loading body {
 .hero__title {
   width: auto;
   justify-items: center;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.04em;
   text-shadow: 0 var(--rule-hair) var(--space-md)
     color-mix(in oklch, var(--color-ink) 48%, transparent);
@@ -2092,7 +2147,7 @@ html.is-loading body {
   min-width: 0;
   justify-items: start;
   gap: var(--space-2xs);
-  padding-inline-start: var(--space-xl);
+  padding-inline-start: var(--section-title-indent);
   color: inherit;
 }
 
@@ -2121,6 +2176,10 @@ html.is-loading body {
 /* Keep the display title's line box tight despite the shared paragraph rule. */
 .section-heading .section-title__en {
   line-height: 1;
+}
+
+.section-title__en + h2 {
+  margin-block-start: var(--space-xs);
 }
 
 /* Shared section-heading rhythm: title and context stay as one compact unit. */
@@ -2306,17 +2365,25 @@ html.is-loading body {
 }
 
 @media (min-width: 40rem) {
+  :root {
+    --section-title-indent: var(--space-2xl);
+  }
+
   .business {
     padding-block-start: var(--space-4xl);
     padding-block-end: 0;
   }
 
-  .section-title {
-    padding-inline-start: var(--space-2xl);
-  }
-
   .section-title__slash {
     width: var(--space-xl);
+  }
+
+  .news__content {
+    width: calc(
+      100% - var(--section-title-indent) - var(--section-title-indent)
+    );
+    margin-inline-start: var(--section-title-indent);
+    justify-self: start;
   }
 
   .hero__definition {

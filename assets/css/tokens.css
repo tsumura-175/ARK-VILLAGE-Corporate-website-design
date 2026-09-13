@@ -11,8 +11,11 @@
   --color-focus: oklch(58% 0.21 29);
   --color-on-dark: oklch(95% 0.01 75);
   --color-on-dark-muted: oklch(76% 0.012 70);
+  --color-subpage-hero-plane: oklch(24% 0.012 45);
+  --color-subpage-grid-strong: oklch(98% 0.005 75 / 0.035);
+  --color-subpage-grid-soft: oklch(98% 0.005 75 / 0.025);
 
-  --font-display: "Big Shoulders Display", "Arial Narrow", sans-serif;
+  --font-display: "Antonio", "Arial Narrow", sans-serif;
   --font-body: "Noto Sans JP", sans-serif;
 
   --text-xs: 0.75rem;
@@ -40,9 +43,12 @@
   --space-4xl: 9rem;
 
   --page-gutter: clamp(1rem, 4vw, 4rem);
+  --section-title-indent: var(--space-xl);
   --page-max: 90rem;
   --content-max: 76rem;
   --content-narrow: 68rem;
+  --copy-max: 42rem;
+  --subpage-hero-height: clamp(32rem, 66svh, 48rem);
   --header-height: 5rem;
 
   --rule-hair: 1px;
