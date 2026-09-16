@@ -35,9 +35,9 @@
         }
       })();
     </script>
-    <link rel="stylesheet" href="../assets/css/style.css?v=20260913-news-balance-1" />
-    <link rel="stylesheet" href="../assets/css/subpage.css?v=20260913-section-rule-1" />
-    <script src="../assets/js/script.js?v=20260910-subpage-1" defer></script>
+    <link rel="stylesheet" href="../assets/css/style.css?v=20260916-mobile-alignment-2" />
+    <link rel="stylesheet" href="../assets/css/subpage.css?v=20260916-role-layout-3" />
+    <script src="../assets/js/script.js?v=20260914-content-reveal-1" defer></script>
   </head>
   <body class="subpage">
     <section
@@ -133,7 +133,7 @@
         </a>
 
         <nav class="global-nav" aria-label="グローバルナビゲーション">
-          <a href="../index.html#business" aria-label="事業内容">
+          <a href="../business/" aria-label="事業内容">
             <span class="global-nav__clip">
               <span class="global-nav__label" data-label="事業内容">事業内容</span>
             </span>
@@ -191,7 +191,7 @@
         <button class="mobile-menu__close" type="button" data-menu-close>CLOSE</button>
       </div>
       <nav class="mobile-menu__nav" aria-label="モバイルナビゲーション">
-        <a href="../index.html#business">事業内容</a>
+        <a href="../business/">事業内容</a>
         <a href="../index.html#works">実績</a>
         <a href="./" aria-current="page">企業概要</a>
         <a href="../index.html#news">ニュース</a>
@@ -220,7 +220,10 @@
       </section>
 
       <div class="page-content">
-        <section class="content-section" aria-labelledby="philosophy-title">
+        <section
+          class="content-section content-section--base"
+          aria-labelledby="philosophy-title"
+        >
           <div class="page-shell content-section__grid">
             <header class="section-heading content-section__head">
               <div class="section-title" data-title-reveal>
@@ -230,18 +233,35 @@
               </div>
             </header>
             <div class="content-section__body">
-              <p class="content-section__lead">
-                テキストテキストテキストテキスト
-              </p>
-              <p class="content-section__copy">
-                テキストテキストテキストテキストテキストテキストテキストテキスト。
-                テキストテキストテキストテキストテキストテキストテキストテキスト。
-              </p>
+              <div class="philosophy-feature">
+                <figure class="philosophy-feature__media" data-content-reveal="media">
+                  <img
+                    src="../assets/images/company-architecture.jpg"
+                    width="1920"
+                    height="1280"
+                    loading="lazy"
+                    decoding="async"
+                    alt="青空を背景に見上げた都市の建築"
+                  />
+                </figure>
+                <div class="philosophy-feature__copy">
+                  <p class="content-section__lead">
+                    テキストテキストテキストテキスト
+                  </p>
+                  <p class="content-section__copy">
+                    テキストテキストテキストテキストテキストテキストテキストテキスト。
+                    テキストテキストテキストテキストテキストテキストテキストテキスト。
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        <section class="content-section" aria-labelledby="profile-title">
+        <section
+          class="content-section content-section--tinted"
+          aria-labelledby="profile-title"
+        >
           <div class="page-shell content-section__grid">
             <header class="section-heading content-section__head">
               <div class="section-title" data-title-reveal>
@@ -281,7 +301,10 @@
           </div>
         </section>
 
-        <section class="content-section" aria-labelledby="access-title">
+        <section
+          class="content-section content-section--base"
+          aria-labelledby="access-title"
+        >
           <div class="page-shell content-section__grid">
             <header class="section-heading content-section__head">
               <div class="section-title" data-title-reveal>
@@ -291,7 +314,7 @@
               </div>
             </header>
             <div class="content-section__body">
-              <div class="split-content">
+              <div class="split-content" data-content-reveal>
                 <div class="map-embed">
                   <iframe
                     src="https://www.google.com/maps?q=%E3%80%92253-0101%20%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E9%AB%98%E5%BA%A7%E9%83%A1%E5%AF%92%E5%B7%9D%E7%94%BA%E5%80%89%E8%A6%8B1385&output=embed"
@@ -353,7 +376,7 @@
             <section class="site-footer__group">
               <h2>サイト案内</h2>
               <nav class="site-footer__links" aria-label="サイト案内">
-                <a href="../index.html#business">事業内容</a>
+                <a href="../business/">事業内容</a>
                 <a href="../index.html#works">実績</a>
                 <a href="./" aria-current="page">企業概要</a>
                 <a href="../index.html#news">ニュース</a>

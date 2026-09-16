@@ -6,6 +6,7 @@
   --color-ink-2: oklch(28% 0.012 50);
   --color-muted: oklch(46% 0.012 55);
   --color-rule: oklch(72% 0.014 70);
+  --color-rule-2: oklch(80% 0.012 70);
   --color-accent: oklch(52% 0.16 29);
   --color-accent-ink: oklch(96% 0.01 75);
   --color-focus: oklch(58% 0.21 29);
@@ -43,7 +44,8 @@
   --space-4xl: 9rem;
 
   --page-gutter: clamp(1rem, 4vw, 4rem);
-  --section-title-indent: var(--space-xl);
+  --section-title-indent: 2rem;
+  --section-body-indent: 0rem;
   --page-max: 90rem;
   --content-max: 76rem;
   --content-narrow: 68rem;

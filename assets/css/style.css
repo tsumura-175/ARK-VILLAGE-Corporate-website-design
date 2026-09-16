@@ -9,7 +9,7 @@
  * context: municipalities, corporate partners, participants, candidates · tone: powerful / premium / grounded
  * verification: slop-test 1-58 pass · responsive 320/375/414/768/1280 · no horizontal overflow · contrast/tokens preserved
  */
-@import url("./tokens.css");
+@import url("./tokens.css?v=20260916-mobile-alignment-2");
 
 /* Japanese Business UI · surface: corporate · posture: institutional
  * audiences: municipalities, corporate partners, candidates · density: balanced

@@ -571,9 +571,9 @@
 
 (() => {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const revealTargets = [
-    ...document.querySelectorAll("[data-title-reveal]"),
-  ];
+  const titleTargets = [...document.querySelectorAll("[data-title-reveal]")];
+  const contentTargets = [...document.querySelectorAll("[data-content-reveal]")];
+  const revealTargets = [...titleTargets, ...contentTargets];
 
   if (!revealTargets.length || reducedMotion.matches) {
     revealTargets.forEach((target) => target.classList.add("is-visible"));
@@ -585,19 +585,26 @@
     return;
   }
 
-  const observer = new IntersectionObserver(
-    (entries) => {
+  const observe = (targets, options) => {
+    if (!targets.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         entry.target.classList.add("is-visible");
         observer.unobserve(entry.target);
       });
-    },
-    {
-      rootMargin: "0px 0px -10% 0px",
-      threshold: 0.2,
-    },
-  );
+    }, options);
 
-  revealTargets.forEach((target) => observer.observe(target));
+    targets.forEach((target) => observer.observe(target));
+  };
+
+  observe(titleTargets, {
+    rootMargin: "0px 0px -10% 0px",
+    threshold: 0.2,
+  });
+  observe(contentTargets, {
+    rootMargin: "0px 0px -8% 0px",
+    threshold: 0.12,
+  });
 })();

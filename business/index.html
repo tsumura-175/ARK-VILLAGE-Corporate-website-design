@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ja" class="no-js is-loading">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="株式会社ARK LEAGUEの事業内容。ストリートスポーツパークの運営・管理・監修、大会・イベント運営、普及活動、自治体・企業との取り組みをご紹介します。"
+    />
+    <title>事業内容｜株式会社ARK LEAGUE</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (() => {
+        const root = document.documentElement;
+        root.classList.replace("no-js", "js");
+
+        if (!/\.github\.io$/i.test(window.location.hostname)) return;
+
+        root.classList.add("is-github-pages");
+
+        try {
+          if (sessionStorage.getItem("ark-preview-access") !== "granted") {
+            root.classList.add("is-access-locked");
+          }
+        } catch {
+          root.classList.add("is-access-locked");
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="../assets/css/style.css?v=20260916-mobile-alignment-2" />
+    <link rel="stylesheet" href="../assets/css/subpage.css?v=20260916-role-layout-3" />
+    <script src="../assets/js/script.js?v=20260914-content-reveal-1" defer></script>
+  </head>
+  <body class="subpage business-page">
+    <section
+      class="access-gate"
+      data-access-gate
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="access-gate-title"
+    >
+      <div class="access-gate__panel">
+        <div class="access-gate__brand">
+          <span class="access-gate__slash" aria-hidden="true"></span>
+          <img
+            src="../assets/images/logo_arkleague.png"
+            width="500"
+            height="309"
+            alt="ARK LEAGUE"
+          />
+        </div>
+
+        <div class="access-gate__heading">
+          <p>PREVIEW ACCESS</p>
+          <h1 id="access-gate-title">認証情報を入力してください</h1>
+          <span>このページを表示するにはIDとパスワードが必要です。</span>
+        </div>
+
+        <form class="access-gate__form" data-access-form novalidate>
+          <label>
+            <span>LOGIN ID</span>
+            <input
+              type="text"
+              name="login-id"
+              autocomplete="username"
+              required
+              data-access-id
+            />
+          </label>
+
+          <label>
+            <span>PASSWORD</span>
+            <input
+              type="password"
+              name="password"
+              autocomplete="current-password"
+              required
+              data-access-password
+            />
+          </label>
+
+          <p
+            class="access-gate__error"
+            data-access-error
+            role="alert"
+            aria-live="polite"
+          ></p>
+
+          <button class="access-gate__submit" type="submit">
+            <span>ENTER SITE</span>
+            <span class="ui-arrow-icon" aria-hidden="true"></span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <a class="skip-link" href="#main">本文へ移動</a>
+
+    <div class="site-loader" data-site-loader aria-hidden="true">
+      <div class="site-loader__brand">
+        <span class="site-loader__slash" aria-hidden="true"></span>
+        <img
+          src="../assets/images/logo_arkleague.png"
+          width="500"
+          height="309"
+          alt=""
+        />
+      </div>
+      <div class="site-loader__copy">
+        <p>Living Culture. Shaping the Future.</p>
+        <span>カルチャーを生き、未来を創る。</span>
+      </div>
+    </div>
+
+    <header class="site-header" data-site-header>
+      <div class="site-header__inner">
+        <a class="site-brand" href="../index.html" aria-label="ARK LEAGUE トップへ">
+          <img
+            class="site-brand__logo"
+            src="../assets/images/logo_arkleague.png"
+            width="500"
+            height="309"
+            alt="ARK LEAGUE"
+          />
+        </a>
+
+        <nav class="global-nav" aria-label="グローバルナビゲーション">
+          <a href="./" aria-label="事業内容" aria-current="page">
+            <span class="global-nav__clip">
+              <span class="global-nav__label" data-label="事業内容">事業内容</span>
+            </span>
+          </a>
+          <a href="../index.html#works" aria-label="実績">
+            <span class="global-nav__clip">
+              <span class="global-nav__label" data-label="実績">実績</span>
+            </span>
+          </a>
+          <a href="../company/" aria-label="企業概要">
+            <span class="global-nav__clip">
+              <span class="global-nav__label" data-label="企業概要">企業概要</span>
+            </span>
+          </a>
+          <a href="../index.html#news" aria-label="ニュース">
+            <span class="global-nav__clip">
+              <span class="global-nav__label" data-label="ニュース">ニュース</span>
+            </span>
+          </a>
+          <a href="../index.html#recruit" aria-label="採用情報">
+            <span class="global-nav__clip">
+              <span class="global-nav__label" data-label="採用情報">採用情報</span>
+            </span>
+          </a>
+        </nav>
+
+        <div class="header-actions" aria-label="募集・お問い合わせ">
+          <a class="header-village" href="../index.html#ark-garden">
+            ARK GARDEN 出店者募集
+          </a>
+          <a class="header-contact" href="../index.html#contact">お問い合わせ</a>
+        </div>
+
+        <button
+          class="menu-trigger"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          data-menu-open
+        >
+          MENU
+        </button>
+      </div>
+    </header>
+
+    <dialog class="mobile-menu" id="mobile-menu" aria-label="メニュー">
+      <div class="mobile-menu__head">
+        <img
+          class="mobile-menu__logo"
+          src="../assets/images/logo_arkleague.png"
+          width="500"
+          height="309"
+          alt="ARK LEAGUE"
+        />
+        <button class="mobile-menu__close" type="button" data-menu-close>CLOSE</button>
+      </div>
+      <nav class="mobile-menu__nav" aria-label="モバイルナビゲーション">
+        <a href="./" aria-current="page">事業内容</a>
+        <a href="../index.html#works">実績</a>
+        <a href="../company/">企業概要</a>
+        <a href="../index.html#news">ニュース</a>
+        <a href="../index.html#recruit">採用情報</a>
+        <a href="../index.html#ark-garden">ARK GARDEN 出店者募集</a>
+        <a href="../index.html#contact">お問い合わせ</a>
+      </nav>
+    </dialog>
+
+    <main id="main">
+      <section class="page-hero" id="top" aria-labelledby="page-title">
+        <div class="page-hero__lines" aria-hidden="true">
+          <span></span>
+          <span></span>
+        </div>
+        <div class="page-shell page-hero__inner">
+          <div class="page-hero__title" data-page-hero-reveal>
+            <span class="page-hero__slash" aria-hidden="true"></span>
+            <div class="page-hero__title-mask">
+              <p class="page-hero__title-en" aria-hidden="true">BUSINESS</p>
+            </div>
+            <h1 id="page-title">事業内容</h1>
+          </div>
+        </div>
+        <span class="page-hero__rail" aria-hidden="true"></span>
+      </section>
+
+      <div class="page-content">
+        <section
+          class="content-section content-section--base business-detail"
+          id="street-sports-park"
+          aria-labelledby="street-sports-park-title"
+        >
+          <div class="page-shell content-section__grid">
+            <header class="section-heading content-section__head">
+              <div class="section-title" data-title-reveal>
+                <span class="section-title__slash" aria-hidden="true"></span>
+                <p class="section-title__en" aria-hidden="true">STREET SPORTS PARK</p>
+                <h2 id="street-sports-park-title">
+                  ストリートスポーツパーク 運営・管理・監修
+                </h2>
+              </div>
+            </header>
+            <div class="content-section__body">
+              <p class="business-detail__descriptor">
+                SUPERVISION / MANAGEMENT / OPERATION
+              </p>
+              <p class="content-section__lead">テキストテキストテキストテキスト</p>
+              <p class="content-section__copy">
+                テキストテキストテキストテキストテキストテキストテキストテキスト。
+                テキストテキストテキストテキストテキストテキストテキストテキスト。
+              </p>
+              <div
+                class="business-photo-grid"
+                data-content-reveal="media"
+                aria-label="ストリートスポーツパークのイメージ"
+              >
+                <figure class="business-photo-grid__item">
+                  <img src="../assets/images/sample_image_3.jpg" alt="スケートパークの全景" width="1920" height="1280" loading="lazy" decoding="async" />
+                </figure>
+                <figure class="business-photo-grid__item">
+                  <img src="../assets/images/sample_image_1.jpg" alt="屋外に置かれたBMX" width="1920" height="1280" loading="lazy" decoding="async" />
+                </figure>
+                <figure class="business-photo-grid__item">
+                  <img src="../assets/images/sample_image_2.jpg" alt="スケートボードのクローズアップ" width="1920" height="1280" loading="lazy" decoding="async" />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="content-section content-section--tinted business-detail"
+          id="contest-event"
+          aria-labelledby="contest-event-title"
+        >
+          <div class="page-shell content-section__grid">
+            <header class="section-heading content-section__head">
+              <div class="section-title" data-title-reveal>
+                <span class="section-title__slash" aria-hidden="true"></span>
+                <p class="section-title__en" aria-hidden="true">CONTEST / EVENT</p>
+                <h2 id="contest-event-title">大会・イベント運営</h2>
+              </div>
+            </header>
+            <div class="content-section__body">
+              <p class="content-section__lead">テキストテキストテキストテキスト</p>
+              <p class="content-section__copy">
+                テキストテキストテキストテキストテキストテキストテキストテキスト。
+                テキストテキストテキストテキストテキストテキストテキストテキスト。
+              </p>
+              <ul
+                class="business-capability-grid"
+                data-content-reveal
+                aria-label="大会・イベント運営の対応項目"
+              >
+                <li class="business-capability-grid__item">
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <path d="M12 48V20h40v28M20 20v-8h24v8M20 32h24M28 32v16M36 32v16" />
+                  </svg>
+                  <h3>企画・制作</h3>
+                </li>
+                <li class="business-capability-grid__item">
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <path d="M10 50h44M16 50V28l16-14 16 14v22M24 50V36h16v14M16 28h32" />
+                  </svg>
+                  <h3>会場計画</h3>
+                </li>
+                <li class="business-capability-grid__item">
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <path d="M18 12h28v40H18zM25 12v-4h14v4M25 26h14M25 36h14M25 46h8" />
+                  </svg>
+                  <h3>運営管理</h3>
+                </li>
+                <li class="business-capability-grid__item">
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <circle cx="24" cy="22" r="8" /><circle cx="44" cy="26" r="6" />
+                    <path d="M10 52c1-10 6-16 14-16s13 6 14 16M36 52c1-7 4-11 10-11 5 0 8 4 9 11" />
+                  </svg>
+                  <h3>キャスティング</h3>
+                </li>
+                <li class="business-capability-grid__item">
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <path d="M12 37h10l24 10V17L22 27H12zM22 37l4 14h10l-6-11M51 25l5-5M52 33h7M51 41l5 5" />
+                  </svg>
+                  <h3>プロモーション</h3>
+                </li>
+                <li class="business-capability-grid__item">
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <path d="M14 48 38 24l8 8-24 24H14zM34 20l6-6 10 10-6 6M16 16h14M16 24h10" />
+                  </svg>
+                  <h3>クリエイティブ</h3>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="content-section content-section--base business-detail"
+          id="promoting-urban-sports"
+          aria-labelledby="promoting-urban-sports-title"
+        >
+          <div class="page-shell content-section__grid">
+            <header class="section-heading content-section__head">
+              <div class="section-title" data-title-reveal>
+                <span class="section-title__slash" aria-hidden="true"></span>
+                <p class="section-title__en" aria-hidden="true">PROMOTING URBAN SPORTS</p>
+                <h2 id="promoting-urban-sports-title">アーバンスポーツ普及活動</h2>
+              </div>
+            </header>
+            <div class="content-section__body">
+              <div class="business-text-panel">
+                <p class="business-text-panel__statement"><span>テキストテキストテキスト</span></p>
+                <p class="business-text-panel__intro">
+                  テキストテキストテキストテキストテキストテキスト。<br />
+                  テキストテキストテキストテキストテキストテキスト。
+                </p>
+                <ul class="business-text-list" aria-label="アーバンスポーツ普及活動の項目">
+                  <li class="business-text-list__item">
+                    <h3>テキストテキスト</h3>
+                    <p>テキストテキストテキストテキストテキストテキスト。</p>
+                  </li>
+                  <li class="business-text-list__item">
+                    <h3>テキストテキスト</h3>
+                    <p>テキストテキストテキストテキストテキストテキスト。</p>
+                  </li>
+                  <li class="business-text-list__item">
+                    <h3>テキストテキスト</h3>
+                    <p>テキストテキストテキストテキストテキストテキスト。</p>
+                  </li>
+                  <li class="business-text-list__item">
+                    <h3>テキストテキスト</h3>
+                    <p>テキストテキストテキストテキストテキストテキスト。</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="content-section content-section--tinted business-detail"
+          id="public-private-partnership"
+          aria-labelledby="public-private-partnership-title"
+        >
+          <div class="page-shell content-section__grid">
+            <header class="section-heading content-section__head">
+              <div class="section-title" data-title-reveal>
+                <span class="section-title__slash" aria-hidden="true"></span>
+                <p class="section-title__en" aria-hidden="true">PUBLIC-PRIVATE PARTNERSHIP</p>
+                <h2 id="public-private-partnership-title">自治体・企業との取り組み</h2>
+              </div>
+            </header>
+            <div class="content-section__body">
+              <div class="business-feature" data-content-reveal="media">
+                <figure class="business-feature__media">
+                  <img src="../assets/images/sample_image_1.jpg" alt="屋外に置かれたBMX" width="1920" height="1280" loading="lazy" decoding="async" />
+                </figure>
+                <div class="business-feature__text">
+                  <p class="content-section__lead">テキストテキストテキストテキスト</p>
+                  <p class="content-section__copy">
+                    テキストテキストテキストテキストテキストテキストテキストテキスト。
+                    テキストテキストテキストテキストテキストテキストテキストテキスト。
+                  </p>
+                </div>
+              </div>
+              <ul
+                class="business-topic-list"
+                aria-label="自治体・企業との取り組みの項目"
+              >
+                <li class="business-topic-list__item">
+                  <figure class="business-topic-list__media">
+                    <img src="../assets/images/sample_image_2.jpg" alt="自治体・企業との取り組みイメージ" width="1920" height="1280" loading="lazy" decoding="async" />
+                  </figure>
+                  <div class="business-topic-list__content">
+                    <h3>テキストテキスト</h3>
+                    <p>テキストテキストテキストテキスト。</p>
+                  </div>
+                </li>
+                <li class="business-topic-list__item">
+                  <figure class="business-topic-list__media">
+                    <img src="../assets/images/sample_image_3.jpg" alt="自治体・企業との取り組みイメージ" width="1920" height="1280" loading="lazy" decoding="async" />
+                  </figure>
+                  <div class="business-topic-list__content">
+                    <h3>テキストテキスト</h3>
+                    <p>テキストテキストテキストテキスト。</p>
+                  </div>
+                </li>
+                <li class="business-topic-list__item">
+                  <figure class="business-topic-list__media">
+                    <img src="../assets/images/sample_image_1.jpg" alt="自治体・企業との取り組みイメージ" width="1920" height="1280" loading="lazy" decoding="async" />
+                  </figure>
+                  <div class="business-topic-list__content">
+                    <h3>テキストテキスト</h3>
+                    <p>テキストテキストテキストテキスト。</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-shell">
+        <div class="site-footer__top">
+          <p class="site-footer__statement">Living Culture.<br />Shaping the Future.</p>
+
+          <div class="site-footer__groups">
+            <section class="site-footer__group">
+              <h2>サイト案内</h2>
+              <nav class="site-footer__links" aria-label="サイト案内">
+                <a href="./" aria-current="page">事業内容</a>
+                <a href="../index.html#works">実績</a>
+                <a href="../company/">企業概要</a>
+                <a href="../index.html#news">ニュース</a>
+              </nav>
+            </section>
+
+            <section class="site-footer__group">
+              <h2>募集・お問い合わせ</h2>
+              <nav class="site-footer__links" aria-label="募集・お問い合わせ">
+                <a href="../index.html#recruit">採用情報</a>
+                <a href="../index.html#ark-garden">ARK GARDEN 出店者募集</a>
+                <a href="../index.html#contact">お問い合わせ</a>
+              </nav>
+            </section>
+
+            <section class="site-footer__group">
+              <h2>関連サイト</h2>
+              <div class="site-footer__links site-footer__related">
+                <span>ARK GARDEN 公式サイト</span>
+                <span>THE PARK 公式サイト</span>
+              </div>
+            </section>
+
+            <section class="site-footer__group" id="privacy-policy">
+              <h2>サイトポリシー</h2>
+              <nav class="site-footer__links" aria-label="サイトポリシー">
+                <a href="#">プライバシーポリシー</a>
+              </nav>
+            </section>
+          </div>
+        </div>
+
+        <div class="site-footer__meta">
+          <img
+            src="../assets/images/logo_arkleague.png"
+            width="500"
+            height="309"
+            alt="ARK LEAGUE"
+          />
+          <p>© 2026 ARK LEAGUE. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
