@@ -36,8 +36,8 @@
       })();
     </script>
     <link rel="stylesheet" href="../assets/css/style.css?v=20260916-mobile-alignment-2" />
-    <link rel="stylesheet" href="../assets/css/subpage.css?v=20260916-role-layout-3" />
-    <script src="../assets/js/script.js?v=20260914-content-reveal-1" defer></script>
+    <link rel="stylesheet" href="../assets/css/subpage.css?v=20260919-business-slider-4" />
+    <script src="../assets/js/script.js?v=20260919-business-slider-3" defer></script>
   </head>
   <body class="subpage business-page">
     <section
@@ -236,29 +236,50 @@
               </div>
             </header>
             <div class="content-section__body">
-              <p class="business-detail__descriptor">
-                SUPERVISION / MANAGEMENT / OPERATION
-              </p>
               <p class="content-section__lead">テキストテキストテキストテキスト</p>
               <p class="content-section__copy">
                 テキストテキストテキストテキストテキストテキストテキストテキスト。
                 テキストテキストテキストテキストテキストテキストテキストテキスト。
               </p>
               <div
-                class="business-photo-grid"
+                class="business-media-slider"
+                data-business-slider
                 data-content-reveal="media"
-                aria-label="ストリートスポーツパークのイメージ"
+                role="region"
+                aria-roledescription="カルーセル"
+                aria-label="ストリートスポーツパークの写真"
               >
-                <figure class="business-photo-grid__item">
-                  <img src="../assets/images/sample_image_3.jpg" alt="スケートパークの全景" width="1920" height="1280" loading="lazy" decoding="async" />
-                </figure>
-                <figure class="business-photo-grid__item">
-                  <img src="../assets/images/sample_image_1.jpg" alt="屋外に置かれたBMX" width="1920" height="1280" loading="lazy" decoding="async" />
-                </figure>
-                <figure class="business-photo-grid__item">
-                  <img src="../assets/images/sample_image_2.jpg" alt="スケートボードのクローズアップ" width="1920" height="1280" loading="lazy" decoding="async" />
-                </figure>
+                <div class="business-media-slider__viewport">
+                  <figure class="business-media-slider__slide is-active" data-business-slide aria-roledescription="スライド" aria-label="1 / 3" aria-hidden="false">
+                    <img src="../assets/images/sample_image_3.jpg" alt="スケートパークの全景" width="1920" height="1280" loading="lazy" decoding="async" />
+                  </figure>
+                  <figure class="business-media-slider__slide" data-business-slide aria-roledescription="スライド" aria-label="2 / 3" aria-hidden="true">
+                    <img src="../assets/images/sample_image_1.jpg" alt="屋外に置かれたBMX" width="1920" height="1280" loading="lazy" decoding="async" />
+                  </figure>
+                  <figure class="business-media-slider__slide" data-business-slide aria-roledescription="スライド" aria-label="3 / 3" aria-hidden="true">
+                    <img src="../assets/images/sample_image_2.jpg" alt="スケートボードのクローズアップ" width="1920" height="1280" loading="lazy" decoding="async" />
+                  </figure>
+                  <div class="business-media-slider__pagination" aria-label="ストリートスポーツパークの写真を選択">
+                    <button class="is-active" type="button" data-business-select="0" aria-current="true" aria-label="1枚目の写真を表示"><span>01</span><span class="business-media-slider__progress" aria-hidden="true"></span></button>
+                    <button type="button" data-business-select="1" aria-current="false" aria-label="2枚目の写真を表示"><span>02</span><span class="business-media-slider__progress" aria-hidden="true"></span></button>
+                    <button type="button" data-business-select="2" aria-current="false" aria-label="3枚目の写真を表示"><span>03</span><span class="business-media-slider__progress" aria-hidden="true"></span></button>
+                  </div>
+                </div>
               </div>
+              <ul class="business-capability-grid business-capability-grid--three" data-content-reveal aria-label="ストリートスポーツパークの対応項目">
+                <li class="business-capability-grid__item">
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M12 48V20h40v28M20 20v-8h24v8M20 32h24M28 32v16M36 32v16" /></svg>
+                  <h3>運営</h3>
+                </li>
+                <li class="business-capability-grid__item">
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M18 12h28v40H18zM25 12v-4h14v4M25 26h14M25 36h14M25 46h8" /></svg>
+                  <h3>管理</h3>
+                </li>
+                <li class="business-capability-grid__item">
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M14 48 38 24l8 8-24 24H14zM34 20l6-6 10 10-6 6M16 16h14M16 24h10" /></svg>
+                  <h3>監修</h3>
+                </li>
+              </ul>
             </div>
           </div>
         </section>
@@ -282,8 +303,20 @@
                 テキストテキストテキストテキストテキストテキストテキストテキスト。
                 テキストテキストテキストテキストテキストテキストテキストテキスト。
               </p>
+              <div class="business-media-slider" data-business-slider data-content-reveal="media" role="region" aria-roledescription="カルーセル" aria-label="大会・イベント運営の写真">
+                <div class="business-media-slider__viewport">
+                  <figure class="business-media-slider__slide is-active" data-business-slide aria-roledescription="スライド" aria-label="1 / 3" aria-hidden="false"><img src="../assets/images/sample_image_1.jpg" alt="大会・イベント運営のイメージ" width="1920" height="1280" loading="lazy" decoding="async" /></figure>
+                  <figure class="business-media-slider__slide" data-business-slide aria-roledescription="スライド" aria-label="2 / 3" aria-hidden="true"><img src="../assets/images/sample_image_2.jpg" alt="大会・イベント運営のイメージ" width="1920" height="1280" loading="lazy" decoding="async" /></figure>
+                  <figure class="business-media-slider__slide" data-business-slide aria-roledescription="スライド" aria-label="3 / 3" aria-hidden="true"><img src="../assets/images/sample_image_3.jpg" alt="大会・イベント運営のイメージ" width="1920" height="1280" loading="lazy" decoding="async" /></figure>
+                  <div class="business-media-slider__pagination" aria-label="大会・イベント運営の写真を選択">
+                    <button class="is-active" type="button" data-business-select="0" aria-current="true" aria-label="1枚目の写真を表示"><span>01</span><span class="business-media-slider__progress" aria-hidden="true"></span></button>
+                    <button type="button" data-business-select="1" aria-current="false" aria-label="2枚目の写真を表示"><span>02</span><span class="business-media-slider__progress" aria-hidden="true"></span></button>
+                    <button type="button" data-business-select="2" aria-current="false" aria-label="3枚目の写真を表示"><span>03</span><span class="business-media-slider__progress" aria-hidden="true"></span></button>
+                  </div>
+                </div>
+              </div>
               <ul
-                class="business-capability-grid"
+                class="business-capability-grid business-capability-grid--six"
                 data-content-reveal
                 aria-label="大会・イベント運営の対応項目"
               >
@@ -343,31 +376,29 @@
               </div>
             </header>
             <div class="content-section__body">
-              <div class="business-text-panel">
-                <p class="business-text-panel__statement"><span>テキストテキストテキスト</span></p>
-                <p class="business-text-panel__intro">
-                  テキストテキストテキストテキストテキストテキスト。<br />
-                  テキストテキストテキストテキストテキストテキスト。
-                </p>
-                <ul class="business-text-list" aria-label="アーバンスポーツ普及活動の項目">
-                  <li class="business-text-list__item">
-                    <h3>テキストテキスト</h3>
-                    <p>テキストテキストテキストテキストテキストテキスト。</p>
-                  </li>
-                  <li class="business-text-list__item">
-                    <h3>テキストテキスト</h3>
-                    <p>テキストテキストテキストテキストテキストテキスト。</p>
-                  </li>
-                  <li class="business-text-list__item">
-                    <h3>テキストテキスト</h3>
-                    <p>テキストテキストテキストテキストテキストテキスト。</p>
-                  </li>
-                  <li class="business-text-list__item">
-                    <h3>テキストテキスト</h3>
-                    <p>テキストテキストテキストテキストテキストテキスト。</p>
-                  </li>
-                </ul>
+              <p class="content-section__lead">テキストテキストテキスト</p>
+              <p class="content-section__copy">
+                テキストテキストテキストテキストテキストテキスト。
+                テキストテキストテキストテキストテキストテキスト。
+              </p>
+              <div class="business-media-slider" data-business-slider data-content-reveal="media" role="region" aria-roledescription="カルーセル" aria-label="アーバンスポーツ普及活動の写真">
+                <div class="business-media-slider__viewport">
+                  <figure class="business-media-slider__slide is-active" data-business-slide aria-roledescription="スライド" aria-label="1 / 3" aria-hidden="false"><img src="../assets/images/sample_image_2.jpg" alt="アーバンスポーツ普及活動のイメージ" width="1920" height="1280" loading="lazy" decoding="async" /></figure>
+                  <figure class="business-media-slider__slide" data-business-slide aria-roledescription="スライド" aria-label="2 / 3" aria-hidden="true"><img src="../assets/images/sample_image_3.jpg" alt="アーバンスポーツ普及活動のイメージ" width="1920" height="1280" loading="lazy" decoding="async" /></figure>
+                  <figure class="business-media-slider__slide" data-business-slide aria-roledescription="スライド" aria-label="3 / 3" aria-hidden="true"><img src="../assets/images/sample_image_1.jpg" alt="アーバンスポーツ普及活動のイメージ" width="1920" height="1280" loading="lazy" decoding="async" /></figure>
+                  <div class="business-media-slider__pagination" aria-label="アーバンスポーツ普及活動の写真を選択">
+                    <button class="is-active" type="button" data-business-select="0" aria-current="true" aria-label="1枚目の写真を表示"><span>01</span><span class="business-media-slider__progress" aria-hidden="true"></span></button>
+                    <button type="button" data-business-select="1" aria-current="false" aria-label="2枚目の写真を表示"><span>02</span><span class="business-media-slider__progress" aria-hidden="true"></span></button>
+                    <button type="button" data-business-select="2" aria-current="false" aria-label="3枚目の写真を表示"><span>03</span><span class="business-media-slider__progress" aria-hidden="true"></span></button>
+                  </div>
+                </div>
               </div>
+              <ul class="business-capability-grid business-capability-grid--four" data-content-reveal aria-label="アーバンスポーツ普及活動の項目">
+                <li class="business-capability-grid__item"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="24" cy="22" r="8" /><circle cx="44" cy="26" r="6" /><path d="M10 52c1-10 6-16 14-16s13 6 14 16M36 52c1-7 4-11 10-11 5 0 8 4 9 11" /></svg><h3>テキストテキスト</h3></li>
+                <li class="business-capability-grid__item"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M12 37h10l24 10V17L22 27H12zM22 37l4 14h10l-6-11M51 25l5-5M52 33h7M51 41l5 5" /></svg><h3>テキストテキスト</h3></li>
+                <li class="business-capability-grid__item"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M18 12h28v40H18zM25 12v-4h14v4M25 26h14M25 36h14M25 46h8" /></svg><h3>テキストテキスト</h3></li>
+                <li class="business-capability-grid__item"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M14 48 38 24l8 8-24 24H14zM34 20l6-6 10 10-6 6M16 16h14M16 24h10" /></svg><h3>テキストテキスト</h3></li>
+              </ul>
             </div>
           </div>
         </section>
@@ -386,49 +417,27 @@
               </div>
             </header>
             <div class="content-section__body">
-              <div class="business-feature" data-content-reveal="media">
-                <figure class="business-feature__media">
-                  <img src="../assets/images/sample_image_1.jpg" alt="屋外に置かれたBMX" width="1920" height="1280" loading="lazy" decoding="async" />
-                </figure>
-                <div class="business-feature__text">
-                  <p class="content-section__lead">テキストテキストテキストテキスト</p>
-                  <p class="content-section__copy">
-                    テキストテキストテキストテキストテキストテキストテキストテキスト。
-                    テキストテキストテキストテキストテキストテキストテキストテキスト。
-                  </p>
+              <p class="content-section__lead">テキストテキストテキストテキスト</p>
+              <p class="content-section__copy">
+                テキストテキストテキストテキストテキストテキストテキストテキスト。
+                テキストテキストテキストテキストテキストテキストテキストテキスト。
+              </p>
+              <div class="business-media-slider" data-business-slider data-content-reveal="media" role="region" aria-roledescription="カルーセル" aria-label="自治体・企業との取り組みの写真">
+                <div class="business-media-slider__viewport">
+                  <figure class="business-media-slider__slide is-active" data-business-slide aria-roledescription="スライド" aria-label="1 / 3" aria-hidden="false"><img src="../assets/images/sample_image_1.jpg" alt="自治体・企業との取り組みイメージ" width="1920" height="1280" loading="lazy" decoding="async" /></figure>
+                  <figure class="business-media-slider__slide" data-business-slide aria-roledescription="スライド" aria-label="2 / 3" aria-hidden="true"><img src="../assets/images/sample_image_3.jpg" alt="自治体・企業との取り組みイメージ" width="1920" height="1280" loading="lazy" decoding="async" /></figure>
+                  <figure class="business-media-slider__slide" data-business-slide aria-roledescription="スライド" aria-label="3 / 3" aria-hidden="true"><img src="../assets/images/sample_image_2.jpg" alt="自治体・企業との取り組みイメージ" width="1920" height="1280" loading="lazy" decoding="async" /></figure>
+                  <div class="business-media-slider__pagination" aria-label="自治体・企業との取り組みの写真を選択">
+                    <button class="is-active" type="button" data-business-select="0" aria-current="true" aria-label="1枚目の写真を表示"><span>01</span><span class="business-media-slider__progress" aria-hidden="true"></span></button>
+                    <button type="button" data-business-select="1" aria-current="false" aria-label="2枚目の写真を表示"><span>02</span><span class="business-media-slider__progress" aria-hidden="true"></span></button>
+                    <button type="button" data-business-select="2" aria-current="false" aria-label="3枚目の写真を表示"><span>03</span><span class="business-media-slider__progress" aria-hidden="true"></span></button>
+                  </div>
                 </div>
               </div>
-              <ul
-                class="business-topic-list"
-                aria-label="自治体・企業との取り組みの項目"
-              >
-                <li class="business-topic-list__item">
-                  <figure class="business-topic-list__media">
-                    <img src="../assets/images/sample_image_2.jpg" alt="自治体・企業との取り組みイメージ" width="1920" height="1280" loading="lazy" decoding="async" />
-                  </figure>
-                  <div class="business-topic-list__content">
-                    <h3>テキストテキスト</h3>
-                    <p>テキストテキストテキストテキスト。</p>
-                  </div>
-                </li>
-                <li class="business-topic-list__item">
-                  <figure class="business-topic-list__media">
-                    <img src="../assets/images/sample_image_3.jpg" alt="自治体・企業との取り組みイメージ" width="1920" height="1280" loading="lazy" decoding="async" />
-                  </figure>
-                  <div class="business-topic-list__content">
-                    <h3>テキストテキスト</h3>
-                    <p>テキストテキストテキストテキスト。</p>
-                  </div>
-                </li>
-                <li class="business-topic-list__item">
-                  <figure class="business-topic-list__media">
-                    <img src="../assets/images/sample_image_1.jpg" alt="自治体・企業との取り組みイメージ" width="1920" height="1280" loading="lazy" decoding="async" />
-                  </figure>
-                  <div class="business-topic-list__content">
-                    <h3>テキストテキスト</h3>
-                    <p>テキストテキストテキストテキスト。</p>
-                  </div>
-                </li>
+              <ul class="business-capability-grid business-capability-grid--three" data-content-reveal aria-label="自治体・企業との取り組みの項目">
+                <li class="business-capability-grid__item"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M10 50h44M16 50V28l16-14 16 14v22M24 50V36h16v14M16 28h32" /></svg><h3>テキストテキスト</h3></li>
+                <li class="business-capability-grid__item"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="24" cy="22" r="8" /><circle cx="44" cy="26" r="6" /><path d="M10 52c1-10 6-16 14-16s13 6 14 16M36 52c1-7 4-11 10-11 5 0 8 4 9 11" /></svg><h3>テキストテキスト</h3></li>
+                <li class="business-capability-grid__item"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M14 48 38 24l8 8-24 24H14zM34 20l6-6 10 10-6 6M16 16h14M16 24h10" /></svg><h3>テキストテキスト</h3></li>
               </ul>
             </div>
           </div>
