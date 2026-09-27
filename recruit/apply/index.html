@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="ja" class="no-js is-loading">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="description"
+      content="ARK GARDENの求人応募ページです。"
+    />
+    <title>求人応募｜株式会社ARK LEAGUE</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="../../assets/images/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (() => {
+        const root = document.documentElement;
+        root.classList.replace("no-js", "js");
+
+        if (!/\.github\.io$/i.test(window.location.hostname)) return;
+
+        root.classList.add("is-github-pages");
+
+        try {
+          if (sessionStorage.getItem("ark-preview-access") !== "granted") {
+            root.classList.add("is-access-locked");
+          }
+        } catch {
+          root.classList.add("is-access-locked");
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="../../assets/css/style.css?v=20260927-placeholder-1" />
+    <link rel="stylesheet" href="../../assets/css/subpage.css?v=20260927-recruit-kv-2" />
+    <script src="../../assets/js/subpage-components.js?v=20260926-1" defer></script>
+    <script src="../../assets/js/script.js?v=20260914-content-reveal-1" defer></script>
+  </head>
+  <body class="subpage contact-page application-page">
+    <section
+      class="access-gate"
+      data-access-gate
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="access-gate-title"
+    >
+      <div class="access-gate__panel">
+        <div class="access-gate__brand">
+          <span class="access-gate__slash" aria-hidden="true"></span>
+          <img
+            src="../../assets/images/logo_arkleague.png"
+            width="500"
+            height="309"
+            alt="ARK LEAGUE"
+          />
+        </div>
+
+        <div class="access-gate__heading">
+          <p>PREVIEW ACCESS</p>
+          <h1 id="access-gate-title">認証情報を入力してください</h1>
+          <span>このページを表示するにはIDとパスワードが必要です。</span>
+        </div>
+
+        <form class="access-gate__form" data-access-form novalidate>
+          <label>
+            <span>LOGIN ID</span>
+            <input
+              type="text"
+              name="login-id"
+              autocomplete="username"
+              required
+              data-access-id
+            />
+          </label>
+
+          <label>
+            <span>PASSWORD</span>
+            <input
+              type="password"
+              name="password"
+              autocomplete="current-password"
+              required
+              data-access-password
+            />
+          </label>
+
+          <p
+            class="access-gate__error"
+            data-access-error
+            role="alert"
+            aria-live="polite"
+          ></p>
+
+          <button class="access-gate__submit" type="submit">
+            <span>ENTER SITE</span>
+            <span class="ui-arrow-icon" aria-hidden="true"></span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <a class="skip-link" href="#main">本文へ移動</a>
+
+    <div class="site-loader" data-site-loader aria-hidden="true">
+      <div class="site-loader__brand">
+        <span class="site-loader__slash" aria-hidden="true"></span>
+        <img
+          src="../../assets/images/logo_arkleague.png"
+          width="500"
+          height="309"
+          alt=""
+        />
+      </div>
+      <div class="site-loader__copy">
+        <p>Living Culture. Shaping the Future.</p>
+        <span>カルチャーを生き、未来を創る。</span>
+      </div>
+    </div>
+
+    <header class="site-header" data-site-header>
+      <div class="site-header__inner">
+        <a class="site-brand" href="../../index.html" aria-label="ARK LEAGUE トップへ">
+          <img
+            class="site-brand__logo"
+            src="../../assets/images/logo_arkleague.png"
+            width="500"
+            height="309"
+            alt="ARK LEAGUE"
+          />
+        </a>
+
+        <nav class="global-nav" aria-label="グローバルナビゲーション">
+          <a href="../../business/" aria-label="事業内容">
+            <span class="global-nav__clip">
+              <span class="global-nav__label" data-label="事業内容">事業内容</span>
+            </span>
+          </a>
+          <a href="../../works/" aria-label="実績">
+            <span class="global-nav__clip">
+              <span class="global-nav__label" data-label="実績">実績</span>
+            </span>
+          </a>
+          <a href="../../company/" aria-label="企業概要">
+            <span class="global-nav__clip">
+              <span class="global-nav__label" data-label="企業概要">企業概要</span>
+            </span>
+          </a>
+          <a href="../../news/" aria-label="お知らせ">
+            <span class="global-nav__clip">
+              <span class="global-nav__label" data-label="お知らせ">お知らせ</span>
+            </span>
+          </a>
+          <a href="../../recruit/" aria-current="location" aria-label="採用情報">
+            <span class="global-nav__clip">
+              <span class="global-nav__label" data-label="採用情報">採用情報</span>
+            </span>
+          </a>
+        </nav>
+
+        <div class="header-actions" aria-label="募集・お問い合わせ">
+          <a class="header-village" href="../../arkgarden-recruit/">
+            ARK GARDEN 出店者募集
+          </a>
+          <a class="header-contact" href="../../contact/">お問い合わせ</a>
+        </div>
+
+        <button
+          class="menu-trigger"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          data-menu-open
+        >
+          MENU
+        </button>
+      </div>
+    </header>
+
+    <dialog class="mobile-menu" id="mobile-menu" aria-label="メニュー">
+      <div class="mobile-menu__head">
+        <img
+          class="mobile-menu__logo"
+          src="../../assets/images/logo_arkleague.png"
+          width="500"
+          height="309"
+          alt="ARK LEAGUE"
+        />
+        <button class="mobile-menu__close" type="button" data-menu-close>CLOSE</button>
+      </div>
+      <nav class="mobile-menu__nav" aria-label="モバイルナビゲーション">
+        <a href="../../business/">事業内容</a>
+        <a href="../../works/">実績</a>
+        <a href="../../company/">企業概要</a>
+        <a href="../../news/">お知らせ</a>
+        <a href="../../recruit/" aria-current="location">採用情報</a>
+        <a href="../../arkgarden-recruit/">ARK GARDEN 出店者募集</a>
+        <a href="../../contact/">お問い合わせ</a>
+      </nav>
+    </dialog>
+
+    <main id="main">
+      <section class="page-hero page-hero--image page-hero--image-top" id="top" aria-labelledby="page-title">
+        <img class="page-hero__media" src="../../assets/images/recruit/staff-instructor-cleaning.webp" alt="" width="5616" height="3744" loading="eager" fetchpriority="high" decoding="sync" />
+        <div class="page-hero__lines" aria-hidden="true"><span></span><span></span></div>
+        <div class="page-shell page-hero__inner">
+          <div class="page-hero__title" data-page-hero-reveal>
+            <span class="page-hero__slash" aria-hidden="true"></span>
+            <div class="page-hero__title-mask"><p class="page-hero__title-en" aria-hidden="true">RECRUIT</p></div>
+            <h1 id="page-title">ARK GARDEN 求人応募</h1>
+          </div>
+        </div>
+        <span class="page-hero__rail" aria-hidden="true"></span>
+      </section>
+      <div class="page-content"><section class="content-section content-section--base" aria-labelledby="recruit-form-title">
+          <div class="page-shell content-section__grid">
+            <header class="section-heading content-section__head content-anchor" id="recruit-form">
+              <div class="section-title" data-title-reveal><span class="section-title__slash" aria-hidden="true"></span><p class="section-title__en" aria-hidden="true">RECRUIT</p><h2 id="recruit-form-title">ARK GARDEN 社員・スタッフ応募</h2></div>
+            </header>
+            <div class="content-section__body contact-layout"><ol class="contact-steps" aria-label="求人応募の進行状況">
+                <li aria-current="step"><span class="contact-steps__number">01</span> <span>入力</span></li>
+                <li><span class="contact-steps__number">02</span> <span>確認</span></li>
+                <li><span class="contact-steps__number">03</span> <span>完了</span></li>
+              </ol>
+              <form class="contact-form" data-recruit-form novalidate>
+                <div class="contact-form__row"><label for="recruit-name">氏名 <span class="contact-form__required">必須</span></label><input id="recruit-name" name="name" type="text" autocomplete="name" required /></div>
+                <div class="contact-form__row"><label for="recruit-email">メールアドレス <span class="contact-form__required">必須</span></label><input id="recruit-email" name="email" type="email" autocomplete="email" required /></div>
+                <div class="contact-form__row"><label for="recruit-phone">電話番号 <span class="contact-form__optional">任意</span></label><input id="recruit-phone" name="phone" type="tel" autocomplete="tel" /></div>
+                <div class="contact-form__row"><label for="recruit-role">希望職種 <span class="contact-form__required">必須</span></label><select id="recruit-role" name="role" required><option value="">選択してください</option><option value="テキストテキスト">テキストテキスト</option></select></div>
+                <div class="contact-form__row"><label for="recruit-career">職務経歴 <span class="contact-form__optional">任意</span></label><textarea id="recruit-career" name="career" rows="5"></textarea></div>
+                <div class="contact-form__row"><label for="recruit-motivation">志望動機 <span class="contact-form__required">必須</span></label><textarea id="recruit-motivation" name="motivation" rows="5" required></textarea></div>
+                <div class="contact-form__row"><label for="recruit-resume">履歴書添付 <span class="contact-form__required">必須</span></label><div class="attachment-control">
+                    <div class="attachment-control__surface"><div class="attachment-control__field">
+                        <input class="attachment-control__input" id="recruit-resume" name="resume" type="file" aria-describedby="resume-selection" aria-required="true" required />
+                        <span class="attachment-control__choose" aria-hidden="true">ファイルを選択</span>
+                        <span class="attachment-control__filename" id="resume-selection" data-attachment-selection aria-live="polite">選択されていません</span>
+                      </div></div>
+                    <button class="attachment-control__remove" type="button" data-attachment-remove hidden>選択した資料を取り消す</button>
+                  </div></div>
+                <div class="contact-form__row contact-form__row--consent"><span>個人情報同意 <span class="contact-form__required">必須</span></span><label class="contact-form__check"><input type="checkbox" name="privacy" required /><span><a href="../../privacy-policy/#personal-information" target="_blank" rel="noopener noreferrer">個人情報の取り扱い <span class="ui-symbol ui-symbol--external" aria-hidden="true">↗</span><span class="sr-only">（新しいタブで開く）</span></a>を確認し、同意します。</span></label></div>
+                <p class="contact-form__status" role="status" aria-live="polite" data-recruit-status hidden></p>
+                <div class="contact-actions"><button class="action-button" type="submit"><span>入力内容を確認する</span><span class="action-button__icon ui-arrow-icon" aria-hidden="true"></span></button></div>
+              </form></div>
+          </div>
+        </section></div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-shell">
+        <div class="site-footer__top">
+          <p class="site-footer__statement">Living Culture.<br />Shaping the Future.</p>
+
+          <div class="site-footer__groups">
+            <section class="site-footer__group">
+              <h2>サイト案内</h2>
+              <nav class="site-footer__links" aria-label="サイト案内">
+                <a href="../../business/">事業内容</a>
+                <a href="../../works/">実績</a>
+                <a href="../../company/">企業概要</a>
+                <a href="../../news/">お知らせ</a>
+              </nav>
+            </section>
+
+            <section class="site-footer__group">
+              <h2>募集・お問い合わせ</h2>
+              <nav class="site-footer__links" aria-label="募集・お問い合わせ">
+                <a href="../../recruit/" aria-current="location">採用情報</a>
+                <a href="../../arkgarden-recruit/">ARK GARDEN 出店者募集</a>
+                <a href="../../contact/">お問い合わせ</a>
+              </nav>
+            </section>
+
+            <section class="site-footer__group">
+              <h2>関連サイト</h2>
+              <div class="site-footer__links site-footer__related">
+                <span>ARK GARDEN 公式サイト</span>
+                <span>THE PARK 公式サイト</span>
+              </div>
+            </section>
+
+            <section class="site-footer__group" id="privacy-policy">
+              <h2>サイトポリシー</h2>
+              <nav class="site-footer__links" aria-label="サイトポリシー">
+                <a href="../../privacy-policy/">プライバシーポリシー</a>
+              </nav>
+            </section>
+          </div>
+        </div>
+
+        <div class="site-footer__meta">
+          <img
+            src="../../assets/images/logo_arkleague.png"
+            width="500"
+            height="309"
+            alt="ARK LEAGUE"
+          />
+          <p>© 2026 ARK LEAGUE. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="../../assets/js/recruit-application.js?v=20260926-1" defer></script>
+  </body>
+</html>

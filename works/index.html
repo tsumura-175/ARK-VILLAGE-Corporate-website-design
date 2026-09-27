@@ -3,14 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex, nofollow" />
     <meta
       name="description"
-      content="株式会社ARK LEAGUEの企業概要。経営理念、会社情報、アクセスをご案内します。"
+      content="ARK LEAGUEのイベント・大会企画、施設監修の実績をご紹介します。"
     />
-    <title>企業概要｜株式会社ARK LEAGUE</title>
+    <title>実績｜株式会社ARK LEAGUE</title>
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png" />
     <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png" />
+    <link rel="preload" as="image" href="../assets/images/works/shonan-open-hero-mobile.webp" media="(max-width: 47.99rem)" fetchpriority="high" />
+    <link rel="preload" as="image" href="../assets/images/works/shonan-open-hero.webp" media="(min-width: 48rem)" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -36,10 +39,10 @@
       })();
     </script>
     <link rel="stylesheet" href="../assets/css/style.css?v=20260927-placeholder-1" />
-    <link rel="stylesheet" href="../assets/css/subpage.css?v=20260927-philosophy-4" />
+    <link rel="stylesheet" href="../assets/css/subpage.css?v=20260926-components-1" />
     <script src="../assets/js/script.js?v=20260914-content-reveal-1" defer></script>
   </head>
-  <body class="subpage">
+  <body class="subpage works-page">
     <section
       class="access-gate"
       data-access-gate
@@ -138,12 +141,12 @@
               <span class="global-nav__label" data-label="事業内容">事業内容</span>
             </span>
           </a>
-          <a href="../works/" aria-label="実績">
+          <a href="../works/" aria-label="実績" aria-current="page">
             <span class="global-nav__clip">
               <span class="global-nav__label" data-label="実績">実績</span>
             </span>
           </a>
-          <a href="./" aria-label="企業概要" aria-current="page">
+          <a href="../company/" aria-label="企業概要">
             <span class="global-nav__clip">
               <span class="global-nav__label" data-label="企業概要">企業概要</span>
             </span>
@@ -192,8 +195,8 @@
       </div>
       <nav class="mobile-menu__nav" aria-label="モバイルナビゲーション">
         <a href="../business/">事業内容</a>
-        <a href="../works/">実績</a>
-        <a href="./" aria-current="page">企業概要</a>
+        <a href="../works/" aria-current="page">実績</a>
+        <a href="../company/">企業概要</a>
         <a href="../news/">お知らせ</a>
         <a href="../recruit/">採用情報</a>
         <a href="../arkgarden-recruit/">ARK GARDEN 出店者募集</a>
@@ -203,171 +206,34 @@
 
     <main id="main">
       <section class="page-hero page-hero--image" id="top" aria-labelledby="page-title">
-        <img class="page-hero__media" src="../assets/images/company-architecture.webp" alt="" width="1920" height="1280" loading="eager" fetchpriority="high" decoding="sync" />
-        <div class="page-hero__lines" aria-hidden="true">
-          <span></span>
-          <span></span>
-        </div>
+        <picture class="page-hero__picture"><source media="(max-width: 47.99rem)" srcset="../assets/images/works/shonan-open-hero-mobile.webp" type="image/webp" /><img class="page-hero__media" src="../assets/images/works/shonan-open-hero.webp" alt="" width="1920" height="1280" loading="eager" fetchpriority="high" decoding="sync" /></picture>
+        <div class="page-hero__lines" aria-hidden="true"><span></span><span></span></div>
         <div class="page-shell page-hero__inner">
           <div class="page-hero__title" data-page-hero-reveal>
             <span class="page-hero__slash" aria-hidden="true"></span>
-            <div class="page-hero__title-mask">
-              <p class="page-hero__title-en" aria-hidden="true">COMPANY</p>
-            </div>
-            <h1 id="page-title">企業概要</h1>
+            <div class="page-hero__title-mask"><p class="page-hero__title-en" aria-hidden="true">WORKS</p></div>
+            <h1 id="page-title">実績</h1>
           </div>
         </div>
         <span class="page-hero__rail" aria-hidden="true"></span>
       </section>
-
       <div class="page-content">
-        <section
-          class="content-section content-section--base"
-          aria-labelledby="philosophy-title"
-        >
-          <div class="page-shell content-section__grid">
-            <header class="section-heading content-section__head">
-              <div class="section-title" data-title-reveal>
-                <span class="section-title__slash" aria-hidden="true"></span>
-                <p class="section-title__en" aria-hidden="true">PHILOSOPHY</p>
-                <h2 id="philosophy-title">経営理念</h2>
-              </div>
-            </header>
-            <div class="content-section__body content-section__body--balanced">
-              <div class="philosophy-feature" data-content-reveal>
-                <figure class="philosophy-feature__media">
-                  <img
-                    src="../assets/images/company/philosophy-yusf-2025.webp?v=9656"
-                    width="2400"
-                    height="1600"
-                    loading="lazy"
-                    decoding="async"
-                    alt="赤レンガ倉庫前のBMX会場で、競技者を囲んで観戦する多くの人々"
-                  />
-                  <figcaption class="photo-credit">©Jason Halayko/YUSF</figcaption>
-                </figure>
-                <div class="philosophy-feature__inner">
-                <div class="philosophy-feature__copy">
-                  <p class="content-section__lead">
-                    テキストテキスト<br />テキストテキスト
-                  </p>
-                  <p class="content-section__copy">
-                    テキストテキストテキストテキストテキストテキストテキストテキスト。
-                    テキストテキストテキストテキストテキストテキストテキストテキスト。
-                  </p>
-                </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section
-          class="content-section content-section--tinted"
-          aria-labelledby="profile-title"
-        >
-          <div class="page-shell content-section__grid">
-            <header class="section-heading content-section__head">
-              <div class="section-title" data-title-reveal>
-                <span class="section-title__slash" aria-hidden="true"></span>
-                <p class="section-title__en" aria-hidden="true">COMPANY PROFILE</p>
-                <h2 id="profile-title">会社概要</h2>
-              </div>
-            </header>
-            <div class="content-section__body">
-              <dl class="definition-list">
-                <div class="definition-list__row">
-                  <dt>会社名</dt>
-                  <dd>株式会社ARKLEAGUE</dd>
-                </div>
-                <div class="definition-list__row">
-                  <dt>所在地</dt>
-                  <dd>神奈川県高座郡寒川町倉見1385 <span>※現住所</span></dd>
-                </div>
-                <div class="definition-list__row">
-                  <dt>代表者名</dt>
-                  <dd>内野 洋平</dd>
-                </div>
-                <div class="definition-list__row">
-                  <dt>設立</dt>
-                  <dd>テキストテキスト</dd>
-                </div>
-                <div class="definition-list__row">
-                  <dt>関連会社</dt>
-                  <dd>株式会社UCHINO</dd>
-                </div>
-                <div class="definition-list__row">
-                  <dt>関連施設</dt>
-                  <dd>ARK GARDEN（開設準備中）／THE PARK（開設準備中）</dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-        </section>
-
-        <section
-          class="content-section content-section--base"
-          aria-labelledby="access-title"
-        >
-          <div class="page-shell content-section__grid">
-            <header class="section-heading content-section__head">
-              <div class="section-title" data-title-reveal>
-                <span class="section-title__slash" aria-hidden="true"></span>
-                <p class="section-title__en" aria-hidden="true">ACCESS</p>
-                <h2 id="access-title">アクセス</h2>
-              </div>
-            </header>
-            <div class="content-section__body">
-              <div class="split-content" data-content-reveal>
-                <div class="map-embed">
-                  <iframe
-                    src="https://www.google.com/maps?q=%E3%80%92253-0101%20%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E9%AB%98%E5%BA%A7%E9%83%A1%E5%AF%92%E5%B7%9D%E7%94%BA%E5%80%89%E8%A6%8B1385&output=embed"
-                    title="株式会社ARKLEAGUE所在地のGoogleマップ"
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    allowfullscreen
-                  ></iframe>
-                  <div class="map-embed__meta">
-                    <p>〒253-0101<br />神奈川県高座郡寒川町倉見1385番地</p>
-                    <a
-                      href="https://www.google.com/maps/search/?api=1&query=%E3%80%92253-0101%20%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E9%AB%98%E5%BA%A7%E9%83%A1%E5%AF%92%E5%B7%9D%E7%94%BA%E5%80%89%E8%A6%8B1385"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >Googleマップで見る <span class="ui-symbol ui-symbol--external" aria-hidden="true">↗</span><span class="sr-only">（新しいタブで開く）</span></a>
-                  </div>
-                </div>
-
-                <section class="access-information" aria-labelledby="transport-title">
-                  <p class="access-information__label">ACCESS GUIDE</p>
-                  <h3 id="transport-title">主な交通手段</h3>
-                  <div class="access-information__list">
-                    <article class="access-card">
-                      <p class="access-card__type">TRAIN</p>
-                      <h4>電車でお越しの方</h4>
-                      <p>テキストテキストテキストテキスト</p>
-                    </article>
-                    <article class="access-card">
-                      <p class="access-card__type">BUS</p>
-                      <h4>バスでお越しの方</h4>
-                      <p>テキストテキストテキストテキスト</p>
-                      <a
-                        class="access-card__download"
-                        href="../assets/documents/mokuseigo-timetable-route.pdf"
-                        download="mokuseigo-timetable-route.pdf"
-                      >時刻表PDFをダウンロード <span class="ui-symbol ui-symbol--download" aria-hidden="true">↓</span></a>
-                    </article>
-                    <article class="access-card">
-                      <p class="access-card__type">CAR</p>
-                      <h4>車でお越しの方</h4>
-                      <p>テキストテキストテキストテキスト</p>
-                      <p class="access-card__meta">テキストテキスト</p>
-                    </article>
-                  </div>
-                </section>
-              </div>
-            </div>
-          </div>
-        </section>
+        <section class="content-section content-section--base" aria-labelledby="event-works-title"><div class="page-shell content-section__grid">
+          <header class="section-heading content-section__head"><div class="section-title" data-title-reveal><span class="section-title__slash" aria-hidden="true"></span><p class="section-title__en" aria-hidden="true">EVENT / CONTEST</p><h2 id="event-works-title">イベント・大会企画／運営実績</h2><p class="section-title__description">ARK LEAGUEが携わるイベント・大会の実績をご紹介します。</p></div></header>
+          <div class="content-section__body"><div class="works-list">
+            <article class="work-entry" data-content-reveal="media"><figure class="work-entry__media"><img src="../assets/images/works/shonan-open-hero.webp" alt="湘南 OPEN 2026のBMXショーケース会場" width="1920" height="1280" loading="lazy" decoding="async" /></figure><div class="work-entry__info"><p class="work-entry__category">大会・イベント</p><h3>湘南 OPEN</h3><p>BMX SHOWCASEの実績。テキストテキストテキストテキスト。</p></div></article>
+            <article class="work-entry" data-content-reveal="media"><figure class="work-entry__media"><img src="../assets/images/placeholder/sample-1.webp" alt="実績紹介用の仮画像" width="1920" height="1280" loading="lazy" decoding="async" /></figure><div class="work-entry__info"><p class="work-entry__category">大会・イベント</p><h3>テキストテキストテキスト</h3><p>テキストテキストテキストテキストテキスト。</p></div></article>
+            <article class="work-entry" data-content-reveal="media"><figure class="work-entry__media"><img src="../assets/images/placeholder/sample-1.webp" alt="実績紹介用の仮画像" width="1920" height="1280" loading="lazy" decoding="async" /></figure><div class="work-entry__info"><p class="work-entry__category">大会・イベント</p><h3>テキストテキストテキスト</h3><p>テキストテキストテキストテキストテキスト。</p></div></article>
+            <article class="work-entry" data-content-reveal="media"><figure class="work-entry__media"><img src="../assets/images/placeholder/sample-1.webp" alt="実績紹介用の仮画像" width="1920" height="1280" loading="lazy" decoding="async" /></figure><div class="work-entry__info"><p class="work-entry__category">大会・イベント</p><h3>テキストテキストテキスト</h3><p>テキストテキストテキストテキストテキスト。</p></div></article>
+          </div></div>
+        </div></section>
+        <section class="content-section content-section--tinted" aria-labelledby="supervision-title"><div class="page-shell content-section__grid">
+          <header class="section-heading content-section__head"><div class="section-title" data-title-reveal><span class="section-title__slash" aria-hidden="true"></span><p class="section-title__en" aria-hidden="true">SUPERVISION</p><h2 id="supervision-title">監修実績</h2><p class="section-title__description">施設づくりや運営への参画実績をご紹介します。</p></div></header>
+          <div class="content-section__body"><div class="works-list">
+            <article class="work-entry" data-content-reveal="media"><figure class="work-entry__media"><img src="../assets/images/media/hiroshima-bmx-flatland.webp" alt="広島アーバンサイクルスポーツパークのBMXフラットランドゾーン" width="2560" height="1707" loading="lazy" decoding="async" /></figure><div class="work-entry__info"><p class="work-entry__category">監修</p><h3>広島アーバンサイクルスポーツパーク</h3><p>テキストテキストテキストテキストテキスト。</p></div></article>
+            <article class="work-entry" data-content-reveal="media"><figure class="work-entry__media"><img src="../assets/images/placeholder/sample-1.webp" alt="実績紹介用の仮画像" width="1920" height="1280" loading="lazy" decoding="async" /></figure><div class="work-entry__info"><p class="work-entry__category">監修</p><h3>テキストテキストテキスト</h3><p>テキストテキストテキストテキストテキスト。</p></div></article>
+          </div></div>
+        </div></section>
       </div>
     </main>
 
@@ -381,8 +247,8 @@
               <h2>サイト案内</h2>
               <nav class="site-footer__links" aria-label="サイト案内">
                 <a href="../business/">事業内容</a>
-                <a href="../works/">実績</a>
-                <a href="./" aria-current="page">企業概要</a>
+                <a href="../works/" aria-current="page">実績</a>
+                <a href="../company/">企業概要</a>
                 <a href="../news/">お知らせ</a>
               </nav>
             </section>

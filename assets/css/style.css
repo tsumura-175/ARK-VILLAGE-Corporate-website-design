@@ -191,7 +191,7 @@ html.is-github-pages.is-access-locked .access-gate {
       color-mix(in oklch, var(--color-ink) 84%, transparent),
       color-mix(in oklch, var(--color-ink-2) 94%, transparent)
     ),
-    url("../images/sample_image_1.jpg") center 62% / cover no-repeat;
+    url("../images/placeholder/sample-1.webp") center 62% / cover no-repeat;
   color: var(--color-on-dark);
 }
 
@@ -369,8 +369,13 @@ html.is-github-pages.is-access-locked .access-gate {
   color: var(--color-on-dark);
 }
 
+/* Shared section-heading rhythm: title and context stay as one compact unit. */
 .section-heading {
   display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: start;
+  gap: var(--space-md);
   padding-block-end: var(--space-2xl);
 }
 
@@ -392,6 +397,121 @@ html.is-github-pages.is-access-locked .access-gate {
 
 .section-heading--light p {
   color: var(--color-on-dark-muted);
+}
+
+/* Reference-derived section title: diagonal cut + condensed display + JP label. */
+.section-title {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  justify-items: start;
+  gap: var(--space-2xs);
+  padding-inline-start: var(--section-title-indent);
+  color: inherit;
+}
+
+.section-title__slash {
+  position: absolute;
+  inset-block-start: calc(var(--space-xl) + var(--space-xs));
+  inset-inline-start: 0;
+  width: var(--space-lg);
+  height: var(--rule-strong);
+  transform: translateY(calc(var(--space-sm) * -1)) rotate(-45deg);
+  transform-origin: left;
+  background: var(--color-accent);
+}
+
+.section-title__en {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  color: inherit;
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 8vw, 5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+/* Keep the display title's line box tight despite the shared paragraph rule. */
+.section-heading .section-title__en {
+  line-height: 1;
+}
+
+.section-title__en + h2 {
+  margin-block-start: var(--space-xs);
+}
+
+.section-heading > p {
+  margin: 0;
+}
+
+.section-title__description {
+  width: min(100%, 42rem);
+  padding-block-start: var(--space-sm);
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0;
+}
+
+.section-heading--light .section-title__description {
+  color: var(--color-on-dark-muted);
+}
+
+.section-title h2,
+.section-heading .section-title h2,
+.company__content .section-title h2,
+.contact .section-title h2,
+.news__head .section-title h2 {
+  color: inherit;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+}
+
+.news__head > .section-title {
+  gap: var(--space-2xs);
+}
+
+.js .section-title[data-title-reveal] {
+  opacity: 0;
+  transform: translateY(var(--space-lg));
+  transition:
+    opacity var(--dur-long) var(--ease-out),
+    transform var(--dur-long) var(--ease-out);
+}
+
+.js .section-title[data-title-reveal] .section-title__slash {
+  transform:
+    translateY(calc(var(--space-sm) * -1))
+    rotate(-45deg)
+    scaleX(0);
+  transition: transform var(--dur-long) var(--ease-out) var(--dur-micro);
+}
+
+.js .section-title[data-title-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.js
+  .section-title[data-title-reveal].is-visible
+  .section-title__slash {
+  transform:
+    translateY(calc(var(--space-sm) * -1))
+    rotate(-45deg)
+    scaleX(1);
+}
+
+@media (min-width: 60rem) {
+  .section-heading,
+  .news__head.section-heading {
+    justify-content: space-between;
+  }
 }
 
 .text-link {
@@ -447,6 +567,7 @@ html.is-github-pages.is-access-locked .access-gate {
 
 .action-button {
   display: inline-flex;
+  appearance: none;
   width: fit-content;
   min-height: 52px;
   align-items: center;
@@ -457,8 +578,11 @@ html.is-github-pages.is-access-locked .access-gate {
   background: var(--color-ink);
   color: var(--color-on-dark);
   white-space: nowrap;
+  font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: 700;
+  line-height: 1.5;
+  text-decoration: none;
   cursor: pointer;
   transition:
     border-color var(--dur-short) var(--ease-out),
@@ -495,27 +619,58 @@ html.is-github-pages.is-access-locked .access-gate {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  a.action-button:hover {
+  .action-button:not(.action-button--disabled):hover {
     border-color: var(--color-accent);
     background: var(--color-accent);
     color: var(--color-accent-ink);
   }
 
-  a.action-button:hover .action-button__icon {
+  .action-button:not(.action-button--disabled):hover .action-button__icon {
     transform: none;
   }
 }
 
-/* The header keeps one stable 80px footprint while its inner panel changes mode. */
+/* Site header: one base definition, a stable footprint, scroll-driven panel. */
 .site-header {
+  --header-progress: 0;
+  --header-wash-opacity: 1;
+  --header-offset: 0px;
+  --header-panel-scale: 0.985;
+
   position: fixed;
   inset-block-start: 0;
   inset-inline: 0;
   z-index: var(--z-sticky);
+  display: grid;
   min-height: 80px;
   padding-block: 0;
-  border-block-end: var(--rule-hair) solid
-    color-mix(in oklch, var(--color-on-dark) 20%, transparent);
+  align-items: center;
+  isolation: isolate;
+  border-block-end: var(--rule-hair) solid transparent;
+  background-color: transparent;
+  backdrop-filter: none;
+  transition: none;
+}
+
+.site-header.is-floating {
+  backdrop-filter: blur(0);
+}
+
+.site-header::before {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: var(--z-base);
+  height: calc(100% + var(--space-xl));
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklch, var(--color-ink) 56%, transparent) 0%,
+    color-mix(in oklch, var(--color-ink) 22%, transparent) 58%,
+    transparent 100%
+  );
+  opacity: var(--header-wash-opacity);
+  content: "";
+  pointer-events: none;
 }
 
 .site-header__inner {
@@ -523,21 +678,41 @@ html.is-github-pages.is-access-locked .access-gate {
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   margin-inline: auto;
-  border: var(--rule-hair) solid transparent;
-  background-color: transparent;
-  box-shadow: none;
-}
-
-.site-header.is-floating {
-  border-block-end-color: transparent;
-  background-color: transparent;
-  backdrop-filter: blur(0);
-}
-
-.site-header.is-floating .site-header__inner {
+  position: relative;
+  z-index: var(--z-raised);
+  isolation: isolate;
+  width: min(calc(100% - (var(--page-gutter) * 2)), var(--content-max));
   min-height: 72px;
   padding-inline: var(--space-md);
+  padding-block: 0;
+  transform: translateY(var(--header-offset));
+  border: var(--rule-hair) solid transparent;
   border-radius: var(--radius-nav);
+  background-color: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  transition: none;
+}
+
+.site-header__inner::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: scale(var(--header-panel-scale));
+  transform-origin: center;
+  border: var(--rule-hair) solid
+    color-mix(in oklch, var(--color-on-dark) 18%, transparent);
+  border-radius: var(--radius-nav);
+  background-color: color-mix(in oklch, var(--color-ink) 84%, transparent);
+  box-shadow:
+    0 10px 34px color-mix(in oklch, var(--color-ink) 22%, transparent),
+    inset 0 0 0 var(--rule-hair)
+      color-mix(in oklch, var(--color-on-dark) 5%, transparent);
+  backdrop-filter: saturate(1.2) blur(18px);
+  opacity: var(--header-progress);
+  content: "";
+  pointer-events: none;
+  will-change: opacity, transform;
 }
 
 .site-brand {
@@ -690,19 +865,24 @@ html.is-github-pages.is-access-locked .access-gate {
   object-fit: cover;
 }
 
-.hero__slide--bmx img {
-  object-position: 55% 62%;
-  filter: saturate(0.82) contrast(1.06);
+.hero__slide--park-exterior img {
+  object-position: 50% 60%;
+  filter: saturate(0.76) contrast(1.08);
 }
 
-.hero__slide--skateboard img {
-  object-position: 45% 58%;
-  filter: saturate(0.78) contrast(1.08);
+.hero__slide--indoor img {
+  object-position: 50% 54%;
+  filter: saturate(0.7) contrast(1.08);
 }
 
-.hero__slide--park img {
-  object-position: 50% 62%;
-  filter: saturate(0.68) contrast(1.1);
+.hero__slide--flatland img {
+  object-position: 50% 61%;
+  filter: saturate(0.78) contrast(1.06);
+}
+
+.hero__slide--event img {
+  object-position: 50% 58%;
+  filter: saturate(0.76) contrast(1.08);
 }
 
 .hero__veil {
@@ -747,8 +927,11 @@ html.is-github-pages.is-access-locked .access-gate {
 }
 
 .hero__pagination {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(2.75rem, 3.5rem));
+  align-items: stretch;
+  border-inline-start: var(--rule-hair) solid
+    color-mix(in oklch, var(--color-on-dark) 34%, transparent);
 }
 
 .js .hero__identity,
@@ -785,10 +968,13 @@ html.is-github-pages.is-access-locked .access-gate {
 
 .hero__pagination button {
   position: relative;
-  min-width: 3.5rem;
+  display: grid;
+  min-width: 0;
   min-height: 44px;
   padding: 0;
   border: 0;
+  border-inline-end: var(--rule-hair) solid
+    color-mix(in oklch, var(--color-on-dark) 34%, transparent);
   border-block-end: var(--rule-hair) solid
     color-mix(in oklch, var(--color-on-dark) 34%, transparent);
   background: transparent;
@@ -797,7 +983,7 @@ html.is-github-pages.is-access-locked .access-gate {
   font-family: var(--font-display);
   font-size: var(--text-md);
   font-variant-numeric: tabular-nums;
-  text-align: start;
+  text-align: center;
   cursor: pointer;
   transition:
     color var(--dur-short) var(--ease-out),
@@ -1038,16 +1224,29 @@ html.is-github-pages.is-access-locked .access-gate {
   object-fit: cover;
 }
 
+.media--event img {
+  object-position: 50% 58%;
+}
+
+.media--outreach img {
+  object-position: 50% 56%;
+}
+
+.media--park img {
+  object-position: 50% 60%;
+}
+
+.media--partnership img {
+  object-position: 50% 50%;
+}
+
+/* Other top-page components retain their established crops. */
 .media--bmx img {
   object-position: 62% 62%;
 }
 
 .media--skate img {
   object-position: 45% 58%;
-}
-
-.media--park img {
-  object-position: 50% 60%;
 }
 
 .works-grid {
@@ -1572,10 +1771,6 @@ html.is-github-pages.is-access-locked .access-gate {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .site-header__inner {
-    grid-template-columns: auto minmax(0, 1fr) auto;
-  }
-
   .site-brand__logo {
     width: 88px;
   }
@@ -1689,18 +1884,13 @@ html.is-github-pages.is-access-locked .access-gate {
     margin-block-end: var(--space-xs);
   }
 
-  .hero__slide--bmx img {
-    object-position: 62% 62%;
+  .hero__slide--park-exterior img {
+    object-position: 57% 62%;
   }
 
   .news__head {
     display: grid;
     justify-content: start;
-  }
-
-  .section-heading {
-    justify-content: space-between;
-    gap: var(--space-2xl);
   }
 
   .recruitment-routes {
@@ -1760,15 +1950,15 @@ html.is-github-pages.is-access-locked .access-gate {
     font-size: var(--text-display);
   }
 
-  .hero__slide--bmx img {
-    object-position: 62% 62%;
+  .hero__slide--park-exterior img {
+    object-position: 53% 60%;
   }
 
-  .hero__slide--skateboard img {
-    object-position: 46% 58%;
+  .hero__slide--indoor img {
+    object-position: 50% 54%;
   }
 
-  .hero__slide--park img {
+  .hero__slide--flatland img {
     object-position: 50% 60%;
   }
 }
@@ -1800,10 +1990,6 @@ html.is-github-pages.is-access-locked .access-gate {
   .hero__pagination button.is-active::after {
     animation: none !important;
     transform: scaleX(1);
-  }
-
-  .site-header.is-floating .site-header__inner {
-    transform: none;
   }
 
   .js .hero__identity,
@@ -1914,79 +2100,6 @@ html.is-loading body {
 
 .loader-started .site-loader__slash {
   transform: rotate(-45deg) scaleX(1);
-}
-
-/* N10: one DOM, one curve, one stable 80px footprint. */
-.site-header {
-  --header-progress: 0;
-  --header-wash-opacity: 1;
-  --header-offset: 0px;
-  --header-panel-scale: 0.985;
-
-  display: grid;
-  min-height: 80px;
-  align-items: center;
-  isolation: isolate;
-  border-block-end-color: transparent;
-  background-color: transparent;
-  backdrop-filter: none;
-  transition: none;
-}
-
-.site-header::before {
-  position: absolute;
-  inset-block-start: 0;
-  inset-inline: 0;
-  z-index: var(--z-base);
-  height: calc(100% + var(--space-xl));
-  background: linear-gradient(
-    180deg,
-    color-mix(in oklch, var(--color-ink) 56%, transparent) 0%,
-    color-mix(in oklch, var(--color-ink) 22%, transparent) 58%,
-    transparent 100%
-  );
-  opacity: var(--header-wash-opacity);
-  content: "";
-  pointer-events: none;
-}
-
-.site-header__inner,
-.site-header.is-floating .site-header__inner {
-  position: relative;
-  z-index: var(--z-raised);
-  isolation: isolate;
-  width: min(calc(100% - (var(--page-gutter) * 2)), var(--content-max));
-  min-height: 72px;
-  padding-inline: var(--space-md);
-  padding-block: 0;
-  transform: translateY(var(--header-offset));
-  border-color: transparent;
-  border-radius: var(--radius-nav);
-  background-color: transparent;
-  box-shadow: none;
-  backdrop-filter: none;
-  transition: none;
-}
-
-.site-header__inner::before {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  transform: scale(var(--header-panel-scale));
-  transform-origin: center;
-  border: var(--rule-hair) solid
-    color-mix(in oklch, var(--color-on-dark) 18%, transparent);
-  border-radius: var(--radius-nav);
-  background-color: color-mix(in oklch, var(--color-ink) 84%, transparent);
-  box-shadow:
-    0 10px 34px color-mix(in oklch, var(--color-ink) 22%, transparent),
-    inset 0 0 0 var(--rule-hair)
-      color-mix(in oklch, var(--color-on-dark) 5%, transparent);
-  backdrop-filter: saturate(1.2) blur(18px);
-  opacity: var(--header-progress);
-  content: "";
-  pointer-events: none;
-  will-change: opacity, transform;
 }
 
 /* H6 photographic marquee */
@@ -2123,7 +2236,7 @@ html.is-loading body {
 }
 
 .hero__pagination {
-  gap: var(--space-sm);
+  gap: 0;
 }
 
 .hero__pagination button {
@@ -2138,131 +2251,6 @@ html.is-loading body {
   transform: scaleX(0);
   transform-origin: left;
   background: var(--color-accent);
-}
-
-/* Reference-derived section title: diagonal cut + condensed display + JP label. */
-.section-title {
-  position: relative;
-  display: grid;
-  min-width: 0;
-  justify-items: start;
-  gap: var(--space-2xs);
-  padding-inline-start: var(--section-title-indent);
-  color: inherit;
-}
-
-.section-title__slash {
-  position: absolute;
-  inset-block-start: calc(var(--space-xl) + var(--space-xs));
-  inset-inline-start: 0;
-  width: var(--space-lg);
-  height: var(--rule-strong);
-  transform: translateY(calc(var(--space-sm) * -1)) rotate(-45deg);
-  transform-origin: left;
-  background: var(--color-accent);
-}
-
-.section-title__en {
-  max-width: 100%;
-  overflow-wrap: anywhere;
-  color: inherit;
-  font-family: var(--font-display);
-  font-size: clamp(var(--text-3xl), 8vw, 5rem);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.025em;
-}
-
-/* Keep the display title's line box tight despite the shared paragraph rule. */
-.section-heading .section-title__en {
-  line-height: 1;
-}
-
-.section-title__en + h2 {
-  margin-block-start: var(--space-xs);
-}
-
-/* Shared section-heading rhythm: title and context stay as one compact unit. */
-.section-heading {
-  display: grid;
-  min-width: 0;
-  grid-template-columns: minmax(0, 1fr);
-  justify-items: start;
-  gap: var(--space-md);
-  padding-block-end: var(--space-2xl);
-}
-
-.section-heading > p {
-  max-width: 42rem;
-  margin: 0;
-  color: var(--color-muted);
-  line-height: 1.9;
-}
-
-.section-title__description {
-  width: min(100%, 42rem);
-  padding-block-start: var(--space-sm);
-  color: var(--color-muted);
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  font-weight: 400;
-  line-height: 1.9;
-  letter-spacing: 0;
-}
-
-.section-heading--light .section-title__description {
-  color: var(--color-on-dark-muted);
-}
-
-.section-heading--light > p {
-  color: var(--color-on-dark-muted);
-}
-
-.section-title h2,
-.section-heading .section-title h2,
-.company__content .section-title h2,
-.contact .section-title h2,
-.news__head .section-title h2 {
-  color: inherit;
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  font-weight: 700;
-  line-height: 1.5;
-  letter-spacing: 0.06em;
-}
-
-.news__head > .section-title {
-  gap: var(--space-2xs);
-}
-
-.js .section-title[data-title-reveal] {
-  opacity: 0;
-  transform: translateY(var(--space-lg));
-  transition:
-    opacity var(--dur-long) var(--ease-out),
-    transform var(--dur-long) var(--ease-out);
-}
-
-.js .section-title[data-title-reveal] .section-title__slash {
-  transform:
-    translateY(calc(var(--space-sm) * -1))
-    rotate(-45deg)
-    scaleX(0);
-  transition: transform var(--dur-long) var(--ease-out) var(--dur-micro);
-}
-
-.js .section-title[data-title-reveal].is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.js
-  .section-title[data-title-reveal].is-visible
-  .section-title__slash {
-  transform:
-    translateY(calc(var(--space-sm) * -1))
-    rotate(-45deg)
-    scaleX(1);
 }
 
 /* Whole-word vertical swap: the reference behaviour, kept restrained. */
@@ -2784,6 +2772,11 @@ html.is-loading body {
     inset-inline: var(--space-lg);
     inset-block-end: clamp(7rem, 18svh, 11rem);
   }
+
+  /* Frame the right-side pair together instead of pinning the crop to the right edge. */
+  .business-panel__media.media--partnership img {
+    object-position: 80% center;
+  }
 }
 
 .site-footer__statement {
@@ -2829,14 +2822,6 @@ html.is-loading body {
     grid-template-columns: minmax(0, 1fr);
     gap: 0;
     align-items: start;
-  }
-
-  .section-heading {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .section-heading > .section-title {
-    min-width: 0;
   }
 
   .news__head {

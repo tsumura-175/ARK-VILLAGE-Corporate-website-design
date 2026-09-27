@@ -23,13 +23,21 @@
 ├─ index.html
 ├─ company/
 │  └─ index.html
+├─ business/、works/、news/、contact/、privacy-policy/
+│  └─ index.html（ニュース詳細・お問い合わせ確認／完了は各サブディレクトリ）
+├─ arkgarden-recruit/、recruit/
+│  └─ index.html、apply/index.html、apply/confirm/index.html、apply/complete/index.html
 ├─ assets/
 │  ├─ css/
 │  │  ├─ tokens.css
 │  │  ├─ style.css
 │  │  └─ subpage.css
 │  ├─ js/
-│  │  └─ script.js
+│  │  ├─ script.js
+│  │  ├─ subpage-content.js（ニュース・お問い合わせの静的試作）
+│  │  ├─ subpage-components.js（添付UI・FAQの共通動作）
+│  │  ├─ application.js（出店応募の静的試作）
+│  │  └─ recruit-application.js（求人応募の静的試作）
 │  └─ images/
 └─ docs/
    ├─ DESIGN_SYSTEM.md
@@ -44,6 +52,7 @@
 - 下層ページ共通のスタイルは `assets/css/subpage.css` にまとめる
 - HTMLからのパスは相対パスにする
 - GitHub Pagesのサブディレクトリ公開を考慮し、`/assets/...` のようなルート絶対パスを使わない
+- CMSやフォーム送信は現段階では未接続。試作用の仮データと完了画面を本番動作として扱わない
 
 ## 4. HTML
 

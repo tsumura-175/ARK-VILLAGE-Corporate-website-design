@@ -289,14 +289,12 @@
   let remaining = delay;
   let startedAt = 0;
   let focusPaused = false;
-  let hoverPaused = false;
   let keyboardFocus = false;
   let pageReady = document.documentElement.classList.contains("page-ready");
 
   const canPlay = () => {
     const playing =
       !focusPaused &&
-      !hoverPaused &&
       !document.hidden &&
       !reducedMotion.matches &&
       pageReady;
@@ -414,16 +412,6 @@
   hero.addEventListener("focusout", (event) => {
     if (hero.contains(event.relatedTarget)) return;
     focusPaused = false;
-    schedule();
-  });
-
-  hero.addEventListener("mouseenter", () => {
-    hoverPaused = true;
-    pause();
-  });
-
-  hero.addEventListener("mouseleave", () => {
-    hoverPaused = false;
     schedule();
   });
 
@@ -567,145 +555,6 @@
 
   render(0);
   requestScrollUpdate();
-})();
-
-(() => {
-  const sliders = [...document.querySelectorAll("[data-business-slider]")];
-  if (!sliders.length) return;
-
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const delay = 6000;
-  const playbackControllers = [];
-
-  sliders.forEach((slider) => {
-    const slides = [...slider.querySelectorAll("[data-business-slide]")];
-    const selectors = [...slider.querySelectorAll("[data-business-select]")];
-    const viewport = slider.querySelector(".business-media-slider__viewport");
-    if (slides.length < 2 || selectors.length !== slides.length || !viewport) return;
-
-    let current = 0;
-    let timer = null;
-    let progressAnimation = null;
-    let isInView = false;
-    let hoverPaused = false;
-    let focusPaused = false;
-    let pointerStart = null;
-
-    const stop = () => {
-      window.clearTimeout(timer);
-      timer = null;
-      progressAnimation?.cancel();
-      progressAnimation = null;
-    };
-
-    const startProgress = () => {
-      const progress = selectors[current]?.querySelector(".business-media-slider__progress");
-      if (!progress || typeof progress.animate !== "function") return;
-      progressAnimation = progress.animate(
-        [{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }],
-        { duration: delay, easing: "linear", fill: "forwards" },
-      );
-    };
-
-    const render = (next) => {
-      current = (next + slides.length) % slides.length;
-      slides.forEach((slide, index) => {
-        const isActive = index === current;
-        slide.classList.toggle("is-active", isActive);
-        slide.setAttribute("aria-hidden", String(!isActive));
-      });
-      selectors.forEach((selector, index) => {
-        const isActive = index === current;
-        selector.classList.toggle("is-active", isActive);
-        selector.setAttribute("aria-current", String(isActive));
-      });
-    };
-
-    const schedule = () => {
-      stop();
-      if (
-        reducedMotion.matches ||
-        !isInView ||
-        hoverPaused ||
-        focusPaused ||
-        document.hidden
-      ) return;
-      startProgress();
-      timer = window.setTimeout(() => {
-        render(current + 1);
-        schedule();
-      }, delay);
-    };
-
-    const move = (direction) => {
-      render(current + direction);
-      schedule();
-    };
-
-    selectors.forEach((selector, index) => {
-      selector.addEventListener("click", () => {
-        render(index);
-        schedule();
-      });
-    });
-
-    slider.addEventListener("pointerenter", () => {
-      hoverPaused = true;
-      schedule();
-    });
-    slider.addEventListener("pointerleave", () => {
-      hoverPaused = false;
-      schedule();
-    });
-    slider.addEventListener("focusin", () => {
-      focusPaused = true;
-      schedule();
-    });
-    slider.addEventListener("focusout", (event) => {
-      if (slider.contains(event.relatedTarget)) return;
-      focusPaused = false;
-      schedule();
-    });
-
-    viewport.addEventListener("pointerdown", (event) => {
-      if (!event.isPrimary) return;
-      pointerStart = event.clientX;
-    });
-    viewport.addEventListener("pointerup", (event) => {
-      if (pointerStart === null || !event.isPrimary) return;
-      const distance = event.clientX - pointerStart;
-      pointerStart = null;
-      if (Math.abs(distance) < 48) return;
-      move(distance > 0 ? -1 : 1);
-    });
-    viewport.addEventListener("pointercancel", () => {
-      pointerStart = null;
-    });
-
-    if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          isInView = entry.isIntersecting;
-          schedule();
-        },
-        { threshold: 0.45 },
-      );
-      observer.observe(slider);
-    } else {
-      isInView = true;
-      schedule();
-    }
-
-    playbackControllers.push(schedule);
-    render(0);
-  });
-
-  const syncPlayback = () => {
-    playbackControllers.forEach((schedule) => schedule());
-  };
-
-  document.addEventListener("visibilitychange", syncPlayback);
-  reducedMotion.addEventListener("change", syncPlayback);
 })();
 
 (() => {
