@@ -809,6 +809,10 @@ html.is-github-pages.is-access-locked .access-gate {
   padding: var(--space-xl) var(--page-gutter) var(--space-2xl);
 }
 
+html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
+  outline: none;
+}
+
 .mobile-menu__nav a {
   display: flex;
   min-height: 56px;

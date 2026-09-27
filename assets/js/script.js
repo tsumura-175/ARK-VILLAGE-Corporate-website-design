@@ -232,16 +232,29 @@
   const closeButton = document.querySelector("[data-menu-close]");
   if (!dialog || !openButton || !closeButton) return;
 
+  // Keep keyboard focus visible without showing a ring after touch/pointer use.
+  document.addEventListener("pointerdown", (event) => {
+    if (openButton.contains(event.target) || dialog.contains(event.target)) {
+      document.documentElement.dataset.menuInput = "pointer";
+    }
+  }, true);
+
+  document.addEventListener("keydown", (event) => {
+    if (["Tab", "Enter", " ", "Escape", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)) {
+      delete document.documentElement.dataset.menuInput;
+    }
+  }, true);
+
   const openMenu = () => {
     dialog.showModal();
     openButton.setAttribute("aria-expanded", "true");
-    closeButton.focus();
+    closeButton.focus({ preventScroll: true });
   };
 
   const closeMenu = () => {
     dialog.close();
     openButton.setAttribute("aria-expanded", "false");
-    openButton.focus();
+    openButton.focus({ preventScroll: true });
   };
 
   openButton.addEventListener("click", openMenu);
