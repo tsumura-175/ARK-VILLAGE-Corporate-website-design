@@ -35,7 +35,7 @@
         }
       })();
     </script>
-    <link rel="stylesheet" href="assets/css/style.css?v=20260927-menu-focus-1" />
+    <link rel="stylesheet" href="assets/css/style.css?v=20261003-top-feedback-1" />
     <script src="assets/js/script.js?v=20260927-menu-focus-1" defer></script>
   </head>
   <body>
@@ -161,7 +161,7 @@
 
         <div class="header-actions" aria-label="募集・お問い合わせ">
           <a class="header-village" href="arkgarden-recruit/">
-            ARK GARDEN 出店者募集
+            ARK GARDEN 飲食出店募集
           </a>
           <a class="header-contact" href="contact/">お問い合わせ</a>
         </div>
@@ -195,7 +195,7 @@
         <a href="company/">企業概要</a>
         <a href="news/">お知らせ</a>
         <a href="recruit/">採用情報</a>
-        <a href="arkgarden-recruit/">ARK GARDEN 出店者募集</a>
+        <a href="arkgarden-recruit/">ARK GARDEN 飲食出店募集</a>
         <a href="contact/">お問い合わせ</a>
       </nav>
     </dialog>
@@ -338,23 +338,36 @@
         </div>
       </section>
 
-      <!-- ARK GARDEN 出店者募集ページへの導線。募集終了時はこのブロックを削除してください。 -->
+      <!-- ARK GARDEN 飲食出店募集ページへの期間限定導線。募集終了時はこのブロックを削除してください。 -->
       <aside class="garden-entry-cta" aria-labelledby="garden-entry-cta-title">
         <div class="page-shell">
-          <div class="garden-entry-cta__rail">
-            <div class="garden-entry-cta__copy">
-              <span class="garden-entry-cta__mark" aria-hidden="true"></span>
-              <span class="garden-entry-cta__summary">
-                <strong id="garden-entry-cta-title" class="garden-entry-cta__title">
-                  ARK GARDEN
-                </strong>
-                <span class="garden-entry-cta__status">出店者募集中</span>
-              </span>
+          <div class="garden-entry-cta__panel">
+            <div class="garden-entry-cta__rail">
+              <div class="garden-entry-cta__copy">
+                <span class="garden-entry-cta__mark" aria-hidden="true"></span>
+                <span class="garden-entry-cta__summary">
+                  <strong id="garden-entry-cta-title" class="garden-entry-cta__title">
+                    ARK GARDEN
+                  </strong>
+                  <span class="garden-entry-cta__status">飲食出店募集中</span>
+                </span>
+              </div>
+              <a class="action-button garden-entry-cta__button" href="arkgarden-recruit/">
+                <span>募集概要を見る</span>
+                <span class="action-button__icon ui-arrow-icon" aria-hidden="true"></span>
+              </a>
             </div>
-            <a class="action-button garden-entry-cta__button" href="arkgarden-recruit/">
-              <span>募集概要を見る</span>
-              <span class="action-button__icon ui-arrow-icon" aria-hidden="true"></span>
-            </a>
+            <figure class="garden-entry-cta__media">
+              <img
+                src="assets/images/media/ark-garden-night-perspective.webp"
+                width="1448"
+                height="1086"
+                alt="夕景のARK GARDEN完成イメージ"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption class="garden-entry-cta__caption">完成イメージ</figcaption>
+            </figure>
           </div>
         </div>
       </aside>
@@ -379,7 +392,7 @@
             >
               <time class="news__date" datetime="2026-07-26">2026.07.26</time>
               <span class="news__category news__category--important">重要なお知らせ</span>
-              <p>ARK GARDEN 出店者募集のお知らせ</p>
+              <p>ARK GARDEN 飲食出店募集のお知らせ</p>
               <span class="news__arrow ui-arrow-glyph" aria-hidden="true">→</span>
             </a>
             <a
@@ -771,89 +784,103 @@
 
       <section class="recruit section" id="recruit" aria-labelledby="recruit-title">
         <div class="page-shell">
-          <header class="section-heading">
-            <div class="section-title" data-title-reveal>
+          <header class="section-heading recruit__heading">
+            <div class="section-title section-title--recruit" data-title-reveal>
               <span class="section-title__slash" aria-hidden="true"></span>
-              <p class="section-title__en" aria-hidden="true">RECRUIT</p>
-              <h2 id="recruit-title">採用情報</h2>
+              <div class="section-title__heading-row">
+                <p class="section-title__en" aria-hidden="true">RECRUIT</p>
+                <h2 id="recruit-title">採用情報</h2>
+              </div>
               <p class="section-title__description">
                 ARK LEAGUEと各施設では、それぞれの現場をともにつくるメンバーを募集しています。
               </p>
             </div>
           </header>
 
-          <div class="recruitment-routes" aria-label="採用情報を選ぶ">
-            <article class="recruitment-route">
-              <figure class="recruitment-route__media media--bmx">
-                <p class="recruitment-route__number" aria-hidden="true">01</p>
-                <img
-                  src="assets/images/placeholder/sample-1.webp"
-                  width="1920"
-                  height="1280"
-                  loading="lazy"
-                  alt="ストリートスポーツの現場とBMX"
-                />
-              </figure>
-              <div class="recruitment-route__body">
-                <p class="recruitment-route__label">ARK GARDEN</p>
-                <h3>社員・スタッフ募集</h3>
-                <p>
-                  ARK GARDENの社員・スタッフ採用情報です。
-                </p>
-                <a class="action-button" href="recruit/#garden-careers">
-                  <span>募集内容を見る</span>
-                  <span class="action-button__icon ui-arrow-icon" aria-hidden="true"></span>
-                </a>
+          <div class="recruit-facilities" aria-label="採用情報を選ぶ">
+            <section class="recruit-facility" aria-labelledby="recruit-garden-title">
+              <h3 class="recruit-facility__name" id="recruit-garden-title">ARK GARDEN</h3>
+              <div class="recruit-facility__layout recruit-facility__layout--garden">
+                <figure class="recruit-facility__perspective">
+                  <img
+                    src="assets/images/media/ark-garden-night-perspective.webp"
+                    width="1448"
+                    height="1086"
+                    loading="lazy"
+                    decoding="async"
+                    alt="夕景のARK GARDEN完成イメージ"
+                  />
+                  <figcaption class="recruit-facility__caption">完成イメージ</figcaption>
+                </figure>
+                <article class="recruit-opening">
+                  <div class="recruit-opening__copy">
+                    <h4>社員・アルバイト募集</h4>
+                    <p>ARK GARDENの運営をともにつくる社員・アルバイトの採用情報です。</p>
+                  </div>
+                  <figure class="recruit-opening__media media--bmx">
+                    <img
+                      src="assets/images/recruit/ark-garden-staff.webp"
+                      width="1920"
+                      height="1280"
+                      loading="lazy"
+                      decoding="async"
+                      alt="ARK GARDENの求人バナー「この場所を、ともにつくる。」"
+                    />
+                  </figure>
+                  <a class="action-button" href="recruit/#garden-careers">
+                    <span>募集内容を見る</span>
+                    <span class="action-button__icon ui-arrow-icon" aria-hidden="true"></span>
+                  </a>
+                </article>
               </div>
-            </article>
+            </section>
 
-            <article class="recruitment-route">
-              <figure class="recruitment-route__media media--park">
-                <p class="recruitment-route__number" aria-hidden="true">02</p>
-                <img
-                  src="assets/images/placeholder/sample-1.webp"
-                  width="1920"
-                  height="1280"
-                  loading="lazy"
-                  alt="採用情報紹介用の仮画像"
-                />
-              </figure>
-              <div class="recruitment-route__body">
-                <p class="recruitment-route__label">THE PARK</p>
-                <h3>受付・運営 社員募集</h3>
-                <p>
-                  THE PARKの運営や利用者対応など、施設の毎日を支える社員の採用情報です。
-                </p>
-                <span class="action-button action-button--disabled">
-                  <span>採用サイト準備中</span>
-                  <span class="action-button__icon" aria-hidden="true">—</span>
-                </span>
-              </div>
-            </article>
+            <section class="recruit-facility" aria-labelledby="recruit-park-title">
+              <h3 class="recruit-facility__name" id="recruit-park-title">THE PARK SAMUKAWA</h3>
+              <div class="recruit-facility__layout">
+                <article class="recruit-opening">
+                  <div class="recruit-opening__copy">
+                    <h4>受付／管理 社員募集</h4>
+                    <p>施設の受付や管理、利用者対応など、日々の運営を支える社員の採用情報です。</p>
+                  </div>
+                  <figure class="recruit-opening__media media--park">
+                    <img
+                      src="assets/images/recruit/the-park-samukawa-reception-management.webp"
+                      width="2000"
+                      height="1250"
+                      loading="lazy"
+                      decoding="async"
+                      alt="THE PARK SAMUKAWA 受付・管理社員募集の求人バナー"
+                    />
+                  </figure>
+                  <span class="action-button action-button--disabled">
+                    <span>採用サイト準備中</span>
+                    <span class="action-button__icon" aria-hidden="true">—</span>
+                  </span>
+                </article>
 
-            <article class="recruitment-route">
-              <figure class="recruitment-route__media media--skate">
-                <p class="recruitment-route__number" aria-hidden="true">03</p>
-                <img
-                  src="assets/images/recruit/staff-instructor-cleaning.webp"
-                  width="5616"
-                  height="3744"
-                  loading="lazy"
-                  alt="ストリートスポーツ施設で働くスタッフ"
-                />
-              </figure>
-              <div class="recruitment-route__body">
-                <p class="recruitment-route__label">THE PARK</p>
-                <h3>スタッフ・講師・清掃スタッフ募集</h3>
-                <p>
-                  THE PARKを支えるスタッフ・スクール講師・清掃スタッフの採用情報です。
-                </p>
-                <span class="action-button action-button--disabled">
-                  <span>採用サイト準備中</span>
-                  <span class="action-button__icon" aria-hidden="true">—</span>
-                </span>
+                <article class="recruit-opening">
+                  <div class="recruit-opening__copy">
+                    <h4>アルバイト・講師・清掃スタッフ募集</h4>
+                    <p>施設を支えるアルバイト・スクール講師・清掃スタッフの採用情報です。</p>
+                  </div>
+                  <figure class="recruit-opening__media media--skate">
+                    <img
+                      src="assets/images/recruit/staff-instructor-cleaning.webp"
+                      width="5616"
+                      height="3744"
+                      loading="lazy"
+                      decoding="async"
+                      alt="ストリートスポーツ施設で働くスタッフ"
+                    />
+                  </figure>
+                  <span class="action-button action-button--disabled">
+                    <span>採用サイト準備中</span>
+                    <span class="action-button__icon" aria-hidden="true">—</span>
+                  </span>
+                </article>
               </div>
-            </article>
+            </section>
           </div>
         </div>
       </section>
@@ -868,40 +895,41 @@
             <div class="section-title" data-title-reveal>
               <span class="section-title__slash" aria-hidden="true"></span>
               <p class="section-title__en" aria-hidden="true">ARK GARDEN</p>
-              <h2 id="garden-recruit-title">出店者募集</h2>
+              <h2 id="garden-recruit-title">飲食出店募集</h2>
               <p class="section-title__description">
-                ストリートスポーツの熱気をともにつくる出店者を募集しています。
+                ストリートスポーツの熱気をともにつくる飲食出店者を募集しています。
               </p>
             </div>
           </header>
 
           <div class="split-feature split-feature--dark">
             <div class="split-feature__content">
-              <h3>出店者募集</h3>
+              <h3>飲食出店募集</h3>
               <p>
                 募集内容や出店条件をご確認のうえ、応募フォームからお申し込みください。
               </p>
             </div>
             <figure class="split-feature__media media--park">
               <img
-                src="assets/images/placeholder/sample-1.webp"
-                width="1920"
-                height="1280"
+                src="assets/images/media/ark-garden-night-perspective.webp"
+                width="1448"
+                height="1086"
                 loading="lazy"
-                alt="出店募集紹介用の仮画像"
+                alt="夕景のARK GARDEN完成イメージ"
               />
+              <figcaption class="split-feature__caption">完成イメージ</figcaption>
             </figure>
           </div>
 
-          <div class="route-list" aria-label="出店者募集関連の導線">
+          <div class="route-list" aria-label="飲食出店募集関連の導線">
             <a class="route-item" href="arkgarden-recruit/">
               <span class="route-item__label">募集要項</span>
-              <span class="route-item__title">出店者募集の詳細を見る</span>
+              <span class="route-item__title">飲食出店募集の詳細を見る</span>
               <span class="route-item__arrow ui-arrow-glyph" aria-hidden="true">→</span>
             </a>
             <a class="route-item" href="arkgarden-recruit/apply/#application-form">
               <span class="route-item__label">応募</span>
-              <span class="route-item__title">出店応募フォームへ</span>
+              <span class="route-item__title">飲食出店応募フォームへ</span>
               <span class="route-item__arrow ui-arrow-glyph" aria-hidden="true">→</span>
             </a>
             <a class="route-item" href="arkgarden-recruit/#faq">
@@ -957,7 +985,7 @@
               <h2>募集・お問い合わせ</h2>
               <nav class="site-footer__links" aria-label="募集・お問い合わせ">
                 <a href="recruit/">採用情報</a>
-                <a href="arkgarden-recruit/">ARK GARDEN 出店者募集</a>
+                <a href="arkgarden-recruit/">ARK GARDEN 飲食出店募集</a>
                 <a href="contact/">お問い合わせ</a>
               </nav>
             </section>

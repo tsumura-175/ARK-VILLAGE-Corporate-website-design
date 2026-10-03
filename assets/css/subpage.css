@@ -142,6 +142,10 @@
   line-height: 1.5;
 }
 
+.page-hero__title-unit {
+  display: inline-block;
+}
+
 .page-hero__lines {
   position: absolute;
   inset-block-start: 46%;

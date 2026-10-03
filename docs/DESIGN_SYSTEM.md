@@ -316,34 +316,42 @@
 - FAQは応募工程の後・最終応募CTAの前に小見出し＋既存アコーディオンで配置。回答の正本は募集ページだけで管理し、旧URLは `../#faq` へ転送する。開閉は `subpage-components.js` を共用する。
 - 応募CTAは紹介後・募集要項後・FAQ後の3箇所に置き、すべて同じ `apply/#application-form` へ移動する。フォーム自体は重複配置しない。
 - 紹介後・募集要項後の応募CTAには、共通の `.text-link` で「よくある質問を見る」を併設し、同一ページの `#faq` へ移動する。
-- TOPは承認されたARK GARDEN出店募集関連のリンク先だけを更新する。採用情報の「社員・スタッフ募集」は出店応募と別用途のため変更しない。
+- TOPは承認されたARK GARDEN 飲食出店募集関連のリンク先だけを更新する。採用情報の「社員・アルバイト募集」は飲食出店応募と別用途のため変更しない。
 - お問い合わせ確認の最終CTAは「送信する」とする。現段階は静的遷移のみであり、実送信機能は別途必要。
 - `style.css` のヘッダー・セクション見出しは基本定義を各1箇所へ集約。レスポンシブ・状態・モーションの必要な差分は維持し、後勝ちの補正定義を増やさない。
 - `docs/components.html#sample-groups` に費用表・小見出し・資料導線の組み合わせを掲載し、実ページと同じCSSで確認する。
 
-## 10. 採用情報・求人応募（2026-09-26）
+## 10. 採用情報・求人応募（2026-09-26／2026-10-03更新）
 
-- 募集区分はTOPを正とし、左から「ARK GARDEN 社員・スタッフ募集」「THE PARK 受付・運営 社員募集」「THE PARK スタッフ・講師・清掃スタッフ募集」。
-- 本サイトで詳細と応募を管理するのはARK GARDEN。出店者募集とは別用途・別フォームであり、募集先をARK LEAGUE社員募集と表記しない。サイト運営会社名のARK LEAGUEは変更しない。
+- 募集区分はTOPを正とし、「ARK GARDEN 社員・アルバイト募集」「THE PARK SAMUKAWA 受付／管理 社員募集」「THE PARK SAMUKAWA アルバイト・講師・清掃スタッフ募集」。
+- 本サイトで詳細と応募を管理するのはARK GARDEN。飲食出店募集とは別用途・別フォームであり、募集先をARK LEAGUE社員募集と表記しない。サイト運営会社名のARK LEAGUEは変更しない。
 - THE PARKの2区分は正式な外部採用URLが決まるまで「採用サイト準備中」。募集条件を本サイトへ複製せず、架空URLやARK GARDENの応募フォームへ接続しない。
-- 上部カードはTOPの `.recruitment-routes / .recruitment-route` をそのまま使用する。写真は16:10、PCは既存の3列、SPは縦積み。ホバー・ボタン・番号の定義は再作成しない。
-- カード写真は既存WebPを再利用。TOP・採用メイン・共通部品確認ページの左・中央は `placeholder/sample-1.webp`、右は `recruit/staff-instructor-cleaning.webp`。「ARK GARDENで働く」の会社紹介写真は `media/indoor-park.webp` を共用する。
+- TOPは施設単位の `.recruit-facilities / .recruit-facility` で整理する。ARK GARDENは夜パースと1募集、THE PARK SAMUKAWAは2募集を並べ、従来の01／02／03番号は付けない。960px以上は2列、未満は縦積みとする。
+- TOPと採用メインのARK GARDEN求人枠は `recruit/ark-garden-staff.webp`、THE PARK SAMUKAWAの受付・管理社員募集は `recruit/the-park-samukawa-reception-management.webp`、講師等は `recruit/staff-instructor-cleaning.webp` を共用する。未確定画像は `placeholder/sample-1.webp` を使う。TOPのARK GARDEN夜パースは `media/ark-garden-night-perspective.webp` とし、右下に「完成イメージ」を配置する。「ARK GARDENで働く」の会社紹介写真は `media/indoor-park.webp` を共用する。
+- TOPのRECRUIT見出しは英字と「採用情報」を同一行に置き、説明文はその下に独立させる。SPでは流動サイズと間隔で折り返しを避ける。
 - メインは募集区分、WORK STYLE（会社紹介・働く環境）、JOBS（仕事内容・人物像・募集要項）、FLOW（選考の流れ）で構成。細目は `.content-group` の日本語小見出しでまとめる。
 - 採用メインの募集区分以降は `.content-section__body--wide` を使い、本文の最大幅制限を解除して `.page-shell` の右端まで広げる。左の開始位置・画面端の基本余白・補助背景内の余白・文章の行幅制限は維持する。採用カード見本も同じ設定とし、TOP・応募フォーム・他ページへは適用しない。
 - 採用メインと求人応募の入力・確認・完了のKVは `recruit/staff-instructor-cleaning.webp` を共用する。人物の頭を残しつつ上端寄せを緩めるため `.page-hero--image-top`（`object-position: 56% 20%`）で上側を優先して切り抜く。見出し・情報表・工程・フォーム・添付・同意リンクは既存の共通部品を使用する。
 - WORK STYLE末尾にもJOBSと同じ `.contact-actions` を配置し、「求人応募フォームへ」「選考の流れを見る」を併設する。リンク先・ボタン・ホバーは共用する。
 
 - 求人フォームの必須項目：氏名、メールアドレス、希望職種、志望動機、履歴書添付、個人情報同意。電話番号と職務経歴は任意。希望職種・本文・募集条件・選考内容は確定までダミー。
-- `assets/js/recruit-application.js` の保存先は `ark-garden-recruitment-preview`。お問い合わせ・出店応募と分離する。入力・確認・完了は専用アンカーへ移動し、確認から編集へ戻れる。
+- `assets/js/recruit-application.js` の保存先は `ark-garden-recruitment-preview`。お問い合わせ・飲食出店応募と分離する。入力・確認・完了は専用アンカーへ移動し、確認から編集へ戻れる。
 - 静的試作では履歴書のファイル名のみを保持し、実ファイルを保存・送信しない。確認から戻った場合は保持済みファイル名で仮の必須判定を行う。取り消すと未添付に戻す。この判定は本番へ持ち込まず、サーバーのアップロード済みファイル識別子と検証へ置き換える。
 - 確認画面への直接アクセスで有効な入力がない場合は、応募ボタンを表示せず入力へ案内。完了時は求人応募データだけを削除する。
 - 本番はサイトマップの想定に合わせ、入力・確認を同一URL内で切り替え、完了のみ専用URLにする。添付形式・容量、管理者通知、自動返信、実送信は本番実装時に確定する。
-- `docs/components.html#sample-recruit` に通常・準備中の3枚を掲載する。TOPの変更は承認された採用説明文・募集内容リンク・ナビリンクのみとし、CSS・画像・動きは維持する。
+- `docs/components.html#sample-recruit` は採用メインページで使うカード状態の確認用とし、TOP固有の施設別レイアウトとは分けて管理する。
+
+### TOPの期間限定飲食出店CTA（2026-10-03）
+
+- 表記はヘッダー・フッター・TOP・下層ページとも「ARK GARDEN 飲食出店募集」に統一する。「出展」ではなく、飲食事業者が営業場所へ出る意味の「出店」を使う。
+- KV直後のCTAは期間限定の補助導線であり、既存のARK GARDENセクションは残す。募集終了時は `.garden-entry-cta` 全体を削除できる構造にする。
+- CTAは左にタイトル・募集状態・ボタン、右に夜パースを置く。SPは縦積み、768px以上は2列。画像は `media/ark-garden-night-perspective.webp` を共用する。
+- 「完成イメージ」は画像右下へ白文字・12px・黒35%の半透明背景で配置する。画像自体へ焼き込まず、差し替えとアクセシビリティに対応できるHTMLテキストとする。
 
 ### 写真KVの適用（2026-09-27）
 
 - 企業概要：`company-architecture.webp`。採用メイン：`recruit/staff-instructor-cleaning.webp`。
-- ARK GARDEN出店応募の入力・確認・完了は、出店募集と同じ `placeholder/sample-1.webp` を使用する。正式なARK GARDEN素材の提供後、募集ページと応募3画面を揃えて差し替える。
+- ARK GARDEN 飲食出店募集と飲食出店応募の入力・確認・完了は、暫定的に `media/ark-garden-night-perspective.webp` を共用する。正式なARK GARDEN素材の提供後、募集ページと応募3画面を揃えて差し替える。
 - 上記は既存の `.page-hero--image / .page-hero__media` を使用する。KV画像は遅延読み込みせず `loading="eager"`・`fetchpriority="high"` を指定し、共通の高さ・タイトル位置・ベール・グリッド・表示モーションを引き継ぐ。
 
 ### お知らせ詳細への遷移（2026-09-27）
