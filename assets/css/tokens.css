@@ -5,6 +5,7 @@
   --color-ink: oklch(18% 0.012 50);
   --color-ink-2: oklch(28% 0.012 50);
   --color-muted: oklch(46% 0.012 55);
+  --color-section-title: #5e5652;
   --color-rule: oklch(72% 0.014 70);
   --color-rule-2: oklch(80% 0.012 70);
   --color-accent: oklch(52% 0.16 29);
@@ -49,7 +50,9 @@
   --page-max: 90rem;
   --content-max: 76rem;
   --content-narrow: 68rem;
-  --copy-max: 42rem;
+  --copy-measure: 42rem;
+  --copy-wide-measure: 58rem;
+  --copy-max: var(--copy-measure);
   --subpage-hero-height: clamp(32rem, 66svh, 48rem);
   --header-height: 5rem;
 

@@ -28,12 +28,13 @@
   });
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  scope.querySelectorAll(".faq-item").forEach((item) => {
+  scope.querySelectorAll(".faq-item, [data-disclosure]").forEach((item) => {
     const summary = item.querySelector("summary");
-    const answer = item.querySelector(".faq-item__answer");
+    const isDisclosure = item.hasAttribute("data-disclosure");
+    const answer = item.querySelector(isDisclosure ? ".disclosure__content" : ".faq-item__answer");
     if (!summary || !answer || typeof answer.animate !== "function") return;
     const panel = document.createElement("div");
-    panel.className = "faq-item__panel";
+    panel.className = isDisclosure ? "disclosure__panel" : "faq-item__panel";
     answer.before(panel);
     panel.append(answer);
     let expanded = item.open;

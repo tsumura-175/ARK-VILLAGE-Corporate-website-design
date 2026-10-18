@@ -25,7 +25,9 @@
 │  └─ index.html
 ├─ business/、works/、news/、contact/、privacy-policy/
 │  └─ index.html（ニュース詳細・お問い合わせ確認／完了は各サブディレクトリ）
-├─ arkgarden-recruit/、recruit/
+├─ arkgarden-recruit/
+│  └─ index.html（飲食出店の詳細・FAQ。応募はクライアント管理のGoogleフォーム）
+├─ recruit/
 │  └─ index.html、apply/index.html、apply/confirm/index.html、apply/complete/index.html
 ├─ assets/
 │  ├─ css/
@@ -35,9 +37,9 @@
 │  ├─ js/
 │  │  ├─ script.js
 │  │  ├─ subpage-content.js（ニュース・お問い合わせの静的試作）
-│  │  ├─ subpage-components.js（添付UI・FAQの共通動作）
-│  │  ├─ application.js（出店応募の静的試作）
+│  │  ├─ subpage-components.js（添付UI・FAQ・詳細アコーディオンの共通動作）
 │  │  └─ recruit-application.js（求人応募の静的試作）
+│  ├─ documents/arkgarden/（20ft・40ftの支給募集PDF）
 │  └─ images/
 └─ docs/
    ├─ DESIGN_SYSTEM.md
@@ -86,6 +88,8 @@ CSSクラスの変更だけでJavaScriptが壊れない構成を維持します�
 ### 仮リンク
 
 リンク先が未確定の場合は `href="#"` を使用します。実URLが決まった段階で一括して置き換えます。
+
+コンテナ別のGoogleフォーム応募ボタンは `data-pending-link` と `aria-disabled="true"` を付け、クリック時にページ先頭へ移動しないようにします。GoogleフォームのURL確定時は、TOP・募集概要・スケジュール下の同じ種類のボタンすべてで `href` を更新し、この2属性と準備中の読み上げ補足を削除します。TOPの詳細ボタンは、募集ページの `#container-20ft` / `#container-40ft` に接続済みです。
 
 ## 5. CSS
 

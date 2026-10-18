@@ -1,3 +1,12 @@
+// Pending detail and Google Form URLs stay in place until the client supplies them.
+(() => {
+  document.querySelectorAll("[data-pending-link]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      if (link.getAttribute("href") === "#") event.preventDefault();
+    });
+  });
+})();
+
 (() => {
   const root = document.documentElement;
   if (!root.classList.contains("is-github-pages")) return;
@@ -608,4 +617,75 @@
     rootMargin: "0px 0px -8% 0px",
     threshold: 0.12,
   });
+})();
+
+(() => {
+  const titles = [...document.querySelectorAll(".section-title")].filter(
+    (title) => title.querySelector(":scope > .section-title__en + h2"),
+  );
+  if (!titles.length) return;
+
+  const measureLastLine = (element) => {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    const range = document.createRange();
+    const lines = [];
+    let node;
+
+    while ((node = walker.nextNode())) {
+      if (!node.textContent.trim()) continue;
+      range.selectNodeContents(node);
+      for (const rect of range.getClientRects()) {
+        if (rect.width > 0) lines.push(rect);
+      }
+    }
+
+    if (!lines.length) return null;
+    const lastTop = Math.max(...lines.map((rect) => rect.top));
+    return {
+      right: Math.max(...lines.filter((rect) => Math.abs(rect.top - lastTop) < 2).map((rect) => rect.right)),
+    };
+  };
+
+  const measureTextWidth = (element) => {
+    const range = document.createRange();
+    range.selectNodeContents(element);
+    return range.getBoundingClientRect().width;
+  };
+
+  const alignJapaneseTitles = () => {
+    titles.forEach((title) => {
+      const english = title.querySelector(":scope > .section-title__en");
+      const japanese = title.querySelector(":scope > .section-title__en + h2");
+      title.classList.remove("section-title--stacked");
+      japanese.style.setProperty("--section-title-last-line-offset", "0px");
+
+      const lastLine = measureLastLine(english);
+      const gap = Number.parseFloat(getComputedStyle(title).columnGap) || 0;
+      const availableRight = title.parentElement.getBoundingClientRect().right;
+      const japaneseWidth = measureTextWidth(japanese);
+      const englishRight = english.getBoundingClientRect().right;
+      if (!lastLine || lastLine.right > englishRight + 1 ||
+          lastLine.right + gap + japaneseWidth > availableRight - 1) {
+        title.classList.add("section-title--stacked");
+        return;
+      }
+
+      const unusedWidth = Math.max(0, englishRight - lastLine.right);
+      japanese.style.setProperty("--section-title-last-line-offset", `${unusedWidth}px`);
+    });
+  };
+
+  let pending = false;
+  const scheduleAlignment = () => {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(() => {
+      pending = false;
+      alignJapaneseTitles();
+    });
+  };
+
+  scheduleAlignment();
+  window.addEventListener("resize", scheduleAlignment, { passive: true });
+  document.fonts?.ready.then(scheduleAlignment);
 })();
