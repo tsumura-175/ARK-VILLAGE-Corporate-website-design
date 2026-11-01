@@ -4,7 +4,7 @@
 
 本ガイドラインは、ARK LEAGUEコーポレートサイトのHTML、CSS、JavaScriptを継続的に更新するための実装基準です。既存コードとの一貫性、アクセシビリティ、GitHub Pagesでの動作を優先します。
 
-再利用するUI部品の構造と利用条件は `DESIGN_SYSTEM.md` を参照してください。
+再利用するUI部品の構造と利用条件は `DESIGN_SYSTEM.md`、表示・操作の見本は `components.html` を参照してください。実績の素材対応は `WORKS_ASSETS.md` が管理します。2026-11-01時点の実装に合わせて更新しています。
 
 ## 2. 技術構成
 
@@ -26,7 +26,8 @@
 ├─ business/、works/、news/、contact/、privacy-policy/
 │  └─ index.html（ニュース詳細・お問い合わせ確認／完了は各サブディレクトリ）
 ├─ arkgarden-recruit/
-│  └─ index.html（飲食出店の詳細・FAQ。応募はクライアント管理のGoogleフォーム）
+│  ├─ index.html（飲食出店の詳細・FAQ。応募はクライアント管理のGoogleフォーム）
+│  └─ faq/index.html（../#faqへの転送）
 ├─ recruit/
 │  └─ index.html、apply/index.html、apply/confirm/index.html、apply/complete/index.html
 ├─ assets/
@@ -38,17 +39,22 @@
 │  │  ├─ script.js
 │  │  ├─ subpage-content.js（ニュース・お問い合わせの静的試作）
 │  │  ├─ subpage-components.js（添付UI・FAQ・詳細アコーディオンの共通動作）
+│  │  ├─ works-data.js（Excelに基づくTOP・WORKS共通の実績データ）
+│  │  ├─ works.js（共通カード生成・カテゴリ切替・12件単位のページ送り）
 │  │  └─ recruit-application.js（求人応募の静的試作）
-│  ├─ documents/arkgarden/（20ft・40ftの支給募集PDF）
+│  ├─ documents/（バス時刻表とarkgarden/内の20ft・40ft募集PDF）
 │  └─ images/
 └─ docs/
    ├─ DESIGN_SYSTEM.md
    ├─ DESIGN_GUIDELINES.md
-   └─ CODING_GUIDELINES.md
+   ├─ CODING_GUIDELINES.md
+   ├─ WORKS_ASSETS.md
+   └─ components.html
 ```
 
 - 画像は `assets/images/` にまとめる
 - CSSは `assets/css/`、JavaScriptは `assets/js/` にまとめる
+- TOPとWORKSは `works-data.js` を `works.js` より先にdeferで読み込む。画像URLは実行中のスクリプトURLを基準に解決し、GitHub Pagesのサブディレクトリとローカル表示の両方に対応する。実績の更新時は正本Excelと `docs/WORKS_ASSETS.md` を照合する
 - ガイドライン類は `docs/` にまとめる
 - 下層ページは `ページ名/index.html` とし、公開URLを `/ページ名/` に統一する
 - 下層ページ共通のスタイルは `assets/css/subpage.css` にまとめる
@@ -74,6 +80,11 @@
 - 装飾画像は `alt=""` にする
 - 遅延読み込みが適切な画像には `loading="lazy"` を使用する
 
+- 採用した実写真はWebPへ最適化する。ロゴは可逆圧縮WebPを使い、元PNGの寸法・色・透過を保持する。ロゴの切り抜き・変形・再着色はしない
+- ロゴの見かけの大きさは `clients-grid` の表示幅Modifierで調整する。X GAMESとJTは元解像度を考慮して小さく表示する
+- ヒーロー写真は遅延読み込みを使わず、必要な `picture`・寸法・先読みを一致させる。WORKSは `WORKS_ASSETS.md` のPC/SP別画像を参照する
+- 差し替え元の資料は変更しない。不要な生成画像は、HTML・CSS・JS・部品見本から参照されていないことを確認した範囲だけ削除する
+
 ### JavaScript用属性
 
 JavaScriptの取得には、見た目のクラスではなく `data-*` 属性を使用します。
@@ -87,7 +98,7 @@ CSSクラスの変更だけでJavaScriptが壊れない構成を維持します�
 
 ### 仮リンク
 
-リンク先が未確定の場合は `href="#"` を使用します。実URLが決まった段階で一括して置き換えます。
+操作するリンク先が未確定の場合は `href="#"` だけの有効リンクを残しません。既存の準備中ボタンまたは `data-pending-link` と `aria-disabled="true"` を使い、ページ先頭への移動を防ぎます。スポーツパーク採用はリンクではなく、既存の無効状態のspanで「採用サイト準備中」と表示します。
 
 コンテナ別のGoogleフォーム応募ボタンは `data-pending-link` と `aria-disabled="true"` を付け、クリック時にページ先頭へ移動しないようにします。GoogleフォームのURL確定時は、TOP・募集概要・スケジュール下の同じ種類のボタンすべてで `href` を更新し、この2属性と準備中の読み上げ補足を削除します。TOPの詳細ボタンは、募集ページの `#container-20ft` / `#container-40ft` に接続済みです。
 
@@ -141,6 +152,7 @@ BEMに近い形式を使用します。
 - レイアウトを変えるアニメーションより `opacity` と `transform` を優先する
 - `prefers-reduced-motion: reduce` を必ず用意する
 - KV切り替えでは `is-active` と `is-leaving` を使い、退出画像の状態をフェード完了まで保持する
+- WORKSのズームは既存の `--dur-nav`・`--ease-out`・拡大率1.035を共用し、hover可能・fine pointer・動きを減らさない設定でのみ実行する。カード高はCSS Gridで揃え、固定高やJS計算を使わない
 
 ## 6. JavaScript
 
@@ -219,7 +231,9 @@ GitHub Pagesは静的ホスティングのため、サーバー側のBasic認証
 変更後は最低限、以下を確認します。
 
 ```powershell
-node --check .\assets\js\script.js
+# 変更したJavaScriptだけを対象にする。WORKS変更時の例：
+node --check .\assets\js\works-data.js
+node --check .\assets\js\works.js
 ```
 
 ブラウザ確認：
@@ -239,6 +253,16 @@ node --check .\assets\js\script.js
 1. 変更対象と影響範囲を確認する
 2. 既存トークンとコンポーネントを再利用する
 3. HTML、CSS、JavaScriptの役割を分離する
-4. 構文チェックを行う
+4. JavaScriptを変更した場合は対象ファイルの構文チェックを行う
 5. PCとモバイルで表示・操作を確認する
-6. 新しい恒久ルールが生じた場合は、本書またはデザインガイドラインを更新する
+6. 新しい恒久ルールが生じた場合は、本書・デザインシステム・部品見本を必要に応じて更新する
+7. docsだけを更新する場合はサイト本体と未コミット変更の非変更、リンク先・見本の画像・IDを確認する。ファイルは更新日が古いという理由だけでは削除しない
+
+## 11. 既存コードの再利用
+
+- 実装前に関連HTML・CSS・JSと共通部品を調べ、同じ機能・見た目を持つ処理を複製しない。
+- 既存クラス・関数・トークンの組み合わせを優先し、インラインスタイルや同じルールの別名コピーを追加しない。
+- 新しいCSS・JS・SVG等が必要な場合は、追加内容・既存で実現できない理由・対象ファイルを編集前に伝える。ユーザーが追加の確認を求めた場合は回答を待つ。
+- 共通部品を変更する場合は使用ページへの影響を確認し、依頼と無関係なリファクタリングはしない。
+- クライアント原稿の事実・未確定表記を優先する。根拠のない募集条件・実績説明・交通情報を創作しない。
+- 完了時は再利用した部品、変更ファイル、追加コードと理由、確認結果・未完了事項を報告する。

@@ -559,6 +559,7 @@
 
 .access-card h4 + p {
   margin-block-start: var(--space-sm);
+  color: var(--color-section-title);
   font-size: var(--text-sm);
   line-height: 1.8;
 }
@@ -645,29 +646,16 @@
 }
 
 .philosophy-feature {
-  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--space-xl);
   align-items: start;
-  padding-block: var(--space-2xl);
-  border-block: var(--rule-hair) solid var(--color-rule);
-}
-
-.philosophy-feature::before {
-  position: absolute;
-  inset-block-start: calc(var(--rule-strong) * -1);
-  inset-inline-start: 0;
-  inline-size: clamp(5rem, 20vw, 11rem);
-  block-size: var(--rule-strong);
-  background: var(--color-accent);
-  content: "";
 }
 
 .philosophy-feature__lead {
   margin: 0;
   color: var(--color-ink);
-  font-size: clamp(var(--text-xl), 4vw, var(--text-3xl));
+  font-size: 39px;
   font-weight: 700;
   line-height: 1.45;
   letter-spacing: -0.03em;
@@ -675,16 +663,9 @@
 
 .philosophy-feature__copy {
   margin: 0;
-  color: var(--color-ink-2);
+  color: var(--color-section-title);
   font-size: var(--text-base);
   line-height: 1.9;
-}
-
-.clients-note {
-  margin: 0 0 var(--space-lg);
-  color: var(--color-muted);
-  font-size: var(--text-sm);
-  line-height: 1.8;
 }
 
 .clients-grid {
@@ -705,16 +686,34 @@
   display: grid;
   flex: 0 0 calc((100% - (var(--clients-columns) - 1) * var(--clients-gap)) / var(--clients-columns));
   min-inline-size: 0;
-  min-block-size: clamp(7rem, 13vw, 11rem);
+  min-block-size: clamp(7rem, 10vw, 9rem);
   place-items: center;
 }
 
 .clients-grid img {
   display: block;
-  inline-size: min(100%, 10rem);
+  inline-size: min(100%, var(--clients-logo-width, 10rem));
   block-size: auto;
-  aspect-ratio: 1;
   object-fit: contain;
+}
+
+.clients-grid__logo--wide {
+  --clients-logo-width: 11rem;
+}
+
+.clients-grid__logo--compact {
+  --clients-logo-width: 8rem;
+}
+
+.clients-grid__logo--small {
+  --clients-logo-width: 4rem;
+}
+
+.clients-grid__logo--on-dark {
+  --clients-logo-width: 5.5rem;
+
+  padding: var(--space-sm);
+  background: var(--color-ink);
 }
 
 @media (min-width: 40rem) {
@@ -792,6 +791,10 @@
     border-block-start: var(--rule-hair) solid var(--color-rule);
   }
 
+  .business-capability-grid--five .business-capability-grid__item:last-child {
+    grid-column: 1 / -1;
+  }
+
 }
 
 @media (min-width: 80rem) {
@@ -819,7 +822,6 @@
   .philosophy-feature {
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     gap: var(--space-3xl);
-    padding-block: var(--space-3xl);
   }
 
   .business-capability-grid--three,
@@ -837,6 +839,31 @@
 
   .business-capability-grid--four .business-capability-grid__item:nth-child(n + 3),
   .business-capability-grid--six .business-capability-grid__item:nth-child(n + 4) {
+    border-block-start: var(--rule-hair) solid var(--color-rule);
+  }
+
+  .business-capability-grid--five {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .business-capability-grid--five .business-capability-grid__item {
+    grid-column: span 2;
+  }
+
+  .business-capability-grid--five .business-capability-grid__item:nth-child(3) {
+    margin-block-end: calc(-1 * var(--rule-hair));
+    border-block-end: var(--rule-hair) solid var(--color-rule);
+  }
+
+  .business-capability-grid--five .business-capability-grid__item:nth-child(4) {
+    grid-column: 1 / span 2;
+  }
+
+  .business-capability-grid--five .business-capability-grid__item:nth-child(5) {
+    grid-column: 3 / span 2;
+  }
+
+  .business-capability-grid--five .business-capability-grid__item:nth-child(n + 4) {
     border-block-start: var(--rule-hair) solid var(--color-rule);
   }
 
@@ -898,10 +925,13 @@
 }
 
 .work-entry {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
   min-inline-size: 0;
 }
 
 .work-entry__media {
+  position: relative;
   margin: 0;
   overflow: hidden;
   background: var(--color-paper-2);
@@ -917,6 +947,7 @@
 
 .work-entry__info {
   display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
   gap: var(--space-xs);
   padding-block: var(--space-md);
   border-block-end: var(--rule-hair) solid var(--color-rule);
@@ -933,9 +964,11 @@
   margin: 0;
   font-size: clamp(var(--text-base), 2vw, var(--text-md));
   line-height: 1.5;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
 }
 
-.work-entry__info > p:last-child {
+.work-entry__description {
   margin: 0;
   color: var(--color-muted);
   font-size: var(--text-sm);

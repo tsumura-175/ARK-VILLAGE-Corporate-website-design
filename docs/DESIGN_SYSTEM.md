@@ -2,11 +2,13 @@
 
 ## 1. 役割
 
-本書は、ARK LEAGUEコーポレートサイトで再利用するUI部品の仕様書です。
+本書は、ARK LEAGUEコーポレートサイトで再利用するUI部品の仕様書です。2026-11-01時点の実装を基準とし、過去の案や未実装の構成は現行仕様として扱いません。
 
 - `DESIGN_GUIDELINES.md`：ブランドの方向性とデザイン判断の原則
 - `CODING_GUIDELINES.md`：HTML、CSS、JavaScriptの実装規約
 - `DESIGN_SYSTEM.md`：再利用する部品の構造、状態、組み合わせ方
+- `components.html`：実際の共通CSS・JavaScriptで確認する部品見本
+- `WORKS_ASSETS.md`：実績と元写真、出力画像、alt、クレジットの対応
 - `assets/css/tokens.css`：色、文字、余白、時間などの実値
 
 ページ固有の見た目を増やす前に、本書の既存部品で表現できないか確認します。
@@ -76,8 +78,13 @@
 ### Top Works
 
 - クラス：`.works-grid`。実績を写真・案件名・カテゴリで一覧するコンポーネント
-- 実績専用の画像は `assets/images/works/`、キービジュアルなどと共用する画像は `assets/images/media/` にWebPで格納する。同一画像を用途別に複製しない
-- 現在の先頭2件は「湘南 OPEN」「広島アーバンサイクルスポーツパーク」の順序とする
+- 実績専用の画像は `assets/images/works/`、他セクションと共用する画像は `assets/images/media/` にWebPで格納する。同じ表示用途の画像を重複保存しない。ヘッダーの端末別トリミングは表示用途が異なるため別画像として最適化する
+- TOPは `works-data.js` の共通実績データから、年の降順・同年はExcel行番号の降順で先頭6件を表示する。`works.js` のカード生成処理を実績一覧と共用する
+- 追加の写真指定により31件すべてに実写真を使用する。ExcelのFALSE表記は素材の管理履歴として残し、表示画像は最新指定を優先する。ダミー画像は実績カードに使わない。年と記入のある備考だけを併記する
+- 複数列ではカードを画像と伸縮する情報欄の2行グリッドにし、同じ行の高さ・情報欄の下端を揃える。固定高やJSの高さ計算は使わない。TOPの全カードは同じ下罫線を持つ。画像ズームは拡大率1.035、`--dur-nav` と `--ease-out` を使い、hover可能・fine pointer・`prefers-reduced-motion: no-preference` の場合だけ適用する
+- 選定写真とExcel行の対応、alt、撮影者クレジットは `WORKS_ASSETS.md` に記録する。YUSFの写真は支給されたクレジットを共通 `.media-caption` で画像内に表示する
+- TOPの `.work-panel` は暗色面用。`.works.section.section--dark` と `.section-heading--light` を組み合わせ、明色面の実績一覧は `.work-entry` を使う
+- TOPと同じ描画の実物見本は `components.html#sample-works`。データ・画像パスを見本専用に複製しない
 
 ### Recruit
 
@@ -145,24 +152,24 @@
 - 4事業のコンテンツ領域は共通してページ本文幅まで使う。リード・説明文の読み幅は維持し、写真・対応項目の一覧を広く見せる
 - `.business-media` はSPで4:3、768px以上で2:1の表示枠を使い、最大幅は `--content-max` とする。画像は `object-fit: cover` で収める
 - 各事業につき複数の意味の異なる写真が揃った時点でのみ、ページネーションと自動再生を伴うスライダーを新設する
-- `.business-capability-grid`：対応範囲を線画アイコンと短い項目名で表示する。3項目と6項目はPCで3列、4項目はPCで2列とする
-- アイコン付き一覧の実物見本は `docs/components.html#sample-icons-four`（4項目）と `#sample-icons-three`（3項目）。事業内容と同じSVG・クラス・表示アニメーションを使用し、専用CSSを追加しない。
-- SPではアイコン項目を1列、768px以上では2列、1024px以上では項目数に応じた列数へ展開する
+- `.business-capability-grid`：対応範囲を線画アイコンと短い項目名で表示する。現在の4事業の項目数は順に4・6・5・6。`--four` はPCで2列×2行、`--six` は3列×2行、`--five` は上段3項目・下段2項目を左揃えにする。5項目の上段3番目にも下罫線を残し、段の境界を揃える。汎用の `--three` は3列に対応する
+- アイコン付き一覧の実物見本は `components.html#sample-icons-four`、`#sample-icons-five`、`#sample-icons-six`。事業内容と同じSVG・クラス・表示アニメーションを使用する。「パフォーマンス出演」は既存のメガホンSVGを使う。
+- SPではアイコン項目を1列、768px以上では2列、1024px以上では項目数に応じた列数へ展開する。5項目のタブレット表示では末尾が2列分を使う
 - セクション内部の構造は統一しつつ、基本背景と補助背景を交互に使用してページ全体のリズムを保つ
 - 角丸や強い影は使わず、既存の罫線、余白、赤いアクセントのルールを継承する
 
 ### Page Memory Point
 
 - 下層ページはページごとに強いビジュアル構成を1つだけ設け、すべてのセクションを同じ強度にしない
-- 企業概要の `.philosophy-feature` は写真を使わず、理念の本文を余白と文字組みで見せる。`.page-shell` 内の `.content-section__body--balanced` に入れ、左右に `--section-body-indent` を取る。
-- 企業概要の会社概要とアクセスの間に、`.clients-grid` で取引先一覧を置く。現時点では支給された15点のダミーロゴを原色のまま白い面に並べ、仮素材である旨を明示する。正式ロゴ支給後に画像と表示順を差し替える。
+- 企業概要の `.philosophy-feature` は写真・上下罫線・内部の追加上下余白を使わず、理念を文字組みで見せる。`.page-shell` 内の `.content-section__body--balanced` に入れ、左右に `--section-body-indent` を取る。リードは39px、本文は16px・`--color-section-title`。1024px以上でリードと本文を2列にする。
+- 企業概要の会社概要とアクセスの間に、`.clients-grid` で取引先一覧を置く。提案用の支給ロゴ14点を、自治体3件・企業等11件の指定順で掲載する。元画像の縦横比・色・透過を保持した可逆圧縮WebPを使い、仮素材の注記は表示しない。既存の2・3・5列の切り替えを維持する。`clients-grid__logo--wide / --compact / --small` で見かけの大きさを調整し、X GAMES JAPANには `--on-dark` で暗色背景を敷く。X GAMESの画像本体は約64×87px、JTは64×53pxを上限とし、小さい原画像の拡大を避ける。元資料は `頂いた資料/修正内容/取引先ロゴ_提案用/` で保持し、見本は `components.html#sample-clients`。
 - 事業内容ページは写真枠とアイコン一覧の反復をページ固有の視覚言語とし、背景の交互切り替えで単調さを抑える。写真が各事業1枚の間は静止表示とする
 - 写真が未確定の場合も構造は維持し、クライアント支給後に同じ比率で差し替える
 - 数字や実績は確定情報がある場合のみ強調し、ダミー数値をデザイン要素として追加しない
 
 ### Works / News / Contact / Privacy
 
-- 実績一覧は `.works-list` / `.work-entry` を使用し、SPでは1列、1024px以上では3列とする。写真・カテゴリ・タイトル・短い説明を1単位にし、詳細ページのない実績にはリンクを付けない。カテゴリは「すべて」「大会・イベント」「監修」で絞り込み、ニュースと同じフィルター・ページ送りを使う。1ページ9件を表示し、切り替え時は1ページ目に戻す。TOPの `.work-panel` と一覧の `.work-entry` は情報量と背景色の異なるバリエーションだが、写真の表示比率は4:3で共通にする
+- 実績一覧は `.works-list` / `.work-entry` を使用し、SPでは1列、768px以上では2列、1024px以上では3列とする。詳細ページのない実績にはリンクを付けない。カテゴリは「すべて」とExcelの「大会運営/企画」「大会運営」「パーク運営/監修」「パーク監修」「自治体連携」の5種類をそのまま使い、既存のフィルター・ページ送りで絞り込む。1ページ12件を表示し、カテゴリ変更時は1ページ目に戻す。TOPの `.work-panel` と一覧の `.work-entry` は共通データとカード生成処理を使用し、写真の表示比率は4:3で揃える。Excelにない説明は追加しない
 - ニュース一覧は `.news-filter` / `.news-index-list` / `.news-pagination` を使用し、1ページ10件を表示する。SP（767px以下）はネイティブのプルダウン、タブレット・PC（768px以上）は従来のボタンでカテゴリを選択する。両UIの選択肢はJSの同じカテゴリ定義から生成し、表示幅を切り替えても選択状態を共有する。カテゴリ変更時は新しい順に並べ、ページ番号を1へ戻す。ページ送りは前後・現在ページ周辺・先頭末尾を表示し、離れた番号は省略記号でつなぐ。SPでは先頭末尾と省略記号を隠し、操作可能な前後と現在付近を残す
 - ニュース一覧の各行はTOPと同じ `.news__item` / `.news__date` / `.news__category` / `.news__arrow` を使い、`news-index-list` は一覧の容器としてのみ使う。日付フォント、本文サイズ、単体矢印、通常カテゴリのホバー色、重要項目の赤い罫線・太字・赤い矢印を共通化する。記事詳細のメタ情報も同じ日付・カテゴリ表現を使い、一覧へ戻る導線には `.text-link` を使う。記事詳細は画像を省略可能な本文構造とし、PCでは左端を揃えたまま記事ヘッダーと写真の幅で右側の余白を整える
 - 同じ用途の部品はTOPの既存クラス・状態を再利用し、下層ページだけに通常・ホバー・フォーカス状態を作り直さない。背景や情報量が異なる場合だけModifierとして差分を定義する
@@ -187,7 +194,7 @@
 
 - クラス：`.split-content`
 - 地図と交通案内など、同じ階層の2要素に使用する
-- モバイルは1カラム、十分な幅がある場合のみ2カラムにする
+- 現在のアクセスでは地図→交通案内を全画面幅で縦に配置する。交通案内内部の `.access-information__list` は1280px以上で電車・バス・車の3列、それ未満は縦並びにする
 - 子要素の幅は必ず `minmax(0, 1fr)` で横溢れを防ぐ
 
 ### Map Embed / Access Card
@@ -197,13 +204,14 @@
 - `iframe` には内容を説明する `title` を付け、モバイルで横溢れしない幅にする
 - 交通案内は手段ごとにカードへ分け、英字種別、日本語見出し、経路・目安時間の順に記載する
 - 時刻表などの配布資料は `assets/documents/` に置き、カード内にダウンロードリンクを設ける
-- 所要時間は交通状況によって変わるため、目安であることを補足する
+- 案内文はクライアント原稿に従う。経路・運行内容・所要時間の補足を推測して追加しない。電車・バス・車の説明本文は `--color-section-title` を使う
+- 現在のボタン文言は「時刻表PDFをダウンロード」、参照は `assets/documents/mokuseigo-timetable-route.pdf`。資料はコミュニティバス「もくせい号」の時刻表であり、原稿のシャトルバスとの対応は未確認。ボタンの維持・注記非表示はユーザー指定であり、資料の対応が確認済みとは扱わない
 
 ### Directional Symbols
 
 - 丸ボタン内の右矢印は空の `.ui-arrow-icon` を使い、疑似要素で描画する
 - NEWSや募集導線の単体矢印は `.ui-arrow-glyph` を併用する
-- 外部リンクとダウンロード記号は `.ui-symbol` と用途別Modifierを使う。外部リンクは元の「↗」記号を用い、企業概要の地図とお問い合わせの個人情報リンクで共通化する
+- 外部リンクは `.ui-symbol.ui-symbol--external` と「↗」記号を使う。PDFは `.ui-download-icon` のSVGを丸囲み内に置き、下矢印とその下の短い水平線で示す。ページ内リンクは `.ui-arrow-icon--down` とし、PDFの記号とは区別する
 - 丸ボタン内の矢印はフォント文字を使わず、水平線と矢尻を疑似要素で幾何学的に中央配置する
 - NEWSや募集導線のフォント記号は視覚上の中央に合わせて光学補正し、個別のpaddingで調整しない
 - 無効ボタンの「—」には矢印用の補正を適用しない
@@ -247,164 +255,100 @@
 - お問い合わせ入力・確認・完了：`contact/index.html`、`contact/confirm/index.html`、`contact/complete/index.html`
 - プライバシーポリシー：`privacy-policy/index.html`
 - 採用情報・求人応募：`recruit/index.html`、`recruit/apply/index.html`、`recruit/apply/confirm/index.html`、`recruit/apply/complete/index.html`
+- 飲食出店募集・FAQ：`arkgarden-recruit/index.html`。`arkgarden-recruit/faq/index.html` は `../#faq` への転送として保持
+- 共通部品確認：`docs/components.html`
 
 企業概要ページで確定した余白、見出し、情報表、アクセス構成を、今後の下層ページへ展開します。
 
-## 9. 寒川町相模川一之宮公園と共通部品の運用（2026-09-26）
+## 9. 本文幅と共通部品の運用
 
-### 正式名称・適用ページ
+### 本文幅の使い分け
 
-- 名称は **寒川町相模川一之宮公園**。新規URLは `arkgarden-recruit/`。
-- 募集・FAQ：`arkgarden-recruit/index.html`（FAQは `#faq`）。旧 `arkgarden-recruit/faq/` は統合先への転送のみを残す。
-- 飲食出店応募はクライアント管理のGoogleフォームを使用する。サイト内の応募入力・確認・完了ページは2026-10-17に削除。採用応募・お問い合わせのフォームは別用途として保持する。
-- ワイヤーフレームの表示名称・応募項目も同期する。既存URL `arkvillage-recruit/` はリンク切れ防止のため保持する。
-- 2026-10-15のフィードバックを優先し、企業概要の経営理念は写真なしの文字組み、取引先一覧は15点の支給ダミーロゴを使用する。
+- 説明主体の短い内容は標準幅で右側の余白を残し、写真・地図・一覧・情報表・工程は `.content-section__body--wide` でページ本文幅を使う。全幅は画面端までの意味ではなく、`.page-shell` と共通余白の内側を指す。
+- `--wide` は `--copy-max: 100%`。文章の行長を制限する場合は `--editorial`（42rem）または `--readable-copy`（段落だけ58rem）を併用する。大見出し・写真・情報表まで狭めない。
+- リード `.content-section__lead` は最大32px、字間0、`text-wrap: pretty`。不要な強制改行をせず、長い日本語は `.content-section__lead-phrase` で意味のまとまりを示す。768px以上でまとまりの途中分割を避け、SPは自然に折り返す。
+- 会社情報は標準幅、理念は `--balanced`、取引先・アクセスは `--wide`。事業内容は `.business-detail` が本文を広げ、説明文の読み幅を維持する。
+- 採用のカード・写真・表・工程は `--wide`。WORK STYLE・JOBSは `--readable-copy` を併用する。飲食出店募集は写真・図面・表を広げ、FAQは標準幅とする。
+- ニュース本文は左右のインデントを対称にする。お問い合わせ・求人応募の入力・確認・完了は最大68remを共用する。
+- 実物見本：`components.html#sample-copy-width`。
 
-### 実物の部品見本
+### 小見出し・ボタン
 
-`docs/components.html` に実際のCSSとHTMLを使った確認ページを用意する。見本だけの色・ホバー・文字サイズは定義しない。
-共通部品の変更時は、このページと既存の使用ページを両方確認する。
+- `.content-groups` は関連項目の容器。間隔はSPが `--space-xl`、768px以上が `--space-2xl`。
+- `.content-group` と `.content-group__title` は小見出し＋本文の組。日本語見出しは20〜25px、行間1.5、内部間隔 `--space-lg`。募集要項の注記と個別職種も別のグループにして関係を示す。
+- `.document-link-row` は説明の下に資料ボタンを左揃えで配置する。未提供の資料は `.action-button--disabled` を使う。
+- PDFは `.action-button.action-button--outline` と `.ui-download-icon` を共用する。実URL、`download` 属性、資料を区別できる読み上げ名を付ける。
+- `.contact-actions` は中央配置。SPの2つの主要ボタンは `--pair` または `.garden-container__actions` で横並び。主要ボタン＋補助リンクには `--mixed` を使う。単独ボタンに新たな2列指定を付けない。
+- アンカー先は `.content-anchor` を使い、固定ヘッダーを避ける。確認画面からの戻るボタンは「修正する」に統一する。
 
-| 部品 | 正とする実装 | 新規ページでの使い方 |
-| --- | --- | --- |
-| ヘッダー・フッター・ボタン・矢印・テキストリンク | TOP / style.css | 同じクラス・内部要素を再利用。ページ名付きの再定義は禁止 |
-| 下層KV・セクション見出し・余白・表示モーション | 企業概要・事業内容 / subpage.css | page-hero、section-title、content-section、既存data属性を再利用 |
-| 条件・仕様の一覧 | 企業概要 / definition-list | dtとddで構造化。価格・日程などの未確定情報を創作しない |
-| 入力・確認・完了、進行表示 | お問い合わせ / contact-* | 応募フォームでも同一クラスを使用。データ処理だけを分離 |
-| 外部リンク | 企業概要・お問い合わせ / ui-symbol--external | ↗記号と新規タブの読み上げ補足を共通化 |
+### 工程・添付・開閉
 
-### 追加する部品
+- `.detail-feature` は本文と写真の2要素。768px未満は縦、以上は等幅2列。通常写真は4:3、図面は `--contain` で切り抜かない。完成イメージは `.garden-entry-cta__media` と `.media-caption` を再利用し、キャプションを右下へ置く。
+- `.process-list` は意味のある順序を持つ工程の `ol`。番号は `.process-list__number` に分離してAntonio・700とし、768px未満は縦、以上は3列。装飾的なSECTION番号を付けない。
+- `.attachment-control` はファイル入力・選択名・取り消しをまとめる。未選択をエラー色にせず、長いファイル名を折り返す。
+- 添付UIは `subpage-components.js` が管理する。フォーム側は `attachment:restore` の `detail.name` で保存名を復元し、`data-attachment-name` で確認用の名前を取得する。共通JSをフォームJSより先にdeferで読む。ファイル本体は保存・送信しない。
+- FAQは `.faq-list / .faq-item`、詳細は `.disclosure-list / .disclosure[data-disclosure]`。ネイティブの `details/summary` とキーボード操作を保ち、複数を同時に開ける。summary内に別ボタンを置かない。
+- 開閉は共通JSで高さを400msで伸縮し、連続操作時は現在の高さから反転する。閉じる途中の回答は操作対象外、動きを減らす設定では即時切り替えとする。詳細モーダルは使用しない。
+- 実物見本：`components.html#sample-groups`、`#sample-form`、`#sample-process`、`#sample-faq`、`#sample-disclosure`。
 
-- `.detail-feature`：写真と説明の2要素。768px未満は縦積み、以上は等幅2列。写真は4:3。企業概要固有の重なり構成はコピーしない。
-- `.process-list`：工程を示すol。768px未満は縦積み、以上は3列。番号は工程の順序に意味がある場合だけ使用し、SECTION番号は付けない。
-- `.faq-list / .faq-item`：details/summaryで開閉。Q、質問、開閉記号、A、回答の構造。複数項目を同時に開ける。ネイティブのキーボード操作を保持し、別のボタンをsummary内に置かない。
-- `.attachment-control`：既存フォームのファイル入力、選択名、取り消しボタン。長いファイル名は折り返す。
-- `.content-anchor`：固定ヘッダーを避ける本文見出しアンカー。入力→確認→完了・編集に戻る際はKVではなく本文を表示する。
-- 新規CSSはsubpage.cssに限定し、既存ページとTOPに影響するセレクタを上書きしない。新たな色・書体・ボタン寸法・独自アニメーションは追加しない。
+## 10. 採用情報・求人応募
 
-### 飲食出店応募の外部化（2026-10-17更新）
+### 構成・素材
 
-- 飲食出店の入力項目・送信処理はクライアント管理のGoogleフォームに集約する。サイト内の専用フォームと `assets/js/application.js` は削除済み。
-- 20ft・40ftそれぞれの応募ボタンは、GoogleフォームのURLが届くまで仮リンクとする。正式URL確定後に各ボタンを差し替える。
-- 未確定の写真は全ページ・共通部品確認ページで `assets/images/placeholder/sample-1.webp` に統一する。実際の区画図や正式な施設写真として扱わない。旧サンプルJPEGと `sample-2.webp`・`sample-3.webp` は使用しない。
-- 未提供の資料DLは無効状態を使い、架空のダウンロード先を作らない。
+- 正式な施設表記は「寒川町相模川一之宮公園」「寒川町ストリートスポーツパーク」。旧施設名は新規の表示文言に使わない。ただしExcel正本の歴史的な実績名・既存URL・識別子・素材ファイル名は機械的に置換しない。
+- 募集区分は公園の社員・アルバイトと、スポーツパークの受付社員・運営管理社員／BMX FLATLAND・SKATEBOARD STREET講師／アルバイト・清掃スタッフの3件。
+- 本サイトで詳細と応募を管理するのは公園。スポーツパークは正式な外部URL受領まで「採用サイト準備中」とし、公園のフォームや架空URLへ接続しない。
+- TOPは `.recruit-facilities / .recruit-facility`、採用ページは `.recruitment-facilities / .recruitment-facility`。スポーツパークは両ページで `.recruit-facility__layout--park / .recruit-opening` を共用し、文字→画像→ボタン、罫線、PC3列を揃える。
+- 公園の採用カードは `.recruitment-routes / .recruitment-route`。バナー上の `recruitment-route__number` による「01」は表示しない。画像と周囲の文言は保持する。
+- 本文の順序は募集区分→WORK STYLE→JOBS→FLOW。WORK STYLEは会社紹介と働く環境、JOBSは仕事内容・人物像・募集要項、FLOWは応募→面接→採用発表。
+- WORK STYLE・JOBSの内容は支給「採用情報_公園.pdf」に基づく。根拠のない働きやすさや条件を創作せず、給与・人数等の「（仮）」を保持する。
+- WORK STYLEのリードは「公園の日常と、<br />地域のにぎわいを支える。」。右の画像は `assets/images/media/ark-garden-night-perspective.webp` を共用し、「完成イメージ」を右下に表示する。
+- TOPの公園側左画像は `placeholder/sample-1.webp`、求人バナーは `recruit/ichinomiya-park-staff.webp`。スポーツパークの受付・運営は `recruit/samukawa-street-sports-park-operations.webp`、講師は `recruit/staff-instructor-cleaning.webp`、アルバイト・清掃は `recruit/samukawa-street-sports-park-cleaning.webp`。
+- 採用メイン・求人応募3画面のKVは `recruit/staff-instructor-cleaning.webp` を共用。`.page-hero--image-top` の現行位置は `36% 34%`。
+- WORK STYLE末尾・JOBS末尾は求人応募ボタンだけを表示し、「選考の流れを見る」のページ内リンクは置かない。FLOWセクション自体は残す。
+- 実物見本：`components.html#sample-recruit`、`#sample-feature`。
 
-### 追加時の合格条件
+### 求人応募の静的試作
 
-1. TOPは原則として変更前後のハッシュで非変更を確認する。承認されたリンク変更・共通CSS整理を行う場合は、対象差分を限定し、主要部品の算出スタイルと表示を比較する。
-2. 320 / 375 / 768 / 1280 / 1440pxで横溢れ、見出し、長い入力内容・ファイル名を確認する。
-3. 通常・hover・focus-visible・disabledを共通部品で確認する。
-4. FAQの開閉・キーボード操作、必須検証、確認・戻る・完了、添付取り消し、確認URLへの直接アクセスを確認する。
-5. 既存のお問い合わせの操作と独立していることを確認する。
+- 必須は氏名・メール・希望職種・志望動機・履歴書添付・個人情報同意。電話番号と職務経歴は任意。現行フォームの希望職種は試作用で、JOBSの最新職種との同期が残っている。本番では条件と照合して確定する。
+- `recruit-application.js` の保存先は `ark-garden-recruitment-preview`。お問い合わせは `ark-contact-preview` を使い、互いの保存内容を変更しない。
+- 入力・確認・完了は現在それぞれ専用HTML。各本文アンカーへ遷移し、確認から修正に戻れる。実送信は行わない。
+- 履歴書は名前だけを保持する。確認から戻る場合の仮必須判定を本番のファイル検証として流用しない。
+- 確認画面へ直接アクセスし有効な入力がない場合は入力へ案内し、完了時は求人応募データだけを削除する。
 
-### 承認済みの共通部品調整（2026-09-26）
+## 11. 飲食出店募集
 
-- 確認事項・個人情報同意のリンクは文字・外部リンク記号・下線を既存のアクセント色に統一する。記号の形・サイズとリンク以外の説明文は変更しない。
-- 確認ページで承認されたCSSは `assets/css/subpage.css`、動作は `assets/js/subpage-components.js` に統合した。確認ページと実ページで同じ定義を使い、確認ページ専用ファイルは廃止する。TOPは変更しない。
-- 添付欄：黒い選択領域＋ファイル名表示、薄い補助背景、細い点線枠。未選択は通常状態のためエラー色にしない。選択・取り消し・キーボードフォーカス・長い名前の折り返しに対応。
-- FAQ：回答の高さを400msで伸縮する。連続操作は現在の高さから反転し、終了後は自然高へ戻す。details/summaryとキーボード操作を保ち、閉じる途中の回答は操作対象外とする。動きを減らす設定では即時切り替える。
-- 工程・進行表示の番号：専用spanでAntonio・700を指定し、日本語ラベルと分離する。工程の疑似要素番号は廃止し、共通の `.process-list__number` を使う。
-- 適用先：寒川町相模川一之宮公園募集（工程）、FAQ（開閉）、応募入力（添付・リンク・進行表示）、応募確認・完了（進行表示）、お問い合わせ入力（リンク・進行表示）、お問い合わせ確認・完了（進行表示）。
-- 添付UIは共通JSが管理する。フォーム側は `attachment:restore` イベントの `detail.name` で保存済みファイル名を復元し、`.attachment-control` の `data-attachment-name` から確認用の名前を取得する。共通JSはフォームJSより先にdeferで読み込む。ファイル本体は保存・送信しない。
+### TOPと内部導線
 
-### 募集ページの情報階層・導線（2026-09-26）
+- ヘッダー・メニュー・フッターの「飲食出店募集」と期間限定CTAの「募集概要を見る」はTOPの `#ark-garden` へ接続する。階層に合わせた相対パスを使う。
+- 期間限定 `.garden-entry-cta` は夜パースを右に置き、SPは縦、768px以上は2列。「完成イメージ」はHTMLの `.media-caption` として右下へ置く。
+- TOPの紹介写真は960px以上で募集文を重ね、未満は画像の下へ文を置く。
+- 20ft・40ft枠は768px以上で2列、未満は縦並び。画像は3:2の枠に `object-fit: contain` で全体を表示する。
+- TOPの枠は `arkgarden/container-20ft.webp`（支給container_9）と `container-40ft.webp`（container_3）。AREAの図面とは別素材のため混同しない。
+- 詳細は `arkgarden-recruit/#container-20ft` / `#container-40ft` へ接続。枠下は「よくある質問を見る」だけを表示し、`arkgarden-recruit/#faq` へ接続する。
+- Googleフォームはクライアント管理。正式URL未受領の応募ボタンは `href="#"`・`data-pending-link`・`aria-disabled="true"` と準備中の読み上げ名を持つ。確定時はTOP・各AREA・スケジュール下をコンテナ別に一括更新する。
+- 旧サイト内の飲食出店応募3画面と `application.js` は削除済み。採用応募・お問い合わせは別用途として保持する。
 
-- 大見出しはABOUT（紹介・施設概要）、GUIDELINES（募集要項）、FLOW（応募の流れ）の3つにまとめる。すべての項目に巨大英字や赤い斜線を付けない。
-- `.content-groups` は関連情報のまとまりを並べる容器。間隔はSPで `--space-xl`、768px以上で `--space-2xl`。
-- `.content-group` と `.content-group__title` は大見出し内の小項目。日本語のh3、Noto Sans JP、20〜25px、行間1.5、本文との間隔は `--space-lg`。固有の背景・影・赤い斜線は付けない。
-- `.document-link-row` は小見出し内の説明＋資料導線。すべての画面幅で説明文の下にボタンを置き、左揃えにする。見出しから説明文、説明文からボタンの間隔はそれぞれ `--space-lg`。ボタンに合わせた説明文の上下中央揃えは行わない。未提供資料は既存の無効ボタンを使い、公開用PDF確定後にリンクへ変更する。
-- 募集要項は募集区画・出店条件・費用・契約条件・資料を含む。費用はユーザー指定の「出店料・区画利用料・初期費用・運営中の費用」を各 `000000円` で表示する。全額ダミーであり、課金単位・税込税別・正式な費目は未確定。ゼロ円や無料として扱わない。
-- FAQはスケジュール下の応募・PDF導線の後に、共通見出し＋既存アコーディオンで配置。クライアント原稿受領までは元の10項目とダミー回答を表示し、正本は募集ページだけで管理する。旧URLは `../#faq` へ転送する。開閉は `subpage-components.js` を共用する。
-- 募集ページはCONCEPT・STRENGTHS・AREA・SCHEDULE・FAQで構成する。20ft・40ftの概要末尾とスケジュール下に、それぞれのGoogleフォーム応募と募集PDFのボタンを置く。Googleフォームは正式URL受領まで仮リンク。
-- 紹介後・募集要項後の応募CTAには、共通の `.text-link` で「よくある質問を見る」を併設し、同一ページの `#faq` へ移動する。
-- TOPは承認された飲食出店募集関連のリンク先だけを更新する。採用情報の「社員・アルバイト募集」は飲食出店応募と別用途のため変更しない。
-- お問い合わせ確認の最終CTAは「送信する」とする。現段階は静的遷移のみであり、実送信機能は別途必要。
-- `style.css` のヘッダー・セクション見出しは基本定義を各1箇所へ集約。レスポンシブ・状態・モーションの必要な差分は維持し、後勝ちの補正定義を増やさない。
-- `docs/components.html#sample-groups` に費用表・小見出し・資料導線の組み合わせを掲載し、実ページと同じCSSで確認する。
+### 詳細ページ
 
-## 10. 採用情報・求人応募（2026-09-26／2026-10-03更新）
+- `arkgarden-recruit/index.html` の順序はCONCEPT→STRENGTHS→AREA→SCHEDULE→FAQ。KV下の `.inpage-nav` は20ft・40ft・スケジュール・FAQへ接続する。
+- 内部ナビは `.text-link` の丸囲み下矢印。帯背景や上下罫線を付けず、SPは2列、768px以上は4項目を中央に並べる。
+- CONCEPTの写真2枚は `placeholder/sample-1.webp`。STRENGTHSは支給文5段落を省略せず常時表示し、`arkgarden/park-masterplan.webp` を添える。「遊具（未定）」なども支給表記を維持する。
+- AREAは20ft→40ftを縦配置。20ftは `arkgarden/container-20ft-plan.webp`（支給container_11）、40ftは `arkgarden/container-40ft-ground-plan.webp`（container_5）。図面を本文幅いっぱいに表示し、その下に概要を置く。図面の縦横比・情報を保持し、切り抜かない。
+- `.summary-facts` で主要条件を常時表示。「区画・客席」「費用・支払い条件」「営業・契約条件」だけを各コンテナ3個、計6個のアコーディオンにする。全文・費用は支給PDFに基づき、古い `000000円` の仮表へ戻さない。
+- 共通の応募資格・出店条件は `#conditions` に集約して常時表示する。STRENGTHSと共通条件は折り畳まない。
+- 各AREA末尾は `.rental-area__navigation` の中で応募・PDFを横並びにし、その下中央の「スケジュールを見る」を `#schedule` へ接続する。
+- SCHEDULEは「スケジュール」／「応募から開業までの流れ」。`.schedule-timeline` の3段階・13工程で、PCは日付・節点・工程の3列、768px未満は日付を工程上へ移す。結果通知は2027年9月下旬に統一し、全日程は予定として扱う。
+- スケジュール末尾も20ft・40ft別に応募・PDFボタンを置く。募集PDFは `assets/documents/arkgarden/20ft-recruitment.pdf` と `40ft-recruitment.pdf`。支給PDF自体は変更しない。
+- FAQは原稿待ちの10項目とダミー回答。PDFから独自の回答を創作しない。旧 `arkgarden-recruit/faq/index.html` は `../#faq` への転送のみを保持する。
+- 実物見本：`components.html#sample-inpage-nav`、`#sample-schedule`、`#sample-disclosure`。見本の日付・費用は構造確認用で、募集条件の正本にはしない。
 
-- 募集区分はTOPを正とし、「寒川町相模川一之宮公園 社員・アルバイト募集」「寒川町ストリートスポーツパーク 受付社員・運営管理社員 募集」「寒川町ストリートスポーツパーク BMX FLATLAND・SKATEBOARD STREET講師 募集」「寒川町ストリートスポーツパーク アルバイト・清掃スタッフ 募集」。
-- 本サイトで詳細と応募を管理するのは寒川町相模川一之宮公園。飲食出店募集とは別用途・別フォームであり、募集先をARK LEAGUE社員募集と表記しない。サイト運営会社名のARK LEAGUEは変更しない。
-- 寒川町ストリートスポーツパークの3区分は正式な外部採用URLが決まるまで「採用サイト準備中」。募集条件を本サイトへ複製せず、架空URLや寒川町相模川一之宮公園の応募フォームへ接続しない。
-- TOPは施設単位の `.recruit-facilities / .recruit-facility` で整理する。寒川町相模川一之宮公園は施設画像と1募集、寒川町ストリートスポーツパークは3募集を並べる。施設名は太字。960px以上では公園を2列、寒川町ストリートスポーツパークを3列とし、未満は縦積みとする。
-- 採用ページの募集区分も施設別に分ける。寒川町相模川一之宮公園は1件を画像と本文の2列で表示する。寒川町ストリートスポーツパークはTOPと同じ `.recruit-facility__layout--park / .recruit-opening` を使い、文字・画像・ボタンの順、施設名とカードの間の罫線位置、PCの3列と狭い画面の縦積みを共通化する。`docs/components.html` の採用カード見本も同じ構造を使う。
-- TOPの寒川町相模川一之宮公園の左側施設画像は暫定的に `placeholder/sample-1.webp` を使い、右側の求人枠は `recruit/ichinomiya-park-staff.webp` を使う。寒川町ストリートスポーツパークの受付社員・運営管理社員募集には `recruit/samukawa-street-sports-park-operations.webp`、講師募集には `recruit/staff-instructor-cleaning.webp`、アルバイト・清掃スタッフ募集には `recruit/samukawa-street-sports-park-cleaning.webp` を使う。3枚の採用バナーは支給された新名称入り画像をWebPに変換している。「寒川町相模川一之宮公園で働く」の会社紹介写真は `media/indoor-park.webp` を共用する。
-- TOPのRECRUIT見出しは共通の `.section-title` を使い、英字と「採用情報」を空き幅に応じて横並びにし、説明文はその下に独立させる。
-- メインは募集区分、WORK STYLE（会社紹介・働く環境）、JOBS（仕事内容・人物像・募集要項）、FLOW（選考の流れ）で構成。細目は `.content-group` の日本語小見出しでまとめる。
-- 採用メインの募集区分以降は `.content-section__body--wide` を使い、カード・写真・情報表・工程を `.page-shell` の右端まで広げる。WORK STYLEとJOBSの説明文には `.content-section__body--readable-copy` を併用し、長文の行長を抑える。左の開始位置・画面端の基本余白・補助背景内の余白は維持する。
-- 採用メインと求人応募の入力・確認・完了のKVは `recruit/staff-instructor-cleaning.webp` を共用する。人物の頭を残しつつ上端寄せを緩めるため `.page-hero--image-top`（`object-position: 56% 20%`）で上側を優先して切り抜く。見出し・情報表・工程・フォーム・添付・同意リンクは既存の共通部品を使用する。
-- WORK STYLE末尾にもJOBSと同じ `.contact-actions` を配置し、「求人応募フォームへ」「選考の流れを見る」を併設する。リンク先・ボタン・ホバーは共用する。
+## 12. 更新時の確認
 
-- 求人フォームの必須項目：氏名、メールアドレス、希望職種、志望動機、履歴書添付、個人情報同意。電話番号と職務経歴は任意。希望職種・本文・募集条件・選考内容は確定までダミー。
-- `assets/js/recruit-application.js` の保存先は `ark-garden-recruitment-preview`。お問い合わせ・飲食出店応募と分離する。入力・確認・完了は専用アンカーへ移動し、確認から編集へ戻れる。
-- 静的試作では履歴書のファイル名のみを保持し、実ファイルを保存・送信しない。確認から戻った場合は保持済みファイル名で仮の必須判定を行う。取り消すと未添付に戻す。この判定は本番へ持ち込まず、サーバーのアップロード済みファイル識別子と検証へ置き換える。
-- 確認画面への直接アクセスで有効な入力がない場合は、応募ボタンを表示せず入力へ案内。完了時は求人応募データだけを削除する。
-- 本番はサイトマップの想定に合わせ、入力・確認を同一URL内で切り替え、完了のみ専用URLにする。添付形式・容量、管理者通知、自動返信、実送信は本番実装時に確定する。
-- `docs/components.html#sample-recruit` は採用メインページで使うカード状態の確認用とし、TOP固有の施設別レイアウトとは分けて管理する。
-
-### TOPの期間限定飲食出店CTA（2026-10-03）
-
-- 公園名と募集名を連結していた見出し・リンク・ページタイトル等は「飲食出店募集」のみとする。施設名が必要な箇所では「寒川町相模川一之宮公園」と表記する。「出展」ではなく、飲食事業者が営業場所へ出る意味の「出店」を使う。
-- KV直後のCTAは期間限定の補助導線であり、既存の寒川町相模川一之宮公園セクションは残す。募集終了時は `.garden-entry-cta` 全体を削除できる構造にする。
-- CTAは左にタイトル・募集状態・ボタン、右に夜パースを置く。SPは縦積み、768px以上は2列。画像は `media/ark-garden-night-perspective.webp` を共用する。
-- 「完成イメージ」は画像右下へ白文字・12px・黒35%の半透明背景で配置する。画像自体へ焼き込まず、差し替えとアクセシビリティに対応できるHTMLテキストとする。
-
-### 写真KVの適用（2026-09-27）
-
-- 企業概要：`company-architecture.webp`。採用メイン：`recruit/staff-instructor-cleaning.webp`。
-- 飲食出店募集のKVとTOPの紹介画像は、暫定的に `media/ark-garden-night-perspective.webp` を共用する。飲食出店応募の3画面は2026-10-17に削除済み。
-- 上記は既存の `.page-hero--image / .page-hero__media` を使用する。KV画像は遅延読み込みせず `loading="eager"`・`fetchpriority="high"` を指定し、共通の高さ・タイトル位置・ベール・グリッド・表示モーションを引き継ぐ。
-
-### お知らせ詳細への遷移（2026-09-27）
-
-- 一覧の記事リンクは `#news-article-section` を付けて本文の「NEWS／お知らせ」へ移動する。見出しは `.content-anchor` を使い、固定ヘッダーとの間隔を共通化する。
-- アンカーなしで直接開いた場合も、ページ準備完了後に本文見出しまで移動する。明示されたアンカーがある場合はその位置を優先する。
-
-
-### TOPの飲食出店募集セクション（2026-10-17）
-
-- ヘッダー・モバイルメニュー・フッターの「飲食出店募集」と、期間限定CTAの「募集概要を見る」はTOPの `#ark-garden` へ移動する。下層ページでは階層に合った相対パスを使う。
-- 紹介画像は企業概要と同様の全幅表示。960px以上は画像上に募集タイトルと説明文を配置し、960px未満は画像の下に文字を置く。SPの画像は元の比率で表示する。
-- その下に20ft・40ftの募集枠を配置する。768px以上は2列、未満は20ft→40ftの縦並び。画像は共通の3:2領域に `object-fit: contain` で全体を表示する。
-- 支給画像 `260829 PFI PARK container_9.png` は `assets/images/arkgarden/container-20ft.webp`、`260829 PFI PARK container_3.png` は `container-40ft.webp` として保存する。横1600pxに縮小し、元画像は素材フォルダーで保持する。
-- 各枠の「詳細を見る」は `arkgarden-recruit/#container-20ft` / `#container-40ft` に接続する。「応募フォームへ」はGoogleフォームのURL未確定の仮リンク。`data-pending-link` の値は `container-20ft-application` / `container-40ft-application`。正式URL確定時はTOP・募集ページの同じ種類の応募ボタンすべてで `href` と準備中属性を更新する。ボタンは内容幅・高さ52pxで、画像下の中央に並べる。
-- 暗い背景のボタンは共通の `.action-button--light` / `.action-button--light-outline` を使う。寸法・矢印・ホバー・フォーカスは共通ボタンに従い、`docs/components.html` に同じ部品を掲載する。
-- 募集枠の下は「よくある質問を見る」の1行のみ。リンク先は `arkgarden-recruit/#faq`。
-- お問い合わせ・採用応募の確認画面と共通部品見本の戻るボタンは「修正する」に統一する。
-
-
-### 飲食出店募集ページの再編（2026-10-17）
-
-- 共通KVの下に `.inpage-nav` を置き、20ft・40ft・スケジュール・FAQへ移動する。共通 `.text-link` の文字＋丸囲み下矢印を使用し、上下罫線や帯背景は付けない。SPは2列、768px以上は内容幅の4項目を中央配置する。
-- 本文の順序はCONCEPT（コンセプト）、STRENGTHS（他公園に無い強み）、AREA（契約エリアについて）、SCHEDULE（スケジュール）、FAQ（よくある質問）。見出しは共通 `.section-title`、本文・一覧・ボタン・FAQは既存部品を使用する。
-- コンセプト画像2枚は `placeholder/sample-1.webp` のBMX仮画像。AREAの20ft図面は `arkgarden/container-20ft-plan.webp`、40ft図面は `arkgarden/container-40ft-ground-plan.webp` を使用する。`.rental-area__overview` は画面幅にかかわらず図面を本文幅いっぱいに表示し、その下に概要を置く。図面は元の縦横比を維持し、切り抜かない。
-- STRENGTHSは支給スクリーンショットの全文を段落で掲載する。2・3枚目に重複する段落は1回だけ掲載。「遊具（未定）」等は現段階では支給文言に従う。画像は `arkgarden/park-masterplan.webp`（支給「全体像.jpg」）。
-- AREAは20ft→40ftを縦に配置。`#container-20ft` / `#container-40ft` がTOP詳細ボタンの遷移先。区画・客席、費用、営業・契約条件を掲載し、共通条件は `#conditions` に集約する。本文は `.content-section__body--wide` を使用し、本文見出しとの左位置を共通化する。
-- 各AREA末尾の応募・PDFボタン下に、共通 `.text-link` で「スケジュールを見る」を置き、`#schedule` へ移動する。通常のアンカー動作と共通 `.content-anchor` で固定ヘッダーを避ける。
-- SCHEDULEは共通の `.schedule-timeline` を使用。募集・選考／契約・計画／引渡し・開業準備の3段階・13工程。PCは日付、節点、工程の3列、768px未満は日付を工程の上に置く。応募締切・オープンのみアクセント色を使用し、連続線・節点・3種類の線画アイコンで工程を示す。
-- 全日程は予定。Webの選考結果通知日はクライアント承認により「2027年9月下旬」に統一。寸法・家賃発生・公開用の暫定文言・募集状態は、現在の支給資料に基づいて実装し、追加確認による作業停止は不要。
-- 支給PDFは内容を変えず `assets/documents/arkgarden/20ft-recruitment.pdf` / `40ft-recruitment.pdf` にコピーする。ボタンは `download` 属性を持ち、読み上げ名でもコンテナ種類を区別する。
-- 共通の新規部品は `docs/components.html#sample-inpage-nav` と `#sample-schedule` に実物を掲載する。既存の工程 `.process-list` を上書きせず、日付付きの別用途として追加する。
-
-## 2026-10-17 本文幅・PDF・募集ページの共通ルール整理
-
-- `.content-section__body--wide` は `--copy-max: 100%` を設定して写真・一覧・表の幅を確保する。短い導入文は `.content-section__body--editorial` で標準の42remへ戻し、広い構成内の長文は `.content-section__body--readable-copy` で段落だけ58remに抑える。大きな見出し・写真・表は広い幅を維持する。実物見本は `components.html#sample-copy-width`。
-- `/company/` のアクセスは地図と交通手段をページ本文幅まで広げる。出店募集のFAQは標準の狭幅に戻す。お問い合わせ・求人応募の入力、確認、完了は共通の最大68remで揃える。
-- SPで2つの主要ボタンが並ぶ箇所は `.contact-actions--pair` または `.garden-container__actions` を2列にする。ボタンと補助リンクが並ぶ採用ページは `.contact-actions--mixed` を使う。20ft・40ftの「スケジュールを見る」はボタン列の下で中央に置く。単独のボタンには2列指定を適用しない。
-- PDFは共通 `.action-button.action-button--outline`＋丸囲みのダウンロード記号 `.action-button__icon > .ui-download-icon` を使用する。記号は下向き矢印の下に短い水平線を置く。企業概要の時刻表も同じ部品。ページ内リンクの下向き矢印とは区別し、ダウンロード先と `download` 属性を維持する。
-- 募集ページの各コンテナは主要条件の概要を常時表示し、「区画・客席」「費用・支払い条件」「営業・契約条件」の全文は共通アコーディオンに配置する。詳細内の `.definition-list` は全幅とし、異なる表の行高は連動させない。
-- SCHEDULEの日本語見出しは「スケジュール」、リード文は「応募から開業までの流れ」。工程・日程は変更しない。
-- FAQはクライアント原稿受領待ち。元の10項目（出店条件・費用・契約期間・設備・営業時間・搬入搬出・審査・資料提出・キャンセル・問い合わせ先）とダミー回答へ戻す。PDFの条件から独自にQ&Aを作成しない。
-- リード文 `.content-section__lead` は最大32px、字間0、`text-wrap: pretty`。収まる画面では1行で表示し、狭い画面では自然に折り返す。長い日本語の意味のまとまりは `.content-section__lead-phrase` で囲み、768px以上で途中分割を避ける。各まとまりは768pxの本文幅に収まる長さに区切る。モバイルでは画面幅を優先して折り返す。本文段落は通常の折り返しを維持する。
-- 交通手段カードは1280px以上で3列、狭い画面では縦配置とする。時刻表PDFの共通ボタンの幅を確保し、カード外へ重ならせない。
-
-## 2026-10-17 概要＋詳細アコーディオン（適用範囲）
-
-- 適用先は20ft・40ftそれぞれの「区画・客席の詳細」「費用・支払い条件の詳細」「営業・契約条件の詳細」のみ。募集ページには6個の独立したアコーディオンを置く。
-- 「他公園に無い強み」は元の5段落＋全体画像を常時表示する。「共通の応募資格・出店条件」も共通見出し＋情報表を常時表示する。
-- `.summary-facts` は主要費用・営業期間等の概要として常時表示する。スケジュールとFAQは維持する。
-- `.disclosure-list` 内にネイティブ `details.disclosure[data-disclosure]` を置く。見出し行とプラス／マイナス記号はFAQと同じ罫線・余白・色・フォーカスを使う。
-- 詳細はその場で下に展開する。複数項目を同時に開け、Enter・Spaceでも開閉できる。JavaScriptが無効でもネイティブの開閉が機能する。
-- FAQと同じ共通スクリプトで高さのアニメーションを行い、動きを減らす設定では即時開閉する。
-- 実物見本は `components.html#sample-disclosure`。既存のFAQの開閉動作を維持する。
+1. 既存HTML・CSS・JS、クライアント原稿、最新のユーザー指定を確認し、再利用を優先する。新しいCSS・JS等が必要な場合は内容・理由・対象ファイルを編集前に伝える。
+2. 変更範囲外と未コミットの作業を保持する。`docs` の更新だけならサイト本体を変更しない。
+3. 共通部品を変えたときは `components.html` と使用ページを320 / 375 / 768 / 1280 / 1440pxで確認する。
+4. リンク先・画像・DOM内IDと読み上げ名、通常・hover・focus-visible・disabled、動きを減らす設定を確認する。
+5. WORKSは正本Excel・共通データ・素材対応表を照合し、31件・5カテゴリ・12/12/7件・TOP最新6件の順序・クレジットを確認する。
+6. フォーム変更時は必須検証・添付・確認・修正・完了・直接アクセスと、別フォームの保存データへの影響を確認する。
+7. 日付の古さや参照の有無だけで資料を削除しない。役割と内容の重複を確認し、過去案が現行ルールと競合する記述だけを整理する。
