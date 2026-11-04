@@ -86,7 +86,7 @@
         "note": "",
         "sourceRow": 63,
         "image": {
-          "src": "2026-samukawa-high-school-lecture.webp?v=20261101-works-4",
+          "src": "2026-samukawa-high-school-lecture.webp?v=20261102-lecture-1",
           "width": 1477,
           "height": 1108,
           "alt": "体育館でBMXを披露する講師と周囲に座る生徒",
@@ -184,10 +184,10 @@
         "note": "",
         "sourceRow": 52,
         "image": {
-          "src": "2025-samukawa-high-school-lecture.webp?v=20261101-works-4",
+          "src": "2025-samukawa-high-school-lecture.webp?v=20261102-lecture-1",
           "width": 1600,
           "height": 1067,
-          "alt": "体育館で話す講師と観覧する生徒",
+          "alt": "体育館でBMXを挟んで話す2人",
           "credit": ""
         }
       },
@@ -198,10 +198,10 @@
         "note": "",
         "sourceRow": 51,
         "image": {
-          "src": "2025-samukawa-junior-high-lecture.webp?v=20261101-works-4",
+          "src": "2025-samukawa-junior-high-lecture.webp?v=20261102-lecture-1",
           "width": 1567,
           "height": 1044,
-          "alt": "体育館でBMXを披露する講師と観覧する生徒",
+          "alt": "体育館でBMXを横に置いてマイクで話す講師",
           "credit": ""
         }
       },
@@ -212,10 +212,10 @@
         "note": "",
         "sourceRow": 50,
         "image": {
-          "src": "2025-samukawa-higashi-junior-high-lecture.webp?v=20261101-works-4",
+          "src": "2025-samukawa-higashi-junior-high-lecture.webp?v=20261102-lecture-1",
           "width": 1567,
-          "height": 1044,
-          "alt": "体育館でBMXを披露する講師を囲む生徒",
+          "height": 1045,
+          "alt": "体育館で観覧する生徒の前でBMXを披露する講師",
           "credit": ""
         }
       },

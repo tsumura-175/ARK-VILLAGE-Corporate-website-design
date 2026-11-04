@@ -15,16 +15,16 @@
 | 67 | 2026 | YOKOHAMA URBAN SPORTS FESTIVAL 2026 / FLAT ARK/SKATE ARK | 2026/YUSF2026/2026/BMXフラットランド/17日/JH_10172026_DSC_8541.jpg | 2026-yokohama-urban-sports-festival.webp | 横浜赤レンガ倉庫を背景にBMXフラットランドを披露するライダー | ©Jason Halayko / YUSF |
 | 66 | 2026 | MURASAKI SHONAN OPEN 2026 / ONE SHOT KING | 2026/MURASAKI SHONAN OPEN/2026/ONE SHOT KING/ONESHOTKING2026/20260720_ShonanOpen_Day02_131__U7A5596.jpg | 2026-shonan-one-shot-king.webp | 屋外ボウルの上でジャンプするスケートボード選手 | — |
 | 65 | 2026 | MURASAKI SHONAN OPEN 2026 / MAKE ON THE SPOT | 2026/MURASAKI SHONAN OPEN/2026/MAKE ON THE SPOT/MAKEONTHESPOT2026/20260719_Naoki_ShonanOpen_Day01_340_0E3A1367.jpg | 2026-shonan-make-on-the-spot.webp | 階段とレールのある競技エリアで技を披露するBMX選手 | — |
-| 63 | 2026 | 神奈川県立寒川高校 講演会 | 2026/神奈川県立寒川高校講演会/LINE_ALBUM_R8寒川高等学校_261028_2.jpg | 2026-samukawa-high-school-lecture.webp | 体育館でBMXを披露する講師と周囲に座る生徒 | — |
+| 63 | 2026 | 神奈川県立寒川高校 講演会 | 2026/神奈川県立寒川高校講演会/LINE_ALBUM_R8寒川高等学校_261028_2_修正.jpg | 2026-samukawa-high-school-lecture.webp | 体育館でBMXを披露する講師と周囲に座る生徒 | — |
 | 62 | 2026 | アーバンサイクルパークス広島 | 2026/広島パーク写真/【UCP広島】内野さま提供素材/スケートボード＆ＢＭＸ初心者ゾーン_BN7A0227.jpg | 2026-urban-cycle-park-hiroshima.webp | アーバンサイクルパークス広島のスケートボード・BMX初心者ゾーン | — |
 | 57 | 2025 | MURASAKI SHONAN OPEN 2025 / ONE SHOT KING | 2025/MURASAKI SHONAN OPEN/2025/ONE SHOT KING/ONESHOTKING2025/_C8A9968_KenjiHaruta.jpg | 2025-shonan-one-shot-king.webp | ボウルの縁で技を披露するスケートボード選手と観客 | — |
 | 56 | 2025 | MURASAKI SHONAN OPEN 2025 / MAKE ON THE SPOT | 2025/MURASAKI SHONAN OPEN/2025/MAKE ON THE SPOT/MAKEONTHESPOT2025/1SNO2260.JPG | 2025-shonan-make-on-the-spot.webp | 会場のレール上で技を披露するBMX選手 | — |
 | 55 | 2025 | DeNA 主催 SPARK ONE | 2025/DeNA主催SPARK ONE/JH_sparkone_20250517_0109.jpg | 2025-spark-one.webp | 屋外ランプで技を披露する選手と観客 | — |
 | 54 | 2025 | YOKOHAMA URBAN SPORTS FESTIVAL 2025 / FLAT ARK/SKATE ARK | 2025/YUSF2025/2025/BMXフラットランド/全体/JH_20251116_YUSF_DSC_9588.jpg | 2025-yokohama-urban-sports-festival.webp | 横浜赤レンガ倉庫前の大会会場でBMXを披露するライダーと観客 | ©Jason Halayko / YUSF |
 | 53 | 2025 | 寒川町文化講演会公開講座 | 2025/寒川町文化講演会公開講座/370E93E4-385F-4044-BE71-E85582FC12C3.jpg | 2025-samukawa-cultural-lecture.webp | 文化講演会の看板がある舞台に並ぶ人々 | — |
-| 52 | 2025 | 神奈川県立寒川高校 講演会 | 2025/神奈川県立寒川高校講演会/20250925神奈川県立寒川高等学校/DSC_7381.JPG | 2025-samukawa-high-school-lecture.webp | 体育館で話す講師と観覧する生徒 | — |
-| 51 | 2025 | 寒川町立寒川中学校 講演会 | 2025/寒川町立寒川中学校講演会/寒川中学校2.jpg | 2025-samukawa-junior-high-lecture.webp | 体育館でBMXを披露する講師と観覧する生徒 | — |
-| 50 | 2025 | 寒川町立東中学校 講演会 | 2025/寒川町率東中学校講演会/寒川東中学校2.jpg | 2025-samukawa-higashi-junior-high-lecture.webp | 体育館でBMXを披露する講師を囲む生徒 | — |
+| 52 | 2025 | 神奈川県立寒川高校 講演会 | 2025/神奈川県立寒川高校講演会/20250925神奈川県立寒川高等学校/DSC_7420.JPG | 2025-samukawa-high-school-lecture.webp | 体育館でBMXを挟んで話す2人 | — |
+| 51 | 2025 | 寒川町立寒川中学校 講演会 | 2025/寒川町立寒川中学校講演会/寒川中学校4.jpg | 2025-samukawa-junior-high-lecture.webp | 体育館でBMXを横に置いてマイクで話す講師 | — |
+| 50 | 2025 | 寒川町立東中学校 講演会 | 2025/寒川町立東中学校講演会/寒川東中学校6.jpg | 2025-samukawa-higashi-junior-high-lecture.webp | 体育館で観覧する生徒の前でBMXを披露する講師 | — |
 | 46 | 2024 | YOKOHAMA URBAN SPORTS FESTIVAL 2024 / FLAT ARK/SKATE ARK | 2024/YUSF2024/2024/スケートボード/WOMENS HI 決勝・表彰式/YY_H2S14693.jpg | 2024-yokohama-urban-sports-festival.webp | 横浜赤レンガ倉庫の会場でレールの技を披露するスケートボード選手 | ©Yoshio Yoshida / YUSF |
 | 42 | 2023 | YOKOHAMA URBAN SPORTS FESTIVAL 2023 / FLAT ARK/SKATE ARK | 2023/YUSF2023/2023/BMXフラットランド/男子 Low 決勝/1HF_0321.jpg | 2023-yokohama-urban-sports-festival.webp | 横浜赤レンガ倉庫を背景にBMXフラットランドを披露するライダー | ©Hikaru Funyu / YUSF |
 | 41 | 2023 | FLAT ARK 2023 in 阪神甲子園球場 | 2023/FLATARK2023in阪神甲子園球場/A1_00470.jpg | 2023-flat-ark-koshien.webp | 阪神甲子園球場の観客席から見た大会会場 | — |
@@ -47,7 +47,7 @@
 - 表示データは `assets/js/works-data.js`、カード生成と絞り込みは `assets/js/works.js`。TOPとWORKSは同じデータを参照し、別々にコピーを編集しない。
 - カテゴリは「大会運営/企画」「大会運営」「パーク運営/監修」「パーク監修」「自治体連携」の5種類を統合しない。WORKS全件表示のページ分割は12・12・7件。
 - TOP最新6件のExcel行は69→68→67→66→65→63。写真だけの差し替えでこの並びやタイトル・カテゴリを変更しない。
-- 行50の元フォルダー名「寒川町率東中学校講演会」は資料側の実名。サイトの実績名「寒川町立東中学校 講演会」を誤字へ変更しない。
+- 行50の元写真は最新指定の「寒川町立東中学校講演会」フォルダーを参照する。サイトの実績名「寒川町立東中学校 講演会」は変更しない。
 
 ## WORKSヘッダー
 

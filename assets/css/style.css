@@ -1365,7 +1365,7 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 }
 
 .media--event img {
-  object-position: 50% 58%;
+  object-position: 60% 50%;
 }
 
 .media--outreach img {
