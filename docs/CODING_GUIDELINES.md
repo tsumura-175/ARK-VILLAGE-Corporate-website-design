@@ -4,7 +4,7 @@
 
 本ガイドラインは、ARK LEAGUEコーポレートサイトのHTML、CSS、JavaScriptを継続的に更新するための実装基準です。既存コードとの一貫性、アクセシビリティ、GitHub Pagesでの動作を優先します。
 
-再利用するUI部品の構造と利用条件は `DESIGN_SYSTEM.md`、表示・操作の見本は `components.html` を参照してください。実績の素材対応は `WORKS_ASSETS.md` が管理します。2026-11-01時点の実装に合わせて更新しています。
+再利用するUI部品の構造と利用条件は `DESIGN_SYSTEM.md`、表示・操作の見本は `components.html` を参照してください。実績の素材対応は `WORKS_ASSETS.md` が管理します。2026-11-07時点の実装に合わせて更新しています。
 
 ## 2. 技術構成
 
@@ -38,6 +38,7 @@
 │  ├─ js/
 │  │  ├─ script.js
 │  │  ├─ subpage-content.js（ニュース・お問い合わせの静的試作）
+│  │  ├─ pagination.js（NEWS・WORKS・デザイン見本で使う共通ページ送り）
 │  │  ├─ subpage-components.js（添付UI・FAQ・詳細アコーディオンの共通動作）
 │  │  ├─ works-data.js（Excelに基づくTOP・WORKS共通の実績データ）
 │  │  ├─ works.js（共通カード生成・カテゴリ切替・12件単位のページ送り）
@@ -49,7 +50,8 @@
    ├─ DESIGN_GUIDELINES.md
    ├─ CODING_GUIDELINES.md
    ├─ WORKS_ASSETS.md
-   └─ components.html
+   ├─ components.html
+   └─ components.css（見本の説明・配置専用。サイトには読み込まない）
 ```
 
 - 画像は `assets/images/` にまとめる
@@ -110,6 +112,18 @@ CSSクラスの変更だけでJavaScriptが壊れない構成を維持します�
 - `style.css` にHEX、RGB、任意の余白値を増やさない
 - 新しいトークンは用途が複数箇所で再利用される場合に追加する
 - 値ではなく役割で命名する
+
+### 文字トークン・実部品・資料用CSS
+
+- 文字値・使用条件・使用先の正本は `DESIGN_SYSTEM.md` 第2・13・14章。実値は `tokens.css` の役割別トークンから参照し、汎用 `--text-*` の値は一括変更しない。工程番号とNEWSカテゴリ列には専用トークンを使う。
+- サイトのHTMLとJSが実際に使う共通部品を優先する。JSで生成・付与されるクラスも確認し、文字列検索でHTMLにないことだけを削除理由にしない。未使用の将来案は必要になるまで常設しない。
+- 大見出しは現行 `.section-title__en + h2` の順序と `script.js` の自動配置を維持する。`.section-title--stacked` はJSが付ける実行時の状態なので保持する。
+- ページ送りのAPI・状態・読込順は `DESIGN_SYSTEM.md` 第16章を参照する。NEWSとWORKSで番号生成を複製せず、見本も同じ処理を使う。
+- サイト用の共通部品・トークンは `assets/css/`、見本の説明・配置・枠は `docs/components.css` の `.docs-*` に分ける。資料用CSSは `docs/components.html` だけで読む。WordPress移行時もこの境界を維持する。
+- 見本内の実部品に対し、資料用CSSから文字サイズ・内余白・装飾を上書きしない。見本名は資料用クラスで共通の小見出しトークンを参照する。技術説明と使用先はMarkdownに記載し、クライアント向けの見本には表示しない。
+- 見出しと後続内容の距離は一箇所で所有し、marginと親gapを重ねない。通常情報表はdt/dd各16px。18pxの強調本文はNEWS重要項目と主要条件に保持する。本文の小見出しはh階層を維持したまま標準部品を使う。
+- 参照更新はCSS importと使用HTMLのキャッシュ値を揃える。HTML本文を変更しない場合も、キャッシュ値を変更したファイルを報告する。未コミットの既存変更は保持する。
+- 確認幅・数値はデザインシステムを参照する。実計算値・折り返し・局所的な横溢れ・上罫線までの距離・サイトと見本の一致・資料用CSSの非読込を確認する。
 
 ### 命名
 

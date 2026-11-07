@@ -36,8 +36,8 @@
         }
       })();
     </script>
-    <link rel="stylesheet" href="../assets/css/style.css?v=20261020-facility-names-1" />
-    <link rel="stylesheet" href="../assets/css/subpage.css?v=20261017-layout-width-1" />
+    <link rel="stylesheet" href="../assets/css/style.css?v=20261107-pagination-1" />
+    <link rel="stylesheet" href="../assets/css/subpage.css?v=20261107-pagination-1" />
     <script src="../assets/js/script.js?v=20261017-garden-recruit-1" defer></script>
   </head>
   <body class="subpage news-page">
@@ -225,7 +225,8 @@
               <span class="news-filter__select-control"><select id="news-category-select" data-news-category-select></select></span>
             </div>
           </div>
-          <div class="news-index-list" data-news-list aria-live="polite"></div>
+          <p class="sr-only" role="status" aria-live="polite" data-news-status></p>
+          <div class="news-index-list" data-news-list></div>
           <div class="news-pagination-wrap"><nav class="news-pagination" aria-label="お知らせ一覧のページ送り" data-news-pagination></nav></div>
         </div>
       </div></section></div>
@@ -284,6 +285,7 @@
         </div>
       </div>
     </footer>
-    <script src="../assets/js/subpage-content.js?v=20260927-news-anchor-1" defer></script>
+    <script src="../assets/js/pagination.js?v=20261107-pagination-1" defer></script>
+    <script src="../assets/js/subpage-content.js?v=20261107-pagination-1" defer></script>
   </body>
 </html>

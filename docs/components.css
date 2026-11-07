@@ -1,0 +1,54 @@
+/* Documentation presentation only. Do not load this stylesheet on production pages.
+ * Actual samples use assets/css/style.css and assets/css/subpage.css unchanged.
+ */
+.docs-samples {
+  display: grid;
+  min-inline-size: 0;
+  gap: var(--space-2xl);
+}
+
+.docs-example {
+  display: grid;
+  min-inline-size: 0;
+  gap: 0;
+}
+
+.docs-heading {
+  min-inline-size: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-family: var(--font-body);
+  font-size: var(--type-heading-sm-size);
+  font-weight: var(--type-heading-sm-weight);
+  line-height: var(--type-heading-sm-line);
+}
+
+.docs-demo {
+  display: grid;
+  min-inline-size: 0;
+  /* Components own their internal and inter-component margins. */
+  gap: 0;
+  margin-block-start: var(--type-heading-sm-after);
+}
+
+/* This frame belongs to the demo container, not to the lead/body components. */
+.docs-demo--text {
+  display: block;
+  padding-inline-start: var(--space-lg);
+  border-inline-start: var(--rule-hair) solid var(--color-rule);
+}
+
+.docs-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.docs-actions--dark {
+  padding: var(--space-lg);
+}
+
+.docs-demo > .docs-actions:not(:first-child) {
+  margin-block-start: var(--space-xl);
+}

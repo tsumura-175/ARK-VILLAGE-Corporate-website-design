@@ -33,6 +33,45 @@
   --text-display: clamp(3.6rem, 10vw, 5.5rem);
   --text-hero: clamp(3.6rem, 12vw, 8.5rem);
 
+  /* Content typography: SP below 48rem; navigation and hero scales stay independent. */
+  --type-section-en-size: 3rem;
+  --type-section-en-weight: 700;
+  --type-section-en-line: 1;
+  --type-section-ja-size: 1.5rem;
+  --type-section-ja-weight: 700;
+  --type-section-ja-line: 1.35;
+  --type-heading-md-size: 1.5rem;
+  --type-heading-md-weight: 700;
+  --type-heading-md-line: 1.35;
+  --type-heading-sm-size: 1.25rem;
+  --type-heading-sm-weight: 700;
+  --type-heading-sm-line: 1.5;
+  --type-lead-size: 1.5rem;
+  --type-lead-weight: 700;
+  --type-lead-line: 1.65;
+  --type-body-size: 1rem;
+  --type-body-weight: 400;
+  --type-body-line: 1.8;
+  --type-emphasis-size: 1.125rem;
+  --type-emphasis-weight: 500;
+  --type-emphasis-line: 1.8;
+  --type-label-size: 1rem;
+  --type-label-weight: 700;
+  --type-label-line: 1.5;
+  --type-note-size: 0.875rem;
+  --type-note-weight: 400;
+  --type-note-line: 1.6;
+
+  /* Process numerals are independent from the generic text scale. */
+  --process-number-size: 2rem;
+  /* Seven full-width characters in the longest NEWS category, including padding and borders. */
+  --news-category-column: calc(var(--type-note-size) * 7 + var(--space-xs) * 2 + var(--rule-hair) * 2);
+
+  --type-section-after: 2.5rem;
+  --type-heading-md-after: 1rem;
+  --type-heading-sm-after: 0.75rem;
+  --type-lead-after: 1rem;
+
   --space-3xs: 0.125rem;
   --space-2xs: 0.25rem;
   --space-xs: 0.5rem;
@@ -84,4 +123,19 @@
   --z-tooltip: 600;
   --z-loader: 700;
   --z-access: 800;
+}
+
+/* Typography breakpoint only; existing layout breakpoints are unchanged. */
+@media (min-width: 48rem) {
+  :root {
+    --type-section-en-size: 5rem;
+    --type-section-ja-size: 2rem;
+    --type-heading-md-size: 2rem;
+    --type-heading-sm-size: 1.5rem;
+    --type-lead-size: 2rem;
+    --type-section-after: 4rem;
+    --type-heading-md-after: 1.5rem;
+    --type-heading-sm-after: 1rem;
+    --type-lead-after: 1.5rem;
+  }
 }

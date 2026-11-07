@@ -11,6 +11,7 @@ const newsCategoryLabels = Object.freeze({
   const categorySelect = document.querySelector("[data-news-category-select]");
   const pagination = document.querySelector("[data-news-pagination]");
   if (!list || !pagination || !filterGroup || !categorySelect) return;
+  const status = document.querySelector("[data-news-status]");
 
   const categoryChoices = [["all", "すべて"], ...Object.entries(newsCategoryLabels)];
   categoryChoices.forEach(([value, label]) => {
@@ -51,21 +52,13 @@ const newsCategoryLabels = Object.freeze({
   let selected = "all";
   let page = 1;
 
-  const makeButton = (label, target, disabled = false, current = false, className = "", ariaLabel = "") => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.textContent = label;
-    button.className = className;
-    button.disabled = disabled;
-    if (ariaLabel) button.setAttribute("aria-label", ariaLabel);
-    if (current) button.setAttribute("aria-current", "page");
-    button.addEventListener("click", () => {
+  const pager = window.ARKPagination.create(pagination, {
+    scrollTarget: list,
+    onChange(target) {
       page = target;
       render();
-      list.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-    return button;
-  };
+    },
+  });
 
   const render = () => {
     const visible = selected === "all" ? items : items.filter((item) => item.category === selected);
@@ -96,25 +89,8 @@ const newsCategoryLabels = Object.freeze({
     });
 
     list.replaceChildren(fragment);
-    pagination.replaceChildren();
-    pagination.append(makeButton("← 前へ", page - 1, page === 1, false, "news-pagination__direction", "前のページ"));
-    const numbers = pageCount <= 5
-      ? Array.from({ length: pageCount }, (_, index) => index + 1)
-      : [...new Set([1, page - 1, page, page + 1, pageCount].filter((number) => number >= 1 && number <= pageCount))]
-        .sort((a, b) => a - b);
-    numbers.forEach((number, index) => {
-      if (index > 0 && number - numbers[index - 1] > 1) {
-        const ellipsis = document.createElement("span");
-        ellipsis.className = "news-pagination__ellipsis news-pagination__edge-gap";
-        ellipsis.textContent = "…";
-        ellipsis.setAttribute("aria-hidden", "true");
-        pagination.append(ellipsis);
-      }
-      const edge = (number === 1 || number === pageCount) && Math.abs(number - page) > 1;
-      pagination.append(makeButton(String(number), number, false, page === number,
-        edge ? "news-pagination__edge" : "", `${number}ページ目`));
-    });
-    pagination.append(makeButton("次へ →", page + 1, page === pageCount, false, "news-pagination__direction", "次のページ"));
+    if (status) status.textContent = `${visible.length}件のお知らせ、${pageCount}ページ中${page}ページ目を表示しています。`;
+    pager.update({ pageCount, page });
     filters.forEach((button) => {
       button.setAttribute("aria-pressed", String(button.dataset.newsCategory === selected));
     });

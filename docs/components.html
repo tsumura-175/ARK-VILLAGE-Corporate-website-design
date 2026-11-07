@@ -6,9 +6,9 @@
     <meta name="robots" content="noindex, nofollow" />
     <meta
       name="description"
-      content="ARK LEAGUEコーポレートサイトの現行CSS・JavaScriptを使う共通部品確認ページです。"
+      content="ARK LEAGUEの見出し、文章、ボタン、カードなどのデザイン見本です。"
     />
-    <title>共通部品確認｜株式会社ARK LEAGUE</title>
+    <title>デザイン見本｜株式会社ARK LEAGUE</title>
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png" />
     <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png" />
@@ -36,12 +36,14 @@
         }
       })();
     </script>
-    <link rel="stylesheet" href="../assets/css/style.css?v=20261105-event-overview-1" />
-    <link rel="stylesheet" href="../assets/css/subpage.css?v=20261105-clients-text-1" />
+    <link rel="stylesheet" href="../assets/css/style.css?v=20261107-pagination-1" />
+    <link rel="stylesheet" href="../assets/css/subpage.css?v=20261107-pagination-1" />
     <script src="../assets/js/subpage-components.js?v=20261017-detail-accordion-2" defer></script>
     <script src="../assets/js/script.js?v=20261017-garden-recruit-1" defer></script>
+    <script src="../assets/js/pagination.js?v=20261107-pagination-1" defer></script>
     <script src="../assets/js/works-data.js?v=20261102-lecture-1" defer></script>
-    <script src="../assets/js/works.js?v=20261101-works-4" defer></script>
+    <script src="../assets/js/works.js?v=20261107-pagination-1" defer></script>
+    <link rel="stylesheet" href="components.css?v=20261107-pagination-1" />
   </head>
   <body class="subpage">
     <section
@@ -216,28 +218,29 @@
             <div class="page-hero__title-mask">
               <p class="page-hero__title-en" aria-hidden="true">COMPONENTS</p>
             </div>
-            <h1 id="page-title">共通部品確認</h1>
+            <h1 id="page-title">デザイン見本</h1>
           </div>
         </div>
         <span class="page-hero__rail" aria-hidden="true"></span>
       </section>
       <div class="page-content">
-                <section class="content-section content-section--base content-groups" aria-labelledby="sample-width-title">
+
+        <section class="content-section content-section--base docs-samples" aria-labelledby="sample-width-title">
           <div class="page-shell content-section__grid">
             <header class="section-heading content-section__head content-anchor" id="sample-copy-width">
               <div class="section-title" data-title-reveal><span class="section-title__slash" aria-hidden="true"></span><p class="section-title__en" aria-hidden="true">TEXT WIDTH</p><h2 id="sample-width-title">本文幅</h2></div>
             </header>
-            <div class="content-section__body content-section__body--wide content-group">
-              <h3 class="content-group__title">全幅の本文</h3>
-              <p class="content-section__lead"><span class="content-section__lead-phrase">全幅の本文領域では、</span><span class="content-section__lead-phrase">リード文も内側の余白を除いた</span><span class="content-section__lead-phrase">幅いっぱいに表示します。</span></p>
-              <p class="content-section__copy">テキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキスト。</p>
-            </div>
+            <div class="content-section__body content-section__body--wide docs-example">
+              <h3 class="docs-heading">全幅の本文</h3>
+              <div class="docs-demo docs-demo--text"><p class="content-section__lead"><span class="content-section__lead-phrase">スポーツを通じて、</span><span class="content-section__lead-phrase">人と地域がつながる</span><span class="content-section__lead-phrase">新しい日常をつくる。</span></p>
+              <p class="content-section__copy">スポーツを楽しむ人も、地域で暮らす人も、気軽に立ち寄れる場所へ。日々の出会いや体験を通じて、このまちの新しいにぎわいを育てていきます。</p>
+            </div></div>
           </div>
           <div class="page-shell">
-            <div class="content-section__body content-group">
-              <h3 class="content-group__title">狭幅の本文</h3>
-              <p class="content-section__copy">テキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキスト。</p>
-            </div>
+            <div class="content-section__body docs-example">
+              <h3 class="docs-heading">狭幅の本文</h3>
+              <div class="docs-demo docs-demo--text"><p class="content-section__copy">スポーツを楽しむ人も、地域で暮らす人も、気軽に立ち寄れる場所へ。日々の出会いや体験を通じて、このまちの新しいにぎわいを育てていきます。</p>
+            </div></div>
           </div>
         </section>
         <section class="content-section content-section--base" aria-labelledby="sample-recruit-title">
@@ -256,13 +259,7 @@
                   <div class="recruitment-routes recruitment-routes--garden">
               <article class="recruitment-route">
               <figure class="recruitment-route__media media--bmx">
-              <img
-              src="../assets/images/recruit/ichinomiya-park-staff.webp"
-              width="2000"
-              height="1250"
-              loading="lazy"
-              alt="寒川町相模川一之宮公園の求人バナー「この場所を、ともにつくる。」"
-              />
+              <img src="../assets/images/recruit/ichinomiya-park-staff.webp" width="2000" height="1250" loading="lazy" alt="寒川町相模川一之宮公園の求人バナー「この場所を、ともにつくる。」">
               </figure>
               <div class="recruitment-route__body">
               <h4>社員・アルバイト募集</h4>
@@ -286,13 +283,7 @@
                         <p>施設の受付や管理、利用者対応など、日々の運営を支える社員の採用情報です。</p>
                       </div>
                       <figure class="recruit-opening__media media--park">
-                        <img
-                          src="../assets/images/recruit/samukawa-street-sports-park-operations.webp"
-                          width="2000"
-                          height="1250"
-                          loading="lazy"
-                          alt="寒川町ストリートスポーツパーク 受付社員・運営管理社員募集の求人バナー"
-                        />
+                        <img src="../assets/images/recruit/samukawa-street-sports-park-operations.webp" width="2000" height="1250" loading="lazy" alt="寒川町ストリートスポーツパーク 受付社員・運営管理社員募集の求人バナー">
                       </figure>
                       <span class="action-button action-button--disabled" aria-disabled="true">
                         <span>採用サイト準備中</span>
@@ -306,13 +297,7 @@
                         <p>BMXフラットランド・スケートボードストリートの講師募集です。</p>
                       </div>
                       <figure class="recruit-opening__media media--skate">
-                        <img
-                          src="../assets/images/recruit/staff-instructor-cleaning.webp"
-                          width="5616"
-                          height="3744"
-                          loading="lazy"
-                          alt="ストリートスポーツ施設で働く講師"
-                        />
+                        <img src="../assets/images/recruit/staff-instructor-cleaning.webp" width="5616" height="3744" loading="lazy" alt="ストリートスポーツ施設で働く講師">
                       </figure>
                       <span class="action-button action-button--disabled" aria-disabled="true">
                         <span>採用サイト準備中</span>
@@ -326,13 +311,7 @@
                         <p>施設運営を支えるアルバイト・清掃スタッフの募集です。</p>
                       </div>
                       <figure class="recruit-opening__media media--park">
-                        <img
-                          src="../assets/images/recruit/samukawa-street-sports-park-cleaning.webp"
-                          width="2000"
-                          height="1250"
-                          loading="lazy"
-                          alt="寒川町ストリートスポーツパーク アルバイト・清掃スタッフ募集の求人バナー"
-                        />
+                        <img src="../assets/images/recruit/samukawa-street-sports-park-cleaning.webp" width="2000" height="1250" loading="lazy" alt="寒川町ストリートスポーツパーク アルバイト・清掃スタッフ募集の求人バナー">
                       </figure>
                       <span class="action-button action-button--disabled" aria-disabled="true">
                         <span>採用サイト準備中</span>
@@ -353,11 +332,11 @@
             <div class="content-section__body content-section__body--wide">
                 <div class="detail-feature">
                   <div>
-                    <p class="content-section__lead">公園の日常と、<br />地域のにぎわいを支える。</p>
+                    <p class="content-section__lead">公園の日常と、<br>地域のにぎわいを支える。</p>
                     <p class="content-section__copy">園内の巡回や安全確認、利用者へのご案内、清掃・美化、地域交流イベントの運営などを通じて、寒川町相模川一之宮公園の安全で快適な環境を支える仕事です。</p>
                   </div>
                   <figure class="garden-entry-cta__media" data-content-reveal="media">
-                    <img src="../assets/images/media/ark-garden-night-perspective.webp" width="1448" height="1086" alt="夕景の寒川町相模川一之宮公園完成イメージ" loading="lazy" decoding="async" />
+                    <img src="../assets/images/media/ark-garden-night-perspective.webp" width="1448" height="1086" alt="夕景の寒川町相模川一之宮公園完成イメージ" loading="lazy" decoding="async">
                     <figcaption class="media-caption">完成イメージ</figcaption>
                   </figure>
                 </div>
@@ -400,19 +379,12 @@
               <span class="section-title__slash" aria-hidden="true"></span>
               <p class="section-title__en" aria-hidden="true">WORKS</p>
               <h2 id="sample-works-title">実績カード</h2>
-              <p class="section-title__description">
-                TOPと同じ共通データ・描画処理による最新6件です。カテゴリ切替・ページ送りは実績ページで確認します。
-              </p>
-            </div>
+              </div>
           </header>
 
           <div class="works-grid" data-home-works></div>
 
-          <a
-            class="text-link text-link--light works__link"
-            href="../works/"
-            aria-label="実績一覧を見る"
-          >
+          <a class="text-link text-link--light works__link" href="../works/" aria-label="実績一覧を見る">
             <span class="text-link__clip">
               <span class="text-link__label" data-label="実績一覧を見る">実績一覧を見る</span>
             </span>
@@ -424,114 +396,104 @@
           <div class="page-shell content-section__grid">
             <header class="section-heading content-section__head content-anchor" id="components">
               <div class="section-title" data-title-reveal>
-                <span class="section-title__slash" aria-hidden="true"></span><p class="section-title__en" aria-hidden="true">COMPONENTS</p><h2 id="components-title">共通部品</h2>
+                <span class="section-title__slash" aria-hidden="true"></span><p class="section-title__en" aria-hidden="true">COMPONENTS</p><h2 id="components-title">デザインパーツ</h2>
               </div>
             </header>
-            <div class="content-section__body ">
-              <div class="component-samples">
-                <div id="sample-section-title" class="content-anchor">
-                  <h3>セクション見出し（英字が2行になる例）</h3>
-                  <div class="section-heading">
-                    <div class="section-title" data-title-reveal>
-                      <span class="section-title__slash" aria-hidden="true"></span>
-                      <p class="section-title__en" aria-hidden="true">PROMOTING URBAN SPORTS</p>
-                      <h2>アーバンスポーツ普及活動</h2>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <h3 id="sample-icons-four" class="content-anchor">アイコン付き項目（2列・4項目）</h3>
-                  <ul class="business-capability-grid business-capability-grid--four" data-content-reveal aria-labelledby="sample-icons-four">
+            <div class="content-section__body">
+              <div class="docs-samples">
+                <article class="docs-example"><h3 class="docs-heading content-anchor" id="sample-news">NEWS・カテゴリ</h3><div class="docs-demo"><div class="news__list"><a class="news__item news__item--link news__item--important" href="../news/sample-news/"><time class="news__date" datetime="2026-11-07">2026.11.07</time><span class="news__category news__category--important">重要なお知らせ</span><p>施設利用のご案内</p><span class="news__arrow ui-arrow-glyph" aria-hidden="true">→</span></a><a class="news__item news__item--link news__item--important" href="../news/sample-news/"><time class="news__date" datetime="2026-11-07">2026.11.07</time><span class="news__category news__category--important">重要なお知らせ</span><p>地域の皆さまとともにつくるスポーツと交流の場について、施設の取り組みやイベントの開催情報、初めて訪れる方へのご案内とこれからの活動予定をお知らせします。</p><span class="news__arrow ui-arrow-glyph" aria-hidden="true">→</span></a><a class="news__item news__item--link" href="../news/sample-news/"><time class="news__date" datetime="2026-11-07">2026.11.07</time><span class="news__category">お知らせ</span><p>イベント開催のお知らせ</p><span class="news__arrow ui-arrow-glyph" aria-hidden="true">→</span></a><a class="news__item news__item--link" href="../news/sample-news/"><time class="news__date" datetime="2026-11-07">2026.11.07</time><span class="news__category">お知らせ</span><p>地域の皆さまとともにつくるスポーツと交流の場について、施設の取り組みやイベントの開催情報、初めて訪れる方へのご案内とこれからの活動予定をお知らせします。</p><span class="news__arrow ui-arrow-glyph" aria-hidden="true">→</span></a></div></div></article><div class="docs-example">
+                  <h3 id="sample-icons-four" class="docs-heading content-anchor">アイコン付き項目（2列・4項目）</h3>
+                  <div class="docs-demo"><ul class="business-capability-grid business-capability-grid--four" data-content-reveal aria-labelledby="sample-icons-four">
                 <li class="business-capability-grid__item">
-                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M12 48V20h40v28M20 20v-8h24v8M20 32h24M28 32v16M36 32v16" /></svg>
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M12 48V20h40v28M20 20v-8h24v8M20 32h24M28 32v16M36 32v16"></path></svg>
                   <h3>運営</h3>
                 </li>
                 <li class="business-capability-grid__item">
-                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M18 12h28v40H18zM25 12v-4h14v4M25 26h14M25 36h14M25 46h8" /></svg>
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M18 12h28v40H18zM25 12v-4h14v4M25 26h14M25 36h14M25 46h8"></path></svg>
                   <h3>管理</h3>
                 </li>
                 <li class="business-capability-grid__item">
-                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M14 48 38 24l8 8-24 24H14zM34 20l6-6 10 10-6 6M16 16h14M16 24h10" /></svg>
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M14 48 38 24l8 8-24 24H14zM34 20l6-6 10 10-6 6M16 16h14M16 24h10"></path></svg>
                   <h3>監修</h3>
                 </li>
                 <li class="business-capability-grid__item">
-                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="24" cy="22" r="8" /><circle cx="44" cy="26" r="6" /><path d="M10 52c1-10 6-16 14-16s13 6 14 16M36 52c1-7 4-11 10-11 5 0 8 4 9 11" /></svg>
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="24" cy="22" r="8"></circle><circle cx="44" cy="26" r="6"></circle><path d="M10 52c1-10 6-16 14-16s13 6 14 16M36 52c1-7 4-11 10-11 5 0 8 4 9 11"></path></svg>
                   <h3>コミュニティ形成</h3>
                 </li>
               </ul>
-                </div>
-                <div>
-                  <h3 id="sample-icons-five" class="content-anchor">アイコン付き項目（上3項目・下2項目を左揃え）</h3>
-                  <ul class="business-capability-grid business-capability-grid--five" data-content-reveal aria-labelledby="sample-icons-five">
+                </div></div>
+                <div class="docs-example">
+                  <h3 id="sample-icons-five" class="docs-heading content-anchor">アイコン付き項目（上3項目・下2項目を左揃え）</h3>
+                  <div class="docs-demo"><ul class="business-capability-grid business-capability-grid--five" data-content-reveal aria-labelledby="sample-icons-five">
                 <li class="business-capability-grid__item">
-                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M10 12h44v30H10zM20 50l12-8 12 8M20 22h24M20 30h16" /></svg>
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M10 12h44v30H10zM20 50l12-8 12 8M20 22h24M20 30h16"></path></svg>
                   <h3>スクール</h3>
                 </li>
                 <li class="business-capability-grid__item">
-                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="15" cy="45" r="9" /><circle cx="49" cy="45" r="9" /><path d="m15 45 12-21 12 21H15l12-21h14l8 21M22 18h10M38 17h7l4 7" /></svg>
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="15" cy="45" r="9"></circle><circle cx="49" cy="45" r="9"></circle><path d="m15 45 12-21 12 21H15l12-21h14l8 21M22 18h10M38 17h7l4 7"></path></svg>
                   <h3>体験会</h3>
                 </li>
                 <li class="business-capability-grid__item">
-                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect x="25" y="10" width="14" height="26" rx="7" /><path d="M18 28v3a14 14 0 0 0 28 0v-3M32 45v10M22 55h20" /></svg>
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect x="25" y="10" width="14" height="26" rx="7"></rect><path d="M18 28v3a14 14 0 0 0 28 0v-3M32 45v10M22 55h20"></path></svg>
                   <h3>講演会</h3>
                 </li>
                 <li class="business-capability-grid__item">
-                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M12 37h10l24 10V17L22 27H12zM22 37l4 14h10l-6-11M51 25l5-5M52 33h7M51 41l5 5" /></svg>
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M12 37h10l24 10V17L22 27H12zM22 37l4 14h10l-6-11M51 25l5-5M52 33h7M51 41l5 5"></path></svg>
                   <h3>パフォーマンス出演</h3>
                 </li>
                 <li class="business-capability-grid__item">
-                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="22" cy="20" r="7" /><path d="M9 51V40a13 13 0 0 1 26 0v11M40 32h16M49 25l7 7-7 7" /></svg>
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="22" cy="20" r="7"></circle><path d="M9 51V40a13 13 0 0 1 26 0v11M40 32h16M49 25l7 7-7 7"></path></svg>
                   <h3>講師派遣</h3>
                 </li>
               </ul>
-                </div>
-                <div>
-                  <h3 id="sample-icons-six" class="content-anchor">アイコン付き項目（3列・6項目）</h3>
-                  <ul class="business-capability-grid business-capability-grid--six" data-content-reveal aria-labelledby="sample-icons-six">
+                </div></div>
+                <div class="docs-example">
+                  <h3 id="sample-icons-six" class="docs-heading content-anchor">アイコン付き項目（3列・6項目）</h3>
+                  <div class="docs-demo"><ul class="business-capability-grid business-capability-grid--six" data-content-reveal aria-labelledby="sample-icons-six">
                 <li class="business-capability-grid__item">
-                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M10 50h44M16 50V28l16-14 16 14v22M24 50V36h16v14M16 28h32" /></svg>
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M10 50h44M16 50V28l16-14 16 14v22M24 50V36h16v14M16 28h32"></path></svg>
                   <h3>施設活用計画</h3>
                 </li>
                 <li class="business-capability-grid__item">
-                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M12 16h40v38H12zM12 26h40M22 10v12M42 10v12M32 32l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" /></svg>
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M12 16h40v38H12zM12 26h40M22 10v12M42 10v12M32 32l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"></path></svg>
                   <h3>地域イベント</h3>
                 </li>
                 <li class="business-capability-grid__item">
-                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="24" cy="22" r="8" /><circle cx="44" cy="26" r="6" /><path d="M10 52c1-10 6-16 14-16s13 6 14 16M36 52c1-7 4-11 10-11 5 0 8 4 9 11" /></svg>
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="24" cy="22" r="8"></circle><circle cx="44" cy="26" r="6"></circle><path d="M10 52c1-10 6-16 14-16s13 6 14 16M36 52c1-7 4-11 10-11 5 0 8 4 9 11"></path></svg>
                   <h3>官民連携</h3>
                 </li>
                 <li class="business-capability-grid__item">
-                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="m8 28 9-10 12 5 8-5 19 10-10 18-8 7-22-13zM29 23l-8 9 6 5 10-8 12 11M28 45l5-6M35 49l5-6M8 28l8 12M56 28 46 46" /></svg>
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="m8 28 9-10 12 5 8-5 19 10-10 18-8 7-22-13zM29 23l-8 9 6 5 10-8 12 11M28 45l5-6M35 49l5-6M8 28l8 12M56 28 46 46"></path></svg>
                   <h3>企業タイアップ</h3>
                 </li>
                 <li class="business-capability-grid__item">
-                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M10 52V34h12v18M26 52V25h12v27M42 52V15h12v37M10 24l16-10 12 4L54 7M43 7h11v11" /></svg>
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M10 52V34h12v18M26 52V25h12v27M42 52V15h12v37M10 24l16-10 12 4L54 7M43 7h11v11"></path></svg>
                   <h3>地域活性化</h3>
                 </li>
                 <li class="business-capability-grid__item">
-                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M14 48 38 24l8 8-24 24H14zM34 20l6-6 10 10-6 6M16 16h14M16 24h10" /></svg>
-                  <h3>企画提案・<br />コンサルティング</h3>
+                  <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M14 48 38 24l8 8-24 24H14zM34 20l6-6 10 10-6 6M16 16h14M16 24h10"></path></svg>
+                  <h3>企画提案・<br>コンサルティング</h3>
                 </li>
               </ul>
-                </div>
-                <div>
-                  <h3>共通ボタン・リンク</h3>
-                  <div class="component-samples__actions">
+                </div></div>
+                <div class="docs-example">
+                  <h3 class="docs-heading content-anchor" id="sample-part-3">ボタン・リンク</h3>
+                  <div class="docs-demo"><div class="docs-actions">
                     <a class="action-button" href="../arkgarden-recruit/"><span>募集内容を見る</span><span class="action-button__icon ui-arrow-icon" aria-hidden="true"></span></a><a class="action-button action-button--outline" href="../contact/#contact-form-section"><span>修正する</span><span class="action-button__icon ui-arrow-icon" aria-hidden="true"></span></a><a class="text-link" href="../news/" aria-label="お知らせ一覧へ戻る"><span class="text-link__clip"><span class="text-link__label" data-label="お知らせ一覧へ戻る">お知らせ一覧へ戻る</span></span><span class="text-link__icon ui-arrow-icon" aria-hidden="true"></span></a><span class="action-button action-button--disabled" aria-disabled="true"><span>資料ダウンロード</span><span class="action-button__icon" aria-hidden="true">—</span></span>
 
-                    <a class="action-button action-button--outline" href="../assets/documents/arkgarden/20ft-recruitment.pdf" download="sagamigawa-20ft-recruitment.pdf" aria-label="20ftコンテナの募集要項をダウンロード（PDF）"><span>募集要項PDF</span><span class="action-button__icon" aria-hidden="true"><svg class="ui-download-icon" viewBox="0 0 20 20" focusable="false"><path d="M10 2.5v10.5M6 9l4 4 4-4M4 17h12" /></svg></span></a>
+                    <a class="action-button action-button--outline" href="../assets/documents/arkgarden/20ft-recruitment.pdf" download="sagamigawa-20ft-recruitment.pdf" aria-label="20ftコンテナの募集要項をダウンロード（PDF）"><span>募集要項PDF</span><span class="action-button__icon" aria-hidden="true"><svg class="ui-download-icon" viewBox="0 0 20 20" focusable="false"><path d="M10 2.5v10.5M6 9l4 4 4-4M4 17h12"></path></svg></span></a>
                   </div>
-                </div>
-                <div>
-                  <h3>暗い背景の共通ボタン</h3>
-                  <div class="component-samples__actions component-samples__actions--dark section--dark">
+                </div></div>
+                <div class="docs-example">
+                  <h3 class="docs-heading content-anchor" id="sample-part-4">暗い背景のボタン</h3>
+                  <div class="docs-demo"><div class="docs-actions docs-actions--dark section--dark">
                     <a class="action-button action-button--light-outline" href="#" data-pending-link="sample-details" aria-disabled="true" aria-label="詳細を見る（準備中）"><span>詳細を見る</span><span class="action-button__icon ui-arrow-icon" aria-hidden="true"></span></a>
                     <a class="action-button action-button--light" href="#" data-pending-link="sample-application" aria-disabled="true" aria-label="応募フォームへ（準備中）"><span>応募フォームへ</span><span class="action-button__icon ui-arrow-icon" aria-hidden="true"></span></a>
                   </div>
-                </div>
-                <div>
-                  <h3>情報表</h3>
-                  <dl class="definition-list">
+                </div></div>
+                <div class="docs-example">
+                  <h3 class="docs-heading content-anchor" id="sample-part-5">情報表</h3>
+                  <div class="docs-demo"><dl class="definition-list">
                     <div class="definition-list__row">
                       <dt>施設名</dt><dd>寒川町相模川一之宮公園</dd>
                     </div>
@@ -539,11 +501,10 @@
                       <dt>所在地</dt><dd>テキストテキストテキストテキストテキスト。</dd>
                     </div>
                   </dl>
-                </div>
-                <div class="content-groups">
-                  <div class="content-group content-anchor" id="sample-groups">
-                    <h3 class="content-group__title">費用（20ftの構成見本）</h3>
-                    <dl class="definition-list">
+                </div></div>
+                <div class="docs-example">
+                    <h3 class="docs-heading content-anchor" id="sample-groups">費用（20ftコンテナ）</h3>
+                    <div class="docs-demo"><dl class="definition-list">
                       <div class="definition-list__row">
                         <dt>保証金</dt><dd>550,000円</dd>
                       </div>
@@ -557,23 +518,13 @@
                         <dt>販売促進費</dt><dd>月間税込総売上の10％（予定）</dd>
                       </div>
                     </dl>
-                  </div>
-                  <div class="content-group content-anchor" id="sample-contract">
-                    <h3 class="content-group__title">契約条件</h3>
-                    <p class="content-section__copy">テキストテキストテキストテキストテキスト。</p>
-                  </div>
-                  <div class="content-group content-anchor" id="sample-documents">
-                    <h3 class="content-group__title">募集資料</h3>
-                    <div class="document-link-row">
-                      <p class="content-section__copy">テキストテキストテキストテキストテキスト。</p>
-                      <span class="action-button action-button--disabled" aria-disabled="true"><span>資料ダウンロード</span><span class="action-button__icon" aria-hidden="true">—</span></span>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <h3 id="sample-form" class="content-anchor">フォーム・進行表示・添付部品</h3>
-                  <p class="content-section__copy">入力部品の確認用です。飲食出店の応募は外部Googleフォームを使い、この見本からは送信しません。</p>
-                  <ol class="contact-steps" aria-label="フォームの進行状況">
+                  </div></div>
+                  <div class="docs-example">
+                    <h3 class="docs-heading content-anchor" id="sample-contract">小見出し＋本文</h3>
+                    <div class="docs-demo"><div class="content-group"><h3 class="content-group__title">契約条件</h3><p class="content-section__copy">スポーツを楽しむ人も、地域で暮らす人も、気軽に立ち寄れる場所へ。日々の出会いや体験を通じて、このまちの新しいにぎわいを育てていきます。</p></div></div></div>
+                  <div class="docs-example">
+                  <h3 id="sample-form" class="docs-heading content-anchor">フォーム・添付ファイル</h3>
+                  <div class="docs-demo"><ol class="contact-steps" aria-label="フォームの進行状況">
                     <li aria-current="step">
                       <span class="contact-steps__number">01</span> <span>入力</span>
                     </li>
@@ -586,23 +537,23 @@
                   </ol>
                   <div class="contact-form">
                     <div class="contact-form__row">
-                      <label for="apply-organization">会社・団体名 <span class="contact-form__optional">任意</span></label><input id="apply-organization" name="organization" type="text" autocomplete="organization" />
+                      <label for="apply-organization">会社・団体名 <span class="contact-form__optional">任意</span></label><input id="apply-organization" name="organization" type="text" autocomplete="organization">
                     </div>
                     <div class="contact-form__row">
-                      <label for="apply-name">氏名 <span class="contact-form__required">必須</span></label><input id="apply-name" name="name" type="text" autocomplete="name" required />
+                      <label for="apply-name">氏名 <span class="contact-form__required">必須</span></label><input id="apply-name" name="name" type="text" autocomplete="name" required>
                     </div>
                     <div class="contact-form__row">
-                      <label for="apply-email">メールアドレス <span class="contact-form__required">必須</span></label><input id="apply-email" name="email" type="email" autocomplete="email" required />
+                      <label for="apply-email">メールアドレス <span class="contact-form__required">必須</span></label><input id="apply-email" name="email" type="email" autocomplete="email" required>
                     </div>
                     <div class="contact-form__row">
-                      <label for="apply-phone">電話番号 <span class="contact-form__optional">任意</span></label><input id="apply-phone" name="phone" type="tel" autocomplete="tel" />
+                      <label for="apply-phone">電話番号 <span class="contact-form__optional">任意</span></label><input id="apply-phone" name="phone" type="tel" autocomplete="tel">
                     </div>
                     <div class="contact-form__row">
                       <label for="apply-attachment">添付資料 <span class="contact-form__optional">任意</span></label>
                       <div class="attachment-control">
                         <div class="attachment-control__surface" id="sample-attachment">
                           <div class="attachment-control__field">
-                            <input class="attachment-control__input" id="apply-attachment" name="attachment" type="file" aria-describedby="attachment-selection" />
+                            <input class="attachment-control__input" id="apply-attachment" name="attachment" type="file" aria-describedby="attachment-selection">
                             <span class="attachment-control__choose" aria-hidden="true">ファイルを選択</span>
                             <span class="attachment-control__filename" id="attachment-selection" data-attachment-selection aria-live="polite">選択されていません</span>
                           </div>
@@ -611,64 +562,62 @@
                       </div>
                     </div>
                     <div class="contact-form__row contact-form__row--consent">
-                      <span>個人情報同意 <span class="contact-form__required">必須</span></span><label class="contact-form__check"><input type="checkbox" name="privacy" required /><span><a href="../privacy-policy/#personal-information" target="_blank" rel="noopener noreferrer">個人情報の取り扱い <span class="ui-symbol ui-symbol--external" aria-hidden="true">↗</span><span class="sr-only">（新しいタブで開く）</span></a>を確認し、同意します。</span></label>
+                      <span>個人情報同意 <span class="contact-form__required">必須</span></span><label class="contact-form__check"><input type="checkbox" name="privacy" required><span><a href="../privacy-policy/#personal-information" target="_blank" rel="noopener noreferrer">個人情報の取り扱い <span class="ui-symbol ui-symbol--external" aria-hidden="true">↗</span><span class="sr-only">（新しいタブで開く）</span></a>を確認し、同意します。</span></label>
                     </div>
                   </div>
-                </div>
-                <div class="content-group">
-                  <h3 class="content-anchor" id="sample-disclosure">概要＋詳細アコーディオン</h3>
-                  <p class="content-section__copy">概要と開閉部分の構成見本です。実際の費用・条件は募集ページの各コンテナを参照してください。</p>
-                  <dl class="summary-facts"><div class="summary-facts__item"><dt>月額家賃</dt><dd>110,000円<span>税込・予定</span></dd></div><div class="summary-facts__item"><dt>契約期間</dt><dd>3年間（予定）</dd></div></dl>
+                </div></div>
+                <div class="docs-example">
+                  <h3 class="docs-heading content-anchor" id="sample-disclosure">概要と詳細</h3>
+                  <div class="docs-demo"><div class="rental-area"><dl class="summary-facts"><div class="summary-facts__item"><dt>月額家賃</dt><dd>110,000円<span>税込・予定</span></dd></div><div class="summary-facts__item"><dt>契約期間</dt><dd>3年間（予定）</dd></div></dl>
                   <div class="disclosure-list">
                   <details class="disclosure" data-disclosure id="sample-disclosure-1">
                   <summary><span>費用・支払い条件の詳細</span><span class="disclosure__toggle" aria-hidden="true"></span></summary>
-                  <div class="disclosure__content"><p class="content-section__copy">テキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキスト。</p></div>
+                  <div class="disclosure__content"><p class="content-section__copy">スポーツを楽しむ人も、地域で暮らす人も、気軽に立ち寄れる場所へ。日々の出会いや体験を通じて、このまちの新しいにぎわいを育てていきます。</p></div>
                 </details>
                   <details class="disclosure" data-disclosure id="sample-disclosure-2">
                   <summary><span>営業・契約条件の詳細</span><span class="disclosure__toggle" aria-hidden="true"></span></summary>
-                  <div class="disclosure__content"><p class="content-section__copy">テキストテキストテキストテキストテキスト。</p></div>
+                  <div class="disclosure__content"><p class="content-section__copy">スポーツを楽しむ人も、地域で暮らす人も、気軽に立ち寄れる場所へ。日々の出会いや体験を通じて、このまちの新しいにぎわいを育てていきます。</p></div>
                 </details>
-                  </div>
-                </div>
-                <div>
-                  <h3 id="sample-faq" class="content-anchor">FAQ（開閉・キーボード操作）</h3>
-                  <div class="faq-list">
+                  </div></div>
+                </div></div>
+                <div class="docs-example">
+                  <h3 id="sample-faq" class="docs-heading content-anchor">よくある質問</h3>
+                  <div class="docs-demo"><div class="faq-list">
                     <details class="faq-item">
                       <summary><span class="faq-item__symbol" aria-hidden="true">Q</span><span>出店条件について</span><span class="faq-item__toggle" aria-hidden="true"></span></summary>
                       <div class="faq-item__answer">
-                        <span class="faq-item__symbol" aria-hidden="true">A</span><p>テキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキスト。</p>
+                        <span class="faq-item__symbol" aria-hidden="true">A</span><p>スポーツを楽しむ人も、地域で暮らす人も、気軽に立ち寄れる場所へ。日々の出会いや体験を通じて、このまちの新しいにぎわいを育てていきます。</p>
                       </div>
                     </details>
                     <details class="faq-item" open>
                       <summary><span class="faq-item__symbol" aria-hidden="true">Q</span><span>費用について</span><span class="faq-item__toggle" aria-hidden="true"></span></summary>
                       <div class="faq-item__answer">
-                        <span class="faq-item__symbol" aria-hidden="true">A</span><p>テキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキスト。</p>
+                        <span class="faq-item__symbol" aria-hidden="true">A</span><p>スポーツを楽しむ人も、地域で暮らす人も、気軽に立ち寄れる場所へ。日々の出会いや体験を通じて、このまちの新しいにぎわいを育てていきます。</p>
                       </div>
                     </details>
                   </div>
-                </div>
-                <div>
-                  <h3 class="content-anchor" id="sample-inpage-nav">ページ内リンク</h3>
-                  <nav class="inpage-nav" aria-label="ページ内リンクの見本">
+                </div></div>
+                <div class="docs-example">
+                  <h3 class="docs-heading content-anchor" id="sample-inpage-nav">ページ内リンク</h3>
+                  <div class="docs-demo"><nav class="inpage-nav" aria-label="ページ内リンクの見本">
                     <a class="text-link" href="../arkgarden-recruit/#container-20ft" aria-label="20ftコンテナ"><span class="text-link__clip"><span class="text-link__label" data-label="20ftコンテナ">20ftコンテナ</span></span><span class="text-link__icon ui-arrow-icon ui-arrow-icon--down" aria-hidden="true"></span></a>
                     <a class="text-link" href="../arkgarden-recruit/#container-40ft" aria-label="40ftコンテナ"><span class="text-link__clip"><span class="text-link__label" data-label="40ftコンテナ">40ftコンテナ</span></span><span class="text-link__icon ui-arrow-icon ui-arrow-icon--down" aria-hidden="true"></span></a>
                     <a class="text-link" href="#sample-schedule" aria-label="スケジュール"><span class="text-link__clip"><span class="text-link__label" data-label="スケジュール">スケジュール</span></span><span class="text-link__icon ui-arrow-icon ui-arrow-icon--down" aria-hidden="true"></span></a>
                     <a class="text-link" href="../arkgarden-recruit/#faq" aria-label="よくある質問"><span class="text-link__clip"><span class="text-link__label" data-label="よくある質問">よくある質問</span></span><span class="text-link__icon ui-arrow-icon ui-arrow-icon--down" aria-hidden="true"></span></a>
                   </nav>
-                  <div class="component-samples__actions">
+                  <div class="docs-actions">
                     <a class="text-link" href="#sample-schedule" aria-label="スケジュールを見る">
                       <span class="text-link__clip"><span class="text-link__label" data-label="スケジュールを見る">スケジュールを見る</span></span>
                       <span class="text-link__icon ui-arrow-icon ui-arrow-icon--down" aria-hidden="true"></span>
                     </a>
                   </div>
-                </div>
-                <div>
-                  <h3 class="content-anchor" id="sample-schedule">日付付きスケジュール〈構成見本〉</h3>
-                  <p class="content-section__copy">3段階から各1工程を抜粋した見本です。実際の13工程は<a href="../arkgarden-recruit/#schedule">募集ページのスケジュール</a>で管理します。</p>
-                  <div class="schedule-timeline">
+                </div></div>
+                <div class="docs-example">
+                  <h3 class="docs-heading content-anchor" id="sample-schedule">スケジュール</h3>
+                  <div class="docs-demo"><div class="schedule-timeline">
                     <section class="schedule-phase" aria-label="募集・選考">
                       <header class="schedule-phase__header">
-                        <svg class="schedule-phase__icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M16 10h22l10 10v34H16zM38 10v12h10M24 32h16M24 40h16M24 48h10" /></svg>
+                        <svg class="schedule-phase__icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M16 10h22l10 10v34H16zM38 10v12h10M24 32h16M24 40h16M24 48h10"></path></svg>
                         <div><h3 class="schedule-phase__title"><span class="schedule-phase__number" aria-hidden="true">01</span>募集・選考</h3><p class="schedule-phase__period">2027年2〜9月</p></div>
                       </header>
                       <ol class="schedule-timeline__items" start="1">
@@ -681,7 +630,7 @@
                     </section>
                     <section class="schedule-phase" aria-label="契約・計画">
                       <header class="schedule-phase__header">
-                        <svg class="schedule-phase__icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M15 12h34v40H15zM23 22h18M23 30h18M23 38h10M29 48l7-7 5 5 11-13" /></svg>
+                        <svg class="schedule-phase__icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M15 12h34v40H15zM23 22h18M23 30h18M23 38h10M29 48l7-7 5 5 11-13"></path></svg>
                         <div><h3 class="schedule-phase__title"><span class="schedule-phase__number" aria-hidden="true">02</span>契約・計画</h3><p class="schedule-phase__period">2027年10〜12月</p></div>
                       </header>
                       <ol class="schedule-timeline__items" start="2">
@@ -694,7 +643,7 @@
                     </section>
                     <section class="schedule-phase" aria-label="引渡し・開業準備">
                       <header class="schedule-phase__header">
-                        <svg class="schedule-phase__icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M12 27h40v27H12zM9 27l6-15h34l6 15M23 54V38h12v16M41 36h6M16 27v5M26 27v5M38 27v5M48 27v5" /></svg>
+                        <svg class="schedule-phase__icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M12 27h40v27H12zM9 27l6-15h34l6 15M23 54V38h12v16M41 36h6M16 27v5M26 27v5M38 27v5M48 27v5"></path></svg>
                         <div><h3 class="schedule-phase__title"><span class="schedule-phase__number" aria-hidden="true">03</span>引渡し・開業準備</h3><p class="schedule-phase__period">2028年1〜4月</p></div>
                       </header>
                       <ol class="schedule-timeline__items" start="3">
@@ -706,25 +655,25 @@
                       </ol>
                     </section>
                   </div>
-                </div>
-                <div>
-                  <h3 id="sample-process" class="content-anchor">工程</h3>
-                  <ol class="process-list">
+                </div></div>
+                <div class="docs-example">
+                  <h3 id="sample-process" class="docs-heading content-anchor">工程</h3>
+                  <div class="docs-demo"><ol class="process-list">
                     <li>
                       <span class="process-list__number" aria-hidden="true">01</span>
-                      <h3>テキストテキスト</h3><p>テキストテキストテキストテキストテキスト。</p>
+                      <h3>応募</h3><p>スポーツを楽しむ人も、地域で暮らす人も、気軽に立ち寄れる場所へ。日々の出会いや体験を通じて、このまちの新しいにぎわいを育てていきます。</p>
                     </li>
                     <li>
                       <span class="process-list__number" aria-hidden="true">02</span>
-                      <h3>テキストテキスト</h3><p>テキストテキストテキストテキストテキスト。</p>
+                      <h3>面接</h3><p>スポーツを楽しむ人も、地域で暮らす人も、気軽に立ち寄れる場所へ。日々の出会いや体験を通じて、このまちの新しいにぎわいを育てていきます。</p>
                     </li>
                     <li>
                       <span class="process-list__number" aria-hidden="true">03</span>
-                      <h3>テキストテキスト</h3><p>テキストテキストテキストテキストテキスト。</p>
+                      <h3>採用発表</h3><p>スポーツを楽しむ人も、地域で暮らす人も、気軽に立ち寄れる場所へ。日々の出会いや体験を通じて、このまちの新しいにぎわいを育てていきます。</p>
                     </li>
                   </ol>
-                </div>
-              </div>
+                </div></div>
+              <article class="docs-example"><h3 class="docs-heading">記事本文の小見出し</h3><div class="docs-demo docs-demo--text"><div class="news-article__body"><h4>お知らせの内容</h4><p>地域の皆さまと一緒に楽しめるイベントを開催します。スポーツを初めて体験する方にもご参加いただけるプログラムをご用意しています。</p></div></div></article><article class="docs-example"><h3 class="docs-heading">ポリシーの小見出し</h3><div class="docs-demo docs-demo--text"><div class="privacy-copy"><h3>個人情報の利用目的</h3><p>お問い合わせの際にお預かりした個人情報は、ご相談への回答や必要なご連絡のために利用します。</p></div></div></article><article class="docs-example"><h3 class="docs-heading content-anchor" id="sample-pagination-1-1">1ページの場合：ページ送りなし</h3><div hidden><nav class="news-pagination" aria-label="全1ページのページ送り" data-pagination-total="1" data-pagination-current="1" data-pagination-caption="sample-pagination-1-1"></nav><p class="sr-only" role="status" aria-live="polite" data-pagination-status></p></div></article><article class="docs-example"><h3 class="docs-heading content-anchor" id="sample-pagination-2-1">2ページの場合：最初のページ</h3><div class="docs-demo"><nav class="news-pagination" aria-label="全2ページのページ送り" data-pagination-total="2" data-pagination-current="1" data-pagination-caption="sample-pagination-2-1"></nav><p class="sr-only" role="status" aria-live="polite" data-pagination-status></p></div></article><article class="docs-example"><h3 class="docs-heading content-anchor" id="sample-pagination-2-2">2ページの場合：最後のページ</h3><div class="docs-demo"><nav class="news-pagination" aria-label="全2ページのページ送り" data-pagination-total="2" data-pagination-current="2" data-pagination-caption="sample-pagination-2-2"></nav><p class="sr-only" role="status" aria-live="polite" data-pagination-status></p></div></article><article class="docs-example"><h3 class="docs-heading content-anchor" id="sample-pagination-3-1">3ページの場合：最初のページ</h3><div class="docs-demo"><nav class="news-pagination" aria-label="全3ページのページ送り" data-pagination-total="3" data-pagination-current="1" data-pagination-caption="sample-pagination-3-1"></nav><p class="sr-only" role="status" aria-live="polite" data-pagination-status></p></div></article><article class="docs-example"><h3 class="docs-heading content-anchor" id="sample-pagination-3-2">3ページの場合：中間のページ</h3><div class="docs-demo"><nav class="news-pagination" aria-label="全3ページのページ送り" data-pagination-total="3" data-pagination-current="2" data-pagination-caption="sample-pagination-3-2"></nav><p class="sr-only" role="status" aria-live="polite" data-pagination-status></p></div></article><article class="docs-example"><h3 class="docs-heading content-anchor" id="sample-pagination-3-3">3ページの場合：最後のページ</h3><div class="docs-demo"><nav class="news-pagination" aria-label="全3ページのページ送り" data-pagination-total="3" data-pagination-current="3" data-pagination-caption="sample-pagination-3-3"></nav><p class="sr-only" role="status" aria-live="polite" data-pagination-status></p></div></article><article class="docs-example"><h3 class="docs-heading content-anchor" id="sample-pagination-12-1">12ページの場合：最初のページ</h3><div class="docs-demo"><nav class="news-pagination" aria-label="全12ページのページ送り" data-pagination-total="12" data-pagination-current="1" data-pagination-caption="sample-pagination-12-1"></nav><p class="sr-only" role="status" aria-live="polite" data-pagination-status></p></div></article><article class="docs-example"><h3 class="docs-heading content-anchor" id="sample-pagination-12-6">12ページの場合：中間のページ</h3><div class="docs-demo"><nav class="news-pagination" aria-label="全12ページのページ送り" data-pagination-total="12" data-pagination-current="6" data-pagination-caption="sample-pagination-12-6"></nav><p class="sr-only" role="status" aria-live="polite" data-pagination-status></p></div></article><article class="docs-example"><h3 class="docs-heading content-anchor" id="sample-pagination-12-12">12ページの場合：最後のページ</h3><div class="docs-demo"><nav class="news-pagination" aria-label="全12ページのページ送り" data-pagination-total="12" data-pagination-current="12" data-pagination-caption="sample-pagination-12-12"></nav><p class="sr-only" role="status" aria-live="polite" data-pagination-status></p></div></article></div>
             </div>
           </div>
         </section>
