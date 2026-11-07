@@ -380,10 +380,10 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 
 - ヘッダー・メニュー・フッターの「飲食出店募集」と、NEWS先頭の固定告知「募集概要を見る」はTOPの `#ark-garden` へ接続する。見本は相対パスでTOPへ接続する。
 - 募集告知はNEWS見出し→写真・日付のない固定告知→通常記事→一覧リンクの順に置く。ヒーロー直下の写真付き告知と、記事一覧内の募集行は削除し、重複を解消する。TOP下部の募集セクションと画像は維持する。固定告知の表示・CMS管理・募集終了時の手順は第18章を参照する。
-- TOPの紹介写真は960px以上で募集文を重ね、未満は画像の下へ文を置く。
+- TOPの紹介写真には説明文を重ねず、SPでも写真下の説明文を置かない。上部のセクション見出しと画像のalt、右下の「完成イメージ」は維持する。文章用ラッパー・余白と、可読性用の暗いグラデーションは削除した。写真枠の寸法・トリミングは維持する。
 - 20ft・40ft枠は768px以上で2列、未満は縦並び。画像は3:2の枠に `object-fit: contain` で全体を表示する。
 - TOPの枠は `arkgarden/container-20ft.webp`（支給container_9）と `container-40ft.webp`（container_3）。AREAの図面とは別素材のため混同しない。
-- 詳細は `arkgarden-recruit/#container-20ft` / `#container-40ft` へ接続。枠下は「よくある質問を見る」だけを表示し、`arkgarden-recruit/#faq` へ接続する。
+- 詳細は `arkgarden-recruit/#container-20ft` / `#container-40ft` へ接続。枠下のFAQ導線は日本語ラベル「飲食出店に関するよくある質問」→英字「FAQ」→矢印で構成し、行全体を `arkgarden-recruit/#faq` へ接続する。書体・文字値と配置は第19章を参照する。
 - Googleフォームはクライアント管理。正式URL未受領の応募ボタンは `href="#"`・`data-pending-link`・`aria-disabled="true"` と準備中の読み上げ名を持つ。確定時はTOP・各AREA・スケジュール下をコンテナ別に一括更新する。
 - 旧サイト内の飲食出店応募3画面と `application.js` は削除済み。採用応募・お問い合わせは別用途として保持する。
 
@@ -430,8 +430,9 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 | 通常の説明文章 | 園内の巡回や安全確認… | `.content-section__copy` | 本文 | 16・400・1.8 | なし。複数段落間は既存内容間隔 |
 | 理念本文 | 私たちは、BMXや… | `.philosophy-feature__copy` | 本文 | 16・400・1.8 | 既存の文字色を維持 |
 | 採用カードの説明 | 日々の運営を支える社員… | `.recruit-opening__copy p`、`.recruitment-route__body > p` | 本文 | 16・400・1.8 | なし |
-| TOPの企業・出店説明 | 募集内容や出店条件を… | `.company__content > p`、`.garden-recruit__copy p` | 本文 | 16・400・1.8 | 画像上の構成・色は維持 |
-| TOPの出店概要・コンテナ | 飲食出店募集／20ftコンテナ | `.garden-recruit__copy h3`、`.garden-container h3` | 小見出し | 24/20、後続16/12 | なし |
+| TOPの企業説明 | 現場で培った知見を生かし… | `.company__content > p` | 本文 | 16・400・1.8 | 画像上の構成・色は維持 |
+| TOPのコンテナ名 | 20ftコンテナ | `.garden-container h3` | 小見出し | 24/20、後続16/12 | なし |
+| TOPのFAQ導線の説明 | 飲食出店に関するよくある質問 | `.route-item__label` | 項目ラベル | 16・700・1.5、Noto Sans JP | 暗色面の補助文字色を維持 |
 | 交通案内の経路 | 寒川駅より徒歩約30分 | `.access-card h4 + p` | 本文 | 16・400・1.8 | なし。14pxから変更 |
 | 地図の所在地 | 神奈川県高座郡寒川町… | `.map-embed__meta p` | 本文 | 16・400・1.8 | 外部地図リンクのUI文字は対象外 |
 | 取引先名の一覧 | 株式会社ディー・エヌ・エー | `.clients-grid li` | 本文 | 16・400・1.8 | リンク・ロゴ化はしない |
@@ -473,7 +474,8 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 | 工程番号・日付・進行表示 | `.process-list__number`、`.schedule-step__year/date`、`.contact-steps` | 工程番号は第2章の専用32px。日付・進行表示は既存仕様を維持 | 標準本文と別管理 |
 | ACCESS GUIDE／TRAIN、FAQのQ/A | `.access-information__label`、`.access-card__type`、`.faq-item__symbol` | 構造ラベル・記号の現行仕様を維持 | 新規標準ラベルと区別 |
 | 必須・任意・重要カテゴリ | `.contact-form__required/optional`、`.news__category--important` | 小型バッジ・重要状態として現行差分を維持 | 状態UIとして評価 |
-| 未使用の旧構成 | `.split-feature__content`、`.route-item__title` | 今回の現行部品への適用対象外 | 再利用時は役割を再分類 |
+| TOPのFAQ導線 | `.route-item__title` | 現行TOPで使用中。Noto Sans JP・32/20px・600・1.05を使用 | 第19章を参照 |
+| 未使用の旧構成 | `.split-feature__content` | 今回の現行部品への適用対象外 | 再利用時は役割を再分類 |
 
 ### 残るページ別の確認事項
 
@@ -501,6 +503,7 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 | 共通のページ送り | NEWS一覧、WORKS一覧、`pagination.js` | `#sample-pagination-2-1` ほか、2・3・12ページの先頭／中間／末尾 |
 | 応募・PDFボタン | TOP、採用情報、飲食出店募集、フォーム | 共通ボタン・暗色面のボタン |
 | 入力・添付・進行表示 | お問い合わせ、求人応募 | `#sample-form` |
+| TOPのFAQ導線 | TOP飲食出店募集 | `#sample-garden-faq-route` |
 | FAQ・ページ内リンク・日付付き工程 | 飲食出店募集 | `#sample-faq / sample-inpage-nav / sample-schedule` |
 | 番号付き選考工程 | 採用情報 | `#sample-process` |
 | 標準小見出し | お知らせ詳細、プライバシーポリシー | 記事本文・ポリシーの小見出し |
@@ -693,3 +696,23 @@ Chromiumで320／375／767／768／1024／1440pxを確認した。
 - 全7幅でボタンをEnter操作し、TOPの `#ark-garden` への移動と見出しが固定ヘッダーに隠れないことを確認。通常の滑らかなスクロールも375／1440pxで完了位置を確認した。
 - 削除した募集行以外の4記事と、TOP下部 `#ark-garden` のHTMLは作業前と一致。共用画像枠とキャプションの計算済み値もSP／PCで一致した。完成イメージ画像は残している。
 - 見本内の空のサンプル容器、ID重複、無効な仕様書の見本アンカーはない。`git diff --check` は問題なし。
+
+## 19. TOP飲食出店募集の写真・FAQ導線
+
+- 写真周辺のh3・pと文章用の容器、文章専用CSS、暗いグラデーションを削除する。写真を含むvisual・mediaと、画像の寸法・表示位置・alt・キャプションは保持する。削除する余白は文章用のpaddingであり、コンテナ紹介の上下paddingは別用途として維持する。
+- FAQ導線の `.route-item / __label / __title / __arrow` は現行TOPで使われる実部品。日本語ラベルは `--type-label-*` と `--font-body` を参照し、PC/SPとも16px・700・1.5。色は既存の `--color-on-dark-muted`。
+- 英字FAQはNoto Sans JP、PC32px／SP20pxとする。書体は `--font-body`、SPのサイズは `--type-heading-sm-size`、PCは `--type-heading-md-size` を参照する。既存の太さ600・行間1.05は維持する。トークン自体の数値は変更しない。
+- 768px未満は日本語ラベルを上段、FAQを下段、右側に2段分を使う矢印を置く。日本語は自然に折り返し、高さは内容に合わせて伸びる。既存min-heightは最低限の操作領域であり、固定高で文章を切らない。
+- 768px以上は日本語→FAQ→矢印の3列。左列は固定160pxをやめてmax-contentとし、必要な文字幅を確保する。列間は `--space-2xl`（標準設定で64px）とし、日本語とFAQの距離を確保する。PCのmin-heightは112px、上下paddingは既存の `--space-lg`（24px）を維持する。SPのmin-height132pxは変更しない。十分な幅では日本語を1行にし、右端の矢印までをリンクにする。既存の罫線・hover・active・focus-visibleを維持する。
+- TOPのリンクは `arkgarden-recruit/#faq`、見本は `../arkgarden-recruit/#faq`。aria-labelは「飲食出店に関するよくある質問を見る」。飲食出店募集ページ側のFAQ見出しは変更しない。
+- 見本は `docs/components.html#sample-garden-faq-route` に同じ実部品を置く。背景枠・配置は既存の資料用容器、部品はサイト共通CSSを使用する。技術説明は見本に表示しない。
+
+### 変更ファイル・確認結果
+
+- 実装・見本・資料の5ファイル：`index.html`、`assets/css/style.css`、`docs/components.html`、`docs/DESIGN_SYSTEM.md`、`docs/DESIGN_GUIDELINES.md`。
+- CSS参照URLだけを更新した14HTML：`arkgarden-recruit/index.html`, `business/index.html`, `company/index.html`, `contact/index.html`, `news/index.html`, `privacy-policy/index.html`, `recruit/index.html`, `works/index.html`, `contact/complete/index.html`, `contact/confirm/index.html`, `news/sample-news/index.html`, `recruit/apply/index.html`, `recruit/apply/complete/index.html`, `recruit/apply/confirm/index.html`。更新値は `20261107-garden-photo-faq-4`。これらの本文と、飲食出店募集ページ側のFAQ見出しは変更していない。
+- 320／375／414／767／768／1024／1440pxで182項目を確認し、すべて通過。写真の表示幅・高さ・object-fit・object-position、alt、右下キャプションとその共有CSSは変更前と一致した。文章の空ラッパーと専用paddingはなく、画像下からコンテナ紹介までの既存の64px余白だけが残る。
+- FAQの日本語ラベル16px・700・1.5・Noto Sans JP・既存の補助色を確認。英字FAQはPC32px／SP20px、Noto Sans JP・600・1.05、PC列間64px。サイトと見本で同じ共通CSSを使い、文字・罫線・最低操作高が一致した。
+- SPの上下配置、PCの3列配置、文字・矢印の重なりや横溢れがないこと、行全体のhover・focus-visible・Enter操作を確認した。TOP・見本とも飲食出店募集ページの `#faq` に移動し、既存の「よくある質問」見出しが固定ヘッダーに隠れない。
+- TOPのbodyは、指定した写真周辺の文章・容器削除とFAQラベル・タイトル・読み上げ名の変更以外は作業前と一致した。全JS、tokens.css、subpage.css、docs/components.cssは変更していない。
+- 見本のID重複・空のサンプル容器・無効な仕様書アンカーはなく、`git diff --check` も問題なし。新規JSは不要だった。
