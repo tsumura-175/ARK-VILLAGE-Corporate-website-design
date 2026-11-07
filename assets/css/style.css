@@ -1222,10 +1222,6 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   line-height: var(--type-emphasis-line);
 }
 
-.news__item--important .news__arrow {
-  color: var(--color-accent);
-}
-
 .news__item p {
   grid-column: 1 / 3;
   min-width: 0;
@@ -1265,10 +1261,9 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   }
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .news__item--link:hover {
-    color: var(--color-accent);
-  }
+.news__item--link:hover,
+.news__item--link:focus-visible {
+  color: var(--color-accent);
 }
 
 @media (max-width: 22.5rem) {
