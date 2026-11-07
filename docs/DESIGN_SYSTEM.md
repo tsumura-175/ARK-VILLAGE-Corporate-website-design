@@ -64,7 +64,7 @@
 ### 小見出し・上罫線・工程番号
 
 - `.news-article__body h4` と `.privacy-copy h3` は標準小見出しを使い、赤い縦線・専用の左余白を持たない。直後の段落marginを0にし、見出しの後続余白だけを取る。見出し前の段落との間隔は別の内容間隔として扱う。
-- 小見出しから情報表・工程・FAQ等の上罫線までは `--type-heading-sm-after` を使う。情報表・主要条件表・工程・FAQ・詳細アコーディオンの同じ役割の上罫線は `--rule-hair` と `--color-rule` に統一する。表の行内padding、工程番号下の余白、質問行のpaddingは部品内部の別用途として維持する。
+- 小見出しから情報表・工程・FAQ等の上罫線までは `--type-heading-sm-after` を使う。情報表・主要条件表・工程・FAQ・詳細アコーディオンの同じ役割の上罫線は `--rule-hair` と `--color-rule` に統一する。表の行内padding、質問行のpaddingは部品内部の別用途として維持する。工程番号下の余白はPCで維持し、SPの横組みでは使わない。
 - `.process-list__number` は `--process-number-size: 2rem`（標準設定で32px）を参照する。PC/SPともAntonio・700・行間1・既存アクセント色。汎用 `--text-*` の値は変更しない。工程名・説明はそれぞれ標準小見出し・本文。
 
 ### NEWSのカテゴリと行構成
@@ -334,13 +334,15 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 - `.content-groups` は関連項目の容器。間隔はSPが `--space-xl`、768px以上が `--space-2xl`。
 - `.content-group` と `.content-group__title` は小見出し＋本文の組。文字と後続余白は第2章の小見出し仕様を使い、`.content-group` が管理する。gapとmarginを重ねない。募集要項の注記と個別職種も別のグループにして関係を示す。
 - PDFは `.action-button.action-button--outline` と `.ui-download-icon` を共用する。実URL、`download` 属性、資料を区別できる読み上げ名を付ける。
-- `.contact-actions` は中央配置。SPの2つの主要ボタンは `--pair` または `.garden-container__actions` で横並び。主要ボタン＋補助リンクには `--mixed` を使う。単独ボタンに新たな2列指定を付けない。
+- TOPの20ft・40ftの `.garden-container__actions` は共通 `.action-button` の文字・高さ・padding・丸矢印を維持し、利用可能幅で自然に折り返す。2個が収まれば横並び、収まらなければ同じ全幅で縦並び。文字は1行を保ち、丸矢印は右端に揃える。共通gapは最小間隔として維持する。見本の暗色ボタンもこの実部品の組み合わせを使う。
+- フォーム等の `.contact-actions` は中央配置。既存の `--pair`（主要ボタン2個）と `--mixed`（主要ボタン＋補助リンク）のSP用2列・縮小指定は今回変更しない。TOP専用の縮小はこのルールから切り離した。単独ボタンに新たな2列指定を付けない。
 - アンカー先は `.content-anchor` を使い、固定ヘッダーを避ける。確認画面からの戻るボタンは「修正する」に統一する。
 
 ### 工程・添付・開閉
 
 - `.detail-feature` は本文と写真の2要素。768px未満は縦、以上は等幅2列。通常写真は4:3、図面は `--contain` で切り抜かない。完成イメージは `.garden-entry-cta__media` と `.media-caption` を再利用し、キャプションを右下へ置く。
-- `.process-list` は意味のある順序を持つ工程の `ol`。番号は `.process-list__number` に分離して共通の工程番号仕様（第2章）を使い、768px未満は縦、以上は3列。装飾的なSECTION番号を付けない。
+- `.process-list` は意味のある順序を持つ工程の `ol/li`。768px未満は工程を縦に並べ、各liを番号の左列と見出し・本文の右列に分ける。番号列は工程番号トークンの幅、列間は `--space-md`。番号は上揃えで2行分の領域に置き、見出しが複数行でも本文は右列の次行へ続ける。見出しから本文までは共通の `--type-heading-sm-after` のみを使い、row-gapを加算しない。番号下のmarginは0。番号の文字仕様は第2章、小見出し・本文の文字値も維持する。
+- 768px以上は従来の3列を維持し、各工程内は番号→見出し→本文の縦組み。番号下の `--space-lg`、上罫線とその内側padding、工程間の `--space-xl` は維持する。DOMの順序とol/liは変更しない。見本・採用ページとも `subpage.css` の同じ指定を使う。
 - `.attachment-control` はファイル入力・選択名・取り消しをまとめる。未選択をエラー色にせず、長いファイル名を折り返す。
 - 添付UIは `subpage-components.js` が管理する。フォーム側は `attachment:restore` の `detail.name` で保存名を復元し、`data-attachment-name` で確認用の名前を取得する。共通JSをフォームJSより先にdeferで読む。ファイル本体は保存・送信しない。
 - FAQは `.faq-list / .faq-item`、詳細は `.disclosure-list / .disclosure[data-disclosure]`。ネイティブの `details/summary` とキーボード操作を保ち、複数を同時に開ける。summary内に別ボタンを置かない。
@@ -633,3 +635,22 @@ Chromiumで320／375／767／768／1024／1440pxを確認した。
 - NEWSの掲載配列、`works-data.js`、`script.js`、`style.css`、`tokens.css` は作業開始時と一致。実績・ニュースの追加や並び替え、文字ルール・写真・PDFの変更は行っていない。JS3ファイルの構文検査と `git diff --check` は問題なし。
 
 今回の範囲に残る実装課題はない。次工程ではCMS接続時に実データからの総件数・ページ数と記事詳細の対応を優先して確認する。多数ページの実データを追加するまで、状態確認にはこの見本を使用する。
+
+## 17. TOP飲食出店ボタン・SP工程の配置
+
+現在の配置仕様は第9章の「小見出し・ボタン」「工程・添付・開閉」を正本とする。ボタンの文言・詳細リンク・応募フォームの準備中状態は維持し、TOPの20ft／40ftと暗色ボタンのデザイン見本に同じ組み合わせを使う。見本専用CSSで実部品を補正しない。工程のHTMLは変更せず、768px未満にだけ配置を適用する。
+
+### 変更・確認記録
+
+- 実装・見本・仕様の変更：`assets/css/style.css`、`assets/css/subpage.css`、`docs/components.html`、`docs/DESIGN_SYSTEM.md`、`docs/DESIGN_GUIDELINES.md`、`docs/CODING_GUIDELINES.md`。
+- `style.css` はTOP用セレクターだけをSP縮小ルールから外した。フォームのpair／mixedに関するルールは作業開始時と同一で、実際のフォーム・応募／PDFの計算済みスタイルも変更前と照合した。
+- `subpage.css` は768px未満の工程だけを2列化。工程のDOMと読み順はそのままで、768px以上の文字・余白・罫線・3列表示は変更前と一致した。
+- TOP・採用のHTML本文は変更していない。CSS参照URLの更新値は `20261107-buttons-process-1`。参照値だけを更新した15HTMLは、`index.html`、`business/index.html`、`company/index.html`、`recruit/index.html`、`arkgarden-recruit/index.html`、`works/index.html`、`news/index.html`、`news/sample-news/index.html`、`contact/index.html`、`contact/confirm/index.html`、`contact/complete/index.html`、`recruit/apply/index.html`、`recruit/apply/confirm/index.html`、`recruit/apply/complete/index.html`、`privacy-policy/index.html`。
+- 320／375／414／767／768／1024pxで確認した。TOPの20ft・40ftは両方とも320・375pxで同幅の縦並び、414・767pxで横並び。768pxではコンテナが2列になって各カードの利用可能幅が狭くなるため縦並び、1024pxでは横並び。横組みは内容幅を保って中央へ置き、縦組みはその容器の幅いっぱいに揃える。
+- 全6幅で文字14px・丸矢印42px・高さ52px・左padding24px・最小gap16pxを測定。縦組みでは短いラベルの後ろの空きを広げ、丸矢印を右端に揃える。背景に応じた塗り・アウトラインは維持した。
+- 見本と実ページの部品スタイルは一致。配置はビューポートだけでなく、見本の枠やTOPのカード内の利用可能幅で決まる。同じ利用可能幅を与えた場合も同じ折り返しになることを確認した。
+- 全6幅で工程の番号32px・見出し20px（SP）・本文16px・見出し後12px（SP）・番号と右列の間16px、番号下margin0を測定。実ページ・見本とも、複数行の見出しと長い本文をブラウザ内で差し替えても重なりや横溢れを生じなかった。原稿は変更していない。
+- 詳細リンクの20ft／40ft両アンカーへの遷移、準備中リンクのEnter操作でURLが変わらないこと、キーボードのfocus-visibleを確認した。文言・リンク先・準備中属性は維持している。
+- 対象部品・フォーム比較・長文・リンク等367項目が通過。共通CSS使用ページ16ページ×6幅でも横溢れ・JavaScript例外なし。tokens.css、docs/components.css、全JSは変更していない。`git diff --check` も問題なし。
+
+今回の範囲に残る個別調整はない。新しい配置のための追加JS・新規ファイルは不要だった。

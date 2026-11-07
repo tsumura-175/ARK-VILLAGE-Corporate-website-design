@@ -1842,13 +1842,21 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 .garden-container__actions {
   display: flex;
   flex-wrap: wrap;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  margin-inline: auto;
   justify-content: center;
   align-items: center;
   gap: var(--space-sm);
 }
 
+.garden-container__actions > .action-button {
+  flex: 1 1 auto;
+  min-inline-size: max-content;
+  justify-content: space-between;
+}
+
 @media (max-width: 47.99rem) {
-  .garden-container__actions,
   .contact-actions.contact-actions--pair {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1864,7 +1872,6 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
     gap: 0.375rem;
   }
 
-  .garden-container__actions .action-button,
   .contact-actions.contact-actions--pair .action-button,
   .contact-actions.contact-actions--mixed .action-button {
     inline-size: 100%;
@@ -1875,7 +1882,6 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
     font-size: clamp(0.71875rem, 3.2vw, 0.8125rem);
   }
 
-  .garden-container__actions .action-button__icon,
   .contact-actions.contact-actions--pair .action-button__icon,
   .contact-actions.contact-actions--mixed .action-button__icon {
     inline-size: clamp(1.625rem, 8vw, 2.125rem);
