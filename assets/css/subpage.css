@@ -1150,7 +1150,7 @@
   border: var(--rule-hair) solid var(--color-rule);
   background: transparent;
   color: var(--color-ink);
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: var(--text-sm);
   cursor: pointer;
 }
