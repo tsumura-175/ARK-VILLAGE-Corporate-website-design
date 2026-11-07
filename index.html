@@ -35,7 +35,7 @@
         }
       })();
     </script>
-    <link rel="stylesheet" href="assets/css/style.css?v=20261107-buttons-process-1" />
+    <link rel="stylesheet" href="assets/css/style.css?v=20261107-news-notice-1" />
     <script src="assets/js/script.js?v=20261017-garden-recruit-1" defer></script>
   </head>
   <body>
@@ -256,10 +256,6 @@
         </div>
 
         <div class="hero__veil" aria-hidden="true"></div>
-        <div class="hero__frame-marks" aria-hidden="true">
-          <span>ARK</span>
-          <span>LEAGUE</span>
-        </div>
 
         <div class="hero__content page-shell">
           <div class="hero__identity">
@@ -316,40 +312,6 @@
         </div>
       </section>
 
-      <!-- TOPの飲食出店募集セクションへの期間限定導線。募集終了時はこのブロックを削除してください。 -->
-      <aside class="garden-entry-cta" aria-labelledby="garden-entry-cta-title">
-        <div class="page-shell">
-          <div class="garden-entry-cta__panel">
-            <div class="garden-entry-cta__rail">
-              <div class="garden-entry-cta__copy">
-                <span class="garden-entry-cta__mark" aria-hidden="true"></span>
-                <span class="garden-entry-cta__summary">
-                  <strong id="garden-entry-cta-title" class="garden-entry-cta__title">
-                    寒川町相模川一之宮公園
-                  </strong>
-                  <span class="garden-entry-cta__status">飲食出店募集中</span>
-                </span>
-              </div>
-              <a class="action-button garden-entry-cta__button" href="#ark-garden">
-                <span>募集概要を見る</span>
-                <span class="action-button__icon ui-arrow-icon" aria-hidden="true"></span>
-              </a>
-            </div>
-            <figure class="garden-entry-cta__media">
-              <img
-                src="assets/images/media/ark-garden-night-perspective.webp"
-                width="1448"
-                height="1086"
-                alt="夕景の寒川町相模川一之宮公園完成イメージ"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption class="garden-entry-cta__caption">完成イメージ</figcaption>
-            </figure>
-          </div>
-        </div>
-      </aside>
-
       <section class="news section" id="news" aria-labelledby="news-title">
         <div class="page-shell news__layout">
           <header class="news__head section-heading">
@@ -361,18 +323,22 @@
           </header>
 
           <div class="news__content">
+            <!-- 固定の募集告知：CMSの記事ループ・件数・新着順・絞り込み・ページ送りには含めない。
+                 募集内容変更時はこのカードと docs/components.html の見本、第18章の管理記録を更新。
+                 募集終了時はこの aside を削除し、#ark-garden の募集内容・応募導線も別途確認する。 -->
+            <aside class="news-announcement" aria-labelledby="garden-announcement-title">
+              <div class="news-announcement__copy">
+                <span class="news__category news__category--important">重要なお知らせ</span>
+                <h3 class="news-announcement__title" id="garden-announcement-title">寒川町相模川一之宮公園にて、飲食出店者を募集しています</h3>
+              </div>
+              <a class="action-button" href="#ark-garden">
+                <span>募集概要を見る</span>
+                <span class="action-button__icon ui-arrow-icon" aria-hidden="true"></span>
+              </a>
+            </aside>
+            <!-- CMS記事一覧：固定告知を含めず、既存記事の内容・順序を維持する。 -->
             <div class="news__list" id="news-list">
-            <!-- WordPress: 「重要なお知らせ」タグの記事を先頭2件に固定 -->
-            <a
-              class="news__item news__item--link news__item--important"
-              href="arkgarden-recruit/"
-              data-news-priority="important"
-            >
-              <time class="news__date" datetime="2026-07-26">2026.07.26</time>
-              <span class="news__category news__category--important">重要なお知らせ</span>
-              <p>飲食出店募集のお知らせ</p>
-              <span class="news__arrow ui-arrow-glyph" aria-hidden="true">→</span>
-            </a>
+            <!-- WordPress: 重要記事を先頭に置き、その後に通常記事を表示 -->
             <a
               class="news__item news__item--link news__item--important"
               href="#"

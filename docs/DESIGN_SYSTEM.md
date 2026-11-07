@@ -378,8 +378,8 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 
 ### TOPと内部導線
 
-- ヘッダー・メニュー・フッターの「飲食出店募集」と期間限定CTAの「募集概要を見る」はTOPの `#ark-garden` へ接続する。階層に合わせた相対パスを使う。
-- 期間限定 `.garden-entry-cta` は夜パースを右に置き、SPは縦、768px以上は2列。「完成イメージ」はHTMLの `.media-caption` として右下へ置く。
+- ヘッダー・メニュー・フッターの「飲食出店募集」と、NEWS先頭の固定告知「募集概要を見る」はTOPの `#ark-garden` へ接続する。見本は相対パスでTOPへ接続する。
+- 募集告知はNEWS見出し→写真・日付のない固定告知→通常記事→一覧リンクの順に置く。ヒーロー直下の写真付き告知と、記事一覧内の募集行は削除し、重複を解消する。TOP下部の募集セクションと画像は維持する。固定告知の表示・CMS管理・募集終了時の手順は第18章を参照する。
 - TOPの紹介写真は960px以上で募集文を重ね、未満は画像の下へ文を置く。
 - 20ft・40ft枠は768px以上で2列、未満は縦並び。画像は3:2の枠に `object-fit: contain` で全体を表示する。
 - TOPの枠は `arkgarden/container-20ft.webp`（支給container_9）と `container-40ft.webp`（container_3）。AREAの図面とは別素材のため混同しない。
@@ -445,8 +445,9 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 | フォーム入力・確認 | 氏名／メールアドレス | `.contact-form__row > label:first-child`、同span、`.contact-confirm dt` | 項目ラベル | 16・700・1.5 | 必須・任意バッジは状態UIを維持 |
 | フォーム確認の値・同意文 | 入力した氏名／同意します | `.contact-confirm dd`、`.contact-form__check` | 本文 | 16・400・1.8 | 入力・送信の試作動作は変更しない |
 | 完了画面 | ご応募ありがとうございます | `.contact-complete h3`／p | 中見出し／本文 | 32/24と16、後続24/16 | なし |
+| TOPの固定募集告知 | 寒川町相模川一之宮公園にて、飲食出店者を募集しています | `.news-announcement__title` | 小見出し | 24/20・700・1.5 | 写真・日付なし、CMS対象外。第18章参照 |
 | NEWS一覧・TOP | ARK LEAGUEの事業内容を… | `.news__item p`（HTML・JS生成） | 本文 | 16・400・1.8 | 既存の1行省略は用途別に維持 |
-| NEWS重要項目 | 飲食出店募集のお知らせ | `.news__item--important p` | 強調する本文 | 18・500・1.8 | 赤い罫線・矢印は状態表現を維持 |
+| NEWS重要項目 | パーク運営・イベント企画に関するご相談… | `.news__item--important p` | 強調する本文 | 18・500・1.8 | 赤い罫線・矢印は状態表現を維持 |
 | NEWS記事タイトル | 記事のタイトル | `.news-article__header h3` | 中見出し | 32/24・700・1.35 | PCのメタ情報併置は既存レイアウト |
 | NEWS本文・プライバシー本文 | 個人情報の利用目的… | `.news-article__body`、`.privacy-copy` | 本文 | 16・400・1.8 | なし |
 | 記事・ポリシーの小区分 | 第三者提供 | `.news-article__body h4`、`.privacy-copy h3` | 小見出し | 24/20、後続16/12 | 左線・専用左余白を撤去。段落との二重余白なし |
@@ -468,7 +469,7 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 | 下層ページ名／COMPANY | `.page-hero__title-en`、`.page-hero h1` | 現行の用途別仕様。80/48へ機械的に変えない | KV単位で検討 |
 | グローバルナビ・メニュー・フッター | `.global-nav`、`.mobile-menu__nav`、`.site-footer__*` | 操作・サイト案内・ブランド文の現行仕様を維持 | 個別依頼時に検討 |
 | 主要ボタン・補助リンク・フィルター | `.action-button`、`.text-link`、`.news-filter`、`.news-pagination` | 操作UIの文字サイズを維持 | 必要時にUI全体で検討 |
-| 告知レール・事業パネル | `.garden-entry-cta__title/status`、`.business-panel__*` | 狭い告知面・PC縦書き等の用途別仕様を維持 | ページ別工程で検討 |
+| 事業パネル | `.business-panel__*` | PC縦書き等の用途別仕様を維持 | ページ別工程で検討 |
 | 工程番号・日付・進行表示 | `.process-list__number`、`.schedule-step__year/date`、`.contact-steps` | 工程番号は第2章の専用32px。日付・進行表示は既存仕様を維持 | 標準本文と別管理 |
 | ACCESS GUIDE／TRAIN、FAQのQ/A | `.access-information__label`、`.access-card__type`、`.faq-item__symbol` | 構造ラベル・記号の現行仕様を維持 | 新規標準ラベルと区別 |
 | 必須・任意・重要カテゴリ | `.contact-form__required/optional`、`.news__category--important` | 小型バッジ・重要状態として現行差分を維持 | 状態UIとして評価 |
@@ -495,6 +496,7 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 | 対応範囲アイコン | 事業内容 | `#sample-icons-four / five / six` |
 | 通常情報表・費用詳細 | 企業概要、採用情報、飲食出店募集 | `#sample-groups`、情報表 |
 | 18px主要条件・詳細アコーディオン | 飲食出店募集 | `#sample-disclosure` |
+| 固定募集告知 | TOPのNEWS先頭、記事一覧の外側 | `#sample-news-announcement` |
 | NEWSのカテゴリ・18px重要項目・長いタイトルの省略 | TOP、NEWS一覧・記事、`subpage-content.js` | `#sample-news`（重要／通常×短文／長文） |
 | 共通のページ送り | NEWS一覧、WORKS一覧、`pagination.js` | `#sample-pagination-2-1` ほか、2・3・12ページの先頭／中間／末尾 |
 | 応募・PDFボタン | TOP、採用情報、飲食出店募集、フォーム | 共通ボタン・暗色面のボタン |
@@ -654,3 +656,40 @@ Chromiumで320／375／767／768／1024／1440pxを確認した。
 - 対象部品・フォーム比較・長文・リンク等367項目が通過。共通CSS使用ページ16ページ×6幅でも横溢れ・JavaScript例外なし。tokens.css、docs/components.css、全JSは変更していない。`git diff --check` も問題なし。
 
 今回の範囲に残る個別調整はない。新しい配置のための追加JS・新規ファイルは不要だった。
+
+## 18. NEWS先頭の固定募集告知
+
+### 確定した表示仕様
+
+- 部品は `assets/css/style.css` の `.news-announcement`。ラベルは既存の `.news__category.news__category--important` による「重要なお知らせ」、告知文は「寒川町相模川一之宮公園にて、飲食出店者を募集しています」、ボタンは黒い共通 `.action-button` の「募集概要を見る」。写真・日付は表示しない。
+- 背景はtransparentとし、周囲のNEWSと一体にする。告知専用の白・グレー・ベージュの背景面、ラベルやボタンを囲む四角い背景を設けない。カテゴリの赤い枠と、ボタン本体・丸矢印の既存背景は維持する。
+- 外枠は四辺とも `--rule-hair`（1px）・`--color-accent`。ラベルの赤と同じ色を使い、上辺だけを太くしない。TOPでは記事一覧と同じ `.news__content` に置き、左右端を揃える。
+- 内余白と文章／ボタンの間は `--space-lg`、ラベル／告知文の間は `--space-md`。記事一覧までは隣接する `.news__list` の上marginで `--space-xl` を一度だけ取る。
+- 告知文は第2章の小見出しトークン（PC24px／SP20px・700・1.5）。左揃えで自然に折り返す。専用の流動サイズや、サイト全体のトークン変更は行わない。
+- 768px未満はラベル・告知文・ボタンを縦に配置し、768px以上は文章の右にボタンを置く。ボタンは共通の文字・padding・丸矢印を縮小せず、カード全体をリンクにしない。
+- TOPは `href="#ark-garden"`、見本は `href="../index.html#ark-garden"`。詳細ページへの直接リンクにはしない。既存のアンカー移動とスクロール余白を使用し、新しいJSは追加しない。
+
+### CMS化と募集終了時の管理
+
+- TOPの固定asideは `.news__content` 直下、`#news-list.news__list` の外側にハードコードする。CMS化で記事ループに置き換えるのは `#news-list` の内側だけ。固定告知を記事件数・新着順・カテゴリ絞り込み・ページ送りに含めない。
+- 削除した「飲食出店募集のお知らせ」をCMS記事として再掲載し、同じ告知を重複させない。他の記事の本文・日付・リンク・順序、NEWS一覧ページの静的試作データは維持する。
+- 内容変更時は `index.html` の固定asideと、`docs/components.html#sample-news-announcement` の見本を同時に更新し、本章を修正する。見本へ技術説明を表示しない。
+- 募集終了時はTOPと見本の固定aside、見本の不要になる見出し・容器を削除する。記事一覧は残し、TOP下部の募集内容・応募導線は別途確認して更新する。下部セクションや画像を自動的に削除しない。関連CSSは全使用先の参照がなくなってから整理する。
+
+### 旧告知と共用画像の整理
+
+- ヒーロー直下の告知HTMLと、専用のレール・文字・ボタン・装飾・キャプションCSSを削除した。
+- `.garden-entry-cta__media` は採用ページと本文＋画像の見本で使用する共用画像枠のため、既存の比率・罫線・画像指定を維持する。`.media-caption` とほかの共用キャプションも維持する。
+- `assets/images/media/ark-garden-night-perspective.webp` はTOP下部・採用・見本で引き続き使うため削除しない。
+- 見本の外側の配置は既存の `docs/components.css` の容器を使い、告知の背景・枠・文字・余白は共通CSSだけで表示する。
+
+### 変更ファイルと確認結果
+
+- 実装・見本・仕様の6ファイル：`index.html`、`assets/css/style.css`、`docs/components.html`、`docs/DESIGN_SYSTEM.md`、`docs/DESIGN_GUIDELINES.md`、`docs/CODING_GUIDELINES.md`。
+- CSS参照URLのみを更新した14HTML：`arkgarden-recruit/index.html`, `business/index.html`, `company/index.html`, `contact/index.html`, `news/index.html`, `privacy-policy/index.html`, `recruit/index.html`, `works/index.html`, `contact/complete/index.html`, `contact/confirm/index.html`, `news/sample-news/index.html`, `recruit/apply/index.html`, `recruit/apply/complete/index.html`, `recruit/apply/confirm/index.html`。更新値は `20261107-news-notice-1`。これらのHTML本文は変更していない。
+- 作業開始時の未コミット変更（TOPメインビジュアルの装飾文字と専用CSSの削除）を保持した。全JS、tokens.css、subpage.css、docs/components.cssは変更していない。
+- 320／375／414／767／768／1024／1440pxで214項目を検証し、すべて通過。NEWS見出し→固定告知→4件の記事→一覧リンクの順、左右端、背景透過、四辺の色と1px幅、小見出しの文字値、共通ボタンのサイズを確認した。
+- 見本とTOPで、実際のラベル・告知文・ボタン、背景・枠・余白の計算済み値が一致した。狭い幅でも欠け・重なり・横溢れを認めず、JS例外もなかった。
+- 全7幅でボタンをEnter操作し、TOPの `#ark-garden` への移動と見出しが固定ヘッダーに隠れないことを確認。通常の滑らかなスクロールも375／1440pxで完了位置を確認した。
+- 削除した募集行以外の4記事と、TOP下部 `#ark-garden` のHTMLは作業前と一致。共用画像枠とキャプションの計算済み値もSP／PCで一致した。完成イメージ画像は残している。
+- 見本内の空のサンプル容器、ID重複、無効な仕様書の見本アンカーはない。`git diff --check` は問題なし。
