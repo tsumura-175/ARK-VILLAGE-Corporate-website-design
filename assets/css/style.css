@@ -1495,6 +1495,7 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 .recruit-facility__inner {
   display: grid;
   min-inline-size: 0;
+  padding-inline-start: calc(var(--page-gutter) + var(--section-title-indent));
   row-gap: 0;
 }
 
@@ -1516,8 +1517,7 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 }
 
 .recruit-facility__perspective {
-  inline-size: min(100%, var(--content-narrow));
-  justify-self: center;
+  inline-size: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   margin: 0;

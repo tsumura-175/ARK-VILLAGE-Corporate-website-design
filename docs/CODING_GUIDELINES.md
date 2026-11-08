@@ -130,7 +130,7 @@ TOPの `.news-announcement` はCMS記事ループの外側に置き、記事件�
 - TOPの飲食出店ボタンは `.garden-container__actions` による利用可能幅での折り返しを使い、`.contact-actions--pair / --mixed` のSP縮小指定へ再び混在させない。見本も同じラッパーと実際のリンク・準備中属性を使う。
 - `.process-list` のPC/SP共通の内部配置は共有CSSで行い、ol/li・番号→見出し→本文のDOM順序を保つ。見本専用上書きやページIDの指定を加えない。数値と余白の所有者は `DESIGN_SYSTEM.md` 第9章を参照する。
 - 中見出し＋内容には `.content-group.content-group--major` と `.content-group__title` を使う。仕様は `DESIGN_SYSTEM.md` 第2・9章を参照する。通常グループと入れ子の小見出しは維持し、タグ階層は内容に沿って選ぶ。事業の項目名は `.business-capability-grid__label` で指定し、hタグに文字指定を結び付けない。
-- 採用施設・募集カードはTOP、採用ページ、見本で `.recruit-facility / .recruit-opening` を共用する。背景色だけの `.section-surface--base / --tinted` は `style.css` から使用し、装飾付きの本文プレートを流用しない。構造・breakpoint・subgrid・素材・状態は `DESIGN_SYSTEM.md` 第10章を正本とする。募集バナーの背景・fit指定は既存定義を直接修正する。hover拡大は既存の画像アニメーション定義へセレクターを追加して共用し、対応端末・動きの設定を同じmedia条件で判定する。通常時の縮小やreduced-motion側の縮小上書きを再追加しない。画像URL・ページID・nth-childによる位置補正は使わず、他用途の同一画像へ影響させない。
+- 採用施設・募集カードはTOP、採用ページ、見本で `.recruit-facility / .recruit-opening` を共用する。位置と幅は `.page-shell.recruit-facility__inner` の親paddingで所有し、既存の `--section-title-indent` で英字開始位置へ揃える。写真や募集案内へ個別の最大幅・位置補正を追加しない。背景色だけの `.section-surface--base / --tinted` は `style.css` から使用し、装飾付きの本文プレートを流用しない。構造・breakpoint・subgrid・素材・状態は `DESIGN_SYSTEM.md` 第10章を正本とする。募集バナーの背景・fit指定は既存定義を直接修正する。hover拡大は既存の画像アニメーション定義へセレクターを追加して共用し、対応端末・動きの設定を同じmedia条件で判定する。通常時の縮小やreduced-motion側の縮小上書きを再追加しない。画像URL・ページID・nth-childによる位置補正は使わず、他用途の同一画像へ影響させない。
 - 見出しと後続内容の距離は一箇所で所有し、marginと親gapを重ねない。通常情報表はdt/dd各16px。18pxの強調本文はNEWS重要項目と主要条件に保持する。本文の小見出しはh階層を維持したまま標準部品を使う。
 - 変更したCSSを読むHTMLのキャッシュ値を更新する。import先も変更した場合はその参照値を更新し、内容を変更していないimport先は据え置く。HTML本文を変更しない場合も、キャッシュ値を変更したファイルを報告する。未コミットの既存変更は保持する。
 - 確認幅・数値はデザインシステムを参照する。実計算値・折り返し・局所的な横溢れ・上罫線までの距離・サイトと見本の一致・資料用CSSの非読込を確認する。
