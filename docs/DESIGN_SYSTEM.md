@@ -55,7 +55,7 @@
 - 大見出しは `.section-heading` 内の `.section-title` を使い、赤い斜線・英字 `.section-title__en`・直後のh2を一組にする。現行サイトのDOMと既存 `script.js` の自動配置を維持する。日本語が英字最終行の右に収まらなければ、JSが `.section-title--stacked` を付けて縦に並べる。このクラスは実行時に使う状態であり、未使用CSSではない。
 - 大見出しの後続余白は `.section-heading` のpaddingが所有し、`.content-section__head` も同じトークンを使う。セクション全体の上下paddingや本文プレート内のpaddingとは区別する。
 - 中見出しは施設名 `.recruit-facility__name / .recruitment-facility__name`、交通案内の `.access-information h3`、記事タイトル等の実部品に適用する。小見出しは職種・内容小区分・交通案内・記事本文・ポリシーの実部品に適用する。h要素の数字だけで文字の役割を決めない。
-- `.content-group` はgapを0にし、小見出し `.content-group__title` から次の内容まで、次要素のmarginで `--type-heading-sm-after` を一度だけ確保する。通常内容間は `--space-lg`、リード直後は `--type-lead-after`。施設・職種カードは既存gridのgapが見出し後の距離を所有する。
+- `.content-group` はgapを0にし、`.content-group__title` 直後の要素のmarginだけで後続余白を確保する。通常は小見出し用 `--type-heading-sm-after`、`.content-group--major` では中見出し用 `--type-heading-md-after`。通常内容間は `--space-lg`、リード直後は `--type-lead-after`。施設・職種カードは既存gridのgapが見出し後の距離を所有する。
 - `.content-section__lead + .content-section__copy` と理念の縦積みは共通リード用の後続余白を使う。1024px以上の理念2列のcolumn-gapは既存レイアウトを維持する。
 - 情報表は `.definition-list dt` が項目ラベル16px、ddが通常本文16px。主要条件の要約 `.summary-facts dd` と重要なお知らせ `.news__item--important p` は強調本文18px。情報表の値を一律18pxにする別バリエーションは設けない。dd内の補足spanは共通の補足仕様を使う。
 - 長い施設名・職種名は現行採用カードの自然な折り返しで確認する。個別に縮小したり、見本だけの特別な改行をサイトの仕様として追加したりしない。
@@ -204,15 +204,17 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 
 ### Business Detail Pattern
 
-- 事業内容ページの4事業は「共通見出し、メッセージ、説明文、写真、アイコン項目」の順序で統一する
+- 事業内容ページの4事業は「共通見出し、メッセージ、説明文、写真、中見出し『事業内容』、アイコン項目」の順序で統一する。写真と中見出し＋一覧を `.content-groups` でまとめ、写真下から見出しまでをPC64px／SP40pxとする。写真上の既存余白56pxと画像の枠・構図は維持する。見出しと一覧の左端は写真に揃える。
 - 現在は対応写真が各事業1枚のため、`.business-media` で静止表示する。同一写真を複数枚のスライダーとして繰り返さない
 - 4事業のコンテンツ領域は共通してページ本文幅まで使う。リード・説明文の読み幅は維持し、写真・対応項目の一覧を広く見せる
 - `.business-media` はSPで4:3、768px以上で2:1の表示枠を使い、最大幅は `--content-max` とする。画像は `object-fit: cover` で収める
 - 各事業につき複数の意味の異なる写真が揃った時点でのみ、ページネーションと自動再生を伴うスライダーを新設する
 - `.business-capability-grid`：対応範囲を線画アイコンと短い項目名で表示する。現在の4事業の項目数は順に4・6・5・6。`--four` はPCで2列×2行、`--six` は3列×2行、`--five` は上段3項目・下段2項目を左揃えにする。5項目の上段3番目にも下罫線を残し、段の境界を揃える。汎用の `--three` は3列に対応する
 - アイコン付き一覧の実物見本は `components.html#sample-icons-four`、`#sample-icons-five`、`#sample-icons-six`。事業内容と同じSVG・クラス・表示アニメーションを使用する。「パフォーマンス出演」は既存のメガホンSVGを使う。
+- 中見出しと一覧は `.content-group.content-group--major` 内に置く。見出しは `.content-group__title`、項目名は `.business-capability-grid__label`。事業ページは事業h2→事業内容h3→項目h4、見本は説明h3→事業内容h4→項目h5とし、文字の役割はタグと切り離す。項目名は従来どおり16px・700・1.5。中見出し後の余白は第2・9章の共通ルールを使い、一覧の単独時の上marginを加算しない。
 - SPではアイコン項目を1列、768px以上では2列、1024px以上では項目数に応じた列数へ展開する。5項目のタブレット表示では末尾が2列分を使う
 - セクション内部の構造は統一しつつ、基本背景と補助背景を交互に使用してページ全体のリズムを保つ
+- 確認記録（2026-11-08）：320／375／767／768／1024／1440pxで実ページ・見本・既存グループを比較した。共通CSS使用ページを含む48画面条件・612項目を通過し、中見出し・前後余白・左揃え・階層・長文・入れ子を確認。写真の寸法・構図・上余白、アイコン・項目ラベル、採用・飲食出店募集の小見出しは作業前と一致。横溢れ・JS例外なし。
 - 角丸や強い影は使わず、既存の罫線、余白、赤いアクセントのルールを継承する
 
 ### Page Memory Point
@@ -332,7 +334,10 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 ### 小見出し・ボタン
 
 - `.content-groups` は関連項目の容器。間隔はSPが `--space-xl`、768px以上が `--space-2xl`。
-- `.content-group` と `.content-group__title` は小見出し＋本文の組。文字と後続余白は第2章の小見出し仕様を使い、`.content-group` が管理する。gapとmarginを重ねない。募集要項の注記と個別職種も別のグループにして関係を示す。
+- `.content-group` と `.content-group__title` は見出し＋内容の組。通常は第2章の小見出し仕様を維持する。中見出しとして使う場合だけ親へ `.content-group--major` を付ける。Noto Sans JP、PC32px／SP24px・700・1.35、後続24px／16px。赤い斜線や縦線は付けない。
+- 共通CSSはローカル変数 `--content-group-title-size / -weight / -line / -after` で役割別トークンを選ぶ。`.content-group` が小見出し値を初期化し、`--major` が中見出し値へ切り替える。入れ子の通常グループは小見出しへ戻り、グループ外の既存タイトルも従来値を維持する。文字指定やページ専用CSSを複製しない。
+- 見出し自体のmarginと親gapは0。後続要素のmarginだけで所定の距離を取る。事業のアイコン一覧が単独で持つ上margin56pxは、この既存の隣接要素ルールで24px／16pxへ置き換わる。写真からグループまでの距離は外側の `.content-groups` のgapが所有し、見出し後の余白と区別する。
+- 実使用先は事業内容4事業とアイコン一覧の見本3点。採用情報・飲食出店募集の既存 `.content-group` は小見出しのまま維持する。募集要項の注記と個別職種も別グループで関係を示す。
 - PDFは `.action-button.action-button--outline` と `.ui-download-icon` を共用する。実URL、`download` 属性、資料を区別できる読み上げ名を付ける。
 - TOPの20ft・40ftの `.garden-container__actions` は共通 `.action-button` の文字・高さ・padding・丸矢印を維持し、利用可能幅で自然に折り返す。2個が収まれば横並び、収まらなければ同じ全幅で縦並び。文字は1行を保ち、丸矢印は右端に揃える。共通gapは最小間隔として維持する。見本の暗色ボタンもこの実部品の組み合わせを使う。
 - フォーム等の `.contact-actions` は中央配置。既存の `--pair`（主要ボタン2個）と `--mixed`（主要ボタン＋補助リンク）のSP用2列・縮小指定は今回変更しない。TOP専用の縮小はこのルールから切り離した。単独ボタンに新たな2列指定を付けない。
@@ -457,7 +462,8 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 | WORKS年・カテゴリ | 2026年／大会運営/企画 | `.work-panel__category`、`.work-entry__category`、`.work-entry__description` | 補足・注記 | 14・400・1.6 | カテゴリ名を項目ラベルと混同しない |
 | 画像キャプション・クレジット | 完成イメージ／©Jason Halayko / YUSF | `.media-caption`、既存caption別名、`.news-article__media figcaption` | 補足・注記 | 14・400・1.6 | 位置・写真は維持 |
 | 添付ファイル・状態通知 | 選択されていません | `.attachment-control__filename`、`.contact-form__status` | 補足・注記 | 14・400・1.6 | 選択・取消ボタンは操作UI仕様 |
-| 事業の対応範囲アイコン | 運営／コミュニティ形成 | `.business-capability-grid__item h3` | 項目ラベル | 16・700・1.5 | hタグでも一覧のラベルとして分類 |
+| 事業の対応範囲の見出し | 事業内容 | `.content-group--major > .content-group__title`（実ページh3／見本h4） | 中見出し | 32/24・700・1.35、後続24/16 | 共通グループの中見出し版 |
+| 事業の対応範囲アイコン | 運営／コミュニティ形成 | `.business-capability-grid__label`（実ページh4／見本h5） | 項目ラベル | 16・700・1.5 | タグに依存せず見た目を維持 |
 | FAQ・詳細の開閉名 | 出店条件について | `.faq-item summary`、`.disclosure summary` | 項目ラベル | 16・700・1.5 | Q/Aと＋/−は用途別記号を維持 |
 | FAQの回答 | テキスト… | `.faq-item__answer` | 本文 | 16・400・1.8 | 仮原稿は変更しない |
 | 工程の見出し・説明 | 応募／内装・厨房計画 | `.process-list h3`、`.schedule-phase__title`、`.schedule-step__body h4` | 小見出し／本文 | 24/20と16、説明前16/12 | 工程番号・日付・段階内配置は用途別 |
