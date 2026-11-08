@@ -54,7 +54,7 @@
 
 - 大見出しは `.section-heading` 内の `.section-title` を使い、赤い斜線・英字 `.section-title__en`・直後のh2を一組にする。現行サイトのDOMと既存 `script.js` の自動配置を維持する。日本語が英字最終行の右に収まらなければ、JSが `.section-title--stacked` を付けて縦に並べる。このクラスは実行時に使う状態であり、未使用CSSではない。
 - 大見出しの後続余白は `.section-heading` のpaddingが所有し、`.content-section__head` も同じトークンを使う。セクション全体の上下paddingや本文プレート内のpaddingとは区別する。
-- 中見出しは施設名 `.recruit-facility__name / .recruitment-facility__name`、交通案内の `.access-information h3`、記事タイトル等の実部品に適用する。小見出しは職種・内容小区分・交通案内・記事本文・ポリシーの実部品に適用する。h要素の数字だけで文字の役割を決めない。
+- 中見出しは施設名 `.recruit-facility__name`、交通案内の `.access-information h3`、記事タイトル等の実部品に適用する。小見出しは職種・内容小区分・交通案内・記事本文・ポリシーの実部品に適用する。h要素の数字だけで文字の役割を決めない。
 - `.content-group` はgapを0にし、`.content-group__title` 直後の要素のmarginだけで後続余白を確保する。通常は小見出し用 `--type-heading-sm-after`、`.content-group--major` では中見出し用 `--type-heading-md-after`。通常内容間は `--space-lg`、リード直後は `--type-lead-after`。施設・職種カードは既存gridのgapが見出し後の距離を所有する。
 - `.content-section__lead + .content-section__copy` と理念の縦積みは共通リード用の後続余白を使う。1024px以上の理念2列のcolumn-gapは既存レイアウトを維持する。
 - 情報表は `.definition-list dt` が項目ラベル16px、ddが通常本文16px。主要条件の要約 `.summary-facts dd` と重要なお知らせ `.news__item--important p` は強調本文18px。情報表の値を一律18pxにする別バリエーションは設けない。dd内の補足spanは共通の補足仕様を使う。
@@ -145,9 +145,8 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 
 ### Recruit
 
-- TOPは `.recruit-facilities / .recruit-facility`、採用ページは `.recruitment-facilities / .recruitment-facility` で施設別にまとめる。スポーツパークの3件は両ページで `.recruit-facility__layout--park / .recruit-opening` を共用し、公園の採用ページ1件は `.recruitment-routes / .recruitment-route` で写真・職種・導線を見せる
-- 採用専用の画像は `assets/images/recruit/` にWebPで格納する。複数セクションで使う場合は `assets/images/media/` に移し、重複保存しない
-- 寒川町ストリートスポーツパークの3件はPCで画像とボタンの上端を揃え、本文と画像・画像とボタンの間をそれぞれ `--space-lg` 空ける。文章量が異なる分の空きは本文領域内に残し、文章を水増ししない
+- TOP・採用ページ・見本は `.recruit-facilities / .recruit-facility / .recruit-opening` を共用する。施設名→中央の施設写真→募集案内の順序、素材・背景・列数・余白の正本は第10章。
+- 採用専用の既存素材は `assets/images/recruit/` を参照し、ページごとに複製しない。仮の施設写真と募集バナーを別要素として扱う。
 
 ## 4. 下層ページコンポーネント
 
@@ -180,7 +179,7 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 ### Content Section
 
 - クラス：`.content-section`
-- 背景は `.content-section--base` と `.content-section--tinted` の2種類を共通バリエーションとして使用する
+- 背景は `.content-section--base` と `.content-section--tinted` の2種類を共通バリエーションとして使用する。採用施設ブロックでは、色だけを共有する `.section-surface--base / --tinted` を使用する。色指定と初期値は `style.css` に集約し、従来の本文プレート・黒い横線・構造グリッド等は `subpage.css` の下層セクション側へ残す。施設ブロックへ装飾付きクラスや `.content-section__body` を付けない。
 - `--base` は標準のペーパー色、`--tinted` は同系色の濃度差と右側の部分的な設計補助線でセクションを区切る
 - 原則として基本背景と補助背景を交互に使い、ページ固有の任意色や強い装飾を追加しない
 - 設計補助線は縦線1本、長さの異なる横線2本、小さな赤い基準マークで構成し、全面反復パターンにはしない
@@ -361,15 +360,25 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 - 正式な施設表記は「寒川町相模川一之宮公園」「寒川町ストリートスポーツパーク」。旧施設名は新規の表示文言に使わない。ただしExcel正本の歴史的な実績名・既存URL・識別子・素材ファイル名は機械的に置換しない。
 - 募集区分は公園の社員・アルバイトと、スポーツパークの受付社員・運営管理社員／BMX FLATLAND・SKATEBOARD STREET講師／アルバイト・清掃スタッフの3件。
 - 本サイトで詳細と応募を管理するのは公園。スポーツパークは正式な外部URL受領まで「採用サイト準備中」とし、公園のフォームや架空URLへ接続しない。
-- TOPは `.recruit-facilities / .recruit-facility`、採用ページは `.recruitment-facilities / .recruitment-facility`。スポーツパークは両ページで `.recruit-facility__layout--park / .recruit-opening` を共用し、文字→画像→ボタン、罫線、PC3列を揃える。
-- 公園の採用カードは `.recruitment-routes / .recruitment-route`。バナー上の `recruitment-route__number` による「01」は表示しない。画像と周囲の文言は保持する。
+- TOP・採用ページ・見本は `.recruit-facilities` 内に2つの `.recruit-facility` を置く。各施設の直下に `.page-shell.recruit-facility__inner` を置き、施設名 `.recruit-facility__name` →施設写真 `.recruit-facility__perspective` →募集案内 `.recruit-facility__layout` の同じ構造を使う。両ページの大見出しと既存アンカーは保持する。
+- 公園は通常背景 `.section-surface--base`、スポーツパークは既存の薄い補助背景 `.section-surface--tinted`。施設ブロックはpage-shellの外へ出し、背景を画面幅いっぱいに広げる。内容は内側のpage-shellで揃え、別背景の本文プレート・黒い横線・新色は追加しない。
+- 施設名は中見出し、募集見出しは小見出し、説明は本文の既存トークンを使う。施設名と募集見出しは共通CSSのtext-wrap: balanceで自然改行を均し、強制改行や文字縮小は加えない。施設名の後は隣接する写真のmarginでPC24px／SP16px、写真の後は募集案内のmarginで40pxを一度だけ確保する。施設内の親gapと見出しmarginは0。募集見出し→説明はcopyのgapでPC16px／SP12px、バナー→copyとcopy→ボタンは24px。施設全体の上下paddingはSP40px／768px以上64px。
+- 全施設写真は `assets/images/placeholder/sample-1.webp` を共用し、最大 `--content-narrow`（68rem）・16:9・中央配置とする。SPは内側の利用可能幅に収める。altは空とし、施設の記録写真と説明しない。支給後は同じimgのsrcとaltを差し替える。写真上の文字・キャプションは置かない。
+- 各募集カードは `.recruit-opening` 内の募集バナー→`.recruit-opening__copy`（見出し・既存説明）→既存のボタン／準備中spanの順。公園の1件だけ `.recruit-opening--featured` を使い、768px以上は左バナー・右copy＋ボタン、未満は縦積みとする。社員・アルバイトを別カードへ分割しない。
+- スポーツパークは `.recruit-facility__layout--park`。768px未満は1列、768〜1279pxは2列、1280px以上は3列。複数列では各カードを3行のsubgridにし、バナーの上下端・見出し開始・ボタン位置を同じ行で揃える。copy内部は小見出し後の共通gapを維持し、文章量の差はcopyの共有行の余白で吸収する。固定高・行数制限・省略・個別縮小は使わない。
+- 募集バナーの表示枠は16:10、背景透明。`.recruit-opening__media img` は幅・高さ100％、`object-fit: cover`・中央配置とし、通常時は縮小せず枠いっぱいに表示する。画像のズームは募集カード `.recruit-opening` のhover判定を使い、hover可能・fine pointer・`prefers-reduced-motion: no-preference` の場合だけscale(1.035)へ拡大する。画像だけを `--dur-nav`・`--ease-out` で滑らかに往復させ、枠はoverflow: hiddenで固定する。WORKSと同じ既存のアニメーション定義へセレクターを追加し、既存用途の挙動は変えない。動きを減らす設定とタッチ端末ではズームを適用せず、旧縮小値は復元しない。通常時は16:10の文字入り素材3点を全体表示し、3:2の講師写真だけ上下を中央トリミングする。人物の顔・頭・足元・スケートボードを保持し、左右の空きは作らない。元画像の加工・生成・複製はせず、採用ページのKV等へは適用しない。
+- 募集バナーhover拡大の確認（2026-11-08）：TOP・採用・見本を320／375／767／768／1279／1280／1440pxで確認し、21画面条件とタッチ端末の778項目を通過。カードhoverで画像のみ1.035倍へ拡大し、520msの共通トークンで往復する。枠・カード・隣接内容の位置と寸法は不変。通常時の全面表示・透明背景・中央トリミングを維持し、reduced-motion／タッチ端末では拡大も縮小もない。採用KV等の他画像・元素材は変更していない。
+- 募集バナー全面表示の確認記録（2026-11-08、hover拡大復元前）：320／375／414／767／768／1024／1279／1280／1440px、TOP・採用・見本の27画面条件で通常・hover・reduced-motionの2,268項目を通過。全バナーが透明背景の16:10枠を埋め、縮小・拡大・文字入り素材の切り取りがない。講師写真の中央トリミングは人物の頭・足元・スケートボードを保持でき、Modifierは不要だった。施設写真・カード・見出し・ボタンの寸法と配置、採用KVを含む他画像の指定は作業前と一致。元画像は変更していない。
+- TOPの公園リンクは `recruit/#garden-careers`、採用ページ内は `#garden-careers`、見本は `../recruit/#garden-careers` を維持する。スポーツパーク3件は操作できない準備中spanとし、外部URL等を新設しない。
+- 旧 `.recruitment-*`、旧公園専用layout・番号・写真キャプションの指定は、HTML・JSの参照がないことを確認して整理した。施設名と職種の文字指定、カード配置を共通部品へ集約する。募集バナーのhover拡大は上記の共通アニメーション条件で管理し、通常表示を縮小しない。
 - 本文の順序は募集区分→WORK STYLE→JOBS→FLOW。WORK STYLEは会社紹介と働く環境、JOBSは仕事内容・人物像・募集要項、FLOWは応募→面接→採用発表。
 - WORK STYLE・JOBSの内容は支給「採用情報_公園.pdf」に基づく。根拠のない働きやすさや条件を創作せず、給与・人数等の「（仮）」を保持する。
 - WORK STYLEのリードは「公園の日常と、<br />地域のにぎわいを支える。」。右の画像は `assets/images/media/ark-garden-night-perspective.webp` を共用し、「完成イメージ」を右下に表示する。
-- TOPの公園側左画像は `placeholder/sample-1.webp`、求人バナーは `recruit/ichinomiya-park-staff.webp`。スポーツパークの受付・運営は `recruit/samukawa-street-sports-park-operations.webp`、講師は `recruit/staff-instructor-cleaning.webp`、アルバイト・清掃は `recruit/samukawa-street-sports-park-cleaning.webp`。
+- 公園の求人バナーは `recruit/ichinomiya-park-staff.webp`。スポーツパークの受付・運営は `recruit/samukawa-street-sports-park-operations.webp`、講師は `recruit/staff-instructor-cleaning.webp`、アルバイト・清掃は `recruit/samukawa-street-sports-park-cleaning.webp`。
 - 採用メイン・求人応募3画面のKVは `recruit/staff-instructor-cleaning.webp` を共用。`.page-hero--image-top` の現行位置は `36% 34%`。
 - WORK STYLE末尾・JOBS末尾は求人応募ボタンだけを表示し、「選考の流れを見る」のページ内リンクは置かない。FLOWセクション自体は残す。
 - 実物見本：`components.html#sample-recruit`、`#sample-feature`。
+- 確認記録（2026-11-08）：対象3ページを320／375／414／767／768／960／1024／1280／1440pxで確認し、共通の文字・画像寸法・背景・余白・カード整列が一致。他13ページを375／768／1440pxで作業前と比較し、背景・本文プレート・文字・余白を維持した。長文差し替え、既存リンク遷移、準備中の非操作状態、フォーカス、通常hoverと動きを減らす設定を確認。横溢れ・JS例外なし。採用詳細のDOM、全JS、トークン、画像ファイル、資料用CSSは変更していない。
 
 ### 求人応募の静的試作
 
@@ -424,9 +433,9 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 | 掲載箇所 | 文言例 | 既存クラス・生成元 | 分類 | 適用する共通ルール | 例外の有無 |
 | --- | --- | --- | --- | --- | --- |
 | TOP・全下層のセクション開始 | BUSINESS／事業内容 | `.section-title__en`、直後のh2 | 大見出し | 英80/48、日本語32/24、後続64/40 | なし。長文は自動縦積み |
-| TOP採用・採用ページ | 寒川町相模川一之宮公園 | `.recruit-facility__name`、`.recruitment-facility__name` | 中見出し | 32/24・700・1.35、後続24/16 | なし。長い名称は折り返す |
+| TOP採用・採用ページ | 寒川町相模川一之宮公園 | `.recruit-facility__name` | 中見出し | 32/24・700・1.35、後続24/16 | なし。長い名称は折り返す |
 | TOP採用・採用ページ | 受付社員・運営管理社員 募集 | `.recruit-opening__copy h4` | 小見出し | 24/20・700・1.5、後続16/12 | なし。PCの個別縮小を撤去 |
-| 公園の採用カード | 社員・アルバイト募集 | `.recruitment-route h4` | 小見出し | 24/20・700・1.5、Noto Sans JP | なし。Antonio・600・固定の最小高を撤去 |
+| 公園の採用カード | 社員・アルバイト募集 | `.recruit-opening--featured .recruit-opening__copy h4` | 小見出し | 24/20・700・1.5、Noto Sans JP | なし。Antonio・600・固定の最小高を撤去 |
 | 採用・飲食出店の内容小区分 | 働く環境／公園運営マネージャー | `.content-group__title`（h3/h4） | 小見出し | 24/20、後続16/12 | 主区分を中見出しにする判断は個別工程 |
 | 企業概要の交通案内 | 主な交通手段 | `.access-information h3` | 中見出し | 32/24、後続24/16 | なし |
 | 交通手段のカード | 電車でお越しの方 | `.access-card h4` | 小見出し | 24/20、本文まで16/12 | なし |
@@ -434,7 +443,7 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 | 企業理念 | ストリートの「居場所」を、未来へつなぐ | `.philosophy-feature__lead` | リードコピー | 32/24・700・1.65 | 共通リード。2列レイアウトは維持 |
 | 通常の説明文章 | 園内の巡回や安全確認… | `.content-section__copy` | 本文 | 16・400・1.8 | なし。複数段落間は既存内容間隔 |
 | 理念本文 | 私たちは、BMXや… | `.philosophy-feature__copy` | 本文 | 16・400・1.8 | 既存の文字色を維持 |
-| 採用カードの説明 | 日々の運営を支える社員… | `.recruit-opening__copy p`、`.recruitment-route__body > p` | 本文 | 16・400・1.8 | なし |
+| 採用カードの説明 | 日々の運営を支える社員… | `.recruit-opening__copy p` | 本文 | 16・400・1.8 | なし |
 | TOPの企業説明 | 現場で培った知見を生かし… | `.company__content > p` | 本文 | 16・400・1.8 | 画像上の構成・色は維持 |
 | TOPのコンテナ名 | 20ftコンテナ | `.garden-container h3` | 小見出し | 24/20、後続16/12 | なし |
 | TOPのFAQ導線の説明 | 飲食出店に関するよくある質問 | `.route-item__label` | 項目ラベル | 16・700・1.5、Noto Sans JP | 暗色面の補助文字色を維持 |

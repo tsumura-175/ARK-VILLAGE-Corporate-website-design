@@ -379,6 +379,26 @@ html.is-github-pages.is-access-locked .access-gate {
   color: var(--color-on-dark);
 }
 
+/* Shared section surfaces; decoration remains in the component that owns it. */
+.content-section,
+.section-surface--base {
+  --section-surface: var(--color-paper);
+  --content-surface: var(--section-surface);
+}
+
+.content-section--base,
+.section-surface--base {
+  background: var(--section-surface, var(--color-paper));
+}
+
+.content-section--tinted,
+.section-surface--tinted {
+  --section-surface: color-mix(in oklch, var(--color-paper-2) 34%, var(--color-paper));
+  --content-surface: var(--color-paper);
+
+  background: var(--section-surface);
+}
+
 /* Shared section-heading rhythm: title and context stay as one compact unit. */
 .section-heading {
   display: grid;
@@ -1083,7 +1103,6 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 
 .media-caption,
 .garden-recruit__caption,
-.recruit-facility__caption,
 .split-feature__caption {
   position: absolute;
   z-index: var(--z-raised);
@@ -1378,12 +1397,14 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .work-panel__media img,
-  .work-entry__media img {
+  .work-entry__media img,
+  .recruit-opening__media img {
     transition: transform var(--dur-nav) var(--ease-out);
   }
 
   .work-panel:hover .work-panel__media img,
-  .work-entry:hover .work-entry__media img {
+  .work-entry:hover .work-entry__media img,
+  .recruit-opening:hover .recruit-opening__media img {
     transform: scale(1.035);
   }
 }
@@ -1463,18 +1484,23 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 
 .recruit-facilities {
   display: grid;
-  border-block-start: var(--rule-hair) solid var(--color-rule);
+  min-inline-size: 0;
 }
 
 .recruit-facility {
-  display: grid;
-  min-width: 0;
+  min-inline-size: 0;
   padding-block: var(--space-xl);
-  border-block-end: var(--rule-hair) solid var(--color-rule);
-  gap: var(--type-heading-md-after);
+}
+
+.recruit-facility__inner {
+  display: grid;
+  min-inline-size: 0;
+  row-gap: 0;
 }
 
 .recruit-facility__name {
+  margin: 0;
+  text-wrap: balance;
   letter-spacing: -0.01em;
   font-family: var(--font-body);
   font-size: var(--type-heading-md-size);
@@ -1484,35 +1510,50 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 
 .recruit-facility__layout {
   display: grid;
-  min-width: 0;
-  gap: var(--space-xl);
+  min-inline-size: 0;
+  column-gap: var(--space-xl);
+  row-gap: var(--space-lg);
 }
 
 .recruit-facility__perspective {
-  aspect-ratio: 4 / 3;
+  inline-size: min(100%, var(--content-narrow));
+  justify-self: center;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   margin: 0;
   background: var(--color-paper-2);
 }
 
+.recruit-facility__name + .recruit-facility__perspective {
+  margin-block-start: var(--type-heading-md-after);
+}
+
+.recruit-facility__perspective + .recruit-facility__layout {
+  margin-block-start: var(--space-xl);
+}
+
 .recruit-opening {
   display: grid;
-  min-width: 0;
+  min-inline-size: 0;
   align-content: start;
   gap: var(--space-lg);
 }
 
-.recruit-opening + .recruit-opening {
-  padding-block-start: var(--space-xl);
+.recruit-facility__layout--park > .recruit-opening {
+  padding-block-start: var(--space-lg);
   border-block-start: var(--rule-hair) solid var(--color-rule);
 }
 
 .recruit-opening__copy {
   display: grid;
+  min-inline-size: 0;
+  align-content: start;
   gap: var(--type-heading-sm-after);
 }
 
 .recruit-opening__copy h4 {
+  margin: 0;
+  text-wrap: balance;
   letter-spacing: -0.02em;
   font-family: var(--font-body);
   font-size: var(--type-heading-sm-size);
@@ -1521,6 +1562,7 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 }
 
 .recruit-opening__copy p {
+  margin: 0;
   color: var(--color-muted);
   font-family: var(--font-body);
   font-size: var(--type-body-size);
@@ -1529,127 +1571,67 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 }
 
 .recruit-opening__media {
+  align-self: start;
   aspect-ratio: 16 / 10;
   overflow: hidden;
   margin: 0;
-  background: var(--color-paper-2);
+  background: transparent;
 }
 
 .recruit-opening__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 720ms var(--ease-out);
+  object-position: center;
 }
 
 .recruit-opening .action-button {
+  max-inline-size: 100%;
   width: fit-content;
+  align-self: end;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .recruit-opening:hover .recruit-opening__media img {
-    transform: scale(1.035);
+@media (min-width: 48rem) {
+  .recruit-facility {
+    padding-block: var(--space-2xl);
+  }
+
+  .recruit-opening--featured {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-2xl);
+  }
+
+  .recruit-opening--featured > .recruit-opening__media {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+
+  .recruit-opening--featured > .recruit-opening__copy {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
+  }
+
+  .recruit-opening--featured > .action-button {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+  }
+
+  .recruit-facility__layout--park {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .recruit-facility__layout--park > .recruit-opening {
+    grid-row: span 3;
+    grid-template-rows: subgrid;
   }
 }
 
-.recruitment-facilities {
-  display: grid;
-  border-block-start: var(--rule-hair) solid var(--color-rule);
-}
-
-.recruitment-facility {
-  display: grid;
-  min-width: 0;
-  padding-block: var(--space-xl);
-  border-block-end: var(--rule-hair) solid var(--color-rule);
-  gap: var(--type-heading-md-after);
-}
-
-.recruitment-facility__name {
-  letter-spacing: -0.01em;
-  font-family: var(--font-body);
-  font-size: var(--type-heading-md-size);
-  font-weight: var(--type-heading-md-weight);
-  line-height: var(--type-heading-md-line);
-}
-
-.recruitment-routes {
-  display: grid;
-}
-
-.recruitment-route {
-  position: relative;
-  display: grid;
-  min-width: 0;
-  gap: var(--space-lg);
-}
-
-.recruitment-route__number {
-  position: absolute;
-  inset-block-start: var(--space-sm);
-  inset-inline-start: var(--space-sm);
-  z-index: var(--z-raised);
-  color: var(--color-on-dark);
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
-  text-shadow: 0 1px 12px color-mix(in oklch, var(--color-ink) 80%, transparent);
-}
-
-.recruitment-route__media {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  background: var(--color-paper-2);
-}
-
-.recruitment-route__media::after {
-  position: absolute;
-  inset: 0;
-  border: var(--rule-hair) solid
-    color-mix(in oklch, var(--color-ink) 20%, transparent);
-  content: "";
-  pointer-events: none;
-}
-
-.recruitment-route__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 720ms var(--ease-out);
-}
-
-.recruitment-route__body {
-  display: grid;
-  align-content: start;
-  gap: var(--type-heading-sm-after);
-}
-
-.recruitment-route h4 {
-  letter-spacing: -0.02em;
-  font-family: var(--font-body);
-  font-size: var(--type-heading-sm-size);
-  font-weight: var(--type-heading-sm-weight);
-  line-height: var(--type-heading-sm-line);
-}
-
-.recruitment-route__body > p {
-  color: var(--color-muted);
-  font-family: var(--font-body);
-  font-size: var(--type-body-size);
-  font-weight: var(--type-body-weight);
-  line-height: var(--type-body-line);
-}
-
-.recruitment-route .action-button {
-  margin-block-start: var(--space-sm);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .recruitment-route:hover .recruitment-route__media img {
-    transform: scale(1.035);
+@media (min-width: 80rem) {
+  .recruit-facility__layout--park {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -2271,80 +2253,6 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
     justify-content: start;
   }
 
-  .recruitment-facility {    padding-block: var(--space-2xl);
-  }
-
-  .recruitment-routes--garden .recruitment-route {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: center;
-    column-gap: var(--space-2xl);
-  }
-
-  .recruit-facility {    padding-block: var(--space-2xl);
-  }
-
-  .recruit-facility__layout {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0;
-  }
-
-  .recruit-facility__layout--park {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-template-rows: auto auto auto;
-    column-gap: var(--space-xl);
-    row-gap: var(--space-lg);
-  }
-
-  .recruit-facility__perspective {
-    align-self: stretch;
-    min-height: 28rem;
-    aspect-ratio: auto;
-  }
-
-  .recruit-opening {
-    padding-inline-end: var(--space-xl);
-  }
-
-  .recruit-opening + .recruit-opening,
-  .recruit-facility__layout--garden .recruit-opening {
-    padding-block-start: 0;
-    padding-inline-start: var(--space-xl);
-    padding-inline-end: 0;
-    border-block-start: 0;
-    border-inline-start: var(--rule-hair) solid var(--color-rule);
-  }
-
-  .recruit-facility__layout--park .recruit-opening,
-  .recruit-facility__layout--park .recruit-opening + .recruit-opening {
-    grid-row: 1 / span 3;
-    grid-template-rows: subgrid;
-    row-gap: var(--space-lg);
-    column-gap: 0;
-    padding: var(--space-lg) 0 0;
-    border: 0;
-    border-block-start: var(--rule-hair) solid var(--color-rule);
-  }
-
-  .recruit-facility__layout--park .recruit-opening:nth-child(1) {
-    grid-column: 1;
-  }
-
-  .recruit-facility__layout--park .recruit-opening:nth-child(2) {
-    grid-column: 2;
-  }
-
-  .recruit-facility__layout--park .recruit-opening:nth-child(3) {
-    grid-column: 3;
-  }
-
-  .recruit-opening__copy {
-    min-height: 9.5rem;
-  }
-
-  .recruit-facility__layout--park .recruit-opening__copy {
-    min-height: 0;
-  }
-
   .contact-button {
     min-height: 76px;
   }
@@ -2801,14 +2709,6 @@ html.is-loading body {
   .global-nav__label,
   .text-link__label {
     transition: none;
-  }
-
-  .recruitment-route__media img {
-    transition: none;
-  }
-
-  .recruitment-route:hover .recruitment-route__media img {
-    transform: none;
   }
 }
 

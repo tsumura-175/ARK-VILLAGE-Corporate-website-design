@@ -261,24 +261,10 @@
 }
 
 .content-section {
-  --section-surface: var(--color-paper);
-  --content-surface: var(--section-surface);
-
   position: relative;
   isolation: isolate;
   overflow: clip;
   padding-block: 5.25rem;
-}
-
-.content-section--base {
-  background: var(--section-surface);
-}
-
-.content-section--tinted {
-  --section-surface: color-mix(in oklch, var(--color-paper-2) 34%, var(--color-paper));
-  --content-surface: var(--color-paper);
-
-  background: var(--section-surface);
 }
 
 .content-section--tinted::before {
