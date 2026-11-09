@@ -2738,15 +2738,10 @@ html.is-loading body {
   display: block;
 }
 
-.hero__brand {
-  width: clamp(8.75rem, 18vw, 13rem);
-  height: auto;
-  margin-block-end: var(--space-md);
-}
-
 .hero__tagline {
   margin-block-start: var(--space-md);
   color: var(--color-on-dark);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   font-size: clamp(var(--text-sm), 2.25vw, var(--text-base));
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -2754,7 +2749,6 @@ html.is-loading body {
   text-align: center;
 }
 
-.js:not(.page-ready) .hero__brand,
 .js:not(.page-ready) .hero__tagline,
 .js:not(.page-ready) .hero__title > span > span {
   opacity: 0;
@@ -2762,10 +2756,6 @@ html.is-loading body {
 
 .js:not(.page-ready) .hero__title > span > span {
   transform: translateX(-104%);
-}
-
-.js.page-ready .hero__brand {
-  animation: hero-brand-enter var(--dur-long) var(--ease-out) both;
 }
 
 .js.page-ready .hero__title > span > span {
@@ -2783,11 +2773,6 @@ html.is-loading body {
 .js.page-ready .hero__tagline {
   animation: hero-tagline-enter var(--dur-long) var(--ease-out) both;
   animation-delay: calc(var(--dur-micro) * 4);
-}
-
-@keyframes hero-brand-enter {
-  from { opacity: 0; transform: translateY(var(--space-xs)); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes hero-title-enter {
@@ -3246,14 +3231,12 @@ html.is-loading body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .js:not(.page-ready) .hero__brand,
   .js:not(.page-ready) .hero__tagline,
   .js:not(.page-ready) .hero__title > span > span {
     opacity: 1;
     transform: none;
   }
 
-  .js.page-ready .hero__brand,
   .js.page-ready .hero__tagline,
   .js.page-ready .hero__title > span > span {
     animation: none;
