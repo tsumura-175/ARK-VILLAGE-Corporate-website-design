@@ -400,8 +400,8 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 - ヘッダー・メニュー・フッターの「飲食出店募集」と、NEWS先頭の固定告知「募集概要を見る」はTOPの `#ark-garden` へ接続する。見本は相対パスでTOPへ接続する。
 - 募集告知はNEWS見出し→写真・日付のない固定告知→通常記事→一覧リンクの順に置く。ヒーロー直下の写真付き告知と、記事一覧内の募集行は削除し、重複を解消する。TOP下部の募集セクションと画像は維持する。固定告知の表示・CMS管理・募集終了時の手順は第18章を参照する。
 - TOPの紹介写真には説明文を重ねず、SPでも写真下の説明文を置かない。上部のセクション見出しと画像のalt、右下の「完成イメージ」は維持する。文章用ラッパー・余白と、可読性用の暗いグラデーションは削除した。写真枠の寸法・トリミングは維持する。
-- 20ft・40ft枠は768px以上で2列、未満は縦並び。画像は3:2の枠に `object-fit: contain` で全体を表示する。
-- TOPの枠は `arkgarden/container-20ft.webp`（支給container_9）と `container-40ft.webp`（container_3）。AREAの図面とは別素材のため混同しない。
+- 20ft・40ft枠は768px以上で2列、未満は縦並び。TOPの完成イメージは共通の3:2枠とし、同じ表示幅では高さを揃える。`.garden-container__media` は `overflow: hidden; background: transparent;`、子画像は幅・高さ100％・`object-fit: cover; object-position: center;` で中央を切り抜き基準にして表示する。元画像の比率を保持して枠いっぱいに表示し、containによる上下の余白を作らない。適用はTOPの完成イメージに限定し、募集詳細ページの平面図・断面図の全体表示は維持する。
+- TOPの枠は `arkgarden/container-20ft.webp`（支給container_9）と `container-40ft.webp`（container_3）。AREAの図面とは別素材のため混同しない。20ft素材自体に含まれる細い白縁はCSSの余白とは区別し、元画像を変更せず保持する。
 - 詳細は `arkgarden-recruit/#container-20ft` / `#container-40ft` へ接続。枠下のFAQ導線は日本語ラベル「飲食出店に関するよくある質問」→英字「FAQ」→矢印で構成し、行全体を `arkgarden-recruit/#faq` へ接続する。書体・文字値と配置は第19章を参照する。
 - Googleフォームはクライアント管理。正式URL未受領の応募ボタンは `href="#"`・`data-pending-link`・`aria-disabled="true"` と準備中の読み上げ名を持つ。確定時はTOP・各AREA・スケジュール下をコンテナ別に一括更新する。
 - 旧サイト内の飲食出店応募3画面と `application.js` は削除済み。採用応募・お問い合わせは別用途として保持する。

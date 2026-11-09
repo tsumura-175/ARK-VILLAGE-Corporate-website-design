@@ -1717,13 +1717,15 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 
 .garden-container__media {
   aspect-ratio: 3 / 2;
-  background: var(--color-paper-2);
+  overflow: hidden;
+  background: transparent;
 }
 
 .garden-container__media img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
 }
 
 .garden-container__actions {
