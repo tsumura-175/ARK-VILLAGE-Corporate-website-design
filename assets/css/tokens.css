@@ -1,21 +1,24 @@
 :root {
-  --color-paper: oklch(95% 0.012 75);
-  --color-paper-2: oklch(89% 0.014 75);
-  --color-paper-3: oklch(82% 0.016 70);
+  --color-paper: #FFFFFF;
+  --color-paper-2: #EAEAEA;
+  --color-paper-3: #E0E0E0;
+  /* Keep component surfaces independent from alternating section backgrounds. */
+  --color-component-surface: #F2F2F2;
+  --color-footer-background: #000000;
   --color-ink: oklch(18% 0.012 50);
   --color-ink-2: oklch(28% 0.012 50);
   --color-muted: oklch(46% 0.012 55);
   --color-section-title: #5e5652;
-  --color-rule: oklch(72% 0.014 70);
-  --color-rule-2: oklch(80% 0.012 70);
+  --color-rule: #A4A4A4;
+  --color-rule-2: #BEBEBE;
   --color-accent: oklch(52% 0.16 29);
-  --color-accent-ink: oklch(96% 0.01 75);
+  --color-accent-ink: #FFFFFF;
   --color-focus: oklch(58% 0.21 29);
-  --color-on-dark: oklch(95% 0.01 75);
-  --color-on-dark-muted: oklch(76% 0.012 70);
+  --color-on-dark: #FFFFFF;
+  --color-on-dark-muted: #B1B1B1;
   --color-subpage-hero-plane: oklch(24% 0.012 45);
-  --color-subpage-grid-strong: oklch(98% 0.005 75 / 0.035);
-  --color-subpage-grid-soft: oklch(98% 0.005 75 / 0.025);
+  --color-subpage-grid-strong: rgb(255 255 255 / 3.5%);
+  --color-subpage-grid-soft: rgb(255 255 255 / 2.5%);
 
   --font-display: "Antonio", "Arial Narrow", sans-serif;
   --font-body: "Noto Sans JP", sans-serif;
@@ -67,7 +70,12 @@
   /* Seven full-width characters in the longest NEWS category, including padding and borders. */
   --news-category-column: calc(var(--type-note-size) * 7 + var(--space-xs) * 2 + var(--rule-hair) * 2);
 
-  --type-section-after: 2.5rem;
+  --type-section-before: 4rem;
+  --type-section-after: 2rem;
+  --type-heading-md-before: 2rem;
+  --type-heading-sm-before: 1.5rem;
+  --content-panel-top: 1.5rem;
+  --page-hero-title-gap: 1.25rem;
   --type-heading-md-after: 1rem;
   --type-heading-sm-after: 0.75rem;
   --type-lead-after: 1rem;
@@ -133,7 +141,12 @@
     --type-heading-md-size: 2rem;
     --type-heading-sm-size: 1.5rem;
     --type-lead-size: 2rem;
-    --type-section-after: 4rem;
+    --type-section-before: 5.5rem;
+    --type-section-after: 3rem;
+    --type-heading-md-before: 3rem;
+    --type-heading-sm-before: 2rem;
+    --content-panel-top: 2rem;
+    --page-hero-title-gap: 1.5rem;
     --type-heading-md-after: 1.5rem;
     --type-heading-sm-after: 1rem;
     --type-lead-after: 1.5rem;

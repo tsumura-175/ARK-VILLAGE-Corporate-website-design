@@ -9,7 +9,7 @@
  * context: municipalities, corporate partners, participants, candidates · tone: powerful / premium / grounded
  * verification: slop-test 1-58 pass · responsive 320/375/414/768/1280 · no horizontal overflow · contrast/tokens preserved
  */
-@import url("./tokens.css?v=20261107-components-2");
+@import url("./tokens.css?v=20261120-neutral-ui-1");
 
 /* Japanese Business UI · surface: corporate · posture: institutional
  * audiences: municipalities, corporate partners, candidates · density: balanced
@@ -371,7 +371,7 @@ html.is-github-pages.is-access-locked .access-gate {
 }
 
 .section {
-  padding-block: var(--space-3xl);
+  padding-block: var(--type-section-before);
 }
 
 .section--dark {
@@ -379,23 +379,30 @@ html.is-github-pages.is-access-locked .access-gate {
   color: var(--color-on-dark);
 }
 
-/* Shared section surfaces; decoration remains in the component that owns it. */
-.content-section,
+/* Shared section surfaces. Color-only utilities retain existing decoration and spacing. */
+.content-section {
+  --section-surface: var(--color-paper);
+  --content-surface: var(--color-paper);
+}
+
+.content-section--tinted {
+  --section-surface: var(--color-paper-2);
+}
+
 .section-surface--base {
   --section-surface: var(--color-paper);
+  --content-surface: var(--color-paper);
+}
+
+.section-surface--tinted {
+  --section-surface: var(--color-paper-2);
   --content-surface: var(--section-surface);
 }
 
 .content-section--base,
-.section-surface--base {
-  background: var(--section-surface, var(--color-paper));
-}
-
 .content-section--tinted,
+.section-surface--base,
 .section-surface--tinted {
-  --section-surface: color-mix(in oklch, var(--color-paper-2) 34%, var(--color-paper));
-  --content-surface: var(--color-paper);
-
   background: var(--section-surface);
 }
 
@@ -661,6 +668,23 @@ html.is-github-pages.is-access-locked .access-gate {
   stroke-linejoin: round;
 }
 
+.action-button--outline {
+  background: transparent;
+  color: var(--color-ink);
+}
+
+.action-button--outline .action-button__icon {
+  background: var(--color-ink);
+  color: var(--color-on-dark);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .action-button--outline:hover .action-button__icon {
+    background: var(--color-on-dark);
+    color: var(--color-ink);
+  }
+}
+
 .action-button--light {
   border-color: var(--color-on-dark);
   background: var(--color-on-dark);
@@ -686,7 +710,7 @@ html.is-github-pages.is-access-locked .access-gate {
 }
 
 .action-button--disabled .action-button__icon {
-  background: var(--color-paper-2);
+  background: var(--color-component-surface);
   color: var(--color-muted);
 }
 
@@ -1091,7 +1115,7 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   aspect-ratio: 4 / 3;
   overflow: hidden;
   border-block-start: var(--rule-hair) solid var(--color-rule);
-  background: var(--color-paper-2);
+  background: var(--color-component-surface);
 }
 
 .garden-entry-cta__media img,
@@ -1293,13 +1317,8 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   }
 }
 
-.business {
-  padding-block-start: var(--space-3xl);
+.business.section {
   padding-block-end: 0;
-}
-
-.news.section {
-  padding-block: var(--space-3xl);
 }
 
 .split-feature__media,
@@ -1316,8 +1335,8 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   background:
     linear-gradient(
       135deg,
-      color-mix(in oklch, var(--color-paper-3) 56%, var(--color-paper-2)),
-      var(--color-paper-2)
+      color-mix(in oklch, var(--color-paper-3) 56%, var(--color-component-surface)),
+      var(--color-component-surface)
     );
 }
 
@@ -1367,8 +1386,7 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
   min-width: 0;
-  border-block-end: var(--rule-hair) solid
-    color-mix(in oklch, var(--color-on-dark) 24%, transparent);
+  border-block-end: var(--rule-hair) solid var(--color-rule);
 }
 
 .work-panel__media {
@@ -1410,7 +1428,7 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 }
 
 .work-panel__category {
-  color: var(--color-on-dark-muted);
+  color: var(--color-muted);
   font-family: var(--font-body);
   font-size: var(--type-note-size);
   font-weight: var(--type-note-weight);
@@ -1430,7 +1448,6 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   position: relative;
   padding-block: 0;
   isolation: isolate;
-  background: var(--color-paper-2);
   color: var(--color-ink);
 }
 
@@ -1442,7 +1459,7 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   margin: 0;
   aspect-ratio: auto;
   border: 0;
-  background: var(--color-paper-2);
+  background: var(--color-component-surface);
 }
 
 .company__media img {
@@ -1452,6 +1469,22 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 .company__media::after {
   position: absolute;
   inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 42%,
+      rgb(255 255 255 / 46%) 68%,
+      rgb(255 255 255 / 86%) 100%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 20%,
+      rgb(255 255 255 / 18%) 44%,
+      rgb(255 255 255 / 76%) 72%,
+      rgb(255 255 255 / 90%) 100%
+    );
   content: "";
   pointer-events: none;
 }
@@ -1478,8 +1511,12 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 }
 
 .recruit {
-  padding-block-start: var(--space-3xl);
   scroll-margin-block-start: calc(var(--header-height) + var(--space-xl));
+}
+
+.section:has(> .recruit-facilities),
+.content-section:has(> .recruit-facilities) {
+  padding-block-end: 0;
 }
 
 .recruit-facilities {
@@ -1489,7 +1526,16 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 
 .recruit-facility {
   min-inline-size: 0;
-  padding-block: var(--space-xl);
+  padding-block: calc(var(--type-heading-md-before) - var(--type-heading-md-after)) var(--type-heading-md-after);
+}
+
+/* The preceding section heading supplies the first facility's spacing. */
+.recruit-facility:first-child {
+  padding-block-start: 0;
+}
+
+.recruit-facility:last-child {
+  padding-block-end: var(--type-heading-md-before);
 }
 
 .recruit-facility__inner {
@@ -1517,11 +1563,7 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 }
 
 .recruit-facility__perspective {
-  inline-size: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  margin: 0;
-  background: var(--color-paper-2);
+  position: relative;
 }
 
 .recruit-facility__name + .recruit-facility__perspective {
@@ -1592,10 +1634,6 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 }
 
 @media (min-width: 48rem) {
-  .recruit-facility {
-    padding-block: var(--space-2xl);
-  }
-
   .recruit-opening--featured {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: var(--space-2xl);
@@ -1876,15 +1914,6 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   line-height: 1;
 }
 
-.garden-recruit .route-list,
-.garden-recruit .route-item {
-  border-color: color-mix(in oklch, var(--color-on-dark) 20%, transparent);
-}
-
-.garden-recruit .route-item__label {
-  color: var(--color-on-dark-muted);
-}
-
 @media (hover: hover) and (pointer: fine) {
   .route-item:hover {
     color: var(--color-accent);
@@ -1915,20 +1944,10 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   }
 }
 
-.section--contact {
-  padding-block: var(--space-3xl);
-  background: var(--color-ink);
-  color: var(--color-on-dark);
-}
-
 .contact__layout {
   display: grid;
   justify-items: start;
-  row-gap: var(--space-xl);
-}
-
-.contact__layout .section-heading {
-  padding-block-end: 0;
+  row-gap: 0;
 }
 
 .contact__action {
@@ -1938,6 +1957,10 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 }
 
 @media (min-width: 64rem) {
+  .contact__layout .section-heading {
+    padding-block-end: 0;
+  }
+
   .contact__layout {
     grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
     column-gap: var(--space-2xl);
@@ -1958,10 +1981,10 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   align-items: center;
   justify-content: space-between;
   padding: var(--space-xs) var(--space-xs) var(--space-xs) var(--space-lg);
-  border: var(--rule-hair) solid var(--color-on-dark);
+  border: var(--rule-hair) solid var(--color-ink);
   border-radius: var(--radius-pill);
-  background: var(--color-on-dark);
-  color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-on-dark);
   white-space: nowrap;
   font-weight: 700;
   cursor: pointer;
@@ -1979,8 +2002,8 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   flex: 0 0 auto;
   place-items: center;
   border-radius: 50%;
-  background: var(--color-ink);
-  color: var(--color-on-dark);
+  background: var(--color-on-dark);
+  color: var(--color-ink);
   font-family: var(--font-display);
   font-size: var(--text-md);
   line-height: 1;
@@ -2012,7 +2035,7 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   padding-block: var(--space-3xl) var(--space-xl);
   border-block-start: var(--rule-hair) solid
     color-mix(in oklch, var(--color-on-dark) 14%, transparent);
-  background: var(--color-ink);
+  background: var(--color-footer-background);
   color: var(--color-on-dark);
 }
 
@@ -2098,10 +2121,6 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 }
 
 @media (min-width: 40rem) {
-  .section {
-    padding-block: var(--space-4xl);
-  }
-
   .hero__content {
     padding-block-end: calc(var(--space-3xl) + var(--space-2xl));
   }
@@ -2141,7 +2160,7 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   .global-nav {
     display: flex;
     justify-self: center;
-    gap: clamp(var(--space-md), 2.2vw, var(--space-xl));
+    gap: clamp(1.5rem, 2.65vw, 2.5rem);
   }
 
   .header-actions {
@@ -2165,6 +2184,7 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   .global-nav a {
     position: relative;
     color: var(--color-on-dark);
+    font-size: var(--text-base);
   }
 
   .global-nav a::after {
@@ -2647,11 +2667,6 @@ html.is-loading body {
     --section-title-indent: var(--space-2xl);
   }
 
-  .business {
-    padding-block-start: var(--space-4xl);
-    padding-block-end: 0;
-  }
-
   .section-title__slash {
     width: var(--space-xl);
   }
@@ -2803,7 +2818,7 @@ html.is-loading body {
 }
 
 .company__header-shell {
-  padding-block-start: var(--space-3xl);
+  padding-block-start: var(--type-section-before);
 }
 
 .company__head {
@@ -2846,28 +2861,8 @@ html.is-loading body {
   line-height: var(--type-body-line);
 }
 
-.company__media::after {
-  background:
-    linear-gradient(
-      180deg,
-      transparent 0%,
-      transparent 42%,
-      color-mix(in oklch, var(--color-paper-2) 46%, transparent) 68%,
-      color-mix(in oklch, var(--color-paper-2) 86%, transparent) 100%
-    ),
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      transparent 20%,
-      color-mix(in oklch, var(--color-paper-2) 18%, transparent) 44%,
-      color-mix(in oklch, var(--color-paper-2) 76%, transparent) 72%,
-      color-mix(in oklch, var(--color-paper-2) 90%, transparent) 100%
-    );
-}
-
 /* Service accordion: four visible panels, one scroll-synchronised active panel. */
 .business-showcase {
-  /* The shared section-heading padding owns the 40px/SP or 64px/PC gap. */
   margin-block-start: 0;
   background: var(--color-ink);
   color: var(--color-on-dark);
@@ -3074,17 +3069,6 @@ html.is-loading body {
 
   .business-panel__content {
     padding: var(--space-xl);
-  }
-
-  .news.section,
-  .recruit,
-  .section--contact,
-  .company__header-shell {
-    padding-block-start: var(--space-4xl);
-  }
-
-  .section--contact {
-    padding-block-end: var(--space-4xl);
   }
 }
 
