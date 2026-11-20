@@ -1441,7 +1441,13 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 }
 
 .works__link {
-  margin-block-start: var(--space-2xl);
+  margin-block-start: var(--space-xl);
+}
+
+@media (min-width: 48rem) {
+  .works__link {
+    margin-block-start: calc(var(--space-xl) + var(--space-xs));
+  }
 }
 
 .company.section {
@@ -1526,12 +1532,12 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 
 .recruit-facility {
   min-inline-size: 0;
-  padding-block: calc(var(--type-heading-md-before) - var(--type-heading-md-after)) var(--type-heading-md-after);
+  padding-block: 0 var(--type-heading-md-after);
 }
 
-/* The preceding section heading supplies the first facility's spacing. */
-.recruit-facility:first-child {
-  padding-block-start: 0;
+/* The section heading supplies the first facility gap. Subsequent facilities add one spacing step at the boundary. */
+.recruit-facility + .recruit-facility {
+  padding-block-start: calc(var(--type-heading-md-before) - var(--type-heading-md-after) + var(--space-md));
 }
 
 .recruit-facility:last-child {
@@ -1723,6 +1729,25 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   scroll-margin-block-start: calc(var(--header-height) + var(--space-md));
 }
 
+/* Keep the long TOP heading inside the mobile viewport during font swaps. */
+@media (max-width: 47.99rem) {
+  .garden-recruit .section-title {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .garden-recruit .section-title__en {
+    overflow-wrap: break-word;
+  }
+
+  .garden-recruit .section-title > h2 {
+    margin-block-start: var(--space-sm);
+    inline-size: auto;
+    transform: none;
+    white-space: normal;
+    text-wrap: balance;
+  }
+}
+
 .garden-recruit__media {
   position: relative;
 }
@@ -1764,6 +1789,10 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.garden-container__media--trim-vertical img {
+  transform: scale(1.054);
 }
 
 .garden-container__actions {
@@ -2208,10 +2237,10 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   .header-village {
     border: var(--rule-hair) solid
       color-mix(in oklch, var(--color-on-dark) 22%, transparent);
-    color: var(--color-on-dark-muted);
+    background-color: color-mix(in srgb, var(--color-ink) 64%, transparent);
+    color: var(--color-on-dark);
     transition:
       border-color var(--dur-short) var(--ease-out),
-      color var(--dur-short) var(--ease-out),
       transform var(--dur-micro) var(--ease-out);
   }
 
@@ -2239,7 +2268,6 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 
     .header-village:hover {
       border-color: color-mix(in oklch, var(--color-on-dark) 54%, transparent);
-      color: var(--color-on-dark);
     }
 
     .header-contact:hover {
