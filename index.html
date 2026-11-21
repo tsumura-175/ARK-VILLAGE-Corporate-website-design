@@ -35,8 +35,8 @@
         }
       })();
     </script>
-    <link rel="stylesheet" href="assets/css/style.css?v=20261121-header-outline-1" />
-    <script src="assets/js/script.js?v=20261017-garden-recruit-1" defer></script>
+    <link rel="stylesheet" href="assets/css/style.css?v=20261121-media-spacing-1" />
+    <script src="assets/js/script.js?v=20261121-vendor-1" defer></script>
   </head>
   <body>
     <section
@@ -160,8 +160,8 @@
         </nav>
 
         <div class="header-actions" aria-label="募集・お問い合わせ">
-          <a class="header-village" href="#ark-garden">
-            飲食出店募集
+          <a class="header-village" href="arkgarden-recruit/">
+            飲食横丁/カフェ出店募集
           </a>
           <a class="header-contact" href="contact/">お問い合わせ</a>
         </div>
@@ -195,7 +195,7 @@
         <a href="company/">企業概要</a>
         <a href="news/">お知らせ</a>
         <a href="recruit/">採用情報</a>
-        <a href="#ark-garden">飲食出店募集</a>
+        <a href="arkgarden-recruit/">飲食横丁/カフェ出店募集</a>
         <a href="contact/">お問い合わせ</a>
       </nav>
     </dialog>
@@ -324,7 +324,7 @@
                 <span class="news__category news__category--important">重要なお知らせ</span>
                 <h3 class="news-announcement__title" id="garden-announcement-title">寒川町相模川一之宮公園にて、飲食出店者を募集しています</h3>
               </div>
-              <a class="action-button" href="#ark-garden">
+              <a class="action-button" href="arkgarden-recruit/">
                 <span>募集概要を見る</span>
                 <span class="action-button__icon ui-arrow-icon" aria-hidden="true"></span>
               </a>
@@ -747,60 +747,24 @@
         </div>
 
         <div class="page-shell">
-          <div class="garden-containers" id="garden-containers" aria-label="コンテナ別の飲食出店募集">
+          <div class="garden-containers" id="garden-containers" aria-label="飲食横丁とカフェの出店募集">
             <article class="garden-container" aria-labelledby="garden-container-20ft-title">
-              <h3 id="garden-container-20ft-title">20ftコンテナ</h3>
-              <figure class="garden-container__media garden-container__media--trim-vertical">
-                <img
-                  src="assets/images/arkgarden/container-20ft.webp"
-                  width="1600"
-                  height="824"
-                  loading="lazy"
-                  alt="20ftコンテナの飲食店舗完成イメージ"
-                />
+              <h3 id="garden-container-20ft-title">20ftコンテナ／飲食横丁</h3>
+              <figure class="garden-container__media">
+                <img src="assets/images/arkgarden/container-20ft-two-stores.png" width="1672" height="941" loading="lazy" decoding="async" alt="20ftコンテナの外観イメージ" />
               </figure>
-              <div class="garden-container__actions">
-                <!-- 正式なURL確定時はhrefを変更し、data-pending-linkとaria-disabledを削除する。 -->
-                <a class="action-button action-button--outline" href="arkgarden-recruit/#container-20ft" aria-label="20ftコンテナの募集詳細を見る">
-                  <span>詳細を見る</span>
-                  <span class="action-button__icon ui-arrow-icon" aria-hidden="true"></span>
-                </a>
-                <a class="action-button" href="#" data-pending-link="container-20ft-application" aria-disabled="true" aria-label="20ftコンテナの応募フォームへ（準備中）">
-                  <span>応募フォームへ</span>
-                  <span class="action-button__icon ui-arrow-icon" aria-hidden="true"></span>
-                </a>
-              </div>
             </article>
             <article class="garden-container" aria-labelledby="garden-container-40ft-title">
-              <h3 id="garden-container-40ft-title">40ftコンテナ</h3>
+              <h3 id="garden-container-40ft-title">40ftコンテナ／カフェ</h3>
               <figure class="garden-container__media">
-                <img
-                  src="assets/images/arkgarden/container-40ft.webp"
-                  width="1600"
-                  height="1044"
-                  loading="lazy"
-                  alt="40ftコンテナの飲食店舗完成イメージ"
-                />
+                <img src="assets/images/arkgarden/container-40ft.webp" width="1600" height="1044" loading="lazy" decoding="async" alt="40ftコンテナのカフェ完成イメージ" />
               </figure>
-              <div class="garden-container__actions">
-                <a class="action-button action-button--outline" href="arkgarden-recruit/#container-40ft" aria-label="40ftコンテナの募集詳細を見る">
-                  <span>詳細を見る</span>
-                  <span class="action-button__icon ui-arrow-icon" aria-hidden="true"></span>
-                </a>
-                <a class="action-button" href="#" data-pending-link="container-40ft-application" aria-disabled="true" aria-label="40ftコンテナの応募フォームへ（準備中）">
-                  <span>応募フォームへ</span>
-                  <span class="action-button__icon ui-arrow-icon" aria-hidden="true"></span>
-                </a>
-              </div>
             </article>
           </div>
 
-          <div class="route-list" aria-label="飲食出店募集関連の導線">
-            <a class="route-item" href="arkgarden-recruit/#faq" aria-label="飲食出店に関するよくある質問を見る">
-              <span class="route-item__label">飲食出店に関するよくある質問</span>
-              <span class="route-item__title">FAQ</span>
-              <span class="route-item__arrow ui-arrow-glyph" aria-hidden="true">→</span>
-            </a>
+          <div class="garden-container__actions">
+            <a class="action-button action-button--outline" href="arkgarden-recruit/#area"><span>詳細を見る</span><span class="action-button__icon ui-arrow-icon" aria-hidden="true"></span></a>
+            <a class="action-button" href="/"><span>応募フォームへ</span><span class="action-button__icon ui-arrow-icon" aria-hidden="true"></span></a>
           </div>
         </div>
       </section>
@@ -849,7 +813,7 @@
               <h2>募集・お問い合わせ</h2>
               <nav class="site-footer__links" aria-label="募集・お問い合わせ">
                 <a href="recruit/">採用情報</a>
-                <a href="#ark-garden">飲食出店募集</a>
+                <a href="arkgarden-recruit/">飲食横丁/カフェ出店募集</a>
                 <a href="contact/">お問い合わせ</a>
               </nav>
             </section>

@@ -39,7 +39,7 @@ SPは768px未満、PCは768px以上で、タブレットもPC値を使います�
 | 項目ラベル | 16px / 1rem | 16px / 1rem | 700 | 1.5 | `--type-label` |
 | 補足・注記 | 14px / 0.875rem | 14px / 0.875rem | 400 | 1.6 | `--type-note` |
 
-各接頭辞に `-size`、`-weight`、`-line` を付けて参照します。日本語の見出し・リード・本文、通常の情報表示、ページネーションの数字は `--font-body`（Noto Sans JP）を使う。フォームのステップ番号、英字の大見出し・コンセプト文・装飾番号・工程番号（スケジュールの工程番号を含む）・スケジュールの年表示・FAQのQ/A、およびMENU／CLOSE・TOPスライダーの切り替え番号・ACCESS GUIDE／TRAIN／BUS／CARは `--font-display`（Antonio）を維持する。TOPのFAQ導線の英字は第19章のNoto Sans JP仕様を維持する。`--text-*` の既存値は変更せず、ヒーローや操作UIの用途別仕様に残します。
+各接頭辞に `-size`、`-weight`、`-line` を付けて参照します。日本語の見出し・リード・本文、通常の情報表示、ページネーションの数字は `--font-body`（Noto Sans JP）を使う。フォームのステップ番号、英字の大見出し・コンセプト文・装飾番号・工程番号（スケジュールの工程番号を含む）・スケジュールの年表示、MENU／CLOSE・TOPスライダーの切り替え番号・TRAIN／CARは `--font-display`（Antonio）を維持する。`--text-*` の既存値は変更せず、ヒーローや操作UIの用途別仕様に残します。
 
 | 役割 | 上の余白 PC／SP | 下の余白 PC／SP | 管理トークン |
 | --- | --- | --- | --- |
@@ -66,7 +66,7 @@ SPは768px未満、PCは768px以上で、タブレットもPC値を使います�
 ### 小見出し・上罫線・工程番号
 
 - `.news-article__body h4` と `.privacy-copy h3` は標準小見出しを使い、赤い縦線・専用の左余白を持たない。直後の段落marginを0にし、見出しの後続余白だけを取る。前の段落や写真からは小見出しの上余白を使う。
-- 小見出しから情報表・工程・FAQ等の上罫線までは `--type-heading-sm-after` を使う。情報表・主要条件表・工程・FAQ・詳細アコーディオンの同じ役割の上罫線は `--rule-hair` と `--color-rule` に統一する。表の行内padding、質問行のpaddingは部品内部の別用途として維持する。工程番号下の余白はPC/SPとも使わず、見出しと本文の間隔は小見出しの後続余白で管理する。
+- 小見出しから情報表・工程の上罫線までは `--type-heading-sm-after` を使う。情報表・主要条件表・工程の同じ役割の上罫線は `--rule-hair` と `--color-rule` に統一する。表の行内paddingは部品内部の余白として維持する。工程番号下の余白はPC/SPとも使わず、見出しと本文の間隔は小見出しの後続余白で管理する。
 - `.process-list__number` は `--process-number-size: 2rem`（標準設定で32px）を参照する。PC/SPともAntonio・700・行間1・既存アクセント色。汎用 `--text-*` の値は変更しない。工程名・説明はそれぞれ標準小見出し・本文。
 
 ### NEWSのカテゴリと行構成
@@ -103,7 +103,7 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 - 下層ページでは現在ページのリンクへ `aria-current="page"` を付ける
 - 下層ページからトップ内セクションへ移動する場合は `index.html#section-id` を使う
 
-PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に合わせ、1440pxでは約38px。960px以上で表示する。PCヘッダーの「飲食出店募集」リンクは、白文字と半透明の枠線を使い、ボタンの背景は透明とする。
+PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に合わせ、1440pxでは約38px。1152px以上で表示し、未満ではメニューからアクセスする。PCヘッダーの「飲食横丁/カフェ出店募集」リンクは、白文字と半透明の枠線を使い、ボタンの背景は透明とする。
 
 ### Mobile Menu
 
@@ -212,7 +212,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 
 ### Business Detail Pattern
 
-- 事業内容ページの4事業は「共通見出し、メッセージ、説明文、写真、中見出し『事業内容』、アイコン項目」の順序で統一する。写真と中見出し＋一覧を `.content-groups` でまとめ、写真下から中見出しまでをPC48px／SP32pxとする。写真上の既存余白56pxと画像の枠・構図は維持する。見出しと一覧の左端は写真に揃える。
+- 事業内容ページの4事業は「共通見出し、メッセージ、説明文、写真、中見出し『事業内容』、アイコン項目」の順序で統一する。写真と中見出し＋一覧を `.content-groups` でまとめ、写真下から中見出しまでをPC48px／SP32pxとする。説明文から写真までの余白はPC24px／SP16pxとする。画像の枠・構図は維持する。見出しと一覧の左端は写真に揃える。
 - 現在は対応写真が各事業1枚のため、`.business-media` で静止表示する。同一写真を複数枚のスライダーとして繰り返さない
 - 4事業のコンテンツ領域は共通してページ本文幅まで使う。リード・説明文の読み幅は維持し、写真・対応項目の一覧を広く見せる
 - `.business-media` はSPで4:3、768px以上で2:1の表示枠を使い、最大幅は `--content-max` とする。画像は `object-fit: cover` で収める
@@ -237,7 +237,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 
 - 実績一覧は `.works-list` / `.work-entry` を使用し、SPでは1列、768px以上では2列、1024px以上では3列とする。詳細ページのない実績にはリンクを付けない。カテゴリは「すべて」とExcelの「大会運営/企画」「大会運営」「パーク運営/監修」「パーク監修」「自治体連携」の5種類をそのまま使い、既存のフィルター・ページ送りで絞り込む。1ページ12件を表示し、カテゴリ変更時は1ページ目に戻す。TOPの `.work-panel` と一覧の `.work-entry` は共通データとカード生成処理を使用し、写真の表示比率は4:3で揃える。Excelにない説明は追加しない
 - ニュース一覧は `.news-filter` / `.news-index-list` / `.news-pagination` を使用し、1ページ10件を表示する。SP（767px以下）はネイティブのプルダウン、タブレット・PC（768px以上）は従来のボタンでカテゴリを選択する。両UIの選択肢はJSの同じカテゴリ定義から生成し、表示幅を切り替えても選択状態を共有する。カテゴリ変更時は新しい順に並べ、ページ番号を1へ戻す。ページ送りは第16章のNEWS・WORKS共通仕様を使う。SPでも最初・最後への移動手段を維持する
-- ニュース一覧の各行はTOPと同じ `.news__item` / `.news__date` / `.news__category` / `.news__arrow` を使い、`news-index-list` は一覧の容器としてのみ使う。日付フォント、本文サイズ、単体矢印、通常カテゴリのホバー色、重要カテゴリの赤い枠・太字を共通化する。矢印は第2章の通常／hover／focus-visibleの行色を継承する。記事詳細のメタ情報も同じ日付・カテゴリ表現（補足14px、重要カテゴリは状態表示として700）を使い、一覧へ戻る導線には `.text-link` を使う。記事詳細は画像を省略可能な本文構造とし、PCでは左端を揃えたまま記事ヘッダーと写真の幅で右側の余白を整える
+- ニュース一覧の各行はTOPと同じ `.news__item` / `.news__date` / `.news__category` / `.news__arrow` を使い、`news-index-list` は一覧の容器としてのみ使う。日付フォント、本文サイズ、単体矢印、通常カテゴリのホバー色、重要カテゴリの赤い枠・太字を共通化する。矢印は第2章の通常／hover／focus-visibleの行色を継承する。記事詳細のメタ情報も同じ日付・カテゴリ表現（補足14px、重要カテゴリは状態表示として700）を使い、一覧へ戻る導線には `.text-link` を使う。記事詳細は画像を省略可能な本文構造とし、本文から写真まではPC24px／SP16px。PCでは左端を揃えたまま記事ヘッダーと写真の幅で右側の余白を整える。
 - 同じ用途の部品はTOPの既存クラス・状態を再利用し、下層ページだけに通常・ホバー・フォーカス状態を作り直さない。背景や情報量が異なる場合だけModifierとして差分を定義する
 - モバイルメニューのMENU／CLOSEは、タップ・マウス操作時だけフォーカス枠を非表示にする。Tab・Enter・Space・Escape・矢印キー操作では共通のfocus-visible表示に戻す。開閉時のフォーカス移動は維持し、画面幅やタッチ対応の有無だけで枠を無効化しない。
 - 現在の静的試作ではTOPのお知らせ本文と一覧の仮データは別管理であり、見た目の共通化だけでは記事内容・カテゴリ・リンク先は同期しない。本番CMS化時は同じ記事データから両画面を生成する
@@ -260,7 +260,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 
 - クラス：`.split-content`
 - 地図と交通案内など、同じ階層の2要素に使用する
-- 現在のアクセスでは地図→交通案内を全画面幅で縦に配置する。交通案内内部の `.access-information__list` は1280px以上で電車・バス・車の3列、それ未満は縦並びにする
+- 現在のアクセスでは地図→交通案内を全画面幅で縦に配置する。交通案内内部の `.access-information__list` は1280px以上で電車・車の2列、それ未満は縦並びにする
 - 子要素の幅は必ず `minmax(0, 1fr)` で横溢れを防ぐ
 
 ### Map Embed / Access Card
@@ -269,9 +269,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - 地図は住所を併記し、外部のGoogleマップを開けるテキストリンクを設ける
 - `iframe` には内容を説明する `title` を付け、モバイルで横溢れしない幅にする
 - 交通案内は手段ごとにカードへ分け、英字種別、日本語見出し、経路・目安時間の順に記載する
-- 時刻表などの配布資料は `assets/documents/` に置き、カード内にダウンロードリンクを設ける
-- 案内文はクライアント原稿に従う。経路・運行内容・所要時間の補足を推測して追加しない。電車・バス・車の説明本文は `--color-section-title` を使う
-- 現在のボタン文言は「時刻表PDFをダウンロード」、参照は `assets/documents/mokuseigo-timetable-route.pdf`。資料はコミュニティバス「もくせい号」の時刻表であり、原稿のシャトルバスとの対応は未確認。ボタンの維持・注記非表示はユーザー指定であり、資料の対応が確認済みとは扱わない
+- 案内文はクライアント原稿に従う。経路・運行内容・所要時間の補足を推測して追加しない。電車・車の説明本文は `--color-section-title` を使う
 
 ### Directional Symbols
 
@@ -321,7 +319,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - お問い合わせ入力・確認・完了：`contact/index.html`、`contact/confirm/index.html`、`contact/complete/index.html`
 - プライバシーポリシー：`privacy-policy/index.html`
 - 採用情報・求人応募：`recruit/index.html`、`recruit/apply/index.html`、`recruit/apply/confirm/index.html`、`recruit/apply/complete/index.html`
-- 飲食出店募集・FAQ：`arkgarden-recruit/index.html`。`arkgarden-recruit/faq/index.html` は `../#faq` への転送として保持
+- 飲食横丁・カフェ出店募集：`arkgarden-recruit/index.html`。旧 `arkgarden-recruit/faq/index.html` は募集ページ先頭への転送として保持
 - 共通部品確認：`docs/components.html`
 
 ## 9. 本文幅と共通部品の運用
@@ -332,19 +330,20 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - `--wide` は `--copy-max: 100%`。文章の行長を制限する場合は `--editorial`（42rem）または `--readable-copy`（段落だけ58rem）を併用する。大見出し・写真・情報表まで狭めない。
 - リード `.content-section__lead` は第2章のリード仕様を使い、字間0、`text-wrap: pretty`。不要な強制改行をせず、長い日本語は `.content-section__lead-phrase` で意味のまとまりを示す。768px以上ではまとまりが幅に収まる場合だけ保持し、長いまとまりは折り返す。SPも自然に折り返す。
 - 会社情報は標準幅、理念は `--balanced`、取引先・アクセスは `--wide`。事業内容は `.business-detail` が本文を広げ、説明文の読み幅を維持する。
-- 採用のカード・写真・表・工程は `--wide`。WORK STYLE・JOBSは `--readable-copy` を併用する。飲食出店募集は写真・図面・表を広げ、FAQは標準幅とする。
+- 採用のカード・写真・表・工程は `--wide`。WORK STYLE・JOBSは `--readable-copy` を併用する。出店募集ページは写真・図面・表に広幅を使う。
 - ニュース本文は左右のインデントを対称にする。お問い合わせ・求人応募の入力・確認・完了は最大68remを共用する。
 - 実物見本：`components.html#sample-copy-width`。
 
 ### 小見出し・ボタン
 
-- `.content-groups` は関連項目の容器。内容の後に見出しを伴うまとまりが続くときは、後続する見出しの役割に応じた上余白を使う。それ以外の間隔はSPで `--space-xl`、PCで `--space-2xl`。
+- `.content-groups` は関連項目の容器。内容の後に見出しを伴うまとまりが続くときは、後続する見出しの役割に応じた上余白を使う。通常の間隔はSPで `--space-xl`、PCで `--space-2xl`。
+- 本文・リード・施設名などに続く写真や、本文に続く紹介カードへの余白は `--space-before-media`（PC24px／SP16px）を使う。 `.content-groups` 内では、横並びの写真・紹介カード・公園完成イメージの直前に適用する。
 - `.content-group` と `.content-group__title` は見出し＋内容の組。通常は第2章の小見出し仕様を維持する。中見出しとして使う場合だけ親へ `.content-group--major` を付ける。Noto Sans JP、PC32px／SP24px・700・1.35、後続24px／16px。赤い斜線や縦線は付けない。
 - 共通CSSはローカル変数 `--content-group-title-size / -weight / -line / -after` で役割別トークンを選ぶ。`.content-group` が小見出し値を初期化し、`--major` が中見出し値へ切り替える。入れ子の通常グループは小見出しへ戻り、グループ外の既存タイトルも従来値を維持する。文字指定やページ専用CSSを複製しない。
 - 各グループ内では見出し直後の要素のmarginで所定の距離を取る。事業のアイコン一覧が単独で持つ上margin56pxは、この既存の隣接要素ルールで24px／16pxへ置き換わる。写真から中見出しまでの距離は、外側の `.content-groups` 内のグループ境界で指定する。
 - 実使用先は事業内容4事業とアイコン一覧の見本3点。採用情報・飲食出店募集の既存 `.content-group` は小見出しのまま維持する。募集要項の注記と個別職種も別グループで関係を示す。
 - PDFは `.action-button.action-button--outline` と `.ui-download-icon` を共用する。実URL、`download` 属性、資料を区別できる読み上げ名を付ける。
-- TOPの20ft・40ftの `.garden-container__actions` は共通 `.action-button` の文字・高さ・padding・丸矢印を維持し、利用可能幅で自然に折り返す。2個が収まれば横並び、収まらなければ同じ全幅で縦並び。文字は1行を保ち、丸矢印は右端に揃える。共通gapは最小間隔として維持する。見本の暗色ボタンもこの実部品の組み合わせを使う。
+- TOPと出店募集ページ末尾の `.garden-container__actions` は共通 `.action-button` の文字・高さ・padding・丸矢印を維持し、利用可能幅で自然に折り返す。ボタンは横に並べ、狭い画面では収まる数に応じて折り返す。文字は1行を保ち、丸矢印は右端に揃える。共通gapは最小間隔として維持する。見本の暗色ボタンもこの実部品の組み合わせを使う。
 - フォーム等の `.contact-actions` は中央配置。`--pair`（主要ボタン2個）と `--mixed`（主要ボタン＋補助リンク）はSPで2列・縮小表示とする。単独ボタンに新たな2列指定を付けない。
 - アンカー先は `.content-anchor` を使い、固定ヘッダーを避ける。確認画面からの戻るボタンは「修正する」に統一する。
 
@@ -355,9 +354,8 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - 各liのalign-contentはstartにし、隣の工程が長文でも見出しと本文の間隔を広げない。上罫線とその内側padding、工程間の `--space-xl` は維持する。DOMの順序とol/liは変更しない。見本・採用ページとも `subpage.css` の同じ指定を使う。
 - `.attachment-control` はファイル入力・選択名・取り消しをまとめる。未選択をエラー色にせず、長いファイル名を折り返す。
 - 添付UIは `subpage-components.js` が管理する。フォーム側は `attachment:restore` の `detail.name` で保存名を復元し、`data-attachment-name` で確認用の名前を取得する。共通JSをフォームJSより先にdeferで読む。ファイル本体は保存・送信しない。
-- FAQは `.faq-list / .faq-item`、詳細は `.disclosure-list / .disclosure[data-disclosure]`。ネイティブの `details/summary` とキーボード操作を保ち、複数を同時に開ける。summary内に別ボタンを置かない。
 - 開閉は共通JSで高さを400msで伸縮し、連続操作時は現在の高さから反転する。閉じる途中の回答は操作対象外、動きを減らす設定では即時切り替えとする。詳細モーダルは使用しない。
-- 実物見本：`components.html#sample-groups`、`#sample-form`、`#sample-process`、`#sample-faq`、`#sample-disclosure`。
+- 実物見本：`components.html#sample-part-5`、`#sample-form`、`#sample-process`、`#sample-vendor-conditions`。
 
 ## 10. 採用情報・求人応募
 
@@ -368,7 +366,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - 本サイトで詳細と応募を管理するのは公園。スポーツパークは正式な外部URL受領まで「採用サイト準備中」とし、公園のフォームや架空URLへ接続しない。
 - TOP・採用ページ・見本は `.recruit-facilities` 内に2つの `.recruit-facility` を置く。各施設の直下に `.page-shell.recruit-facility__inner` を置き、施設名 `.recruit-facility__name` →施設写真 `.recruit-facility__perspective` →募集案内 `.recruit-facility__layout` の同じ構造を使う。両ページの大見出しと既存アンカーは保持する。施設名・施設写真・募集案内の左端を大タイトルの英字開始位置に揃え、施設写真と募集案内全体の左右端を一致させる。
 - 公園とスポーツパークの施設ブロックは、大見出しを含む親セクションの白背景を共有する。横幅いっぱいの背景は親セクションが持ち、内容は各施設の内側にあるpage-shellで揃える。
-- 施設名は中見出し、募集見出しは小見出し、説明は本文の既存トークンを使う。施設名と募集見出しは共通CSSのtext-wrap: balanceで自然改行を均し、強制改行や文字縮小は加えない。施設名の後は隣接する写真のmarginでPC24px／SP16px、写真の後は募集案内のmarginで40pxを一度だけ確保する。施設内の親gapと見出しmarginは0。募集見出し→説明はcopyのgapでPC16px／SP12px、バナー→copyとcopy→ボタンは24px。最初の施設名までは大見出しの下余白、施設間は中見出しの上余白に `--space-md`（16px）を加え、PC64px／SP48pxとする。前の施設の下端はPC24px／SP16px、後の施設の先頭から見出しまではPC40px／SP32px。最後の施設の下端には中見出しの上余白PC48px／SP32pxを施設の背景内に取り、採用セクションの末尾に重ねて加えない。
+- 施設名は中見出し、募集見出しは小見出し、説明は本文の既存トークンを使う。施設名と募集見出しは共通CSSのtext-wrap: balanceで自然改行を均し、強制改行や文字縮小は加えない。施設名の後は隣接する写真の `--space-before-media` でPC24px／SP16px、写真の後は募集案内のmarginで40pxを一度だけ確保する。施設内の親gapと見出しmarginは0。募集見出し→説明はcopyのgapでPC16px／SP12px、バナー→copyとcopy→ボタンは24px。最初の施設名までは大見出しの下余白、施設間は中見出しの上余白に `--space-md`（16px）を加え、PC64px／SP48pxとする。前の施設の下端はPC24px／SP16px、後の施設の先頭から見出しまではPC40px／SP32px。最後の施設の下端には中見出しの上余白PC48px／SP32pxを施設の背景内に取り、採用セクションの末尾に重ねて加えない。
 - 左右位置と幅は共通の親 `.page-shell.recruit-facility__inner` が所有する。page-shellの既存 `--page-max / --page-gutter` を使い、親の開始側paddingだけを `calc(var(--page-gutter) + var(--section-title-indent))` にする。終端側はpage-shellの既存paddingを維持する。赤い斜線ではなく `.section-title__en` の開始位置と一致し、SPでもその幅のタイトル用インデントへ追従する。他ページの本文用 `--section-body-indent` や大タイトルの位置は変更しない。
 - 写真と募集案内は同じ親のcontent boxを使い、個別の最大幅・左右margin・位置補正を重複させない。写真は幅100％・16:9で、募集案内は同じ幅のグリッドを使う。公園は2列全体、スポーツパークはカード一覧全体が写真と揃う。背景は大見出しを含む親セクションで画面幅いっぱいに表示する。
 - 全施設写真は `assets/images/placeholder/sample-1.webp` を共用する。altは空とし、施設の記録写真と説明しない。支給後は同じimgのsrcとaltを差し替える。写真上の文字・キャプションは置かない。
@@ -397,28 +395,19 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 
 ### TOPと内部導線
 
-- ヘッダー・メニュー・フッターの「飲食出店募集」と、NEWS先頭の固定告知「募集概要を見る」はTOPの `#ark-garden` へ接続する。見本は相対パスでTOPへ接続する。
-- 募集告知はNEWS見出し→写真・日付のない固定告知→通常記事→一覧リンクの順に置く。固定告知の表示・CMS管理・募集終了時の手順は第18章を参照する。
+- ヘッダー・スマホメニュー・フッターの「飲食横丁/カフェ出店募集」と、NEWS先頭の固定告知「募集概要を見る」は `arkgarden-recruit/` の先頭に接続する。固定告知の仕様は第18章を参照する。
 - TOPの飲食出店募集では英字の「CALL FOR VENDORS」と日本語の「相模川一之宮パーク」を見出しに使い、募集内容を直下の説明文に記載する。768px未満では初回表示から英字・日本語を縦に並べる。768px以上では共通見出しの自動配置を使う。
-- TOPの紹介写真には説明文を重ねず、SPでも写真下の説明文を置かない。上部のセクション見出しと画像のalt、右下の「完成イメージ」は維持する。TOP・採用・見本は `assets/images/media/ark-garden-night-perspective.webp` を共用する。
-- 20ft・40ft枠は768px以上で2列、未満は縦並び。TOPの完成イメージは共通の3:2枠とし、同じ表示幅では高さを揃える。`.garden-container__media` は `overflow: hidden; background: transparent;`、子画像は幅・高さ100％・`object-fit: cover; object-position: center;` で中央を切り抜き基準にして表示する。元画像の比率を保持して枠いっぱいに表示し、containによる上下の余白を作らない。適用はTOPの完成イメージに限定し、募集詳細ページの平面図・断面図の全体表示は維持する。
-- TOPの枠は `arkgarden/container-20ft.webp`（支給container_9）と `container-40ft.webp`（container_3）。AREAの図面とは別素材のため混同しない。20ftは `.garden-container__media--trim-vertical` で画像を中央基準に拡大し、上下端に含まれる白い帯を表示枠の外へ出す。20ftと40ftは同じ3:2の表示枠を使う。
-- 詳細は `arkgarden-recruit/#container-20ft` / `#container-40ft` へ接続。枠下のFAQ導線は日本語ラベル「飲食出店に関するよくある質問」→英字「FAQ」→矢印で構成し、行全体を `arkgarden-recruit/#faq` へ接続する。書体・文字値と配置は第19章を参照する。
-- Googleフォームはクライアント管理。正式URL未受領の応募ボタンは `href="#"`・`data-pending-link`・`aria-disabled="true"` と準備中の読み上げ名を持つ。確定時はTOP・各AREA・スケジュール下をコンテナ別に一括更新する。
+- TOPの紹介写真は `assets/images/media/ark-garden-night-perspective.webp`。右下に「完成イメージ」を添える。20ft・40ftの写真と共通ボタンは第19章を参照する。
 
 ### 詳細ページ
 
-- `arkgarden-recruit/index.html` のKVは「CALL FOR VENDORS」／「相模川一之宮パーク」。本文の順序はCONCEPT→STRENGTHS→AREA→SCHEDULE→FAQ。KV下の `.inpage-nav` は20ft・40ft・スケジュール・FAQへ接続する。
-- 内部ナビは `.text-link` の丸囲み下矢印。帯背景や上下罫線を付けず、SPは2列、768px以上は4項目を中央に並べる。
-- CONCEPTの写真2枚は `placeholder/sample-1.webp`。STRENGTHSは支給文5段落を省略せず常時表示し、`arkgarden/park-masterplan.webp` を添える。「遊具（未定）」なども支給表記を維持する。
-- AREAは20ft→40ftを縦配置。20ftは `arkgarden/container-20ft-plan.webp`（支給container_11）、40ftは `arkgarden/container-40ft-ground-plan.webp`（container_5）。図面を本文幅いっぱいに表示し、その下に概要を置く。図面の縦横比・情報を保持し、切り抜かない。
-- `.summary-facts` で主要条件を常時表示。「区画・客席」「費用・支払い条件」「営業・契約条件」だけを各コンテナ3個、計6個のアコーディオンにする。全文・費用は支給PDFを参照する。
-- 共通の応募資格・出店条件は `#conditions` に集約して常時表示する。STRENGTHSと共通条件は折り畳まない。
-- 各AREA末尾は `.rental-area__navigation` の中で応募・PDFを横並びにし、その下中央の「スケジュールを見る」を `#schedule` へ接続する。
-- SCHEDULEは「スケジュール」／「応募から開業までの流れ」。`.schedule-timeline` の3段階・13工程で、PCは日付・節点・工程の3列、768px未満は日付を工程上へ移す。結果通知は2027年9月下旬に統一し、全日程は予定として扱う。
-- スケジュール末尾も20ft・40ft別に応募・PDFボタンを置く。募集PDFは `assets/documents/arkgarden/20ft-recruitment.pdf` と `40ft-recruitment.pdf`。支給PDF自体は変更しない。
-- FAQは原稿待ちの10項目とダミー回答。PDFから独自の回答を創作しない。旧 `arkgarden-recruit/faq/index.html` は `../#faq` への転送のみを保持する。
-- 実物見本：`components.html#sample-inpage-nav`、`#sample-schedule`、`#sample-disclosure`。見本の日付・費用は構造確認用で、募集条件の正本にはしない。
+- `arkgarden-recruit/index.html` のKVは英字施設名「SAGAMIGAWA ICHINOMIYA PARK」に続けて、「飲食横丁出店募集」「カフェ出店募集」を共通の日本語見出し16pxで2段に表示する。本文は「コンセプト」「他公園に無い強み」「飲食横丁/カフェ」「アクセス」「スケジュール」の順。
+- コンセプト・強み・アクセスの本文は11月の支給資料に基づく。コンセプトのリード直後は共通の `--type-lead-after` を使う。本文は1つの `.content-section__copy` にまとめ、文のまとまりを `<br>` で改行する。本文の下に仮画像2枚を並べる。強みの3項目は `.feature-cards` と既存の `.content-group` を使い、768px以上は横3列、未満は縦並び。その下に公園全体の完成イメージを掲載する。企業概要と出店募集ページの交通案内は電車・車の2項目。
+- 「飲食横丁/カフェ」では768px以上で20ft・40ftを横並びにし、768px未満は20ftから縦に並べる。各タイトルから説明文、外観から図面はPC16px／SP12px。説明文から外観はPC24px／SP16pxとし、横並びでは長い方の説明文を基準に両方の外観の上端を揃える。20ftは5区画を募集する。外観の下に `arkgarden/container-20ft-plan.webp` の左上の平面図だけを表示する。40ftは現行のカフェ画像と `arkgarden/container-40ft-ground-plan.webp` を使い、平面図は縦横比を保って全体を表示する。
+- 20ftの募集条件は `.summary-facts` に「募集区画・店舗面積」「営業時間」「契約形態・契約期間」「営業日」の順で掲載する。768px以上では2列、未満は1列にする。客席は屋外のみ。12月1日から翌年3月31日までの休業は営業日の補足として掲載する。
+- スケジュールは `.schedule-timeline` の縦型3段階・13工程。768px以上は日付・節点・工程の3列、未満は日付を工程の上に表示する。全日程は予定として扱う。
+- 「飲食横丁/カフェ」の20ft募集条件表の下とスケジュール末尾に「応募フォームへ」「詳細資料PDF」「お問い合わせ」を配置する。応募フォームはTOPと同じURLを使い、正式URLの受領までは `/` に接続する。PDFは20ft・40ft共通の1本。正式資料の支給までは `assets/documents/arkgarden/vendor-details-demo.pdf` を `ダミー.pdf` としてダウンロードできるようにする。「お問い合わせ」は `contact/?type=vendor#contact-form-section` に接続し、「飲食出店募集について」を初期選択する。入力済みの他項目は復元する。
+- 旧 `arkgarden-recruit/faq/index.html` は募集ページ先頭へ転送する。見本は `components.html#sample-vendor-conditions`、`#sample-vendor-actions`、`#sample-schedule`。
 
 ## 12. 更新時の確認
 
@@ -449,8 +438,7 @@ HTMLと `works.js`／`subpage-content.js` が生成する要素の役割を示�
 | 理念本文 | 私たちは、BMXや… | `.philosophy-feature__copy` | 本文 | 16・400・1.8 | 既存の文字色を維持 |
 | 採用カードの説明 | 日々の運営を支える社員… | `.recruit-opening__copy p` | 本文 | 16・400・1.8 | なし |
 | TOPの企業説明 | 現場で培った知見を生かし… | `.company__content > p` | 本文 | 16・400・1.8 | 画像上の構成・色は維持 |
-| TOPのコンテナ名 | 20ftコンテナ | `.garden-container h3` | 小見出し | 24/20、後続16/12 | なし |
-| TOPのFAQ導線の説明 | 飲食出店に関するよくある質問 | `.route-item__label` | 項目ラベル | 16・700・1.5、Noto Sans JP | 明色面の補助文字色 |
+| TOPのコンテナ名 | 20ftコンテナ | `.garden-container h3` | 小見出し | 24/20、写真まで24/16 | 写真前の共通余白を参照 |
 | 交通案内の経路 | 寒川駅より徒歩約30分 | `.access-card h4 + p` | 本文 | 16・400・1.8 | なし。14pxから変更 |
 | 地図の所在地 | 神奈川県高座郡寒川町… | `.map-embed__meta p` | 本文 | 16・400・1.8 | 外部地図リンクのUI文字は対象外 |
 | 取引先名の一覧 | 株式会社ディー・エヌ・エー | `.clients-grid li` | 本文 | 16・400・1.8 | リンク・ロゴ化はしない |
@@ -477,8 +465,6 @@ HTMLと `works.js`／`subpage-content.js` が生成する要素の役割を示�
 | 添付ファイル・状態通知 | 選択されていません | `.attachment-control__filename`、`.contact-form__status` | 補足・注記 | 14・400・1.6 | 選択・取消ボタンは操作UI仕様 |
 | 事業の対応範囲の見出し | 事業内容 | `.content-group--major > .content-group__title`（実ページh3／見本h4） | 中見出し | 32/24・700・1.35、後続24/16 | 共通グループの中見出し版 |
 | 事業の対応範囲アイコン | 運営／コミュニティ形成 | `.business-capability-grid__label`（実ページh4／見本h5） | 項目ラベル | 16・700・1.5 | タグに依存せず見た目を維持 |
-| FAQ・詳細の開閉名 | 出店条件について | `.faq-item summary`、`.disclosure summary` | 項目ラベル | 16・700・1.5 | Q/Aと＋/−は用途別記号を維持 |
-| FAQの回答 | テキスト… | `.faq-item__answer` | 本文 | 16・400・1.8 | 仮原稿は変更しない |
 | 工程の見出し・説明 | 応募／内装・厨房計画 | `.process-list h3`、`.schedule-phase__title`、`.schedule-step__body h4` | 小見出し／本文 | 24/20と16、説明前16/12 | 工程番号・日付・段階内配置は用途別 |
 
 ### 用途別のコンポーネント
@@ -486,14 +472,13 @@ HTMLと `works.js`／`subpage-content.js` が生成する要素の役割を示�
 | 掲載箇所・文言例 | 既存クラス | 表示仕様 | 確認事項 |
 | --- | --- | --- | --- |
 | TOPメインコピー／Living Culture. | `.hero__title`、`.hero__tagline` | 現行の流動サイズ・行間を維持 | 必要時にKVとして別途調整 |
-| 下層ページ名／COMPANY | `.page-hero__title-en`、`.page-hero h1` | 現行の用途別仕様。80/48へ機械的に変えない | KV単位で検討 |
+| 下層ページ名／COMPANY | `.page-hero__title-en`、`.page-hero h1` | 英字は用途別仕様、日本語はPC・SP共通16px（`--text-base`） | KV共通 |
 | グローバルナビ・メニュー・フッター | `.global-nav`、`.mobile-menu__nav`、`.site-footer__*` | 操作・サイト案内・ブランド文の現行仕様を維持 | 個別依頼時に検討 |
 | 主要ボタン・補助リンク・フィルター | `.action-button`、`.text-link`、`.news-filter`、`.news-pagination` | 操作UIの文字サイズを維持 | 必要時にUI全体で検討 |
 | 事業パネル | `.business-panel__*` | PC縦書き等の用途別仕様を維持 | ページ別工程で検討 |
 | 工程番号・日付・進行表示 | `.process-list__number`、`.schedule-step__year/date`、`.contact-steps` | 工程番号は第2章の専用32px。日付・進行表示は既存仕様を維持 | 標準本文と別管理 |
-| ACCESS GUIDE／TRAIN、FAQのQ/A | `.access-information__label`、`.access-card__type`、`.faq-item__symbol` | 構造ラベル・記号の現行仕様を維持 | 新規標準ラベルと区別 |
+| TRAIN／CAR | `.access-card__type` | 交通手段のラベル | Antonio |
 | 必須・任意・重要カテゴリ | `.contact-form__required/optional`、`.news__category--important` | 小型バッジ・重要状態として現行差分を維持 | 状態UIとして評価 |
-| TOPのFAQ導線 | `.route-item__title` | 現行TOPで使用中。Noto Sans JP・32/20px・600・1.05を使用 | 第19章を参照 |
 
 ### 残るページ別の確認事項
 
@@ -512,15 +497,16 @@ HTMLと `works.js`／`subpage-content.js` が生成する要素の役割を示�
 | 取引先名 | 企業概要 | `#sample-clients` |
 | WORKSカード | TOP、WORKS、`works.js` | `#sample-works`（同じデータ・描画処理） |
 | 対応範囲アイコン | 事業内容 | `#sample-icons-four / five / six` |
-| 通常情報表・費用詳細 | 企業概要、採用情報、飲食出店募集 | `#sample-groups`、情報表 |
-| 18px主要条件・詳細アコーディオン | 飲食出店募集 | `#sample-disclosure` |
+| 通常情報表 | 企業概要、採用情報 | `#sample-part-5`、情報表 |
+| 出店募集の条件欄 | 20ftコンテナ | `#sample-vendor-conditions` |
+| 説明カード | 他公園に無い強み | `#sample-feature-cards` |
 | 固定募集告知 | TOPのNEWS先頭、記事一覧の外側 | `#sample-news-announcement` |
 | NEWSのカテゴリ・18px重要項目・長いタイトルの省略 | TOP、NEWS一覧・記事、`subpage-content.js` | `#sample-news`（重要／通常×短文／長文） |
 | 共通のページ送り | NEWS一覧、WORKS一覧、`pagination.js` | `#sample-pagination-2-1` ほか、2・3・12ページの先頭／中間／末尾 |
 | 応募・PDFボタン | TOP、採用情報、飲食出店募集、フォーム | 共通ボタン・暗色面のボタン |
 | 入力・添付・進行表示 | お問い合わせ、求人応募 | `#sample-form` |
-| TOPのFAQ導線 | TOP飲食出店募集 | `#sample-garden-faq-route` |
-| FAQ・ページ内リンク・日付付き工程 | 飲食出店募集 | `#sample-faq / sample-inpage-nav / sample-schedule` |
+| 出店募集のボタン | 飲食横丁・カフェ出店募集 | `#sample-vendor-actions` |
+| 日付付き工程 | 飲食横丁・カフェ出店募集 | `#sample-schedule` |
 | 番号付き選考工程 | 採用情報 | `#sample-process` |
 | 標準小見出し | お知らせ詳細、プライバシーポリシー | 記事本文・ポリシーの小見出し |
 
@@ -567,7 +553,7 @@ HTMLだけでなく、JSのクラス生成と状態付与を使用判定に含�
 - 内余白と文章／ボタンの間は `--space-lg`、ラベル／告知文の間は `--space-md`。記事一覧までは隣接する `.news__list` の上marginで `--space-xl` を一度だけ取る。
 - 告知文は第2章の小見出しトークン（PC24px／SP20px・700・1.5）。左揃えで自然に折り返す。専用の流動サイズや、サイト全体のトークン変更は行わない。
 - 768px未満はラベル・告知文・ボタンを縦に配置し、768px以上は文章の右にボタンを置く。ボタンは共通の文字・padding・丸矢印を縮小せず、カード全体をリンクにしない。
-- TOPは `href="#ark-garden"`、見本は `href="../index.html#ark-garden"`。詳細ページへの直接リンクにはしない。既存のアンカー移動とスクロール余白を使用し、新しいJSは追加しない。
+- TOPの「募集概要を見る」は `arkgarden-recruit/`、見本では `../arkgarden-recruit/` に接続する。
 
 ### CMS化と募集終了時の管理
 
@@ -576,14 +562,10 @@ HTMLだけでなく、JSのクラス生成と状態付与を使用判定に含�
 - 内容変更時は `index.html` の固定asideと、`docs/components.html#sample-news-announcement` の見本を同時に更新し、本章を修正する。見本へ技術説明を表示しない。
 - 募集終了時はTOPと見本の固定aside、見本の不要になる見出し・容器を削除する。記事一覧は残し、TOP下部の募集内容・応募導線は別途確認して更新する。下部セクションや画像を自動的に削除しない。関連CSSは全使用先の参照がなくなってから整理する。
 
-## 19. TOP飲食出店募集の写真・FAQ導線
+## 19. TOP飲食出店募集の写真とボタン
 
-- FAQ導線の `.route-item / __label / __title / __arrow` は現行TOPで使われる実部品。日本語ラベルは `--type-label-*` と `--font-body` を参照し、PC/SPとも16px・700・1.5。色は親のリンクから継承する。
-- 英字FAQはNoto Sans JP、PC32px／SP20pxとする。書体は `--font-body`、SPのサイズは `--type-heading-sm-size`、PCは `--type-heading-md-size` を参照する。既存の太さ600・行間1.05は維持する。トークン自体の数値は変更しない。
-- 768px未満は日本語ラベルを上段、FAQを下段、右側に2段分を使う矢印を置く。日本語は自然に折り返し、高さは内容に合わせて伸びる。既存min-heightは最低限の操作領域であり、固定高で文章を切らない。
-- 768px以上は日本語→FAQ→矢印の3列。左列はmax-contentとし、必要な文字幅を確保する。列間は `--space-2xl`（標準設定で64px）とし、日本語とFAQの距離を確保する。PCのmin-heightは112px、上下paddingは既存の `--space-lg`（24px）を維持する。SPのmin-height132pxは変更しない。十分な幅では日本語を1行にし、右端の矢印までをリンクにする。既存の罫線・hover・active・focus-visibleを維持する。
-- TOPのリンクは `arkgarden-recruit/#faq`、見本は `../arkgarden-recruit/#faq`。aria-labelは「飲食出店に関するよくある質問を見る」。飲食出店募集ページ側のFAQ見出しは変更しない。
-- 見本は `docs/components.html#sample-garden-faq-route` に同じ実部品を置く。背景枠・配置は既存の資料用容器、部品はサイト共通CSSを使用する。技術説明は見本に表示しない。
+- 20ftは `arkgarden/container-20ft-two-stores.png`、40ftは `arkgarden/container-40ft.webp`。既存の3:2の写真枠を共用し、見出しから写真まではPC24px／SP16px。768px以上は2列、未満は縦に並べる。
+- 写真下に「詳細を見る」「応募フォームへ」を1つずつ置く。「詳細を見る」は `arkgarden-recruit/#area` へ接続し、応募フォームは詳細ページと同じURLを使う。
 
 ## 20. 背景の割り当て
 
@@ -596,7 +578,7 @@ HTMLだけでなく、JSのクラス生成と状態付与を使用判定に含�
 | TOP | NEWS白／BUSINESSグレー／WORKS白／COMPANYグレー／RECRUIT（両施設を含む）白／飲食出店グレー／CONTACT白 |
 | 事業内容 | 4事業を掲載順に白／グレー／白／グレー |
 | 企業概要 | 経営理念白／会社概要グレー／取引先一覧白／アクセスグレー |
-| 飲食出店募集 | コンセプト白／他公園に無い強みグレー／契約エリア白／スケジュールグレー／FAQ白 |
+| 飲食出店募集 | コンセプト白／他公園に無い強みグレー／飲食横丁・カフェ白／アクセスグレー／スケジュール白 |
 | 採用情報 | 募集区分（両施設を含む）白／公園で働くグレー／社員・アルバイト募集白／選考の流れグレー |
 | NEWS一覧・詳細、WORKS一覧、問い合わせ・求人応募の入力／確認／完了、プライバシーポリシー | 本文を一つの白いまとまりとして扱う |
 | 全ページ・デザイン見本 | フッター黒。明色／暗色の部品見本はそれぞれの用途の背景を維持する |

@@ -167,6 +167,10 @@ const newsCategoryLabels = Object.freeze({
       if (consent) consent.checked = prior.consent === true;
     }
 
+    if (new URLSearchParams(window.location.search).get("type") === "vendor") {
+      form.elements.namedItem("type").value = "飲食出店募集について";
+    }
+
     const next = () => {
       if (!form.reportValidity()) return;
       const values = Object.fromEntries(new FormData(form).entries());

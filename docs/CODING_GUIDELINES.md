@@ -26,8 +26,8 @@
 ├─ business/、works/、news/、contact/、privacy-policy/
 │  └─ index.html（ニュース詳細・お問い合わせ確認／完了は各サブディレクトリ）
 ├─ arkgarden-recruit/
-│  ├─ index.html（飲食出店の詳細・FAQ。応募はクライアント管理のGoogleフォーム）
-│  └─ faq/index.html（../#faqへの転送）
+│  ├─ index.html（飲食横丁・カフェ出店募集）
+│  └─ faq/index.html（旧URLから募集ページ先頭への転送）
 ├─ recruit/
 │  └─ index.html、apply/index.html、apply/confirm/index.html、apply/complete/index.html
 ├─ assets/
@@ -39,11 +39,11 @@
 │  │  ├─ script.js
 │  │  ├─ subpage-content.js（ニュース・お問い合わせの静的試作）
 │  │  ├─ pagination.js（NEWS・WORKS・デザイン見本で使う共通ページ送り）
-│  │  ├─ subpage-components.js（添付UI・FAQ・詳細アコーディオンの共通動作）
+│  │  ├─ subpage-components.js（添付UIの共通動作）
 │  │  ├─ works-data.js（Excelに基づくTOP・WORKS共通の実績データ）
 │  │  ├─ works.js（共通カード生成・カテゴリ切替・12件単位のページ送り）
 │  │  └─ recruit-application.js（求人応募の静的試作）
-│  ├─ documents/（バス時刻表とarkgarden/内の20ft・40ft募集PDF）
+│  ├─ documents/（支給PDFの格納先）
 │  └─ images/
 └─ docs/
    ├─ DESIGN_SYSTEM.md
@@ -104,9 +104,9 @@ TOPの `.news-announcement` はCMS記事ループの外側に置き、記事件�
 
 ### 仮リンク
 
-操作するリンク先が未確定の場合は `href="#"` だけの有効リンクを残しません。既存の準備中ボタンまたは `data-pending-link` と `aria-disabled="true"` を使い、ページ先頭への移動を防ぎます。スポーツパーク採用はリンクではなく、既存の無効状態のspanで「採用サイト準備中」と表示します。
+操作するリンク先が未確定で仮リンクの指定がない場合は、実際のリンクが届くまで無効状態のボタンを使います。スポーツパーク採用の無効状態は既存仕様に従います。
 
-コンテナ別のGoogleフォーム応募ボタンは `data-pending-link` と `aria-disabled="true"` を付け、クリック時にページ先頭へ移動しないようにします。GoogleフォームのURL確定時は、TOP・募集概要・スケジュール下の同じ種類のボタンすべてで `href` を更新し、この2属性と準備中の読み上げ補足を削除します。TOPの詳細ボタンは、募集ページの `#container-20ft` / `#container-40ft` に接続済みです。
+出店の応募ボタンはTOP、募集ページの「飲食横丁/カフェ」、スケジュール末尾で共通のGoogleフォームに接続します。フォームでは20ft（飲食横丁）・40ft（カフェ）の希望区分を選択できるようにします。正式な応募URLを受け取るまでは、各応募ボタンと見本のリンク先を `/` とします。詳細資料PDFは、正式資料の支給までは同じダミーPDFを使用します。「詳細を見る」は募集ページの `#area`、「お問い合わせ」は `contact/?type=vendor#contact-form-section` へ接続します。
 
 ## 5. CSS
 
@@ -127,7 +127,7 @@ TOPの `.news-announcement` はCMS記事ループの外側に置き、記事件�
 - ページ送りのAPI・状態・読込順は `DESIGN_SYSTEM.md` 第16章を参照する。NEWSとWORKSで番号生成を複製せず、見本も同じ処理を使う。
 - サイト用の共通部品・トークンは `assets/css/`、見本の説明・配置・枠は `docs/components.css` の `.docs-*` に分ける。資料用CSSは `docs/components.html` だけで読む。WordPress移行時もこの境界を維持する。
 - 見本内の実部品に対し、資料用CSSから文字サイズ・内余白・装飾を上書きしない。見本名は資料用クラスで共通の小見出しトークンを参照する。技術説明と使用先はMarkdownに記載し、クライアント向けの見本には表示しない。
-- TOPの飲食出店ボタンは `.garden-container__actions` による利用可能幅での折り返しを使い、`.contact-actions--pair / --mixed` のSP縮小指定へ再び混在させない。見本も同じラッパーと実際のリンク・準備中属性を使う。
+- TOPの飲食出店ボタンは `.garden-container__actions` による利用可能幅での折り返しを使い、`.contact-actions--pair / --mixed` のSP縮小指定へ再び混在させない。募集ページ末尾と見本でも同じラッパーを使う。
 - `.process-list` のPC/SP共通の内部配置は共有CSSで行い、ol/li・番号→見出し→本文のDOM順序を保つ。見本専用上書きやページIDの指定を加えない。数値と余白の所有者は `DESIGN_SYSTEM.md` 第9章を参照する。
 - 中見出し＋内容には `.content-group.content-group--major` と `.content-group__title` を使う。仕様は `DESIGN_SYSTEM.md` 第2・9章を参照する。通常グループと入れ子の小見出しは維持し、タグ階層は内容に沿って選ぶ。事業の項目名は `.business-capability-grid__label` で指定し、hタグに文字指定を結び付けない。
 - 採用施設・募集カードはTOP、採用ページ、見本で `.recruit-facility / .recruit-opening` を共用する。位置と幅は `.page-shell.recruit-facility__inner` の親paddingで所有し、既存の `--section-title-indent` で英字開始位置へ揃える。写真や募集案内へ個別の最大幅・位置補正を追加しない。全幅の背景は大見出しを含む親セクションが持ち、各 `.recruit-facility` は親の背景を共有する。構造・breakpoint・subgrid・素材・状態は `DESIGN_SYSTEM.md` 第10章を正本とする。募集バナーの背景・fit指定は既存定義を直接修正する。hover拡大は既存の画像アニメーション定義へセレクターを追加して共用し、対応端末・動きの設定を同じmedia条件で判定する。通常時の縮小やreduced-motion側の縮小上書きを再追加しない。画像URL・ページID・nth-childによる位置補正は使わず、他用途の同一画像へ影響させない。

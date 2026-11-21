@@ -90,6 +90,7 @@
   --space-2xl: 4rem;
   --space-3xl: 6rem;
   --space-4xl: 9rem;
+  --space-before-media: var(--space-md);
 
   --page-gutter: clamp(1rem, 4vw, 4rem);
   --section-title-indent: 2rem;
@@ -150,5 +151,6 @@
     --type-heading-md-after: 1.5rem;
     --type-heading-sm-after: 1rem;
     --type-lead-after: 1.5rem;
+    --space-before-media: var(--space-lg);
   }
 }

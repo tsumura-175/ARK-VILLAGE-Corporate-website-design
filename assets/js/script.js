@@ -1,12 +1,3 @@
-// Pending detail and Google Form URLs stay in place until the client supplies them.
-(() => {
-  document.querySelectorAll("[data-pending-link]").forEach((link) => {
-    link.addEventListener("click", (event) => {
-      if (link.getAttribute("href") === "#") event.preventDefault();
-    });
-  });
-})();
-
 (() => {
   const root = document.documentElement;
   if (!root.classList.contains("is-github-pages")) return;
