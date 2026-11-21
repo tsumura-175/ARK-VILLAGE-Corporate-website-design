@@ -59,7 +59,7 @@ SPは768px未満、PCは768px以上で、タブレットもPC値を使います�
 - 中見出しは施設名 `.recruit-facility__name`、交通案内の `.access-information h3`、記事タイトル等の実部品に適用する。小見出しは職種・内容小区分・交通案内・記事本文・ポリシーの実部品に適用する。h要素の数字だけで文字の役割を決めない。
 - `.content-group` はgapを0にし、`.content-group__title` 直後の要素のmarginだけで後続余白を確保する。通常は小見出し用 `--type-heading-sm-after`、`.content-group--major` では中見出し用 `--type-heading-md-after`。通常内容間は `--space-lg`、リード直後は `--type-lead-after`。施設・職種カードは既存gridのgapが見出し後の距離を所有する。
 - `.content-section__lead + .content-section__copy` と理念の縦積みは共通リード用の後続余白を使う。1024px以上の理念2列のcolumn-gapは既存レイアウトを維持する。
-- 情報表は `.definition-list dt` が項目ラベル16px、ddが通常本文16px。主要条件の要約 `.summary-facts dd` と重要なお知らせ `.news__item--important p` は強調本文18px。情報表の値を一律18pxにする別バリエーションは設けない。dd内の補足spanは共通の補足仕様を使う。
+- 情報表は `.definition-list dt` が項目ラベル16px、ddが通常本文16px。共通募集条件の値 `.summary-facts dd` と重要なお知らせ `.news__item--important p` は強調本文18px。情報表の値を一律18pxにする別バリエーションは設けない。dd内の補足spanは共通の補足仕様を使う。
 - 長い施設名・職種名は現行採用カードの自然な折り返しで確認する。個別に縮小したり、見本だけの特別な改行をサイトの仕様として追加したりしない。
 - TOPのCONTACTは1024px以上でCTAを見出しの横に配置する。縦に並べる幅では共通の見出し後続余白を使う。
 
@@ -405,10 +405,10 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 
 - `arkgarden-recruit/index.html` のKVは英字施設名「SAGAMIGAWA ICHINOMIYA PARK」に続けて、「飲食横丁出店募集」「カフェ出店募集」を共通の日本語見出し16pxで2段に表示する。本文は「コンセプト」「他公園に無い強み」「飲食横丁/カフェ」「アクセス」「スケジュール」の順。
 - コンセプト・強み・アクセスの本文は11月の支給資料に基づく。コンセプトのリード直後は共通の `--type-lead-after` を使う。本文は1つの `.content-section__copy` にまとめ、文のまとまりを `<br>` で改行する。本文の下に仮画像2枚を並べる。強みの3項目は `.feature-cards` と既存の `.content-group` を使い、第4章の交通案内と罫線・内余白を揃える。768px以上は横3列、未満は縦並び。強みのカードの下にも、コンセプトと同じ `.detail-feature` で仮画像2枚を表示する。企業概要と出店募集ページの交通案内は電車・車の2項目。
-- 「飲食横丁/カフェ」では768px以上で20ft・40ftを横並びにし、768px未満は20ftから縦に並べる。各タイトルから説明文、外観から図面はPC16px／SP12px。説明文から外観はPC24px／SP16pxとし、横並びでは長い方の説明文を基準に両方の外観の上端を揃える。20ftは5区画を募集する。外観の下に20ftの `arkgarden/container-20ft-plan.webp` と40ftの `arkgarden/container-40ft-ground-plan.webp` を表示する。平面図は縦横比を保って全体を表示し、共通の `.media-caption` で右下に図面名を添える。図面の表示幅が500px以下では、図面と重ならないよう直下の右端に配置する。
-- 20ftの募集条件は `.summary-facts` に「募集区画・店舗面積」「営業時間」「契約形態・契約期間」「定休日」の順で掲載する。768px以上では2列、未満は1列にする。客席は屋外のみ。定休日は月曜日。
+- 「飲食横丁/カフェ」では768px以上で20ft・40ftを横並びにし、768px未満は20ftから縦に並べる。各コンテナの見出し直下に `.definition-list` で区画・店舗面積を表示する。20ftは10区画・約7.25㎡。40ftは1区画・約29.7㎡。外観の上余白はPC24px／SP16px、外観から図面はPC16px／SP12pxとする。横並びでは、両方の外観の上端を揃える。外観の下に20ftの `arkgarden/container-20ft-plan.webp` と40ftの `arkgarden/container-40ft-ground-plan.webp` を表示する。平面図は縦横比を保って全体を表示し、共通の `.media-caption` で右下に図面名を添える。図面の表示幅が500px以下では、図面と重ならないよう直下の右端に配置する。
+- 両方の図面の下に「募集条件」を置き、「営業時間」「契約形態・契約期間」「定休日」の順で共通条件を表示する。横罫線で区切る既存の `.summary-facts` を使い、768px以上では3列、未満は1列とする。営業時間は平日17:00〜22:00・土日祝12:00〜22:00、契約は運営委託契約・3年間、定休日は月曜日。
 - スケジュールは `.schedule-timeline` の縦型3段階・13工程。768px以上は日付・節点・工程の3列、未満は日付を工程の上に表示する。全日程は予定として扱う。
-- 「飲食横丁/カフェ」の20ft募集条件表の下とスケジュール末尾に、第9章と同じ2段の応募ボタン群を配置する。応募フォームはTOPと同じURLを使い、正式URLの受領までは `/` に接続する。PDFは20ft・40ft共通の1本。正式資料の支給までは `assets/documents/arkgarden/vendor-details-demo.pdf` を `ダミー.pdf` としてダウンロードできるようにする。「お問い合わせ」は `contact/?type=vendor#contact-form-section` に接続し、「飲食出店募集について」を初期選択する。入力済みの他項目は復元する。
+- 「飲食横丁/カフェ」の共通募集条件の下とスケジュール末尾に、第9章と同じ2段の応募ボタン群を配置する。応募フォームはTOPと同じURLを使い、正式URLの受領までは `/` に接続する。PDFは20ft・40ft共通の1本。正式資料の支給までは `assets/documents/arkgarden/vendor-details-demo.pdf` を `ダミー.pdf` としてダウンロードできるようにする。「お問い合わせ」は `contact/?type=vendor#contact-form-section` に接続し、「飲食出店募集について」を初期選択する。入力済みの他項目は復元する。
 - 見本は `components.html#sample-vendor-conditions`、`#sample-vendor-actions`、`#sample-schedule`。
 
 ## 12. 更新時の確認
@@ -446,9 +446,9 @@ HTMLと `works.js`／`subpage-content.js` が生成する要素の役割を示�
 | 取引先名の一覧 | 株式会社ディー・エヌ・エー | `.clients-grid li` | 本文 | 16・400・1.8 | リンク・ロゴ化はしない |
 | 通常情報表 | 仕事内容／勤務地 | `.definition-list dt` | 項目ラベル | 16・700・1.5 | なし |
 | 通常情報表の説明する値 | 園内の巡回、安全確認… | `.definition-list dd` | 本文 | 16・400・1.8 | 旧一律500・最大18pxを撤去 |
-| コンテナ主要条件 | 月額家賃／営業時間 | `.summary-facts dt` | 項目ラベル | 16・700・1.5 | なし |
-| コンテナ主要条件の値 | 110,000円／5区画・約14.5㎡ | `.summary-facts dd` | 強調する本文 | 18・500・1.8 | 主要条件の要約に限定 |
-| 表の値に付く補足 | 税込・予定／※現住所 | `.definition-list dd span`、`.summary-facts dd > span` | 補足・注記 | 14・400・1.6 | span全体が値の場合は個別マークアップを再検討 |
+| 共通募集条件の項目名 | 営業時間／定休日 | `.summary-facts dt` | 項目ラベル | 16・700・1.5 | なし |
+| 共通募集条件の値 | 運営委託契約・3年間 | `.summary-facts dd` | 強調する本文 | 18・500・1.8 | 共通条件の要約に使用 |
+| 表の値に付く補足 | 税込・予定／※現住所 | `.definition-list dd span` | 補足・注記 | 14・400・1.6 | span全体が値の場合は個別マークアップを再検討 |
 | 出店条件の注意 | BAR、スイーツをメイン… | `.rental-area__note` | 補足・注記 | 14・400・1.6 | なし |
 | 募集要項の未確定条件 | 給与・募集人数…は仮条件 | 現行 `.content-section__copy` | 意味上は補足・注記 | 補足として分離する場合は14・400・1.6 | 個別判定待ち。本文クラスのまま16px |
 | フォーム入力・確認 | 氏名／メールアドレス | `.contact-form__row > label:first-child`、同span、`.contact-confirm dt` | 項目ラベル | 16・700・1.5 | 必須・任意バッジは状態UIを維持 |
@@ -500,7 +500,7 @@ HTMLと `works.js`／`subpage-content.js` が生成する要素の役割を示�
 | WORKSカード | TOP、WORKS、`works.js` | `#sample-works`（同じデータ・描画処理） |
 | 対応範囲アイコン | 事業内容 | `#sample-icons-four / five / six` |
 | 通常情報表 | 企業概要、採用情報 | `#sample-part-5`、情報表 |
-| 出店募集の条件欄 | 20ftコンテナ | `#sample-vendor-conditions` |
+| 出店募集の共通条件 | 20ft・40ftコンテナ | `#sample-vendor-conditions` |
 | 説明カード | 他公園に無い強み | `#sample-feature-cards` |
 | 固定募集告知 | TOPのNEWS先頭、記事一覧の外側 | `#sample-news-announcement` |
 | NEWSのカテゴリ・18px重要項目・長いタイトルの省略 | TOP、NEWS一覧・記事、`subpage-content.js` | `#sample-news`（重要／通常×短文／長文） |
