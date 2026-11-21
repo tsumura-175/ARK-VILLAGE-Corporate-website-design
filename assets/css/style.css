@@ -1761,8 +1761,12 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 .garden-containers {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: var(--space-2xl) var(--space-xl);
-  padding-block: var(--space-2xl);
+  column-gap: var(--space-xl);
+}
+
+.garden-recruit .garden-containers {
+  row-gap: var(--type-heading-sm-before);
+  padding-block: var(--type-heading-sm-before) var(--space-2xl);
 }
 
 .garden-container {
