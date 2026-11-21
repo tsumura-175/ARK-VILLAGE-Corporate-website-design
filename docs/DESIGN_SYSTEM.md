@@ -369,14 +369,14 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - 全施設写真は `assets/images/placeholder/sample-1.webp` を共用する。altは空とし、施設の記録写真と説明しない。支給後は同じimgのsrcとaltを差し替える。写真上の文字・キャプションは置かない。
 - 各募集カードは `.recruit-opening` 内の募集バナー→`.recruit-opening__copy`（見出し・既存説明）→既存のボタン／準備中spanの順。公園の1件だけ `.recruit-opening--featured` を使い、768px以上は左バナー・右copy＋ボタン、未満は縦積みとする。社員・アルバイトを別カードへ分割しない。
 - スポーツパークは `.recruit-facility__layout--park`。768px未満は1列、768〜1279pxは2列、1280px以上は3列。複数列では各カードを3行のsubgridにし、バナーの上下端・見出し開始・ボタン位置を同じ行で揃える。copy内部は小見出し後の共通gapを維持し、文章量の差はcopyの共有行の余白で吸収する。固定高・行数制限・省略・個別縮小は使わない。
-- 募集バナーの表示枠は16:10、背景透明。`.recruit-opening__media img` は幅・高さ100％、`object-fit: cover`・中央配置とし、通常時は縮小せず枠いっぱいに表示する。画像のズームは募集カード `.recruit-opening` のhover判定を使い、hover可能・fine pointer・`prefers-reduced-motion: no-preference` の場合だけscale(1.035)へ拡大する。画像だけを `--dur-nav`・`--ease-out` で滑らかに往復させ、枠はoverflow: hiddenで固定する。WORKSと同じ既存のアニメーション定義へセレクターを追加し、既存用途の挙動は変えない。動きを減らす設定とタッチ端末ではズームを適用せず、旧縮小値は復元しない。通常時は16:10の文字入り素材3点を全体表示し、3:2の講師写真だけ上下を中央トリミングする。人物の顔・頭・足元・スケートボードを保持し、左右の空きは作らない。元画像の加工・生成・複製はせず、採用ページのKV等へは適用しない。
+- 募集バナーの表示枠は16:10、背景透明。`.recruit-opening__media img` は幅・高さ100％、`object-fit: cover`・中央配置とし、通常時は縮小せず枠いっぱいに表示する。画像のズームは募集カード `.recruit-opening` のhover判定を使い、hover可能・fine pointer・`prefers-reduced-motion: no-preference` の場合だけscale(1.035)へ拡大する。画像だけを `--dur-nav`・`--ease-out` で滑らかに往復させ、枠はoverflow: hiddenで固定する。WORKSと同じ既存のアニメーション定義へセレクターを追加し、既存用途の挙動は変えない。動きを減らす設定とタッチ端末ではズームを適用せず、旧縮小値は復元しない。通常時は16:10の文字入り素材4点を全体表示する。講師の文字入りバナーはTOP・採用ページ・COMPONENTSの募集カードで共用し、採用・求人応募のKVは文字なしの元画像を使う。
 - TOPの公園リンクは `recruit/#garden-careers`、採用ページ内は `#garden-careers`、見本は `../recruit/#garden-careers` を維持する。スポーツパーク3件は操作できない準備中spanとし、外部URL等を新設しない。
 - 旧 `.recruitment-*`、旧公園専用layout・番号・写真キャプションの指定は、HTML・JSの参照がないことを確認して整理した。施設名と職種の文字指定、カード配置を共通部品へ集約する。募集バナーのhover拡大は上記の共通アニメーション条件で管理し、通常表示を縮小しない。
 - 本文の順序は募集区分→WORK STYLE→JOBS→FLOW。WORK STYLEは会社紹介と働く環境、JOBSは仕事内容・人物像・募集要項、FLOWは応募→面接→採用発表。
 - WORK STYLEの会社紹介とCOMPONENTSの会社紹介見本では、`.detail-feature` 内の本文から写真までの縦間隔に、768px未満で `--space-before-media`（16px）を使う。768px以上は横並びで列間64px。
 - WORK STYLE・JOBSの内容は支給「採用情報_公園.pdf」に基づく。根拠のない働きやすさや条件を創作せず、給与・人数等の「（仮）」を保持する。
 - WORK STYLEのリードは「公園の日常と、<br />地域のにぎわいを支える。」。右の画像は `assets/images/media/ark-garden-night-perspective.webp` を共用し、「完成イメージ」を右下に表示する。
-- 公園の求人バナーは `recruit/ichinomiya-park-staff.webp`。スポーツパークの受付・運営は `recruit/samukawa-street-sports-park-operations.webp`、講師は `recruit/staff-instructor-cleaning.webp`、アルバイト・清掃は `recruit/samukawa-street-sports-park-cleaning.webp`。
+- 公園の求人バナーは `recruit/ichinomiya-park-staff.webp`。スポーツパークの受付・運営は `recruit/samukawa-street-sports-park-operations.webp`、講師は `recruit/staff-instructor-banner.webp`、アルバイト・清掃は `recruit/samukawa-street-sports-park-cleaning.webp`。
 - 採用メイン・求人応募3画面のKVは `recruit/staff-instructor-cleaning.webp` を共用。`.page-hero--image-top` の現行位置は `36% 34%`。
 - WORK STYLE末尾・JOBS末尾は求人応募ボタンだけを表示し、「選考の流れを見る」のページ内リンクは置かない。FLOWセクション自体は残す。
 - 実物見本：`components.html#sample-recruit`、`#sample-feature`。
