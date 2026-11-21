@@ -127,7 +127,7 @@ TOPの `.news-announcement` はCMS記事ループの外側に置き、記事件�
 - ページ送りのAPI・状態・読込順は `DESIGN_SYSTEM.md` 第16章を参照する。NEWSとWORKSで番号生成を複製せず、見本も同じ処理を使う。
 - サイト用の共通部品・トークンは `assets/css/`、見本の説明・配置・枠は `docs/components.css` の `.docs-*` に分ける。資料用CSSは `docs/components.html` だけで読む。WordPress移行時もこの境界を維持する。
 - 見本内の実部品に対し、資料用CSSから文字サイズ・内余白・装飾を上書きしない。見本名は資料用クラスで共通の小見出しトークンを参照する。技術説明と使用先はMarkdownに記載し、クライアント向けの見本には表示しない。
-- TOPの飲食出店ボタンは `.garden-container__actions` による利用可能幅での折り返しを使い、`.contact-actions--pair / --mixed` のSP縮小指定へ再び混在させない。募集ページ末尾と見本でも同じラッパーを使う。
+- TOPの飲食出店ボタンは `.garden-container__actions` の折り返しを使う。募集ページと見本では `.garden-container__action-group` の上段に応募ボタン、下段の `.garden-container__actions` にPDFとお問い合わせを置く。構成と余白は `DESIGN_SYSTEM.md` 第9章を参照する。
 - `.process-list` のPC/SP共通の内部配置は共有CSSで行い、ol/li・番号→見出し→本文のDOM順序を保つ。見本専用上書きやページIDの指定を加えない。数値と余白の所有者は `DESIGN_SYSTEM.md` 第9章を参照する。
 - 中見出し＋内容には `.content-group.content-group--major` と `.content-group__title` を使う。仕様は `DESIGN_SYSTEM.md` 第2・9章を参照する。通常グループと入れ子の小見出しは維持し、タグ階層は内容に沿って選ぶ。事業の項目名は `.business-capability-grid__label` で指定し、hタグに文字指定を結び付けない。
 - 採用施設・募集カードはTOP、採用ページ、見本で `.recruit-facility / .recruit-opening` を共用する。位置と幅は `.page-shell.recruit-facility__inner` の親paddingで所有し、既存の `--section-title-indent` で英字開始位置へ揃える。写真や募集案内へ個別の最大幅・位置補正を追加しない。全幅の背景は大見出しを含む親セクションが持ち、各 `.recruit-facility` は親の背景を共有する。構造・breakpoint・subgrid・素材・状態は `DESIGN_SYSTEM.md` 第10章を正本とする。募集バナーの背景・fit指定は既存定義を直接修正する。hover拡大は既存の画像アニメーション定義へセレクターを追加して共用し、対応端末・動きの設定を同じmedia条件で判定する。通常時の縮小やreduced-motion側の縮小上書きを再追加しない。画像URL・ページID・nth-childによる位置補正は使わず、他用途の同一画像へ影響させない。
