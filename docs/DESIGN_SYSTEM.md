@@ -320,7 +320,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - お問い合わせ入力・確認・完了：`contact/index.html`、`contact/confirm/index.html`、`contact/complete/index.html`
 - プライバシーポリシー：`privacy-policy/index.html`
 - 採用情報・求人応募：`recruit/index.html`、`recruit/apply/index.html`、`recruit/apply/confirm/index.html`、`recruit/apply/complete/index.html`
-- 飲食横丁・カフェ出店募集：`arkgarden-recruit/index.html`。旧 `arkgarden-recruit/faq/index.html` は募集ページ先頭への転送として保持
+- 飲食横丁・カフェ出店募集：`arkgarden-recruit/index.html`。
 - 共通部品確認：`docs/components.html`
 
 ## 9. 本文幅と共通部品の運用
@@ -409,7 +409,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - 20ftの募集条件は `.summary-facts` に「募集区画・店舗面積」「営業時間」「契約形態・契約期間」「定休日」の順で掲載する。768px以上では2列、未満は1列にする。客席は屋外のみ。定休日は月曜日。
 - スケジュールは `.schedule-timeline` の縦型3段階・13工程。768px以上は日付・節点・工程の3列、未満は日付を工程の上に表示する。全日程は予定として扱う。
 - 「飲食横丁/カフェ」の20ft募集条件表の下とスケジュール末尾に、第9章と同じ2段の応募ボタン群を配置する。応募フォームはTOPと同じURLを使い、正式URLの受領までは `/` に接続する。PDFは20ft・40ft共通の1本。正式資料の支給までは `assets/documents/arkgarden/vendor-details-demo.pdf` を `ダミー.pdf` としてダウンロードできるようにする。「お問い合わせ」は `contact/?type=vendor#contact-form-section` に接続し、「飲食出店募集について」を初期選択する。入力済みの他項目は復元する。
-- 旧 `arkgarden-recruit/faq/index.html` は募集ページ先頭へ転送する。見本は `components.html#sample-vendor-conditions`、`#sample-vendor-actions`、`#sample-schedule`。
+- 見本は `components.html#sample-vendor-conditions`、`#sample-vendor-actions`、`#sample-schedule`。
 
 ## 12. 更新時の確認
 

@@ -26,8 +26,7 @@
 ├─ business/、works/、news/、contact/、privacy-policy/
 │  └─ index.html（ニュース詳細・お問い合わせ確認／完了は各サブディレクトリ）
 ├─ arkgarden-recruit/
-│  ├─ index.html（飲食横丁・カフェ出店募集）
-│  └─ faq/index.html（旧URLから募集ページ先頭への転送）
+│  └─ index.html（飲食横丁・カフェ出店募集）
 ├─ recruit/
 │  └─ index.html、apply/index.html、apply/confirm/index.html、apply/complete/index.html
 ├─ assets/
@@ -106,7 +105,7 @@ TOPの `.news-announcement` はCMS記事ループの外側に置き、記事件�
 
 操作するリンク先が未確定で仮リンクの指定がない場合は、実際のリンクが届くまで無効状態のボタンを使います。スポーツパーク採用の無効状態は既存仕様に従います。
 
-出店の応募ボタンはTOP、募集ページの「飲食横丁/カフェ」、スケジュール末尾で共通のGoogleフォームに接続します。フォームでは20ft（飲食横丁）・40ft（カフェ）の希望区分を選択できるようにします。正式な応募URLを受け取るまでは、各応募ボタンと見本のリンク先を `/` とします。詳細資料PDFは、正式資料の支給までは同じダミーPDFを使用します。「詳細を見る」は募集ページの `#area`、「お問い合わせ」は `contact/?type=vendor#contact-form-section` へ接続します。
+出店の応募ボタンはTOP、募集ページの「飲食横丁/カフェ」、スケジュール末尾で共通のGoogleフォームに接続します。フォームでは20ft・40ftの希望区分を選択できるようにします。正式な応募URLを受け取るまでは、各応募ボタンと見本のリンク先を `/` とします。詳細資料PDFは、正式資料の支給までは同じダミーPDFを使用します。「詳細を見る」は募集ページの `#area`、「お問い合わせ」は `contact/?type=vendor#contact-form-section` へ接続します。
 
 ## 5. CSS
 
