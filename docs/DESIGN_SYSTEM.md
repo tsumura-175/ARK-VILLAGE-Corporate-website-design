@@ -103,7 +103,7 @@ TOPの静的HTML、NEWS一覧の `subpage-content.js` による生成、記事�
 - 下層ページでは現在ページのリンクへ `aria-current="page"` を付ける
 - 下層ページからトップ内セクションへ移動する場合は `index.html#section-id` を使う
 
-PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に合わせ、1440pxでは約38px。960px以上で表示する。PCヘッダーの「飲食出店募集」リンクは、白文字と `--color-ink` 64％の半透明背景で、ヒーロー写真の上でもコントラストを確保する。
+PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に合わせ、1440pxでは約38px。960px以上で表示する。PCヘッダーの「飲食出店募集」リンクは、白文字と半透明の枠線を使い、ボタンの背景は透明とする。
 
 ### Mobile Menu
 
@@ -363,7 +363,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 
 ### 構成・素材
 
-- 正式な施設表記は「寒川町相模川一之宮公園」「寒川町ストリートスポーツパーク」。旧施設名は新規の表示文言に使わない。ただしExcel正本の歴史的な実績名・既存URL・識別子・素材ファイル名は機械的に置換しない。
+- 正式な施設表記は「寒川町相模川一之宮公園」「寒川町ストリートスポーツパーク」。TOPの採用セクションの施設見出しでは「相模川一之宮パーク」と表記する。旧施設名は新規の表示文言に使わない。ただしExcel正本の歴史的な実績名・既存URL・識別子・素材ファイル名は機械的に置換しない。
 - 募集区分は公園の社員・アルバイトと、スポーツパークの受付社員・運営管理社員／BMX FLATLAND・SKATEBOARD STREET講師／アルバイト・清掃スタッフの3件。
 - 本サイトで詳細と応募を管理するのは公園。スポーツパークは正式な外部URL受領まで「採用サイト準備中」とし、公園のフォームや架空URLへ接続しない。
 - TOP・採用ページ・見本は `.recruit-facilities` 内に2つの `.recruit-facility` を置く。各施設の直下に `.page-shell.recruit-facility__inner` を置き、施設名 `.recruit-facility__name` →施設写真 `.recruit-facility__perspective` →募集案内 `.recruit-facility__layout` の同じ構造を使う。両ページの大見出しと既存アンカーは保持する。施設名・施設写真・募集案内の左端を大タイトルの英字開始位置に揃え、施設写真と募集案内全体の左右端を一致させる。
@@ -399,7 +399,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 
 - ヘッダー・メニュー・フッターの「飲食出店募集」と、NEWS先頭の固定告知「募集概要を見る」はTOPの `#ark-garden` へ接続する。見本は相対パスでTOPへ接続する。
 - 募集告知はNEWS見出し→写真・日付のない固定告知→通常記事→一覧リンクの順に置く。固定告知の表示・CMS管理・募集終了時の手順は第18章を参照する。
-- TOPの「飲食出店募集」見出しは、768px未満では初回表示から英字・日本語を縦に並べる。768px以上では共通見出しの自動配置を使う。
+- TOPの飲食出店募集では英字の「CALL FOR VENDORS」と日本語の「相模川一之宮パーク」を見出しに使い、募集内容を直下の説明文に記載する。768px未満では初回表示から英字・日本語を縦に並べる。768px以上では共通見出しの自動配置を使う。
 - TOPの紹介写真には説明文を重ねず、SPでも写真下の説明文を置かない。上部のセクション見出しと画像のalt、右下の「完成イメージ」は維持する。TOP・採用・見本は `assets/images/media/ark-garden-night-perspective.webp` を共用する。
 - 20ft・40ft枠は768px以上で2列、未満は縦並び。TOPの完成イメージは共通の3:2枠とし、同じ表示幅では高さを揃える。`.garden-container__media` は `overflow: hidden; background: transparent;`、子画像は幅・高さ100％・`object-fit: cover; object-position: center;` で中央を切り抜き基準にして表示する。元画像の比率を保持して枠いっぱいに表示し、containによる上下の余白を作らない。適用はTOPの完成イメージに限定し、募集詳細ページの平面図・断面図の全体表示は維持する。
 - TOPの枠は `arkgarden/container-20ft.webp`（支給container_9）と `container-40ft.webp`（container_3）。AREAの図面とは別素材のため混同しない。20ftは `.garden-container__media--trim-vertical` で画像を中央基準に拡大し、上下端に含まれる白い帯を表示枠の外へ出す。20ftと40ftは同じ3:2の表示枠を使う。
@@ -408,7 +408,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 
 ### 詳細ページ
 
-- `arkgarden-recruit/index.html` の順序はCONCEPT→STRENGTHS→AREA→SCHEDULE→FAQ。KV下の `.inpage-nav` は20ft・40ft・スケジュール・FAQへ接続する。
+- `arkgarden-recruit/index.html` のKVは「CALL FOR VENDORS」／「相模川一之宮パーク」。本文の順序はCONCEPT→STRENGTHS→AREA→SCHEDULE→FAQ。KV下の `.inpage-nav` は20ft・40ft・スケジュール・FAQへ接続する。
 - 内部ナビは `.text-link` の丸囲み下矢印。帯背景や上下罫線を付けず、SPは2列、768px以上は4項目を中央に並べる。
 - CONCEPTの写真2枚は `placeholder/sample-1.webp`。STRENGTHSは支給文5段落を省略せず常時表示し、`arkgarden/park-masterplan.webp` を添える。「遊具（未定）」なども支給表記を維持する。
 - AREAは20ft→40ftを縦配置。20ftは `arkgarden/container-20ft-plan.webp`（支給container_11）、40ftは `arkgarden/container-40ft-ground-plan.webp`（container_5）。図面を本文幅いっぱいに表示し、その下に概要を置く。図面の縦横比・情報を保持し、切り抜かない。
@@ -437,7 +437,7 @@ HTMLと `works.js`／`subpage-content.js` が生成する要素の役割を示�
 | 掲載箇所 | 文言例 | 既存クラス・生成元 | 分類 | 適用する共通ルール | 例外の有無 |
 | --- | --- | --- | --- | --- | --- |
 | TOP・全下層のセクション開始 | BUSINESS／事業内容 | `.section-title__en`、直後のh2 | 大見出し | 英80/48、日本語32/24、後続48/32 | なし。長文は自動縦積み |
-| TOP採用・採用ページ | 寒川町相模川一之宮公園 | `.recruit-facility__name` | 中見出し | 32/24・700・1.35、後続24/16 | なし。長い名称は折り返す |
+| TOP採用・採用ページ | 相模川一之宮パーク（TOP）／寒川町相模川一之宮公園（採用ページ） | `.recruit-facility__name` | 中見出し | 32/24・700・1.35、後続24/16 | なし。長い名称は折り返す |
 | TOP採用・採用ページ | 受付社員・運営管理社員 募集 | `.recruit-opening__copy h4` | 小見出し | 24/20・700・1.5、後続16/12 | なし。PCの個別縮小を撤去 |
 | 公園の採用カード | 社員・アルバイト募集 | `.recruit-opening--featured .recruit-opening__copy h4` | 小見出し | 24/20・700・1.5、Noto Sans JP | なし。Antonio・600・固定の最小高を撤去 |
 | 採用・飲食出店の内容小区分 | 働く環境／公園運営マネージャー | `.content-group__title`（h3/h4） | 小見出し | 24/20、後続16/12 | 主区分を中見出しにする判断は個別工程 |

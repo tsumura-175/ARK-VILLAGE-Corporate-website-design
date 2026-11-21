@@ -479,6 +479,7 @@ html.is-github-pages.is-access-locked .access-gate {
   margin-block-start: 0;
   inline-size: max-content;
   transform: translateX(calc(-1 * var(--section-title-last-line-offset, 0px)));
+  transition-property: none;
   white-space: nowrap;
 }
 
@@ -2237,7 +2238,6 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   .header-village {
     border: var(--rule-hair) solid
       color-mix(in oklch, var(--color-on-dark) 22%, transparent);
-    background-color: color-mix(in srgb, var(--color-ink) 64%, transparent);
     color: var(--color-on-dark);
     transition:
       border-color var(--dur-short) var(--ease-out),
