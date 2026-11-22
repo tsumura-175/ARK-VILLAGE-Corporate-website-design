@@ -55,6 +55,7 @@ SPは768px未満、PCは768px以上で、タブレットもPC値を使います�
 ### 現行の文字部品と余白の所有者
 
 - 大見出しは `.section-heading` 内の `.section-title` を使い、赤い斜線・英字 `.section-title__en`・直後のh2を一組にする。現行サイトのDOMと既存 `script.js` の自動配置を維持する。日本語が英字最終行の右に収まらなければ、JSが `.section-title--stacked` を付けて縦に並べる。このクラスは実行時に使う状態であり、未使用CSSではない。
+- 日本語のみの大見出しは `.section-title--ja-only` で赤い斜線・h2・説明文を組み合わせる。h2はNoto Sans JP・700。Noto Sans JPとAntonioの字面の差を補正するため、`--type-section-ja-only-size`（PC72px／SP44px）を使う。英字大見出しはPC80px／SP48px。英日併記の自動配置は英字を含む見出しに適用する。見本は `components.html#sample-ja-heading`。
 - 大見出しの後続余白は `.section-heading` のpaddingが所有し、`.content-section__head` も同じトークンを使う。セクション全体の上下paddingや本文プレート内のpaddingとは区別する。
 - 中見出しは施設名 `.recruit-facility__name`、交通案内の `.access-information h3`、記事タイトル等の実部品に適用する。小見出しは職種・内容小区分・交通案内・記事本文・ポリシーの実部品に適用する。h要素の数字だけで文字の役割を決めない。
 - `.content-group` はgapを0にし、`.content-group__title` 直後の要素のmarginだけで後続余白を確保する。通常は小見出し用 `--type-heading-sm-after`、`.content-group--major` では中見出し用 `--type-heading-md-after`。通常内容間は `--space-lg`、リード直後は `--type-lead-after`。施設・職種カードは既存gridのgapが見出し後の距離を所有する。
@@ -361,12 +362,12 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - 正式な施設表記は「寒川町相模川一之宮公園」「寒川町ストリートスポーツパーク」。TOPの採用セクションの施設見出しでは「相模川一之宮パーク」と表記する。旧施設名は新規の表示文言に使わない。ただしExcel正本の歴史的な実績名・既存URL・識別子・素材ファイル名は機械的に置換しない。
 - 募集区分は公園の社員・アルバイトと、スポーツパークの受付社員・運営管理社員／BMX FLATLAND・SKATEBOARD STREET講師／アルバイト・清掃スタッフの3件。
 - 本サイトで詳細と応募を管理するのは公園。スポーツパークは正式な外部URL受領まで「採用サイト準備中」とし、公園のフォームや架空URLへ接続しない。
-- TOP・採用ページ・見本は `.recruit-facilities` 内に2つの `.recruit-facility` を置く。各施設の直下に `.page-shell.recruit-facility__inner` を置き、施設名 `.recruit-facility__name` →施設写真 `.recruit-facility__perspective` →募集案内 `.recruit-facility__layout` の同じ構造を使う。両ページの大見出しと既存アンカーは保持する。施設名・施設写真・募集案内の左端を大タイトルの英字開始位置に揃え、施設写真と募集案内全体の左右端を一致させる。
+- TOP・採用ページ・見本は `.recruit-facilities` 内に2つの `.recruit-facility` を置く。各施設の直下に `.page-shell.recruit-facility__inner` を置き、施設名 `.recruit-facility__name` →施設写真 `.recruit-facility__perspective` →募集案内 `.recruit-facility__layout` の同じ構造を使う。両ページの大見出しと既存アンカーは保持する。施設名・施設写真・募集案内の左端を大タイトルの英字開始位置に揃える。
 - 公園とスポーツパークの施設ブロックは、大見出しを含む親セクションの白背景を共有する。横幅いっぱいの背景は親セクションが持ち、内容は各施設の内側にあるpage-shellで揃える。
 - 施設名は中見出し、募集見出しは小見出し、説明は本文の既存トークンを使う。施設名と募集見出しは共通CSSのtext-wrap: balanceで自然改行を均し、強制改行や文字縮小は加えない。施設名の後は隣接する写真の `--space-before-media` でPC24px／SP16px、写真の後は募集案内のmarginで40pxを一度だけ確保する。施設内の親gapと見出しmarginは0。募集見出し→説明はcopyのgapでPC16px／SP12px、バナー→copyとcopy→ボタンは24px。最初の施設名までは大見出しの下余白、施設間は中見出しの上余白に `--space-md`（16px）を加え、PC64px／SP48pxとする。前の施設の下端はPC24px／SP16px、後の施設の先頭から見出しまではPC40px／SP32px。最後の施設の下端には中見出しの上余白PC48px／SP32pxを施設の背景内に取り、採用セクションの末尾に重ねて加えない。
 - 左右位置と幅は共通の親 `.page-shell.recruit-facility__inner` が所有する。page-shellの既存 `--page-max / --page-gutter` を使い、親の開始側paddingだけを `calc(var(--page-gutter) + var(--section-title-indent))` にする。終端側はpage-shellの既存paddingを維持する。赤い斜線ではなく `.section-title__en` の開始位置と一致し、SPでもその幅のタイトル用インデントへ追従する。他ページの本文用 `--section-body-indent` や大タイトルの位置は変更しない。
-- 写真と募集案内は同じ親のcontent boxを使い、個別の最大幅・左右margin・位置補正を重複させない。写真は幅100％・16:9で、募集案内は同じ幅のグリッドを使う。公園は2列全体、スポーツパークはカード一覧全体が写真と揃う。背景は大見出しを含む親セクションで画面幅いっぱいに表示する。
-- 全施設写真は `assets/images/placeholder/sample-1.webp` を共用する。altは空とし、施設の記録写真と説明しない。支給後は同じimgのsrcとaltを差し替える。写真上の文字・キャプションは置かない。
+- 写真と募集案内は同じ本文領域を使う。写真の比率は16:9。TOP・採用ページ・見本の屋外パースは `.recruit-facility__perspective--intrinsic` で元画像の幅（640px）を上限に左揃えで表示する。募集案内は本文幅のグリッドを使う。背景は大見出しを含む親セクションで画面幅いっぱいに表示する。
+- TOP・採用ページ・見本の2施設の写真枠は支給された屋外パース `assets/images/recruit/samukawa-outdoor-perspective.webp` を共用し、altは「屋外施設の完成イメージ」とする。写真上の文字・キャプションは置かない。
 - 各募集カードは `.recruit-opening` 内の募集バナー→`.recruit-opening__copy`（見出し・既存説明）→既存のボタン／準備中spanの順。公園の1件だけ `.recruit-opening--featured` を使い、768px以上は左バナー・右copy＋ボタン、未満は縦積みとする。社員・アルバイトを別カードへ分割しない。
 - スポーツパークは `.recruit-facility__layout--park`。768px未満は1列、768〜1279pxは2列、1280px以上は3列。複数列では各カードを3行のsubgridにし、バナーの上下端・見出し開始・ボタン位置を同じ行で揃える。copy内部は小見出し後の共通gapを維持し、文章量の差はcopyの共有行の余白で吸収する。固定高・行数制限・省略・個別縮小は使わない。
 - 募集バナーの表示枠は16:10、背景透明。`.recruit-opening__media img` は幅・高さ100％、`object-fit: cover`・中央配置とし、通常時は縮小せず枠いっぱいに表示する。画像のズームは募集カード `.recruit-opening` のhover判定を使い、hover可能・fine pointer・`prefers-reduced-motion: no-preference` の場合だけscale(1.035)へ拡大する。画像だけを `--dur-nav`・`--ease-out` で滑らかに往復させ、枠はoverflow: hiddenで固定する。WORKSと同じ既存のアニメーション定義へセレクターを追加し、既存用途の挙動は変えない。動きを減らす設定とタッチ端末ではズームを適用せず、旧縮小値は復元しない。通常時は16:10の文字入り素材4点を全体表示する。講師の文字入りバナーはTOP・採用ページ・COMPONENTSの募集カードで共用し、採用・求人応募のKVは文字なしの元画像を使う。
@@ -394,7 +395,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 ### TOPと内部導線
 
 - ヘッダー・スマホメニュー・フッターの「飲食横丁/カフェ出店募集」と、NEWS先頭の固定告知「募集概要を見る」は `arkgarden-recruit/` の先頭に接続する。固定告知の仕様は第18章を参照する。
-- TOPの飲食出店募集では英字の「CALL FOR VENDORS」と日本語の「相模川一之宮パーク」を見出しに使い、募集内容を直下の説明文に記載する。768px未満では初回表示から英字・日本語を縦に並べる。768px以上では共通見出しの自動配置を使う。
+- TOPの飲食出店募集は `.section-title--ja-only` で「寒川町相模川一之宮パーク」を表示し、募集内容を直下の説明文に記載する。狭い幅では施設名の語の区切りで折り返す。
 - TOPの紹介写真は `assets/images/media/ark-garden-night-perspective.webp`。右下に「完成イメージ」を添える。20ft・40ftの写真と共通ボタンは第19章を参照する。
 
 ### 詳細ページ

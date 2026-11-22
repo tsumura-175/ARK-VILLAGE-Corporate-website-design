@@ -9,7 +9,7 @@
  * context: municipalities, corporate partners, participants, candidates · tone: powerful / premium / grounded
  * verification: slop-test 1-58 pass · responsive 320/375/414/768/1280 · no horizontal overflow · contrast/tokens preserved
  */
-@import url("./tokens.css?v=20261121-media-spacing-1");
+@import url("./tokens.css?v=20261122-ja-optical-size-1");
 
 /* Japanese Business UI · surface: corporate · posture: institutional
  * audiences: municipalities, corporate partners, candidates · density: balanced
@@ -446,12 +446,13 @@ html.is-github-pages.is-access-locked .access-gate {
 }
 
 .section-title__slash {
+  --section-slash-shift: calc(var(--space-sm) * -1);
   position: absolute;
   inset-block-start: calc(var(--space-xl) + var(--space-xs));
   inset-inline-start: 0;
   width: var(--space-lg);
   height: var(--rule-strong);
-  transform: translateY(calc(var(--space-sm) * -1)) rotate(-45deg);
+  transform: translateY(var(--section-slash-shift)) rotate(-45deg);
   transform-origin: left;
   background: var(--color-accent);
 }
@@ -512,8 +513,22 @@ html.is-github-pages.is-access-locked .access-gate {
   color: var(--color-on-dark);
 }
 
-.section-title--stacked {
+.section-title--stacked,
+.section-title--ja-only {
   grid-template-columns: minmax(0, 1fr);
+}
+
+.section-title--ja-only > .section-title__slash {
+  --section-slash-shift: -50%;
+  inset-block-start: calc(var(--type-section-ja-only-size) * var(--type-section-ja-line) / 2);
+  transform-origin: center;
+}
+
+.section-title--ja-only > h2 {
+  font-size: var(--type-section-ja-only-size);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
 }
 
 .section-title--stacked > .section-title__en,
@@ -539,7 +554,7 @@ html.is-github-pages.is-access-locked .access-gate {
 
 .js .section-title[data-title-reveal] .section-title__slash {
   transform:
-    translateY(calc(var(--space-sm) * -1))
+    translateY(var(--section-slash-shift))
     rotate(-45deg)
     scaleX(0);
   transition: transform var(--dur-long) var(--ease-out) var(--dur-micro);
@@ -554,7 +569,7 @@ html.is-github-pages.is-access-locked .access-gate {
   .section-title[data-title-reveal].is-visible
   .section-title__slash {
   transform:
-    translateY(calc(var(--space-sm) * -1))
+    translateY(var(--section-slash-shift))
     rotate(-45deg)
     scaleX(1);
 }
@@ -1573,6 +1588,11 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   position: relative;
 }
 
+.recruit-facility__perspective--intrinsic {
+  inline-size: fit-content;
+  max-inline-size: 100%;
+}
+
 .recruit-facility__name + .recruit-facility__perspective {
   margin-block-start: var(--space-before-media);
 }
@@ -1728,25 +1748,6 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 #ark-garden,
 #garden-containers {
   scroll-margin-block-start: calc(var(--header-height) + var(--space-md));
-}
-
-/* Keep the long TOP heading inside the mobile viewport during font swaps. */
-@media (max-width: 47.99rem) {
-  .garden-recruit .section-title {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .garden-recruit .section-title__en {
-    overflow-wrap: break-word;
-  }
-
-  .garden-recruit .section-title > h2 {
-    margin-block-start: var(--space-sm);
-    inline-size: auto;
-    transform: none;
-    white-space: normal;
-    text-wrap: balance;
-  }
 }
 
 .garden-recruit__media {
@@ -2757,7 +2758,7 @@ html.is-loading body {
     .section-title[data-title-reveal].is-visible
     .section-title__slash {
     transform:
-      translateY(calc(var(--space-sm) * -1))
+      translateY(var(--section-slash-shift))
       rotate(-45deg)
       scaleX(1);
   }

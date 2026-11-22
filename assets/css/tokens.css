@@ -41,6 +41,7 @@
   --type-section-en-weight: 700;
   --type-section-en-line: 1;
   --type-section-ja-size: 1.5rem;
+  --type-section-ja-only-size: 2.75rem;
   --type-section-ja-weight: 700;
   --type-section-ja-line: 1.35;
   --type-heading-md-size: 1.5rem;
@@ -139,6 +140,7 @@
   :root {
     --type-section-en-size: 5rem;
     --type-section-ja-size: 2rem;
+    --type-section-ja-only-size: 4.5rem;
     --type-heading-md-size: 2rem;
     --type-heading-sm-size: 1.5rem;
     --type-lead-size: 2rem;
