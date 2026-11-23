@@ -1470,7 +1470,6 @@
 
 .contact-complete {
   inline-size: 100%;
-  padding-block-end: var(--space-xl);
 }
 
 .contact-complete h3 {

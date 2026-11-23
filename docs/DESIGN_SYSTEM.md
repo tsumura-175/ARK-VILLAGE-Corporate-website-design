@@ -342,7 +342,8 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - PDFは `.action-button.action-button--outline` と `.ui-download-icon` を共用する。実URL、`download` 属性、資料を区別できる読み上げ名を付ける。
 - `.garden-container__actions` はTOPの出店募集ボタン、募集ページの補足ボタン、暗色ボタンの見本で使う。共通 `.action-button` を中央揃えで横に並べ、利用可能幅で自然に折り返す。文字は1行を保ち、丸矢印は右端に揃える。
 - 募集条件とスケジュールの下では `.garden-container__action-group` を使い、上段中央に「応募フォームへ」、16px下の `.garden-container__actions` に「詳細資料PDF」「お問い合わせ」をこの順で並べる。見本も同じ組み合わせを使う。
-- フォーム等の `.contact-actions` は中央配置。`--pair`（主要ボタン2個）と `--mixed`（主要ボタン＋補助リンク）はSPで2列・縮小表示とする。単独ボタンに新たな2列指定を付けない。
+- フォーム等の `.contact-actions` は中央配置。お問い合わせと求人応募の確認・完了画面では、共通の `.action-button` の寸法を使い、2つのボタンが収まるときは横並び、幅が足りないときは縦に並べる。主要ボタンと補助リンクの組み合わせにはSPで2列表示の `--mixed` を使える。
+- お問い合わせと求人応募の完了画面では、見出し・説明文・ボタン群を `.contact-complete` にまとめる。説明文からボタン群までは `.contact-actions` の `--space-xl`（40px）を使い、ボタン群からセクション末尾までの余白は `.content-section` が持つ。
 - アンカー先は `.content-anchor` を使い、固定ヘッダーを避ける。確認画面からの戻るボタンは「修正する」に統一する。
 
 ### 工程・添付・開閉
