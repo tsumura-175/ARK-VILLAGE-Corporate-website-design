@@ -341,6 +341,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - 各グループ内では見出し直後の要素のmarginで所定の距離を取る。事業のアイコン一覧が単独で持つ上margin56pxは、この既存の隣接要素ルールで24px／16pxへ置き換わる。写真から中見出しまでの距離は、外側の `.content-groups` 内のグループ境界で指定する。
 - 実使用先は事業内容4事業とアイコン一覧の見本3点。採用情報・飲食出店募集の既存 `.content-group` は小見出しのまま維持する。募集要項の注記と個別職種も別グループで関係を示す。
 - PDFは `.action-button.action-button--outline` と `.ui-download-icon` を共用する。実URL、`download` 属性、資料を区別できる読み上げ名を付ける。
+- 共通ボタンの非活性時は「採用サイト準備中」と同じ罫線・文字色・アイコン背景を使う。CSSは `.action-button--disabled` と `.action-button:disabled` で共用し、ボタン全体の透過はかけない。
 - `.garden-container__actions` はTOPの出店募集ボタン、募集ページの補足ボタン、暗色ボタンの見本で使う。共通 `.action-button` を中央揃えで横に並べ、利用可能幅で自然に折り返す。文字は1行を保ち、丸矢印は右端に揃える。
 - 募集条件とスケジュールの下では `.garden-container__action-group` を使い、上段中央に応募状況の共通ボタン、16px下の `.garden-container__actions` に「詳細資料PDF」「お問い合わせ」をこの順で並べる。見本も同じ組み合わせを使う。
 - フォーム等の `.contact-actions` は中央配置。お問い合わせと求人応募の確認・完了画面では、共通の `.action-button` の寸法を使い、2つのボタンが収まるときは横並び、幅が足りないときは縦に並べる。主要ボタンと補助リンクの組み合わせにはSPで2列表示の `--mixed` を使える。
@@ -453,7 +454,7 @@ HTMLと `works.js`／`subpage-content.js` が生成する要素の役割を示�
 | フォーム入力・確認 | 氏名／メールアドレス | `.contact-form__row > label:first-child`、同span、`.contact-confirm dt` | 項目ラベル | 16・700・1.5 | 必須・任意バッジは状態UIを維持 |
 | フォーム確認の値・同意文 | 入力した氏名／同意します | `.contact-confirm dd`、`.contact-form__check` | 本文 | 16・400・1.8 | 入力・送信の試作動作は変更しない |
 | 完了画面 | ご応募ありがとうございます | `.contact-complete h3`／p | 中見出し／本文 | 32/24と16、後続24/16 | なし |
-| TOPの固定募集告知 | 寒川町相模川一之宮公園（仮称）の飲食出店者募集は、2027年2月頃に開始予定です | `.news-announcement__title` | 小見出し | 24/20・700・1.5 | 写真・日付なし、CMS対象外。第18章参照 |
+| TOPの固定募集告知 | 寒川町相模川一之宮公園（仮称）の飲食出店者募集は、2027年2月頃に開始予定 | `.news-announcement__title` | 小見出し | 24/20・700・1.5 | 写真・日付なし、CMS対象外。第18章参照 |
 | NEWS一覧・TOP | ARK LEAGUEの事業内容を… | `.news__item p`（HTML・JS生成） | 本文 | 16・400・1.8 | 既存の1行省略は用途別に維持 |
 | NEWS重要項目 | パーク運営・イベント企画に関するご相談… | `.news__item--important p` | 強調する本文 | 18・500・1.8 | カテゴリの赤い枠を維持。矢印は通常黒、hover／focus-visibleで赤 |
 | NEWS記事タイトル | 記事のタイトル | `.news-article__header h3` | 中見出し | 32/24・700・1.35 | 縦配置はメタ情報から16px。1024px以上ではメタ情報を横に配置 |
@@ -550,7 +551,7 @@ HTMLだけでなく、JSのクラス生成と状態付与を使用判定に含�
 
 ### 確定した表示仕様
 
-- 部品は `assets/css/style.css` の `.news-announcement`。ラベルは既存の `.news__category.news__category--important` による「重要なお知らせ」、告知文は「寒川町相模川一之宮公園（仮称）の飲食出店者募集は、2027年2月頃に開始予定です」、ボタンは黒い共通 `.action-button` の「募集概要を見る」。写真・日付は表示しない。
+- 部品は `assets/css/style.css` の `.news-announcement`。ラベルは既存の `.news__category.news__category--important` による「重要なお知らせ」、告知文は「寒川町相模川一之宮公園（仮称）の飲食出店者募集は、2027年2月頃に開始予定」、ボタンは黒い共通 `.action-button` の「募集概要を見る」。写真・日付は表示しない。
 - 背景はtransparentとし、周囲のNEWSと一体にする。告知専用の白・グレー・ベージュの背景面、ラベルやボタンを囲む四角い背景を設けない。カテゴリの赤い枠と、ボタン本体・丸矢印の既存背景は維持する。
 - 外枠は四辺とも `--rule-hair`（1px）・`--color-accent`。ラベルの赤と同じ色を使い、上辺だけを太くしない。TOPでは記事一覧と同じ `.news__content` に置き、左右端を揃える。
 - 内余白と文章／ボタンの間は `--space-lg`、ラベル／告知文の間は `--space-md`。記事一覧までは隣接する `.news__list` の上marginで `--space-xl` を一度だけ取る。

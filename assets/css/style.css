@@ -701,7 +701,7 @@ html.is-github-pages.is-access-locked .access-gate {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .action-button--outline:hover .action-button__icon {
+  .action-button--outline:not(.action-button--disabled, :disabled):hover .action-button__icon {
     background: var(--color-on-dark);
     color: var(--color-ink);
   }
@@ -724,26 +724,29 @@ html.is-github-pages.is-access-locked .access-gate {
   color: var(--color-on-dark);
 }
 
-.action-button--disabled {
+.action-button--disabled,
+.action-button:disabled {
   border-color: var(--color-rule);
   background: transparent;
   color: var(--color-muted);
   cursor: default;
+  opacity: 1;
 }
 
-.action-button--disabled .action-button__icon {
+.action-button--disabled .action-button__icon,
+.action-button:disabled .action-button__icon {
   background: var(--color-component-surface);
   color: var(--color-muted);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .action-button:not(.action-button--disabled):hover {
+  .action-button:not(.action-button--disabled, :disabled):hover {
     border-color: var(--color-accent);
     background: var(--color-accent);
     color: var(--color-accent-ink);
   }
 
-  .action-button:not(.action-button--disabled):hover .action-button__icon {
+  .action-button:not(.action-button--disabled, :disabled):hover .action-button__icon {
     transform: none;
   }
 }
