@@ -1296,6 +1296,12 @@
 
 .privacy-copy {
   max-inline-size: var(--copy-max);
+  color: var(--color-muted);
+  letter-spacing: 0;
+}
+
+.privacy-copy h3 {
+  color: var(--color-ink);
 }
 
 .privacy-copy p:has(+ .prose-list) {

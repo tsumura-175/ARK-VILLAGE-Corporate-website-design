@@ -500,6 +500,12 @@ html.is-github-pages.is-access-locked .access-gate {
   color: var(--color-on-dark-muted);
 }
 
+.facility-name-note {
+  font-size: clamp(0.75rem, 0.7em, 1.75rem);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
 .section-title > h2 {
   color: inherit;
   letter-spacing: 0.02em;
@@ -2097,16 +2103,16 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 }
 
 .site-footer__links a,
-.site-footer__related span {
-  display: inline-flex;
+.site-footer__related > span {
   min-height: 44px;
-  align-items: center;
   overflow-wrap: anywhere;
   color: var(--color-on-dark-muted);
   font-size: var(--text-sm);
 }
 
 .site-footer__links a {
+  display: inline-flex;
+  align-items: center;
   transition: color var(--dur-short) var(--ease-out);
 }
 
@@ -2116,7 +2122,9 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   }
 }
 
-.site-footer__related span {
+.site-footer__related > span {
+  display: block;
+  align-content: center;
   cursor: default;
 }
 
