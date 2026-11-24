@@ -1648,9 +1648,24 @@
   line-height: var(--type-emphasis-line);
 }
 
+.summary-facts-comparison {
+  row-gap: var(--type-heading-sm-before);
+}
+
 @media (min-width: 48rem) {
-  .summary-facts {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .summary-facts-comparison {
+    row-gap: 0;
+  }
+
+  /* The container heading and three condition rows align across both columns. */
+  .summary-facts-comparison > .content-group {
+    grid-row: span 4;
+    grid-template-rows: subgrid;
+  }
+
+  .summary-facts-comparison .summary-facts {
+    grid-row: span 3;
+    grid-template-rows: subgrid;
   }
 }
 
