@@ -1627,13 +1627,18 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   line-height: var(--type-heading-sm-line);
 }
 
-.recruit-opening__copy p {
+.recruit-opening__copy p,
+.recruit-facility__schedule {
   margin: 0;
   color: var(--color-muted);
   font-family: var(--font-body);
   font-size: var(--type-body-size);
   font-weight: var(--type-body-weight);
   line-height: var(--type-body-line);
+}
+
+.recruit-facility__schedule {
+  margin-block-start: var(--type-heading-md-after);
 }
 
 .recruit-opening__media {
