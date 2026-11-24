@@ -328,7 +328,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - `--wide` は `--copy-max: 100%`。文章の行長を制限する場合は `--editorial`（42rem）または `--readable-copy`（段落だけ58rem）を併用する。大見出し・写真・情報表まで狭めない。
 - リード `.content-section__lead` は第2章のリード仕様を使い、字間0、`text-wrap: pretty`。不要な強制改行をせず、長い日本語は `.content-section__lead-phrase` で意味のまとまりを示す。768px以上ではまとまりが幅に収まる場合だけ保持し、長いまとまりは折り返す。SPも自然に折り返す。
 - 会社情報は標準幅、理念は `--balanced`、取引先・アクセスは `--wide`。事業内容は `.business-detail` が本文を広げ、説明文の読み幅を維持する。
-- 採用のカード・写真・表・工程は `--wide`。WORK STYLE・JOBSは `--readable-copy` を併用する。出店募集ページは写真・図面・表に広幅を使う。
+- 採用のカード・写真・表・工程は `--wide`。WORK STYLE・WORKは `--readable-copy` を併用する。出店募集ページは写真・図面・表に広幅を使う。
 - ニュース本文は左右のインデントを対称にする。お問い合わせ・求人応募の入力・確認・完了は最大68remを共用する。
 - 実物見本：`components.html#sample-copy-width`。
 
@@ -342,7 +342,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - 実使用先は事業内容4事業とアイコン一覧の見本3点。採用情報・飲食出店募集の既存 `.content-group` は小見出しのまま維持する。募集要項の注記と個別職種も別グループで関係を示す。
 - PDFは `.action-button.action-button--outline` と `.ui-download-icon` を共用する。実URL、`download` 属性、資料を区別できる読み上げ名を付ける。
 - `.garden-container__actions` はTOPの出店募集ボタン、募集ページの補足ボタン、暗色ボタンの見本で使う。共通 `.action-button` を中央揃えで横に並べ、利用可能幅で自然に折り返す。文字は1行を保ち、丸矢印は右端に揃える。
-- 募集条件とスケジュールの下では `.garden-container__action-group` を使い、上段中央に「応募フォームへ」、16px下の `.garden-container__actions` に「詳細資料PDF」「お問い合わせ」をこの順で並べる。見本も同じ組み合わせを使う。
+- 募集条件とスケジュールの下では `.garden-container__action-group` を使い、上段中央に応募状況の共通ボタン、16px下の `.garden-container__actions` に「詳細資料PDF」「お問い合わせ」をこの順で並べる。見本も同じ組み合わせを使う。
 - フォーム等の `.contact-actions` は中央配置。お問い合わせと求人応募の確認・完了画面では、共通の `.action-button` の寸法を使い、2つのボタンが収まるときは横並び、幅が足りないときは縦に並べる。主要ボタンと補助リンクの組み合わせにはSPで2列表示の `--mixed` を使える。
 - お問い合わせと求人応募の完了画面では、見出し・説明文・ボタン群を `.contact-complete` にまとめる。説明文からボタン群までは `.contact-actions` の `--space-xl`（40px）を使い、ボタン群からセクション末尾までの余白は `.content-section` が持つ。
 - アンカー先は `.content-anchor` を使い、固定ヘッダーを避ける。確認画面からの戻るボタンは「修正する」に統一する。
@@ -363,7 +363,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 
 - 施設の表記は「寒川町相模川一之宮公園（仮称）」「寒川町ストリートスポーツパーク（仮称）」に統一する。画面では `small.facility-name-note` を使って「（仮称）」のみを小さくし、注記の途中で折り返さない。ページのタイトル・説明・画像の代替テキストには「（仮称）」を文字として記載する。Excel正本の歴史的な実績名、既存URL、識別子、素材ファイル名は引き続き使う。
 - 募集区分は公園の社員・アルバイトと、スポーツパークの受付社員・運営管理社員／BMX FLATLAND・SKATEBOARD STREET講師／アルバイト・清掃スタッフの3件。
-- 本サイトで詳細と応募を管理するのは公園。スポーツパークはTOP・採用ページ・見本で施設名の下、写真の上に「2027年春頃募集開始予定」を表示する。正式な外部URL受領までは各カードを「採用サイト準備中」とし、公園のフォームや架空URLへ接続しない。
+- 本サイトで詳細と応募を管理するのは公園。両施設はTOP・採用ページ・見本で施設名の下、写真の上に「2027年春頃募集開始予定」を表示する。正式な外部URL受領までは各カードを「採用サイト準備中」とし、公園のフォームや架空URLへ接続しない。
 - TOP・採用ページ・見本は `.recruit-facilities` 内に2つの `.recruit-facility` を置く。各施設の直下に施設名を含む `.page-shell.recruit-facility__inner`、施設写真 `.recruit-facility__perspective`、募集案内を含む `.page-shell.recruit-facility__inner` を順に置く。施設名 `.recruit-facility__name` と募集案内 `.recruit-facility__layout` の左端を大タイトルの英字開始位置に揃える。両ページの大見出しと既存アンカーは保持する。
 - 公園とスポーツパークの施設ブロックは、大見出しを含む親セクションの白背景を共有する。横幅いっぱいの背景は親セクションが持ち、施設名と募集案内は各施設内のpage-shellで揃える。
 - 施設名は中見出し、募集見出しは小見出し、説明は本文の既存トークンを使う。施設名と募集見出しは共通CSSのtext-wrap: balanceで自然改行を均し、強制改行や文字縮小は加えない。募集開始時期の `.recruit-facility__schedule` は募集カードと同じ本文の色・文字指定を使い、施設名からは `--type-heading-md-after`（PC24px／SP16px）を取る。施設名または募集開始時期から写真までは写真の上マージン `--space-before-media` でPC24px／SP16px、写真から募集案内までは写真の下マージン `--space-xl` で40pxを確保する。施設内の親gapと見出しmarginは0。募集見出し→説明はcopyのgapでPC16px／SP12px、バナー→copyとcopy→ボタンは24px。最初の施設名までは大見出しの下余白、施設間は中見出しの上余白に `--space-md`（16px）を加え、PC64px／SP48pxとする。前の施設の下端はPC24px／SP16px、後の施設の先頭から見出しまではPC40px／SP32px。最後の施設の下端には中見出しの上余白PC48px／SP32pxを施設の背景内に取り、採用セクションの末尾に重ねて加えない。
@@ -375,18 +375,18 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - 募集バナーの表示枠は16:10、背景透明。`.recruit-opening__media img` は幅・高さ100％、`object-fit: cover`・中央配置とし、通常時は縮小せず枠いっぱいに表示する。画像のズームは募集カード `.recruit-opening` のhover判定を使い、hover可能・fine pointer・`prefers-reduced-motion: no-preference` の場合だけscale(1.035)へ拡大する。画像だけを `--dur-nav`・`--ease-out` で滑らかに往復させ、枠はoverflow: hiddenで固定する。WORKSと同じ既存のアニメーション定義へセレクターを追加し、既存用途の挙動は変えない。動きを減らす設定とタッチ端末ではズームを適用せず、旧縮小値は復元しない。通常時は16:10の文字入り素材4点を全体表示する。講師の文字入りバナーはTOP・採用ページ・COMPONENTSの募集カードで共用し、採用・求人応募のKVは文字なしの元画像を使う。
 - TOPの公園リンクは `recruit/#garden-careers`、採用ページ内は `#garden-careers`、見本は `../recruit/#garden-careers` を維持する。スポーツパーク3件は操作できない準備中spanとし、外部URL等を新設しない。
 - 旧 `.recruitment-*`、旧公園専用layout・番号・写真キャプションの指定は、HTML・JSの参照がないことを確認して整理した。施設名と職種の文字指定、カード配置を共通部品へ集約する。募集バナーのhover拡大は上記の共通アニメーション条件で管理し、通常表示を縮小しない。
-- 本文の順序は募集区分→WORK STYLE→JOBS→FLOW。WORK STYLEは会社紹介と働く環境、JOBSは仕事内容・人物像・募集要項、FLOWは応募→面接→採用発表。
+- 本文の順序は募集区分→WORK STYLE→WORK→FLOW。WORK STYLEは会社紹介と働く環境、WORKは仕事内容・人物像・募集要項、FLOWは応募→面接→採用発表。
 - WORK STYLEの会社紹介とCOMPONENTSの会社紹介見本では、`.detail-feature` 内の本文から写真までの縦間隔に、768px未満で `--space-before-media`（16px）を使う。768px以上は横並びで列間64px。
-- WORK STYLE・JOBSの内容は支給「採用情報_公園.pdf」に基づく。根拠のない働きやすさや条件を創作せず、給与・人数等の「（仮）」を保持する。
+- WORK STYLE・WORKの内容は支給「採用情報_公園.pdf」に基づく。根拠のない働きやすさや条件を創作せず、給与・人数等の「（仮）」を保持する。
 - WORK STYLEのリードは「公園の日常と、<br />地域のにぎわいを支える。」。右の画像は採用ページと見本で `assets/images/recruit/ark-garden-recruit-perspective.webp` を共用し、「完成イメージ」を右下に表示する。
 - 公園の求人バナーは `recruit/ichinomiya-park-staff.webp`。スポーツパークの受付・運営は `recruit/samukawa-street-sports-park-operations.webp`、講師は `recruit/staff-instructor-banner.webp`、アルバイト・清掃は `recruit/samukawa-street-sports-park-cleaning.webp`。
 - 採用メイン・求人応募3画面のKVは `recruit/staff-instructor-cleaning.webp` を共用。`.page-hero--image-top` の現行位置は `36% 34%`。
-- WORK STYLE末尾・JOBS末尾は求人応募ボタンだけを表示し、「選考の流れを見る」のページ内リンクは置かない。FLOWセクション自体は残す。
+- WORK STYLE・WORK・FLOWの末尾に求人応募のボタンを表示する。募集開始までは「2027年春頃募集開始予定」の無効ボタンを表示し、受付開始後は「求人応募フォームへ」から入力画面へ接続する。
 - 実物見本：`components.html#sample-recruit`、`#sample-feature`。
 
 ### 求人応募の静的試作
 
-- 必須は氏名・メール・希望職種・志望動機・履歴書添付・個人情報同意。電話番号と職務経歴は任意。現行フォームの希望職種は試作用で、JOBSの最新職種との同期が残っている。本番では条件と照合して確定する。
+- 必須は氏名・メール・希望職種・志望動機・履歴書添付・個人情報同意。電話番号と職務経歴は任意。現行フォームの希望職種は試作用で、WORKの最新職種との同期が残っている。本番では条件と照合して確定する。
 - `recruit-application.js` の保存先は `ark-garden-recruitment-preview`。お問い合わせは `ark-contact-preview` を使い、互いの保存内容を変更しない。
 - 入力・確認・完了は現在それぞれ専用HTML。各本文アンカーへ遷移し、確認から修正に戻れる。実送信は行わない。
 - 履歴書は名前だけを保持する。確認から戻る場合の仮必須判定を本番のファイル検証として流用しない。
@@ -403,11 +403,11 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 ### 詳細ページ
 
 - `arkgarden-recruit/index.html` のKVは英字施設名「SAGAMIGAWA ICHINOMIYA PARK」に続けて、日本語見出しの「飲食横丁出店募集」「カフェ出店募集」を各1行で表示する。日本語見出しは共通の16pxとする。本文は「コンセプト」「他公園に無い強み」「飲食横丁/カフェ」「アクセス」「スケジュール」の順。
-- コンセプト・強み・アクセスの本文は11月の支給資料に基づく。コンセプトのリード直後は共通の `--type-lead-after` を使う。本文は1つの `.content-section__copy` にまとめ、文のまとまりを `<br>` で改行する。本文の下に公園全体の完成イメージ `assets/images/media/park-masterplan.webp` を1枚表示する。既存の `.rental-area__media` を使い、本文領域全幅で表示する。上端の黒帯を除くため、`.rental-area__media--masterplan` で元画像の上7px分を表示範囲から外す。強みのリード直下に、世界トップクラスのストリートスポーツパークと公園の日常についての中見出しと本文を `.content-group--major` で表示する。直下の `.detail-feature--gallery` には、サイトで共用する施設全体・施設外観・屋内スケートパークの完成イメージをキャプション付きで並べる。768px以上は3列、未満は1列とする。強みの3項目は `.feature-cards` と既存の `.content-group` を使い、第4章の交通案内と罫線・内余白を揃える。768px以上は横3列、未満は縦並び。強みのカードの下には `.detail-feature` で芝生広場とテラスのイメージ `assets/images/arkgarden/strengths-lawn-terrace.webp`、夕暮れの飲食横丁のイメージ `assets/images/arkgarden/strengths-evening-food-stalls.webp` を順に表示する。企業概要と出店募集ページの交通案内は電車・車の2項目。出店募集のアクセスでは「寒川町相模川一之宮公園（仮称）」をリードで表示し、電車の経路を「JR相模線 寒川駅から徒歩20分」とする。
+- コンセプト・強み・アクセスの本文は11月の支給資料に基づく。コンセプトのリード直後は共通の `--type-lead-after` を使う。本文は1つの `.content-section__copy` にまとめ、文のまとまりを `<br>` で改行する。本文の下に公園全体の完成イメージ `assets/images/media/park-masterplan.webp` を1枚表示する。既存の `.rental-area__media` を使い、本文領域全幅で表示する。上端の黒帯を除くため、`.rental-area__media--masterplan` で元画像の上7px分を表示範囲から外す。強みの3項目は `.feature-cards` と既存の `.content-group` を使い、第4章の交通案内と罫線・内余白を揃える。768px以上は横3列、未満は縦並び。強みのカードの下には `.detail-feature` で芝生広場とテラスのイメージ `assets/images/arkgarden/strengths-lawn-terrace.webp`、夕暮れの飲食横丁のイメージ `assets/images/arkgarden/strengths-evening-food-stalls.webp` を順に表示する。その下に別の小セクションとして、世界トップクラスのストリートスポーツパークと公園の日常についての中見出しと本文を `.content-group--major` で表示する。直下の `.detail-feature--gallery` には、サイトで共用する施設全体・施設外観・屋内スケートパークの完成イメージをキャプション付きで並べる。768px以上は3列、未満は1列とする。企業概要と出店募集ページの交通案内は電車・車の2項目。出店募集のアクセスでは「寒川町相模川一之宮公園（仮称）」をリードで表示し、電車の経路を「JR相模線 寒川駅から徒歩20分」とする。
 - 「飲食横丁/カフェ」では768px以上で20ft・40ftを横並びにし、768px未満は20ftから縦に並べる。各コンテナの見出し直下に `.definition-list` で区画・店舗面積を表示する。20ftは10区画・約7.25㎡。40ftは1区画・約29.7㎡。外観の上余白はPC24px／SP16px、外観から図面はPC16px／SP12pxとする。横並びでは、両方の外観の上端を揃える。外観の下に、20ftは平面図 `arkgarden/container-20ft-plan.webp` を表示する。40ftは `.rental-area__plans` 内に1階・テラス平面図 `arkgarden/container-40ft-ground-plan.webp`、2階席の屋根伏図 `arkgarden/container-40ft-roof-plan.webp` を順に縦に並べる。図面間の間隔は `--type-heading-sm-after` を使う。各図面の表示枠は20ftの平面図と同じ4961:2644とし、2階席の図面は `.rental-area__media-crop` で図と寸法線が収まる範囲を表示する。共通の `.media-caption` で図面名を添え、表示幅が500px以下では図面直下の右端、それ以上では図面の右下に配置する。
 - 両方の図面の下に「募集条件」を一つ置き、20ft・40ftそれぞれの「営業時間」「契約形態・契約期間」「定休日」を横罫線付きの `.summary-facts` で表示する。768px以上では左に20ft、右に40ftを配置して対応する行を揃える。768px未満では20ft、40ftの順に縦に並べる。20ftの営業時間は平日17:00〜22:00・土日祝12:00〜22:00。40ftは平日10:00〜19:00と土日祝10:00〜19:00を別々の行で表示する。運営委託契約・3年間と定休日の月曜日は両方に記載する。
-- スケジュールは `.schedule-timeline` の縦型3段階・13工程。768px以上は日付・節点・工程の3列、未満は日付を工程の上に表示する。全日程は予定として扱う。
-- 「飲食横丁/カフェ」の募集条件の下とスケジュール末尾に、第9章と同じ2段の応募ボタン群を配置する。応募フォームはTOPと同じURLを使い、正式URLの受領までは `/` に接続する。PDFは20ft・40ft共通の1本。正式資料の支給までは `assets/documents/arkgarden/vendor-details-demo.pdf` を `ダミー.pdf` としてダウンロードできるようにする。「お問い合わせ」は `contact/?type=vendor#contact-form-section` に接続し、「飲食出店募集について」を初期選択する。入力済みの他項目は復元する。
+- スケジュールは `.schedule-timeline` の縦型3段階・13工程。768px以上は日付・節点・工程の3列、未満は日付を工程の上に表示する。募集開始の予定は2027年2月頃。全日程は予定として扱う。
+- 「飲食横丁/カフェ」の募集条件の下とスケジュール末尾に、第9章と同じ2段の応募ボタン群を配置する。受付開始まではTOPと同じ「2027年2月頃募集開始予定」の無効ボタンを使う。受付開始後に「応募フォームへ」を正式な応募URLへ接続する。PDFは20ft・40ft共通の1本。正式資料の支給までは `assets/documents/arkgarden/vendor-details-demo.pdf` を `ダミー.pdf` としてダウンロードできるようにする。「お問い合わせ」は `contact/?type=vendor#contact-form-section` に接続し、「飲食出店募集について」を初期選択する。入力済みの他項目は復元する。
 - 見本は `components.html#sample-vendor-conditions`、`#sample-vendor-actions`、`#sample-schedule`。
 
 ## 12. 更新時の確認
@@ -453,7 +453,7 @@ HTMLと `works.js`／`subpage-content.js` が生成する要素の役割を示�
 | フォーム入力・確認 | 氏名／メールアドレス | `.contact-form__row > label:first-child`、同span、`.contact-confirm dt` | 項目ラベル | 16・700・1.5 | 必須・任意バッジは状態UIを維持 |
 | フォーム確認の値・同意文 | 入力した氏名／同意します | `.contact-confirm dd`、`.contact-form__check` | 本文 | 16・400・1.8 | 入力・送信の試作動作は変更しない |
 | 完了画面 | ご応募ありがとうございます | `.contact-complete h3`／p | 中見出し／本文 | 32/24と16、後続24/16 | なし |
-| TOPの固定募集告知 | 寒川町相模川一之宮公園（仮称）にて、飲食出店者を募集しています | `.news-announcement__title` | 小見出し | 24/20・700・1.5 | 写真・日付なし、CMS対象外。第18章参照 |
+| TOPの固定募集告知 | 寒川町相模川一之宮公園（仮称）の飲食出店者募集は、2027年2月頃に開始予定です | `.news-announcement__title` | 小見出し | 24/20・700・1.5 | 写真・日付なし、CMS対象外。第18章参照 |
 | NEWS一覧・TOP | ARK LEAGUEの事業内容を… | `.news__item p`（HTML・JS生成） | 本文 | 16・400・1.8 | 既存の1行省略は用途別に維持 |
 | NEWS重要項目 | パーク運営・イベント企画に関するご相談… | `.news__item--important p` | 強調する本文 | 18・500・1.8 | カテゴリの赤い枠を維持。矢印は通常黒、hover／focus-visibleで赤 |
 | NEWS記事タイトル | 記事のタイトル | `.news-article__header h3` | 中見出し | 32/24・700・1.35 | 縦配置はメタ情報から16px。1024px以上ではメタ情報を横に配置 |
@@ -550,7 +550,7 @@ HTMLだけでなく、JSのクラス生成と状態付与を使用判定に含�
 
 ### 確定した表示仕様
 
-- 部品は `assets/css/style.css` の `.news-announcement`。ラベルは既存の `.news__category.news__category--important` による「重要なお知らせ」、告知文は「寒川町相模川一之宮公園（仮称）にて、飲食出店者を募集しています」、ボタンは黒い共通 `.action-button` の「募集概要を見る」。写真・日付は表示しない。
+- 部品は `assets/css/style.css` の `.news-announcement`。ラベルは既存の `.news__category.news__category--important` による「重要なお知らせ」、告知文は「寒川町相模川一之宮公園（仮称）の飲食出店者募集は、2027年2月頃に開始予定です」、ボタンは黒い共通 `.action-button` の「募集概要を見る」。写真・日付は表示しない。
 - 背景はtransparentとし、周囲のNEWSと一体にする。告知専用の白・グレー・ベージュの背景面、ラベルやボタンを囲む四角い背景を設けない。カテゴリの赤い枠と、ボタン本体・丸矢印の既存背景は維持する。
 - 外枠は四辺とも `--rule-hair`（1px）・`--color-accent`。ラベルの赤と同じ色を使い、上辺だけを太くしない。TOPでは記事一覧と同じ `.news__content` に置き、左右端を揃える。
 - 内余白と文章／ボタンの間は `--space-lg`、ラベル／告知文の間は `--space-md`。記事一覧までは隣接する `.news__list` の上marginで `--space-xl` を一度だけ取る。
@@ -569,7 +569,7 @@ HTMLだけでなく、JSのクラス生成と状態付与を使用判定に含�
 
 - 20ftは `arkgarden/container-20ft-two-stores.png`、40ftは `arkgarden/container-40ft.webp`。既存の3:2の写真枠を共用し、見出しから写真まではPC24px／SP16px。768px以上は2列、未満は縦に並べる。
 - TOPのコンテナ群は完成イメージの下端から最初の見出しまで、小見出し前の32／24pxをpaddingで取る。768px未満の20ftの写真から40ft見出しまでの24pxは行gapが所有する。
-- 写真下に「詳細を見る」「応募フォームへ」を1つずつ置く。「詳細を見る」は `arkgarden-recruit/` の先頭へ接続し、応募フォームは詳細ページと同じURLを使う。
+- 写真下に「詳細を見る」と応募状況のボタンを1つずつ置く。「詳細を見る」は `arkgarden-recruit/` の先頭へ接続する。応募状況は詳細ページと合わせ、募集開始前は「2027年2月頃募集開始予定」の無効ボタンを表示する。
 - ボタンの下の `.route-list` に、出店募集ページの大見出しと同じ順序で「コンセプト」「他公園に無い強み」「飲食横丁/カフェ」「アクセス」「スケジュール」を並べる。各 `.route-item` の行全体を、それぞれ `#concept`、`#strengths`、`#area`、`#access`、`#schedule` に接続する。見出しの変更時はTOPと見本の文言・順序を揃える。
 - 各リンクは日本語ラベル、英字見出し、右向き矢印の順で表示し、細い罫線で区切る。768px以上は3列の位置を全行で揃え、未満は日本語と英字を左側に2段で並べる。見本は `components.html#sample-vendor-routes`。
 
