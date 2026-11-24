@@ -1248,7 +1248,8 @@
   block-size: auto;
 }
 
-.news-article__media figcaption {
+.news-article__media figcaption,
+.detail-feature--gallery figcaption {
   padding-block-start: var(--space-xs);
   color: var(--color-muted);
   font-family: var(--font-body);
@@ -1593,8 +1594,13 @@
   position: relative;
 }
 
-.garden-container__media + .rental-area__media {
+.garden-container__media + :is(.rental-area__media, .rental-area__plans) {
   margin-block-start: var(--type-heading-sm-after);
+}
+
+.rental-area__plans {
+  display: grid;
+  gap: var(--type-heading-sm-after);
 }
 
 .garden-containers--comparison .rental-area__media {
@@ -1878,14 +1884,54 @@
   object-fit: cover;
 }
 
+.detail-feature--gallery {
+  align-items: start;
+  gap: var(--space-md);
+}
+
+.detail-feature--gallery > .detail-feature__media {
+  background: transparent;
+}
+
+.detail-feature--gallery figcaption {
+  text-align: center;
+}
+
 .detail-feature__media--contain img {
   object-fit: contain;
 }
 
-.rental-area__media > img {
+.rental-area__media > img,
+.rental-area__media-crop > img {
   display: block;
   inline-size: 100%;
+}
+
+.rental-area__media > img {
   block-size: auto;
+}
+
+/* Match the gallery to the masterplan after trimming the top seven source pixels. */
+.detail-feature--gallery .detail-feature__media > img,
+.rental-area__media--masterplan > img {
+  aspect-ratio: 1170 / 653;
+}
+
+.rental-area__media--masterplan > img {
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+.rental-area__media-crop {
+  aspect-ratio: 4961 / 2644;
+  overflow: hidden;
+}
+
+.rental-area__media-crop > img {
+  block-size: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  scale: 1.23;
 }
 
 .detail-feature .content-section__lead {
@@ -2053,6 +2099,10 @@
   margin-block-start: var(--type-lead-after);
 }
 
+.content-group > * + .detail-feature--gallery {
+  margin-block-start: var(--space-before-media);
+}
+
 @media (min-width: 48rem) {
   .content-groups {
     --content-group-gap: var(--space-2xl);
@@ -2063,6 +2113,11 @@
   .detail-feature {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-2xl);
+  }
+
+  .detail-feature--gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-md);
   }
 
   .process-list {
