@@ -11,7 +11,7 @@
 - HTML5
 - CSS
 - Vanilla JavaScript
-- 外部ビルドツールなし
+- 共通HTMLの再生成にはNode.jsを使用（追加パッケージ不要）
 - GitHub Pagesで公開可能な静的ファイル構成
 
 フレームワークは、サイト全体の移行方針が決まるまで追加しません。
@@ -44,6 +44,9 @@
 │  │  └─ recruit-application.js（求人応募の静的試作）
 │  ├─ documents/（支給PDFの格納先）
 │  └─ images/
+├─ scripts/
+│  ├─ generate-site-layout.mjs（共通HTMLの生成）
+│  └─ site-layout/（ヘッダー・モバイルメニュー・フッターのテンプレートとページ設定）
 └─ docs/
    ├─ DESIGN_SYSTEM.md
    ├─ DESIGN_GUIDELINES.md
@@ -73,6 +76,21 @@
 - 見出しは `h1` から順序を守る
 - ナビゲーションには `aria-label` を付ける
 - 操作する要素は用途に応じて `a` と `button` を使い分ける
+
+### ヘッダー・モバイルメニュー・フッターの更新
+
+共通部分は `scripts/site-layout/` の `site-header.html.tmpl`、`mobile-menu.html.tmpl`、`site-footer.html.tmpl` を編集します。各ページの `BEGIN GENERATED` と `END GENERATED` で囲んだ3領域は生成結果です。本文とページ固有の設定は引き続き各HTMLで編集します。
+
+- `pages.json` に公開HTMLとデザイン見本を登録します。新しいページには、既存ページと同じ位置に `site-header`、`mobile-menu`、`site-footer` の生成マーカーを置きます。
+- テンプレートの `href="{{news/}}"` のようなリンク先と、素材パスの `{{root}}` は生成時にページの階層に合わせて解決します。TOP内のアンカーへリンクする場合は、テンプレートに `href="{{index.html#section-id}}"` と記載し、TOP上だけで `#section-id` を使う場合は `links` で設定します。ロゴは既定でTOPへリンクし、TOP自身では `home` の `#top` を使います。
+- `current` は実際のページのリンクに `aria-current="page"` を、`section` は確認・完了・記事詳細などで親区分のリンクに `aria-current="location"` を付けます。
+
+プロジェクト直下で以下を実行し、テンプレートと生成したHTMLを一緒に更新します。生成済みのHTMLは静的ファイルとして配信できます。
+
+```sh
+node scripts/generate-site-layout.mjs
+node scripts/generate-site-layout.mjs --check
+```
 
 ### 画像
 

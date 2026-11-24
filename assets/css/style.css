@@ -1149,9 +1149,7 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   object-fit: cover;
 }
 
-.media-caption,
-.garden-recruit__caption,
-.split-feature__caption {
+.media-caption {
   position: absolute;
   z-index: var(--z-raised);
   inset-inline-end: var(--space-sm);
