@@ -1284,8 +1284,32 @@
   }
 }
 
+.prose-list {
+  margin: 0;
+  padding-inline-start: var(--space-lg);
+  list-style: disc outside;
+}
+
+.prose-list > li + li {
+  margin-block-start: var(--space-xs);
+}
+
 .privacy-copy {
   max-inline-size: var(--copy-max);
+}
+
+.privacy-copy p:has(+ .prose-list) {
+  margin-block-end: var(--space-md);
+}
+
+.privacy-copy .prose-list + p {
+  margin-block-start: var(--space-md);
+}
+
+.privacy-copy a {
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 .privacy-copy > p,
