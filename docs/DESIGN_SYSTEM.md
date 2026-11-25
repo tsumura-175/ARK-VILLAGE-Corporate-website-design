@@ -377,7 +377,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - 施設名は中見出し、募集見出しは小見出し、説明は本文の既存トークンを使う。施設名と募集見出しは共通CSSのtext-wrap: balanceで自然改行を均し、強制改行や文字縮小は加えない。募集開始時期の `.recruit-facility__schedule` は募集カードと同じ本文の色・文字指定を使い、施設名からは `--type-heading-md-after`（PC24px／SP16px）を取る。施設名または募集開始時期から写真までは写真の上マージン `--space-before-media` でPC24px／SP16px、写真から募集案内までは写真の下マージン `--space-xl` で40pxを確保する。施設内の親gapと見出しmarginは0。募集見出し→説明はcopyのgapでPC16px／SP12px、バナー→copyとcopy→ボタンは24px。最初の施設名までは大見出しの下余白、施設間は中見出しの上余白に `--space-md`（16px）を加え、PC64px／SP48pxとする。前の施設の下端はPC24px／SP16px、後の施設の先頭から見出しまではPC40px／SP32px。最後の施設の下端には中見出しの上余白PC48px／SP32pxを施設の背景内に取り、採用セクションの末尾に重ねて加えない。
 - 施設名と募集案内を包む `.page-shell.recruit-facility__inner` は、左余白に `--page-gutter` と共通の `--section-body-indent` を使う。768px未満では左右を `--page-gutter` に揃え、768px以上は大タイトルの英字開始位置を基準にする。
 - 施設写真は画面幅いっぱいに表示し、TOPのCOMPANYと出店募集にも使う `.photo-cta` と最小高さの指定を共用する。768px未満は `clamp(22rem, 110vw, 28rem)`（幅390pxで429px）、768px以上960px未満は `clamp(28rem, 138vw, 36rem)`、960px以上は `clamp(28rem, 42vw, 38rem)` を使う。施設写真は `object-fit: cover` で中央を基準にトリミングする。募集案内は本文幅のグリッドを使う。
-- `.photo-cta` はTOPのCOMPANYと出店募集の写真に説明文と `VIEW MORE` の `.text-link` を重ねる。768px以上は右下に文字を置き、文字の周辺を楕円形のグラデーションで明るくする。768px未満は共通左余白から文字を置き、下部に向かうグラデーションを使う。文字領域の上下余白は768px未満で `--space-2xl`（64px）、768px以上で `--space-3xl`（96px）。
+- `.photo-cta` はTOPのCOMPANYと出店募集の写真に説明文と `VIEW MORE` の `.text-link` を重ねる。768px以上は右下、768px未満は共通左余白から文字を配置する。COMPANYは黒文字と明るいグラデーションを使い、768px以上は文字の周囲、768px未満は下部を明るくする。出店募集の `.photo-cta--garden` は説明文とリンクの背後だけに薄い暗色のグラデーションを置き、白文字を重ねる。文字領域の上下余白は768px未満で `--space-2xl`（64px）、768px以上で `--space-3xl`（96px）。
 - TOP・採用ページ・見本の施設写真は、公園には `assets/images/recruit/ark-garden-recruit-perspective.webp`、スポーツパークには `assets/images/media/samukawa-street-sports-park-interior.webp` を使う。altには各施設名と写真の内容を記載する。施設写真は画像だけを表示する。
 - 各募集カードは `.recruit-opening` 内の募集バナー→`.recruit-opening__copy`（見出し・既存説明）→既存のボタン／準備中spanの順。768px未満はカードのボタンを中央に揃え、見出しと説明文を左に揃える。公園の1件だけ `.recruit-opening--featured` を使い、768px以上は左バナー・右copy＋ボタン、未満は縦積みとする。社員・アルバイトを別カードへ分割しない。
 - スポーツパークは `.recruit-facility__layout--park`。768px未満は1列、768〜1279pxは2列、1280px以上は3列。複数列では各カードを3行のsubgridにし、バナーの上下端・見出し開始・ボタン位置を同じ行で揃える。copy内部は小見出し後の共通gapを維持し、文章量の差はcopyの共有行の余白で吸収する。固定高・行数制限・省略・個別縮小は使わない。
@@ -578,7 +578,7 @@ HTMLだけでなく、JSのクラス生成と状態付与を使用判定に含�
 ## 19. TOP飲食出店募集の写真とリンク
 
 - 20ftは `arkgarden/container-20ft-two-stores.png`、40ftは `arkgarden/container-40ft.webp`。既存の3:2の写真枠を共用し、見出しから写真まではPC24px／SP16px。768px以上は2列、未満は縦に並べる。
-- TOPの出店募集パースは `.photo-cta` で短い説明文と `VIEW MORE` を表示し、`arkgarden-recruit/` の先頭に接続する。20ft・40ftの各写真の右下には、細い白の縁取りを入れた黒文字と下線、黒地に白い丸矢印の `VIEW MORE` を重ねる。文字と矢印をまとめて `arkgarden-recruit/#area` に接続する。
+- TOPの出店募集パースは `.photo-cta` で短い説明文と `VIEW MORE` を表示し、`arkgarden-recruit/` の先頭に接続する。20ft・40ftの各写真の右下には、黒文字と下線、黒地に白い丸矢印の `VIEW MORE` を直接重ねる。文字と矢印をまとめて `arkgarden-recruit/#area` に接続する。
 - TOPのコンテナ群は紹介画像の下端から最初の見出しまで、小見出し前の32／24pxをpaddingで取る。768px未満の20ftの写真から40ft見出しまでの24pxは行gapが所有する。
 - 写真下に「詳細を見る」と応募状況のボタンを1つずつ置く。「詳細を見る」は `arkgarden-recruit/` の先頭へ接続する。応募状況は詳細ページと合わせ、募集開始前は「2027年2月頃募集開始予定」の無効ボタンを表示する。
 - ボタンの下の `.route-list` に、出店募集ページの大見出しと同じ順序で「コンセプト」「他公園に無い強み」「飲食横丁/カフェ」「アクセス」「スケジュール」を並べる。各 `.route-item` の行全体を、それぞれ `#concept`、`#strengths`、`#area`、`#access`、`#schedule` に接続する。見出しの変更時はTOPと見本の文言・順序を揃える。

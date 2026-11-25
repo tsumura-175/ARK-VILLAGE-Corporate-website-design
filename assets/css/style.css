@@ -1540,7 +1540,7 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   }
 }
 
-.photo-cta__media::after {
+.photo-cta--company .photo-cta__media::after {
   position: absolute;
   inset: 0;
   background: radial-gradient(
@@ -1846,15 +1846,6 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   inset-block-end: var(--space-xs);
   inset-inline-end: var(--space-xs);
   color: var(--color-ink);
-}
-
-.garden-container__link .text-link__label {
-  -webkit-text-stroke: 1.5px var(--color-paper);
-  paint-order: stroke fill;
-}
-
-.garden-container__link::after {
-  box-shadow: 0 0 var(--space-3xs) var(--color-paper);
 }
 
 .text-link.garden-container__link > .text-link__icon {
@@ -2983,6 +2974,29 @@ html.is-loading body {
   line-height: var(--type-body-line);
 }
 
+.photo-cta--garden .photo-cta__content {
+  text-shadow: 0 1px var(--space-3xs) var(--color-ink);
+}
+
+.photo-cta--garden .photo-cta__content::before {
+  position: absolute;
+  z-index: -1;
+  inset-block: calc(-1 * var(--space-xl));
+  inset-inline: calc(-1 * var(--space-2xl)) calc(-1 * var(--space-lg));
+  background: radial-gradient(
+    ellipse closest-side,
+    color-mix(in srgb, var(--color-ink) 44%, transparent),
+    color-mix(in srgb, var(--color-ink) 36%, transparent) 78%,
+    transparent
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.photo-cta--garden .photo-cta__content > p {
+  color: var(--color-on-dark);
+}
+
 /* Service accordion: four visible panels, one scroll-synchronised active panel. */
 .business-showcase {
   margin-block-start: 0;
@@ -3195,7 +3209,7 @@ html.is-loading body {
 }
 
 @media (width < 48rem) {
-  .photo-cta__media::after {
+  .photo-cta--company .photo-cta__media::after {
     background: linear-gradient(
       180deg,
       transparent 23%,
