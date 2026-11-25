@@ -2111,6 +2111,28 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
     transform var(--dur-short) var(--ease-out);
 }
 
+@media (width < 48rem) {
+  .contact__action {
+    width: 100%;
+    margin-inline-start: 0;
+    justify-items: center;
+  }
+
+  .contact-button {
+    width: fit-content;
+    max-width: 100%;
+    min-height: 52px;
+    gap: var(--space-md);
+    padding: var(--space-2xs) var(--space-2xs) var(--space-2xs) var(--space-lg);
+    font-size: var(--text-sm);
+  }
+
+  .contact-button .ui-arrow-icon {
+    width: 42px;
+    height: 42px;
+  }
+}
+
 .contact-button:active {
   transform: translateY(1px);
 }

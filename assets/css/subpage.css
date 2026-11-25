@@ -1253,7 +1253,7 @@
 }
 
 .news-article__body h4,
-.privacy-copy h3 {
+.privacy-copy :is(h2, h3) {
   font-family: var(--font-body);
   font-size: var(--type-heading-sm-size);
   font-weight: var(--type-heading-sm-weight);
@@ -1271,7 +1271,7 @@
 
 .news-article__body > :first-child,
 .news-article__body > h4 + *,
-.privacy-copy h3 + * {
+.privacy-copy :is(h2, h3) + * {
   margin-block-start: 0;
 }
 
@@ -1338,7 +1338,7 @@
   letter-spacing: 0;
 }
 
-.privacy-copy h3 {
+.privacy-copy :is(h2, h3) {
   color: var(--color-ink);
 }
 

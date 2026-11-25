@@ -64,11 +64,11 @@ SPは768px未満、PCは768px以上で、タブレットもPC値を使います�
 - `.content-section__lead + .content-section__copy` と理念の縦積みは共通リード用の後続余白を使う。1024px以上の理念2列のcolumn-gapは既存レイアウトを維持する。
 - 情報表は `.definition-list dt` が項目ラベル16px、ddが通常本文16px。募集条件の値 `.summary-facts dd` と重要なお知らせ `.news__item--important p` は強調本文18px。情報表の値を一律18pxにする別バリエーションは設けない。dd内の補足spanは共通の補足仕様を使う。
 - 長い施設名・職種名は現行採用カードの自然な折り返しで確認する。個別に縮小したり、見本だけの特別な改行をサイトの仕様として追加したりしない。
-- TOPのCONTACTは1024px以上でCTAを見出しの横に配置する。縦に並べる幅では共通の見出し後続余白を使う。
+- TOPのCONTACTは1024px以上でCTAを見出しの横に配置する。縦に並べる幅では共通の見出し後続余白を使う。768px未満ではCTAの横幅をラベルとアイコンに合わせて中央に配置する。ボタンの文字は14px、ボタンの高さは52pxを基準とし、丸矢印は42pxとする。
 
 ### 小見出し・上罫線・工程番号
 
-- `.news-article__body h4` と `.privacy-copy h3` は標準小見出しを使い、赤い縦線・専用の左余白を持たない。直後の段落marginを0にし、見出しの後続余白だけを取る。前の段落や写真からは小見出しの上余白を使う。
+- `.news-article__body h4` と `.privacy-copy :is(h2, h3)` は標準小見出しを使い、赤い縦線・専用の左余白を持たない。プライバシーポリシーの「個人情報の取り扱い」は `h2`、配下の項目は `h3` とし、同じ書式で本文の左端に揃える。直後の段落の上余白を0にし、見出しの後続余白だけを取る。前の段落や写真からは小見出しの上余白を使う。
 - 本文の箇条書きは `ul.prose-list > li` を使う。文字は本文の16px・行間1.8を継承し、黒い丸印を本文の外側に置いて折り返し行の先頭を揃える。項目間は `--space-xs`（8px）。プライバシーポリシーの導入文・補足文とリストの距離は `--space-md`（16px）とする。プライバシーポリシーの本文は共通の `content-section__body--wide` でページ内の本文幅まで広げ、段落と箇条書きには採用カードの本文と同じ `--color-muted` を使う。
 - 小見出しから情報表・工程の上罫線までは `--type-heading-sm-after` を使う。情報表・主要条件表・工程の同じ役割の上罫線は `--rule-hair` と `--color-rule` に統一する。表の行内paddingは部品内部の余白として維持する。工程番号下の余白はPC/SPとも使わず、見出しと本文の間隔は小見出しの後続余白で管理する。
 - `.process-list__number` は `--process-number-size: 2rem`（標準設定で32px）を参照する。PC/SPともAntonio・700・行間1・既存アクセント色。汎用 `--text-*` の値は変更しない。工程名・説明はそれぞれ標準小見出し・本文。
@@ -467,7 +467,7 @@ HTMLと `works.js`／`subpage-content.js` が生成する要素の役割を示�
 | NEWS重要項目 | パーク運営・イベント企画に関するご相談… | `.news__item--important p` | 強調する本文 | 18・500・1.8 | カテゴリの赤い枠を維持。矢印は通常黒、hover／focus-visibleで赤 |
 | NEWS記事タイトル | 記事のタイトル | `.news-article__header h3` | 中見出し | 32/24・700・1.35 | 縦配置はメタ情報から16px。1024px以上ではメタ情報を横に配置 |
 | NEWS本文・プライバシー本文 | 個人情報の利用目的… | `.news-article__body`、`.privacy-copy` | 本文 | 16・400・1.8 | なし |
-| 記事・ポリシーの小区分 | 第三者提供 | `.news-article__body h4`、`.privacy-copy h3` | 小見出し | 24/20、後続16/12 | 左線・専用左余白を撤去。段落との二重余白なし |
+| 記事・ポリシーの本文見出し | 個人情報の取り扱い／第三者提供 | `.news-article__body h4`、`.privacy-copy :is(h2, h3)` | 小見出し | 24/20、後続16/12 | 本文の左端に配置 |
 | NEWS日付・カテゴリ | 2026.09.23／イベント | `.news__date`、`.news__category`、`.news-article__meta` | 補足・注記 | 14・400・1.6 | 重要カテゴリの700だけ状態UIの例外 |
 | WORKS案件名 | YOKOHAMA URBAN SPORTS FESTIVAL… | `.work-panel__meta h3`、`.work-entry h3`、`works.js` | 小見出し | 24/20・700・1.5、後続16/12 | Excelの改行を表示し、英字と年号や引用符内の名称をまとめる |
 | WORKS年・カテゴリ | 2026年／大会運営/企画 | `.work-panel__category`、`.work-entry__category`、`.work-entry__description` | 補足・注記 | 14・400・1.6 | カテゴリ名を項目ラベルと混同しない |
