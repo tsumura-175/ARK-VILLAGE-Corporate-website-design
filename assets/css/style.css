@@ -491,7 +491,7 @@ html.is-github-pages.is-access-locked .access-gate {
 
 .section-title__description,
 .business-panel__meta > p:not(.business-panel__number),
-.company__content > p,
+.photo-cta__content > p,
 .recruit-opening__copy > p,
 .news-announcement__title,
 .content-section__lead,
@@ -1388,7 +1388,7 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 }
 
 .split-feature__media,
-.company__media,
+.photo-cta__media,
 .work-panel__media {
   display: grid;
   place-items: center;
@@ -1411,7 +1411,7 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 }
 
 .split-feature__media img,
-.company__media img,
+.photo-cta__media img,
 .work-panel__media img {
   width: 100%;
   height: 100%;
@@ -1523,7 +1523,7 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   color: var(--color-ink);
 }
 
-.company__media {
+.photo-cta__media {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -1534,49 +1534,38 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   background: var(--color-component-surface);
 }
 
-.company__media img {
-  object-position: 42% center;
+@media (width < 60rem) {
+  .photo-cta--company .photo-cta__media > img {
+    object-position: 42% center;
+  }
 }
 
-.company__media::after {
+.photo-cta__media::after {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(
-      180deg,
-      transparent 0%,
-      transparent 42%,
-      rgb(255 255 255 / 46%) 68%,
-      rgb(255 255 255 / 86%) 100%
-    ),
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      transparent 20%,
-      rgb(255 255 255 / 18%) 44%,
-      rgb(255 255 255 / 76%) 72%,
-      rgb(255 255 255 / 90%) 100%
-    );
+  background: radial-gradient(
+    ellipse 62% 52% at 82% 72%,
+    rgb(255 255 255 / 72%),
+    rgb(255 255 255 / 64%) 59%,
+    rgb(255 255 255 / 26%) 77%,
+    transparent 100%
+  );
   content: "";
   pointer-events: none;
 }
 
-.company__content {
+.photo-cta__content {
   display: grid;
   gap: var(--space-lg);
   max-width: 60ch;
 }
 
-.company__link {
+.photo-cta__link {
   justify-self: start;
 }
 
 @media (min-width: 60rem) {
-  .company__media img {
-    object-position: center;
-  }
-
-  .company__content {
+  .photo-cta__content {
     grid-column: 2;
     justify-self: end;
   }
@@ -1803,13 +1792,10 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   scroll-margin-block-start: calc(var(--header-height) + var(--space-md));
 }
 
-.garden-recruit__media {
-  position: relative;
-}
-
-.garden-recruit__media img {
-  width: 100%;
-  height: auto;
+.photo-cta--garden .photo-cta__media > img {
+  position: absolute;
+  inset: 0;
+  object-position: 50% 60%;
 }
 
 .garden-containers {
@@ -1844,11 +1830,37 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   background: transparent;
 }
 
+.garden-container__media:has(> .garden-container__link) {
+  position: relative;
+}
+
 .garden-container__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.garden-container__link {
+  position: absolute;
+  inset-block-end: var(--space-xs);
+  inset-inline-end: var(--space-xs);
+  color: var(--color-ink);
+}
+
+.garden-container__link .text-link__label {
+  -webkit-text-stroke: 1.5px var(--color-paper);
+  paint-order: stroke fill;
+}
+
+.garden-container__link::after {
+  box-shadow: 0 0 var(--space-3xs) var(--color-paper);
+}
+
+.text-link.garden-container__link > .text-link__icon {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-on-dark);
 }
 
 .garden-container__actions {
@@ -2018,27 +2030,6 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 @media (min-width: 48rem) {
   .garden-containers {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 60rem) {
-  .garden-recruit__visual {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    min-height: clamp(28rem, 42vw, 38rem);
-    isolation: isolate;
-  }
-
-  .garden-recruit__media {
-    grid-area: 1 / 1;
-  }
-
-  .garden-recruit__media img {
-    position: absolute;
-    inset: 0;
-    height: 100%;
-    object-fit: cover;
-    object-position: 50% 60%;
   }
 }
 
@@ -2945,18 +2936,18 @@ html.is-loading body {
   color: var(--color-ink-2);
 }
 
-.company__visual,
+.photo-cta,
 .recruit-facility__perspective {
   position: relative;
   min-height: clamp(22rem, 110vw, 28rem);
   overflow: clip;
 }
 
-.company__visual {
+.photo-cta {
   isolation: isolate;
 }
 
-.company__visual-layout {
+.photo-cta__layout {
   position: relative;
   z-index: var(--z-raised);
   display: grid;
@@ -2966,17 +2957,17 @@ html.is-loading body {
 }
 
 @media (min-width: 48rem) {
-  .company__visual,
+  .photo-cta,
   .recruit-facility__perspective {
     min-height: clamp(28rem, 138vw, 36rem);
   }
 
-  .company__visual-layout {
+  .photo-cta__layout {
     padding-block: var(--space-3xl);
   }
 }
 
-.company__content {
+.photo-cta__content {
   position: relative;
   z-index: var(--z-raised);
   width: min(100%, 45ch);
@@ -2984,7 +2975,7 @@ html.is-loading body {
   color: var(--color-ink);
 }
 
-.company__content > p {
+.photo-cta__content > p {
   color: var(--color-ink-2);
   font-family: var(--font-body);
   font-size: var(--type-body-size);
@@ -3204,16 +3195,17 @@ html.is-loading body {
 }
 
 @media (width < 48rem) {
-  .company__media::after {
+  .photo-cta__media::after {
     background: linear-gradient(
       180deg,
-      transparent 18%,
-      rgb(255 255 255 / 78%) 42%,
-      rgb(255 255 255 / 92%) 100%
+      transparent 23%,
+      rgb(255 255 255 / 53%) 38%,
+      rgb(255 255 255 / 63%) 51%,
+      rgb(255 255 255 / 70%) 100%
     );
   }
 
-  .company__content {
+  .photo-cta__content {
     justify-self: start;
   }
 
@@ -3241,7 +3233,7 @@ html.is-loading body {
     justify-self: start;
   }
 
-  .company__visual,
+  .photo-cta,
   .recruit-facility__perspective {
     min-height: clamp(28rem, 42vw, 38rem);
   }
