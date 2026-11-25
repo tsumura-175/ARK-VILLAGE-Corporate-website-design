@@ -28,6 +28,8 @@
 }
 
 .page-hero {
+  --page-hero-display-size: clamp(2.8rem, 14vw, 3.5rem);
+
   position: relative;
   min-block-size: var(--subpage-hero-height);
   overflow: hidden;
@@ -133,7 +135,7 @@
   margin: 0;
   overflow-wrap: anywhere;
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 14vw, 3.5rem);
+  font-size: var(--page-hero-display-size);
   font-weight: 700;
   font-style: normal;
   letter-spacing: -0.035em;
@@ -141,7 +143,33 @@
   text-transform: uppercase;
 }
 
-.page-hero h1 {
+.page-hero__title--ja {
+  --page-hero-title-ja-size: clamp(1.75rem, 6.25vw, 4.75rem);
+}
+
+.page-hero__title--ja .page-hero__slash {
+  inset-block-start: calc(var(--page-hero-title-ja-size) * 0.575);
+}
+
+.page-hero__title--ja .page-hero__title-mask {
+  display: grid;
+  align-items: center;
+  min-block-size: calc(var(--page-hero-display-size) + 0.2em);
+}
+
+.page-hero__title-ja {
+  min-inline-size: 0;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--page-hero-title-ja-size);
+  font-weight: 700;
+  line-height: 1.15;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.page-hero :is(h1:not(.page-hero__title-ja), .page-hero__subtitle) {
   margin: var(--page-hero-title-gap) 0 0;
   font-size: var(--text-base);
   font-weight: 700;
@@ -150,8 +178,8 @@
 }
 
 @media (min-width: 40rem) {
-  .page-hero__title-en {
-    font-size: var(--text-display);
+  .page-hero {
+    --page-hero-display-size: var(--text-display);
   }
 }
 
@@ -191,20 +219,19 @@
   background: var(--color-accent);
 }
 
-.js .page-hero__title-en,
-.js .page-hero h1,
+.js .page-hero :is(.page-hero__title-en, .page-hero__title-ja, h1, .page-hero__subtitle),
 .js .page-hero__slash,
 .js .page-hero__lines,
 .js .page-hero__rail {
   opacity: 0;
 }
 
-.js .page-hero__title-en {
+.js :is(.page-hero__title-en, .page-hero__title-ja) {
   clip-path: inset(-0.06em 100% -0.08em 0);
   transform: translateX(-2rem);
 }
 
-.js .page-hero h1 {
+.js .page-hero :is(h1:not(.page-hero__title-ja), .page-hero__subtitle) {
   transform: translateX(-1rem);
 }
 
@@ -221,7 +248,7 @@
   transform-origin: left;
 }
 
-.js .page-hero__title.is-visible .page-hero__title-en {
+.js .page-hero__title.is-visible :is(.page-hero__title-en, .page-hero__title-ja) {
   opacity: 1;
   clip-path: inset(-0.06em 0 -0.08em 0);
   transform: translateX(0);
@@ -231,7 +258,7 @@
     transform 900ms var(--ease-out);
 }
 
-.js .page-hero__title.is-visible h1 {
+.js .page-hero__title.is-visible :is(h1:not(.page-hero__title-ja), .page-hero__subtitle) {
   opacity: 1;
   transform: translateX(0);
   transition:
@@ -863,8 +890,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .js .page-hero__title-en,
-  .js .page-hero h1,
+  .js .page-hero :is(.page-hero__title-en, .page-hero__title-ja, h1, .page-hero__subtitle),
   .js .page-hero__slash,
   .js .page-hero__lines,
   .js .page-hero__rail {

@@ -164,7 +164,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 
 - クラス：`.page-hero`
 - 高さ：`--subpage-hero-height`
-- 必須要素：`.page-hero__slash`、`.page-hero__title-mask`、`.page-hero__title-en`、`h1`、`.page-hero__rail`
+- 共通要素：`.page-hero__slash`、`.page-hero__title-mask`、`h1`、`.page-hero__rail`。英字を大きく見せる標準形では、タイトル枠内に `.page-hero__title-en` を置く
 - 英字と日本語以外の説明文やCTAは原則として置かない
 - 背景写真を使う場合は `.page-hero--image` と `.page-hero__media` を追加する。写真の上にも既存の斜め面・グリッド・赤いレールを残し、文字の可読性は暗いベールで確保する
 - 背景写真が他ページと共通の場合は `assets/images/media/` を参照し、ページ専用の複製を作らない
@@ -187,6 +187,8 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 ```
 
 下層KVの英字と日本語は同じタイトル枠に置き、間隔は `--page-hero-title-gap`（PC24px／SP20px）で統一する。
+
+主見出しが日本語の場合は、`.page-hero__title` に `.page-hero__title--ja` を加え、タイトル枠内に `h1.page-hero__title-ja` を置く。Noto Sans JP 700、文字サイズは28〜76px、行高は1.15。タイトル枠は標準形の英字1行分の高さを確保し、主見出しが改行するときは行数に応じて広げる。長い名称は `<wbr>` で語の区切りを指定し、「公園（仮称）」のように一緒に表示する箇所は `.page-hero__title-unit` でまとめる。募集種別などの副見出しには `.page-hero__subtitle` を使い、標準形の日本語テキストと同じ16px・余白で表示する。見本は [components.html](components.html#sample-page-hero-ja) を参照。
 
 ### Content Section
 
@@ -404,7 +406,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 
 ### 詳細ページ
 
-- `arkgarden-recruit/index.html` のKVは英字施設名「SAGAMIGAWA ICHINOMIYA PARK」に続けて、日本語見出しの「飲食横丁出店募集」「カフェ出店募集」を各1行で表示する。日本語見出しは共通の16pxとする。本文は「コンセプト」「他公園に無い強み」「飲食横丁/カフェ」「アクセス」「スケジュール」の順。
+- `arkgarden-recruit/index.html` のKVは日本語の主見出し「寒川町相模川一之宮公園（仮称）」に続けて、「飲食横丁出店募集」「カフェ出店募集」を副見出しとして各1行で表示する。本文は「コンセプト」「他公園に無い強み」「飲食横丁/カフェ」「アクセス」「スケジュール」の順。
 - コンセプト・強み・アクセスの本文は11月の支給資料に基づく。コンセプトのリード直後は共通の `--type-lead-after` を使う。本文は1つの `.content-section__copy` にまとめ、文のまとまりを `<br>` で改行する。本文の下に公園全体の俯瞰パース `assets/images/media/park-masterplan.webp` を1枚表示する。既存の `.rental-area__media` を使い、本文領域全幅で表示する。上端の黒帯を除くため、`.rental-area__media--masterplan` で元画像の上7px分を表示範囲から外す。強みの3項目は `.feature-cards` と既存の `.content-group` を使い、第4章の交通案内と罫線・内余白を揃える。768px以上は横3列、未満は縦並び。強みのカードの下には `.detail-feature` で芝生広場とテラスのイメージ `assets/images/arkgarden/strengths-lawn-terrace.webp`、夕暮れの飲食横丁のイメージ `assets/images/arkgarden/strengths-evening-food-stalls.webp` を順に表示する。その下に別の小セクションとして、世界トップクラスのストリートスポーツパークと公園の日常についての中見出しと本文を `.content-group--major` で表示する。直下の `.detail-feature--gallery` には、サイトで共用する施設全体・施設外観・屋内スケートパークのパースを、それぞれの名称とともに並べる。768px以上は3列、未満は1列とする。企業概要と出店募集ページの交通案内は電車・車の2項目。出店募集のアクセスでは「寒川町相模川一之宮公園（仮称）」をリードで表示し、電車の経路を「JR相模線 寒川駅から徒歩20分」とする。
 - 「飲食横丁/カフェ」では768px以上で20ft・40ftを横並びにし、768px未満は20ftから縦に並べる。各コンテナの見出し直下に `.definition-list` で区画・店舗面積を表示する。20ftは10区画・約7.25㎡。40ftは1区画・約29.7㎡。外観の上余白はPC24px／SP16px、外観から図面はPC16px／SP12pxとする。横並びでは、両方の外観の上端を揃える。外観の下に、20ftは平面図 `arkgarden/container-20ft-plan.webp` を表示する。40ftは `.rental-area__plans` 内に1階・テラス平面図 `arkgarden/container-40ft-ground-plan.webp`、2階席の屋根伏図 `arkgarden/container-40ft-roof-plan.webp` を順に縦に並べる。図面間の間隔は `--type-heading-sm-after` を使う。各図面の表示枠は20ftの平面図と同じ4961:2644とし、2階席の図面は `.rental-area__media-crop` で図と寸法線が収まる範囲を表示する。3点の図面名には `.media-caption.media-caption--plan` を使う。白い図面やページ背景でも白文字とのコントラストを4.5:1以上に保つため、帯は `--color-ink` を70%で重ねる。表示幅が500px以下では図面直下の右端、それ以上では図面の右下に配置する。
 - 両方の図面の下に「募集条件」を一つ置き、20ft・40ftそれぞれの「営業時間」「契約形態・契約期間」「定休日」を横罫線付きの `.summary-facts` で表示する。768px以上では左に20ft、右に40ftを配置して対応する行を揃える。768px未満では20ft、40ftの順に縦に並べる。20ftの営業時間は平日17:00〜22:00・土日祝12:00〜22:00。40ftは平日10:00〜19:00と土日祝10:00〜19:00を別々の行で表示する。運営委託契約・3年間と定休日の月曜日は両方に記載する。
@@ -476,6 +478,7 @@ HTMLと `works.js`／`subpage-content.js` が生成する要素の役割を示�
 | --- | --- | --- | --- |
 | TOPメインコピー／Living Culture. | `.hero__title`、`.hero__tagline` | 現行の流動サイズ・行間を維持 | 必要時にKVとして別途調整 |
 | 下層ページ名／COMPANY | `.page-hero__title-en`、`.page-hero h1` | 英字は用途別仕様、日本語はPC・SP共通16px（`--text-base`） | KV共通 |
+| 日本語の下層ページ名 | `.page-hero__title-ja`、`.page-hero__subtitle` | 主見出しは28〜76px、副見出しはPC・SP共通16px（`--text-base`） | 第4章参照 |
 | グローバルナビ・メニュー・フッター | `.global-nav`、`.mobile-menu__nav`、`.site-footer__*` | 操作・サイト案内・ブランド文の現行仕様を維持 | 個別依頼時に検討 |
 | 主要ボタン・補助リンク・フィルター | `.action-button`、`.text-link`、`.news-filter`、`.news-pagination` | 操作UIの文字サイズを維持 | 必要時にUI全体で検討 |
 | 事業パネル | `.business-panel__*` | PC縦書き等の用途別仕様を維持 | ページ別工程で検討 |
