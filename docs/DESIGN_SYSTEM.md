@@ -349,6 +349,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - PDFは `.action-button.action-button--outline` と `.ui-download-icon` を共用する。実URL、`download` 属性、資料を区別できる読み上げ名を付ける。
 - 共通ボタンの非活性時は「採用サイト準備中」と同じ罫線・文字色・アイコン背景を使う。CSSは `.action-button--disabled` と `.action-button:disabled` で共用し、ボタン全体の透過はかけない。
 - `.garden-container__actions` はTOPの出店募集ボタン、募集ページの補足ボタン、暗色ボタンの見本で使う。共通 `.action-button` を中央揃えで横に並べ、利用可能幅で自然に折り返す。文字は1行を保ち、丸矢印は右端に揃える。
+- TOPの出店募集ボタンには `.garden-container__actions--compact` を併用する。768px未満ではボタン同士を8px、ラベルとアイコンを4px空け、ボタンの左内余白を12px、アイコンを32pxにする。文字サイズとボタンの高さは共通値を使い、収まる幅では横並び、足りない場合は同じ幅で縦に並べる。
 - 募集条件とスケジュールの下では `.garden-container__action-group` を使い、上段中央に応募状況の共通ボタン、16px下の `.garden-container__actions` に「詳細資料PDF」「お問い合わせ」をこの順で並べる。見本も同じ組み合わせを使う。
 - フォーム等の `.contact-actions` は中央配置。お問い合わせと求人応募の確認・完了画面では、共通の `.action-button` の寸法を使い、2つのボタンが収まるときは横並び、幅が足りないときは縦に並べる。主要ボタンと補助リンクの組み合わせにはSPで2列表示の `--mixed` を使える。
 - お問い合わせと求人応募の完了画面では、見出し・説明文・ボタン群を `.contact-complete` にまとめる。説明文からボタン群までは `.contact-actions` の `--space-xl`（40px）を使い、ボタン群からセクション末尾までの余白は `.content-section` が持つ。
@@ -375,9 +376,10 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - 公園とスポーツパークの施設ブロックは、大見出しを含む親セクションの白背景を共有する。横幅いっぱいの背景は親セクションが持ち、施設名と募集案内は各施設内のpage-shellで揃える。
 - 施設名は中見出し、募集見出しは小見出し、説明は本文の既存トークンを使う。施設名と募集見出しは共通CSSのtext-wrap: balanceで自然改行を均し、強制改行や文字縮小は加えない。募集開始時期の `.recruit-facility__schedule` は募集カードと同じ本文の色・文字指定を使い、施設名からは `--type-heading-md-after`（PC24px／SP16px）を取る。施設名または募集開始時期から写真までは写真の上マージン `--space-before-media` でPC24px／SP16px、写真から募集案内までは写真の下マージン `--space-xl` で40pxを確保する。施設内の親gapと見出しmarginは0。募集見出し→説明はcopyのgapでPC16px／SP12px、バナー→copyとcopy→ボタンは24px。最初の施設名までは大見出しの下余白、施設間は中見出しの上余白に `--space-md`（16px）を加え、PC64px／SP48pxとする。前の施設の下端はPC24px／SP16px、後の施設の先頭から見出しまではPC40px／SP32px。最後の施設の下端には中見出しの上余白PC48px／SP32pxを施設の背景内に取り、採用セクションの末尾に重ねて加えない。
 - 施設名と募集案内を包む `.page-shell.recruit-facility__inner` は、左余白に `--page-gutter` と共通の `--section-body-indent` を使う。768px未満では左右を `--page-gutter` に揃え、768px以上は大タイトルの英字開始位置を基準にする。
-- 施設写真は画面幅いっぱいに表示し、TOPのCOMPANY画像枠 `.company__visual` と高さの指定を共用する。960px未満では `clamp(28rem, 138vw, 36rem)`、960px以上では `clamp(28rem, 42vw, 38rem)` を使う。画像は `object-fit: cover` で中央を基準にトリミングする。募集案内は本文幅のグリッドを使う。
+- 施設写真は画面幅いっぱいに表示し、TOPのCOMPANY画像枠 `.company__visual` と最小高さの指定を共用する。768px未満は `clamp(22rem, 110vw, 28rem)`（幅390pxで429px）、768px以上960px未満は `clamp(28rem, 138vw, 36rem)`、960px以上は `clamp(28rem, 42vw, 38rem)` を使う。施設写真は `object-fit: cover` で中央を基準にトリミングする。募集案内は本文幅のグリッドを使う。
+- COMPANY画像に重ねる説明文とボタンは下揃えとし、上下の余白は768px未満で `--space-2xl`（64px）、768px以上で `--space-3xl`（96px）を使う。
 - TOP・採用ページ・見本の施設写真は、公園には `assets/images/media/samukawa-outdoor-perspective.webp`、スポーツパークには `assets/images/media/samukawa-street-sports-park-interior.webp` を使う。altには各施設名と写真の内容を記載する。写真上の文字・キャプションは置かない。
-- 各募集カードは `.recruit-opening` 内の募集バナー→`.recruit-opening__copy`（見出し・既存説明）→既存のボタン／準備中spanの順。公園の1件だけ `.recruit-opening--featured` を使い、768px以上は左バナー・右copy＋ボタン、未満は縦積みとする。社員・アルバイトを別カードへ分割しない。
+- 各募集カードは `.recruit-opening` 内の募集バナー→`.recruit-opening__copy`（見出し・既存説明）→既存のボタン／準備中spanの順。768px未満はカードのボタンを中央に揃え、見出しと説明文を左に揃える。公園の1件だけ `.recruit-opening--featured` を使い、768px以上は左バナー・右copy＋ボタン、未満は縦積みとする。社員・アルバイトを別カードへ分割しない。
 - スポーツパークは `.recruit-facility__layout--park`。768px未満は1列、768〜1279pxは2列、1280px以上は3列。複数列では各カードを3行のsubgridにし、バナーの上下端・見出し開始・ボタン位置を同じ行で揃える。copy内部は小見出し後の共通gapを維持し、文章量の差はcopyの共有行の余白で吸収する。固定高・行数制限・省略・個別縮小は使わない。
 - 募集バナーの表示枠は16:10、背景透明。`.recruit-opening__media img` は幅・高さ100％、`object-fit: cover`・中央配置とし、通常時は縮小せず枠いっぱいに表示する。画像のズームは募集カード `.recruit-opening` のhover判定を使い、hover可能・fine pointer・`prefers-reduced-motion: no-preference` の場合だけscale(1.035)へ拡大する。画像だけを `--dur-nav`・`--ease-out` で滑らかに往復させ、枠はoverflow: hiddenで固定する。WORKSと同じ既存のアニメーション定義へセレクターを追加し、既存用途の挙動は変えない。動きを減らす設定とタッチ端末ではズームを適用せず、旧縮小値は復元しない。通常時は16:10の文字入り素材4点を全体表示する。講師の文字入りバナーはTOP・採用ページ・COMPONENTSの募集カードで共用し、採用・求人応募のKVは文字なしの元画像を使う。
 - TOPの公園リンクは `recruit/#garden-careers`、採用ページ内は `#garden-careers`、見本は `../recruit/#garden-careers` を維持する。スポーツパーク3件は操作できない準備中spanとし、外部URL等を新設しない。

@@ -1707,6 +1707,12 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   align-self: end;
 }
 
+@media (width < 48rem) {
+  .recruit-opening > .action-button {
+    justify-self: center;
+  }
+}
+
 @media (min-width: 48rem) {
   .recruit-opening--featured {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1860,6 +1866,22 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   flex: 1 1 auto;
   min-inline-size: max-content;
   justify-content: space-between;
+}
+
+@media (width < 48rem) {
+  .garden-container__actions--compact {
+    gap: var(--space-xs);
+  }
+
+  .garden-container__actions--compact > .action-button {
+    gap: var(--space-2xs);
+    padding-inline-start: var(--space-sm);
+  }
+
+  .garden-container__actions--compact .action-button__icon {
+    width: 2rem;
+    height: 2rem;
+  }
 }
 
 .route-list {
@@ -2904,7 +2926,7 @@ html.is-loading body {
 .company__visual,
 .recruit-facility__perspective {
   position: relative;
-  min-height: clamp(28rem, 138vw, 36rem);
+  min-height: clamp(22rem, 110vw, 28rem);
   overflow: clip;
 }
 
@@ -2918,7 +2940,18 @@ html.is-loading body {
   display: grid;
   min-height: inherit;
   align-items: end;
-  padding-block: var(--space-3xl);
+  padding-block: var(--space-2xl);
+}
+
+@media (min-width: 48rem) {
+  .company__visual,
+  .recruit-facility__perspective {
+    min-height: clamp(28rem, 138vw, 36rem);
+  }
+
+  .company__visual-layout {
+    padding-block: var(--space-3xl);
+  }
 }
 
 .company__content {
