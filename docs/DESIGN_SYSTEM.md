@@ -54,8 +54,10 @@ SPは768px未満、PCは768px以上で、タブレットもPC値を使います�
 
 ### 現行の文字部品と余白の所有者
 
-- 大見出しは `.section-heading` 内の `.section-title` を使い、赤い斜線・英字 `.section-title__en`・直後のh2を一組にする。現行サイトのDOMと既存 `script.js` の自動配置を維持する。日本語が英字最終行の右に収まらなければ、JSが `.section-title--stacked` を付けて縦に並べる。このクラスは実行時に使う状態であり、未使用CSSではない。
+- 大見出しは `.section-heading` 内の `.section-title` を使い、赤い斜線・英字 `.section-title__en`・直後のh2を一組にする。日本語が英字最終行の右に収まらない場合、`script.js` が `.section-title--stacked` を付けて縦に並べる。狭い画面で縦並びを指定する場合は、初期クラスに `.section-title--stacked` を加えて `data-title-stack-mobile` を指定する。768px未満は縦並び、768px以上は自動配置を使う。見本は [スマホで縦並びの大見出し](components.html#sample-mobile-stacked-title) を参照する。
 - 日本語のみの大見出しは `.section-title--ja-only` で赤い斜線・h2・説明文を組み合わせる。h2はNoto Sans JP・700。Noto Sans JPとAntonioの字面の差を補正するため、`--type-section-ja-only-size`（PC72px／SP44px）を使う。英字大見出しはPC80px／SP48px。英日併記の自動配置は英字を含む見出しに適用する。見本は `components.html#sample-ja-heading`。
+- 長い日本語の大見出しに `.section-title--long` を併用すると、768px未満で32〜44pxに調整し、斜線を文字サイズに揃える。長い英字の大見出しは `.section-title__en--long` で同じ範囲の画面幅に対して32〜48pxを使う。施設名や語句の区切りは `span.text-phrase` で指定する。見本は [日本語の施設名](components.html#sample-ja-heading) と [英日併記の大見出し](components.html#sample-long-en-heading) を参照する。
+- 英日併記で日本語側が長い場合は `.section-title__ja--long` を日本語見出しに加え、768px未満で21〜24pxに調整する。
 - 大見出しの後続余白は `.section-heading` のpaddingが所有し、`.content-section__head` も同じトークンを使う。セクション全体の上下paddingや本文プレート内のpaddingとは区別する。
 - 中見出しは施設名 `.recruit-facility__name`、交通案内の `.access-information h3`、記事タイトル等の実部品に適用する。小見出しは職種・内容小区分・交通案内・記事本文・ポリシーの実部品に適用する。h要素の数字だけで文字の役割を決めない。
 - `.content-group` はgapを0にし、`.content-group__title` 直後の要素のmarginだけで後続余白を確保する。通常は小見出し用 `--type-heading-sm-after`、`.content-group--major` では中見出し用 `--type-heading-md-after`。通常内容間は `--space-lg`、リード直後は `--type-lead-after`。施設・職種カードは既存gridのgapが見出し後の距離を所有する。
@@ -204,7 +206,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - 設計補助線はコンテンツプレートの背後へ透過させず、周囲の余白部分だけに見せる
 - 見出し領域と本文領域を `.content-section__grid` で管理する
 - 見出しはトップページと同じ `.section-heading` / `.section-title` を使い、赤い斜線、英字、日本語の順で統一する。文字の値は第2章の役割別仕様を使う
-- 英字タイトルと日本語見出しのサイズ・行間・間隔・文字色は共通ルールを使い、個別ページやIDで上書きしない。見出しは親領域の利用可能幅いっぱいを使い、収まる場合は日本語を英字の最終行の右隣に置く。共通スクリプトが親領域の右端と日本語の文字幅を比較し、収まらない場合だけ日本語を英字の下へ左揃えで置く。英字は語の途中で分割しない
+- 英字と日本語の見出しは、共通のサイズ・行間・間隔・文字色を使う。自動配置では、親領域の右端と日本語の文字幅を比較し、日本語が収まれば英字の最終行の右に、収まらなければ英字の下に左揃えで置く。`data-title-stack-mobile` を指定した見出しは、768px未満で縦に並べる。英字は語の区切りで折り返す。
 - `.section-title` の直下には装飾の斜線、`.section-title__en`、`h2`、必要な場合のみ `.section-title__description` をこの順で置く。英字と日本語を個別のラッパーで囲まない。実際のh2大見出しと幅に応じた自動配置は `components.html#components` で確認する
 - 下層KVの英字・日本語の文字サイズはトップKVと同じルールを使う。共通見本は `docs/components.html` とする
 - すべての画面幅で見出しを左上、本文をその下に置き、DOMの読み順と視覚上の順序を一致させる
@@ -271,6 +273,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - 交通案内は手段ごとにカードへ分け、英字種別、日本語見出し、経路・目安時間の順に記載する
 - 案内文はクライアント原稿に従う。経路・運行内容・所要時間の補足を推測して追加しない。電車・車の説明本文は `--color-section-title` を使う
 - 交通案内と説明カード（`.feature-cards`）は、細い罫線、背景の塗りなし、内余白、説明文の色を共用する。複数列では外枠と区切り線でつなげ、1列では横罫線で区切る。英字ラベルは `.card-label` を共用し、赤い四角を添える。説明カードは英字ラベル、日本語の見出し、本文の順に配置する。
+- 768px以上896px未満の3列説明カードでは、見出しを21pxに揃える。長い中見出しの `.content-group__title--long` は、768px未満で18pxから元の見出しサイズまで調整する。
 
 ### Directional Symbols
 
@@ -329,7 +332,8 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 
 - 説明主体の短い内容は標準幅で右側の余白を残し、写真・地図・一覧・情報表・工程は `.content-section__body--wide` でページ本文幅を使う。全幅は画面端までの意味ではなく、`.page-shell` と共通余白の内側を指す。
 - `--wide` は `--copy-max: 100%`。文章の行長を制限する場合は `--editorial`（42rem）または `--readable-copy`（段落だけ58rem）を併用する。大見出し・写真・情報表まで狭めない。
-- リード `.content-section__lead` は第2章のリード仕様を使い、字間0、`text-wrap: pretty`。不要な強制改行をせず、長い日本語は `.content-section__lead-phrase` で意味のまとまりを示す。768px以上ではまとまりが幅に収まる場合だけ保持し、長いまとまりは折り返す。SPも自然に折り返す。
+- TOP・下層の見出し直下の説明文、リード、本文、カードや工程の案内文には共通で `text-wrap: pretty` を使う。リードの書体と字間は第2章の仕様に従う。
+- 施設名・大会名・募集日時・文末など、途中で切れると読みづらい語句は `span.text-phrase` でまとめる。現在の行に収まれば続けて表示し、収まらなければまとまりごと次の行へ送る。まとまりが表示欄より長い場合は内側で折り返す。例は [TOPの出店募集の見出しと説明文](components.html#sample-ja-heading) と [本文幅の見本](components.html#sample-copy-width) を参照する。
 - 会社情報は標準幅、理念は `--balanced`、取引先・アクセスは `--wide`。事業内容は `.business-detail` が本文を広げ、説明文の読み幅を維持する。
 - 採用のカード・写真・表・工程は `--wide`。WORK STYLE・WORKは `--readable-copy` を併用する。出店募集ページは写真・図面・表に広幅を使う。
 - ニュース本文は左右のインデントを対称にする。お問い合わせ・求人応募の入力・確認・完了は最大68remを共用する。
@@ -401,7 +405,7 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 ### TOPと内部導線
 
 - ヘッダー・スマホメニュー・フッターの「飲食横丁/カフェ出店募集」と、NEWS先頭の固定告知「募集概要を見る」は `arkgarden-recruit/` の先頭に接続する。固定告知の仕様は第18章を参照する。
-- TOPの飲食出店募集は `.section-title--ja-only` で「寒川町相模川一之宮公園（仮称）」を表示し、募集内容を直下の説明文に記載する。狭い幅では施設名の語の区切りで折り返す。
+- TOPの飲食出店募集は `.section-title--ja-only.section-title--long` で「寒川町相模川一之宮公園（仮称）」を表示し、募集内容を直下の説明文に記載する。狭い幅では「寒川町相模川」「一之宮公園（仮称）」の区切りで折り返す。
 - TOPの紹介写真は `assets/images/media/ark-garden-night-perspective.webp`。20ft・40ftの写真と共通ボタンは第19章を参照する。
 
 ### 詳細ページ
@@ -457,14 +461,14 @@ HTMLと `works.js`／`subpage-content.js` が生成する要素の役割を示�
 | フォーム入力・確認 | 氏名／メールアドレス | `.contact-form__row > label:first-child`、同span、`.contact-confirm dt` | 項目ラベル | 16・700・1.5 | 必須・任意バッジは状態UIを維持 |
 | フォーム確認の値・同意文 | 入力した氏名／同意します | `.contact-confirm dd`、`.contact-form__check` | 本文 | 16・400・1.8 | 入力・送信の試作動作は変更しない |
 | 完了画面 | ご応募ありがとうございます | `.contact-complete h3`／p | 中見出し／本文 | 32/24と16、後続24/16 | なし |
-| TOPの固定募集告知 | 寒川町相模川一之宮公園（仮称）の飲食出店者募集は、2027年2月頃に開始予定 | `.news-announcement__title` | 小見出し | 24/20・700・1.5 | 写真・日付なし、CMS対象外。第18章参照 |
+| TOPの固定募集告知 | 寒川町相模川一之宮公園（仮称）の飲食出店者募集は、2027年2月頃に開始予定 | `.news-announcement__title` | 小見出し | 896px以上24px、768〜895pxは21px、768px未満は18〜20px。700・1.5 | 写真・日付なし、CMS対象外。第18章参照 |
 | NEWS一覧・TOP | ARK LEAGUEの事業内容を… | `.news__item p`（HTML・JS生成） | 本文 | 16・400・1.8 | 既存の1行省略は用途別に維持 |
 | NEWS重要項目 | パーク運営・イベント企画に関するご相談… | `.news__item--important p` | 強調する本文 | 18・500・1.8 | カテゴリの赤い枠を維持。矢印は通常黒、hover／focus-visibleで赤 |
 | NEWS記事タイトル | 記事のタイトル | `.news-article__header h3` | 中見出し | 32/24・700・1.35 | 縦配置はメタ情報から16px。1024px以上ではメタ情報を横に配置 |
 | NEWS本文・プライバシー本文 | 個人情報の利用目的… | `.news-article__body`、`.privacy-copy` | 本文 | 16・400・1.8 | なし |
 | 記事・ポリシーの小区分 | 第三者提供 | `.news-article__body h4`、`.privacy-copy h3` | 小見出し | 24/20、後続16/12 | 左線・専用左余白を撤去。段落との二重余白なし |
 | NEWS日付・カテゴリ | 2026.09.23／イベント | `.news__date`、`.news__category`、`.news-article__meta` | 補足・注記 | 14・400・1.6 | 重要カテゴリの700だけ状態UIの例外 |
-| WORKS案件名 | YOKOHAMA URBAN SPORTS FESTIVAL… | `.work-panel__meta h3`、`.work-entry h3`、`works.js` | 小見出し | 24/20・700・1.5、後続16/12 | Excelの改行とカード伸縮領域を維持 |
+| WORKS案件名 | YOKOHAMA URBAN SPORTS FESTIVAL… | `.work-panel__meta h3`、`.work-entry h3`、`works.js` | 小見出し | 24/20・700・1.5、後続16/12 | Excelの改行を表示し、英字と年号や引用符内の名称をまとめる |
 | WORKS年・カテゴリ | 2026年／大会運営/企画 | `.work-panel__category`、`.work-entry__category`、`.work-entry__description` | 補足・注記 | 14・400・1.6 | カテゴリ名を項目ラベルと混同しない |
 | 画像キャプション・クレジット | 図面名／©Jason Halayko / YUSF | `.media-caption`、`.news-article__media figcaption` | 補足・注記 | 14・400・1.6 | 位置・写真は維持 |
 | 添付ファイル・状態通知 | 選択されていません | `.attachment-control__filename`、`.contact-form__status` | 補足・注記 | 14・400・1.6 | 選択・取消ボタンは操作UI仕様 |

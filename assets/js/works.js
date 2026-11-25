@@ -11,6 +11,21 @@
   const pagination = document.querySelector("[data-works-pagination]");
   const status = document.querySelector("[data-works-status]");
 
+  const titlePhrases = /[「“”][^」“”\r\n]+[」”]|\b[A-Za-z][A-Za-z-]* (?:19|20)\d{2}\b|スポーツデイ/g;
+
+  const appendTitle = (heading, text) => {
+    let offset = 0;
+    for (const { 0: phrase, index } of text.matchAll(titlePhrases)) {
+      heading.append(text.slice(offset, index));
+      const group = document.createElement("span");
+      group.className = "text-phrase";
+      group.textContent = phrase;
+      heading.append(group);
+      offset = index + phrase.length;
+    }
+    heading.append(text.slice(offset));
+  };
+
   const makeWork = (work, home = false) => {
     const prefix = home ? "work-panel" : "work-entry";
     const article = document.createElement("article");
@@ -41,7 +56,7 @@
     category.className = `${prefix}__category`;
     category.textContent = work.category;
     const title = document.createElement("h3");
-    title.textContent = work.title;
+    appendTitle(title, work.title);
     const detail = document.createElement("p");
     detail.className = home ? "work-panel__category" : "work-entry__description";
     detail.textContent = `${work.year}年${work.note ? ` / ${work.note}` : ""}`;

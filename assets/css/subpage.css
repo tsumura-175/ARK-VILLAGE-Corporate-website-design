@@ -407,21 +407,12 @@
 
 .content-section__lead {
   max-inline-size: var(--copy-max);
-  text-wrap: pretty;
   margin: 0;
   font-family: var(--font-body);
   font-size: var(--type-lead-size);
   font-weight: var(--type-lead-weight);
   line-height: var(--type-lead-line);
   letter-spacing: 0;
-}
-
-@media (min-width: 48rem) {
-  .content-section__lead-phrase {
-    display: inline-block;
-    max-inline-size: 100%;
-    white-space: normal;
-  }
 }
 
 .content-section__copy {
@@ -822,6 +813,12 @@
     --card-grid-inline-rule: var(--rule-hair);
 
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (48rem <= width < 56rem) {
+  .feature-cards > .content-group {
+    --content-group-title-size: 1.3125rem;
   }
 }
 
@@ -2113,6 +2110,12 @@
   font-size: var(--content-group-title-size, var(--type-heading-sm-size));
   font-weight: var(--content-group-title-weight, var(--type-heading-sm-weight));
   line-height: var(--content-group-title-line, var(--type-heading-sm-line));
+}
+
+@media (width < 48rem) {
+  .content-group__title--long {
+    font-size: clamp(1.125rem, 5.625vw, var(--content-group-title-size, var(--type-heading-sm-size)));
+  }
 }
 
 .content-groups > .contact-actions {

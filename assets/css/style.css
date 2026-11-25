@@ -500,6 +500,31 @@ html.is-github-pages.is-access-locked .access-gate {
   color: var(--color-on-dark-muted);
 }
 
+.section-heading > p,
+.section-title__description,
+.business-panel__meta > p:not(.business-panel__number),
+.company__content > p,
+.recruit-opening__copy > p,
+.news-announcement__title,
+.content-section__lead,
+.content-section__copy,
+.philosophy-feature__lead,
+.philosophy-feature__copy,
+.news-article__body > p,
+.privacy-copy p,
+.schedule-step__body > p,
+.process-list p,
+.contact-complete > p {
+  text-wrap: pretty;
+}
+
+.text-phrase {
+  display: inline-block;
+  max-inline-size: 100%;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
 .facility-name-note {
   font-size: clamp(0.75rem, 0.7em, 1.75rem);
   letter-spacing: 0;
@@ -524,14 +549,32 @@ html.is-github-pages.is-access-locked .access-gate {
   grid-template-columns: minmax(0, 1fr);
 }
 
+.section-title--ja-only {
+  --section-ja-only-size: var(--type-section-ja-only-size);
+}
+
+@media (width < 48rem) {
+  .section-title--ja-only.section-title--long {
+    --section-ja-only-size: clamp(2rem, 10vw, var(--type-section-ja-only-size));
+  }
+
+  .section-title__en--long {
+    font-size: clamp(2rem, 9vw, var(--type-section-en-size));
+  }
+
+  .section-title > .section-title__ja--long {
+    font-size: clamp(1.3125rem, 5.8vw, var(--type-section-ja-size));
+  }
+}
+
 .section-title--ja-only > .section-title__slash {
   --section-slash-shift: -50%;
-  inset-block-start: calc(var(--type-section-ja-only-size) * var(--type-section-ja-line) / 2);
+  inset-block-start: calc(var(--section-ja-only-size) * var(--type-section-ja-line) / 2);
   transform-origin: center;
 }
 
 .section-title--ja-only > h2 {
-  font-size: var(--type-section-ja-only-size);
+  font-size: var(--section-ja-only-size);
   word-break: keep-all;
   overflow-wrap: anywhere;
   text-wrap: balance;
@@ -1213,6 +1256,18 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
   font-size: var(--type-heading-sm-size);
   font-weight: var(--type-heading-sm-weight);
   line-height: var(--type-heading-sm-line);
+}
+
+@media (width < 48rem) {
+  .news-announcement__title {
+    font-size: clamp(1.125rem, 5.2vw, var(--type-heading-sm-size));
+  }
+}
+
+@media (48rem <= width < 56rem) {
+  .news-announcement__title {
+    font-size: 1.3125rem;
+  }
 }
 
 .news-announcement > .action-button {

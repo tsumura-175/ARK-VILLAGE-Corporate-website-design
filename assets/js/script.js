@@ -616,6 +616,8 @@
   );
   if (!titles.length) return;
 
+  const mobile = window.matchMedia("(width < 48rem)");
+
   const measureLastLine = (element) => {
     const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
     const range = document.createRange();
@@ -647,9 +649,14 @@
     titles.forEach((title) => {
       const english = title.querySelector(":scope > .section-title__en");
       const japanese = title.querySelector(":scope > .section-title__en + h2");
-      title.classList.remove("section-title--stacked");
       japanese.style.setProperty("--section-title-last-line-offset", "0px");
 
+      if (mobile.matches && title.hasAttribute("data-title-stack-mobile")) {
+        title.classList.add("section-title--stacked");
+        return;
+      }
+
+      title.classList.remove("section-title--stacked");
       const lastLine = measureLastLine(english);
       const gap = Number.parseFloat(getComputedStyle(title).columnGap) || 0;
       const availableRight = title.parentElement.getBoundingClientRect().right;
