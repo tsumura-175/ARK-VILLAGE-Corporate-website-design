@@ -9,7 +9,7 @@
  * context: municipalities, corporate partners, participants, candidates · tone: powerful / premium / grounded
  * verification: slop-test 1-58 pass · responsive 320/375/414/768/1280 · no horizontal overflow · contrast/tokens preserved
  */
-@import url("./tokens.css?v=20261122-ja-optical-size-1");
+@import url("./tokens.css?v=20261125-mobile-content-axis-1");
 
 /* Japanese Business UI · surface: corporate · posture: institutional
  * audiences: municipalities, corporate partners, candidates · density: balanced
@@ -416,20 +416,6 @@ html.is-github-pages.is-access-locked .access-gate {
   padding-block-end: var(--type-section-after);
 }
 
-.section-heading > p {
-  margin: 0;
-  max-width: 42rem;
-  color: var(--color-muted);
-  font-family: var(--font-body);
-  font-size: var(--type-body-size);
-  font-weight: var(--type-body-weight);
-  line-height: var(--type-body-line);
-}
-
-.section-heading--light p {
-  color: var(--color-on-dark-muted);
-}
-
 /* Reference-derived section title: diagonal cut + condensed display + JP label. */
 .section-title {
   position: relative;
@@ -469,7 +455,7 @@ html.is-github-pages.is-access-locked .access-gate {
   line-height: var(--type-section-en-line);
 }
 
-/* Keep the display title's line box tight despite the shared paragraph rule. */
+/* Keep the display title's line box tight. */
 .section-heading .section-title__en {
   color: inherit;
   max-width: 34rem;
@@ -485,8 +471,11 @@ html.is-github-pages.is-access-locked .access-gate {
 }
 
 .section-title__description {
+  --description-offset: calc(var(--section-body-indent) - var(--section-title-indent));
+
   grid-column: 1 / -1;
-  width: min(100%, 42rem);
+  width: min(calc(100% - var(--description-offset)), var(--copy-measure));
+  margin-inline-start: var(--description-offset);
   padding-block-start: var(--space-sm);
   color: var(--color-muted);
   letter-spacing: 0;
@@ -500,7 +489,6 @@ html.is-github-pages.is-access-locked .access-gate {
   color: var(--color-on-dark-muted);
 }
 
-.section-heading > p,
 .section-title__description,
 .business-panel__meta > p:not(.business-panel__number),
 .company__content > p,
@@ -1228,9 +1216,10 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 
 .news__content {
   display: grid;
-  width: min(100%, var(--content-narrow));
+  width: calc(100% - var(--section-body-indent) * 2);
   min-width: 0;
-  justify-self: center;
+  margin-inline-start: var(--section-body-indent);
+  justify-self: start;
 }
 
 /* Fixed TOP announcement, outside the CMS article list. */
@@ -1624,7 +1613,7 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 .recruit-facility__inner {
   display: grid;
   min-inline-size: 0;
-  padding-inline-start: calc(var(--page-gutter) + var(--section-title-indent));
+  padding-inline-start: calc(var(--page-gutter) + var(--section-body-indent));
   row-gap: 0;
 }
 
@@ -2039,8 +2028,8 @@ html[data-menu-input="pointer"] :is(.menu-trigger, .mobile-menu__close):focus {
 
 .contact__action {
   display: grid;
-  width: min(32rem, calc(100% - var(--section-title-indent)));
-  margin-inline-start: var(--section-title-indent);
+  width: min(32rem, calc(100% - var(--section-body-indent)));
+  margin-inline-start: var(--section-body-indent);
 }
 
 @media (min-width: 64rem) {
@@ -2762,14 +2751,6 @@ html.is-loading body {
     width: var(--space-xl);
   }
 
-  .news__content {
-    width: calc(
-      100% - var(--section-title-indent) - var(--section-title-indent)
-    );
-    margin-inline-start: var(--section-title-indent);
-    justify-self: start;
-  }
-
   .hero__definition {
     inset-block-end: calc(var(--space-2xl) + 2.5rem);
   }
@@ -3164,6 +3145,29 @@ html.is-loading body {
 
   .business-panel__content {
     padding: var(--space-xl);
+  }
+}
+
+@media (width < 48rem) {
+  .company__media::after {
+    background: linear-gradient(
+      180deg,
+      transparent 18%,
+      rgb(255 255 255 / 78%) 42%,
+      rgb(255 255 255 / 92%) 100%
+    );
+  }
+
+  .company__content {
+    justify-self: start;
+  }
+
+  .business-panel__content {
+    padding-inline: var(--page-gutter);
+  }
+
+  .business-panel__meta {
+    inset-inline: var(--page-gutter);
   }
 }
 

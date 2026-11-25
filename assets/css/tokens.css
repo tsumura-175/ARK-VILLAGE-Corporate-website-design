@@ -135,9 +135,10 @@
   --z-access: 800;
 }
 
-/* Typography breakpoint only; existing layout breakpoints are unchanged. */
+/* Shared typography and content alignment from tablet sizes. */
 @media (min-width: 48rem) {
   :root {
+    --section-body-indent: var(--section-title-indent);
     --type-section-en-size: 5rem;
     --type-section-ja-size: 2rem;
     --type-section-ja-only-size: 4.5rem;

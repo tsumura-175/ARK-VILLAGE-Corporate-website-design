@@ -210,10 +210,9 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - `.section-title` の直下には装飾の斜線、`.section-title__en`、`h2`、必要な場合のみ `.section-title__description` をこの順で置く。英字と日本語を個別のラッパーで囲まない。実際のh2大見出しと幅に応じた自動配置は `components.html#components` で確認する
 - 下層KVの英字・日本語の文字サイズはトップKVと同じルールを使う。共通見本は `docs/components.html` とする
 - すべての画面幅で見出しを左上、本文をその下に置き、DOMの読み順と視覚上の順序を一致させる
-- SPの見出しは `--section-title-indent` で赤い斜線用の余白を確保しつつ、ページ余白との合算が過大にならない値を使う
-- 下層ページ本文は `--section-body-indent` で管理し、SPでは追加インデントを付けず、地図・画像・文章をページ本文幅へ戻す
-- 768px以上では `--section-body-indent` を `--section-title-indent` に揃え、見出しと本文の共通軸を復元する
-- 補助背景の白いコンテンツプレートは、SPでも左右対称の最小内余白を確保する
+- 見出し文字は `--section-title-indent` で赤い斜線との間隔を取る。768px未満では `--section-body-indent` を0にし、TOP・下層の見出し直下の説明文、本文内の画像・地図・カード・導線を、斜線の配置基準である `.page-shell` の左余白に揃える。
+- 768px以上では `--section-body-indent` を `--section-title-indent` と同じ値にし、本文に見出し文字の左端を使う既存の配置を保つ。全幅で見せる写真や背景は従来の表示枠を使う。
+- グレーのセクションに載せる白いコンテンツプレートは768px未満で画面幅まで広げ、左右の内余白に `--page-gutter` を使う。本文とプレート上端の短い罫線は、セクション見出しの斜線と同じ位置を基準にする。見本は [説明文付きの見出し](components.html#sample-ja-heading) と [本文と画像](components.html#sample-feature-title) を参照する。
 - 本文領域の標準最大幅には `--content-narrow` を使用し、モバイルでは利用可能幅をそのまま使う。写真・一覧・地図などは `.content-section__body--wide` でページ本文幅まで広げ、文章は必要に応じて `.content-section__body--editorial` または `.content-section__body--readable-copy` で行長を抑える
 - セクション間は罫線を置かず、共通の上下余白で区切る
 
@@ -372,10 +371,10 @@ PCの共通ナビ5項目は16px。項目間は24〜40pxの範囲で画面幅に�
 - 施設の表記は「寒川町相模川一之宮公園（仮称）」「寒川町ストリートスポーツパーク（仮称）」に統一する。画面では `small.facility-name-note` を使って「（仮称）」のみを小さくし、注記の途中で折り返さない。ページのタイトル・説明・画像の代替テキストには「（仮称）」を文字として記載する。Excel正本の歴史的な実績名、既存URL、識別子、素材ファイル名は引き続き使う。
 - 募集区分は公園の社員・アルバイトと、スポーツパークの受付社員・運営管理社員／BMX FLATLAND・SKATEBOARD STREET講師／アルバイト・清掃スタッフの3件。
 - 本サイトで詳細と応募を管理するのは公園。両施設はTOP・採用ページ・見本で施設名の下、写真の上に「2027年春頃募集開始予定」を表示する。正式な外部URL受領までは各カードを「採用サイト準備中」とし、公園のフォームや架空URLへ接続しない。
-- TOP・採用ページ・見本は `.recruit-facilities` 内に2つの `.recruit-facility` を置く。各施設の直下に施設名を含む `.page-shell.recruit-facility__inner`、施設写真 `.recruit-facility__perspective`、募集案内を含む `.page-shell.recruit-facility__inner` を順に置く。施設名 `.recruit-facility__name` と募集案内 `.recruit-facility__layout` の左端を大タイトルの英字開始位置に揃える。両ページの大見出しと既存アンカーは保持する。
+- TOP・採用ページ・見本は `.recruit-facilities` 内に2つの `.recruit-facility` を置く。各施設の直下に施設名を含む `.page-shell.recruit-facility__inner`、施設写真 `.recruit-facility__perspective`、募集案内を含む `.page-shell.recruit-facility__inner` を順に置く。施設名と募集案内は共通の本文位置に揃える。
 - 公園とスポーツパークの施設ブロックは、大見出しを含む親セクションの白背景を共有する。横幅いっぱいの背景は親セクションが持ち、施設名と募集案内は各施設内のpage-shellで揃える。
 - 施設名は中見出し、募集見出しは小見出し、説明は本文の既存トークンを使う。施設名と募集見出しは共通CSSのtext-wrap: balanceで自然改行を均し、強制改行や文字縮小は加えない。募集開始時期の `.recruit-facility__schedule` は募集カードと同じ本文の色・文字指定を使い、施設名からは `--type-heading-md-after`（PC24px／SP16px）を取る。施設名または募集開始時期から写真までは写真の上マージン `--space-before-media` でPC24px／SP16px、写真から募集案内までは写真の下マージン `--space-xl` で40pxを確保する。施設内の親gapと見出しmarginは0。募集見出し→説明はcopyのgapでPC16px／SP12px、バナー→copyとcopy→ボタンは24px。最初の施設名までは大見出しの下余白、施設間は中見出しの上余白に `--space-md`（16px）を加え、PC64px／SP48pxとする。前の施設の下端はPC24px／SP16px、後の施設の先頭から見出しまではPC40px／SP32px。最後の施設の下端には中見出しの上余白PC48px／SP32pxを施設の背景内に取り、採用セクションの末尾に重ねて加えない。
-- 施設名と募集案内の左右位置と幅は、それぞれの親 `.page-shell.recruit-facility__inner` が所有する。page-shellの既存 `--page-max / --page-gutter` を使い、親の開始側paddingだけを `calc(var(--page-gutter) + var(--section-title-indent))` にする。終端側はpage-shellの既存paddingを維持する。赤い斜線ではなく `.section-title__en` の開始位置と一致し、SPでもその幅のタイトル用インデントへ追従する。他ページの本文用 `--section-body-indent` や大タイトルの位置は変更しない。
+- 施設名と募集案内を包む `.page-shell.recruit-facility__inner` は、左余白に `--page-gutter` と共通の `--section-body-indent` を使う。768px未満では左右を `--page-gutter` に揃え、768px以上は大タイトルの英字開始位置を基準にする。
 - 施設写真は画面幅いっぱいに表示し、TOPのCOMPANY画像枠 `.company__visual` と高さの指定を共用する。960px未満では `clamp(28rem, 138vw, 36rem)`、960px以上では `clamp(28rem, 42vw, 38rem)` を使う。画像は `object-fit: cover` で中央を基準にトリミングする。募集案内は本文幅のグリッドを使う。
 - TOP・採用ページ・見本の施設写真は、公園には `assets/images/media/samukawa-outdoor-perspective.webp`、スポーツパークには `assets/images/media/samukawa-street-sports-park-interior.webp` を使う。altには各施設名と写真の内容を記載する。写真上の文字・キャプションは置かない。
 - 各募集カードは `.recruit-opening` 内の募集バナー→`.recruit-opening__copy`（見出し・既存説明）→既存のボタン／準備中spanの順。公園の1件だけ `.recruit-opening--featured` を使い、768px以上は左バナー・右copy＋ボタン、未満は縦積みとする。社員・アルバイトを別カードへ分割しない。

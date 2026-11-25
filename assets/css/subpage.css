@@ -405,6 +405,17 @@
   content: "";
 }
 
+@media (width < 48rem) {
+  .content-section--tinted .content-section__body {
+    margin-inline: calc(var(--page-gutter) * -1);
+    padding-inline: var(--page-gutter);
+  }
+
+  .content-section--tinted .content-section__body::before {
+    inset-inline-start: var(--page-gutter);
+  }
+}
+
 .content-section__lead {
   max-inline-size: var(--copy-max);
   margin: 0;
@@ -772,10 +783,6 @@
 @media (min-width: 48rem) {
   .business-media img {
     aspect-ratio: 2 / 1;
-  }
-
-  .subpage {
-    --section-body-indent: var(--section-title-indent);
   }
 
   .definition-list__row {
